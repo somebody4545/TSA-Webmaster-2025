@@ -1,0 +1,112 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+
+export default function Header() {
+  const pathname = usePathname();
+  const [isScrolledUp, setIsScrolledUp] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsScrolledUp(true);
+      } else {
+        setIsScrolledUp(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Check scroll position on mount
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <header
+      className={`w-full flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
+        isScrolledUp ? "bg-primary" : "bg-primary bg-opacity-80"
+      } text-background backdrop-blur-sm sticky top-0 z-50 transition-all duration-300`}
+    >
+      <a href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-all">Maitso</h1></a>
+      <div className="dropdown dropdown-end lg:hidden">
+        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </label>
+        <ul
+          tabIndex={0}
+          className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <a
+              href="/"
+              className={`hover:underline ${pathname === "/" ? "underline" : ""} focus:outline-none`}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="menu"
+              className={`hover:underline ${pathname === "/menu" ? "underline" : ""} focus:outline-none`}
+            >
+              Menu
+            </a>
+          </li>
+          <li>
+            <a
+              href="contact"
+              className={`hover:underline ${pathname === "/contact" ? "underline" : ""} focus:outline-none`}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+      <nav className="hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">
+          <li>
+            <a
+              href="/"
+              className={`hover:underline ${pathname === "/" ? "underline" : ""} active:!bg-green-950`}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="menu"
+              className={`hover:underline ${pathname === "/menu" ? "underline" : ""} active:!bg-green-950`}
+            >
+              Menu
+            </a>
+          </li>
+          <li>
+            <a
+              href="contact"
+              className={`hover:underline ${pathname === "/contact" ? "underline" : ""} active:!bg-green-950`}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+}

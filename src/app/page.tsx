@@ -56,9 +56,39 @@ export default function Home() {
           1. Green in Malagasy. <br />2. A plant-based experience from every cuisine.
         </motion.p>
       </div>
+      <div className="bg-background lg:h-96 w-full text-text p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+        <div className="flex flex-col lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
+          <div className='w-full lg:w-full flex flex-col justify-center h-full text-center max-w-[66vw] mx-auto'>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h2
+                className="text-3xl font-heading"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                What We're About
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                At Maitso, we believe in providing a unique plant-based dining experience that celebrates the diversity of global cuisines. Our mission is to offer delicious and sustainable food options that are good for you and the planet.
+              </motion.p>
+              <button className="btn btn-primary mt-4 rounded-full max-w-max">
+                Read more about our mission
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </div>
       <div className="bg-accent lg:h-96 w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
-          <div className='w-full lg:w-1/3 flex flex-col justify-center h-full'>
+          <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}

@@ -19,7 +19,7 @@ export default function NotFound() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Oops! The page you're looking for doesn't exist.
+        Oops! The page you&apos;re looking for doesn&apos;t exist.
       </motion.p>
       <Link href="/" className="btn btn-primary mt-4 rounded-full">
         Go Home

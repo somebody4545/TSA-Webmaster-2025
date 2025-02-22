@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 
 export default function Header() {
   const pathname = usePathname();
@@ -31,7 +32,7 @@ export default function Header() {
         isScrolledUp ? "bg-primary" : "bg-primary bg-opacity-80"
       } text-background backdrop-blur-sm sticky top-0 z-50 transition-all duration-300`}
     >
-      <a href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-all">Maitso</h1></a>
+      <Link href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-all">Maitso</h1></Link>
       <div className="dropdown dropdown-end lg:hidden">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">
           <svg
@@ -54,56 +55,56 @@ export default function Header() {
           className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a
+            <Link
               href="/"
               className={`hover:underline ${pathname === "/" ? "underline" : ""} focus:outline-none`}
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="menu"
               className={`hover:underline ${pathname === "/menu" ? "underline" : ""} focus:outline-none`}
             >
               Menu
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="contact"
               className={`hover:underline ${pathname === "/contact" ? "underline" : ""} focus:outline-none`}
             >
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <nav className="hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <a
+            <Link
               href="/"
               className={`hover:underline ${pathname === "/" ? "underline" : ""} active:!bg-green-950`}
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="menu"
               className={`hover:underline ${pathname === "/menu" ? "underline" : ""} active:!bg-green-950`}
             >
               Menu
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="contact"
               className={`hover:underline ${pathname === "/contact" ? "underline" : ""} active:!bg-green-950`}
             >
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

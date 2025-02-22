@@ -13,6 +13,7 @@ export default function Home() {
             className="absolute left-0 top-1/2 max-lg:-top-32 max-lg:rotate-[24deg] max-lg:left-0 transform -translate-y-1/2 max-lg:translate-y-0"
             width={300}
             height={300}
+            style={{ filter: "brightness(0) invert(1)" }}
           />
           <Image
             src="/img/backgrounds/-8.png"
@@ -20,6 +21,7 @@ export default function Home() {
             className="absolute right-0 top-1/2 max-lg:bottom-20 rotate-180 max-lg:rotate-[204deg] max-lg:-right-10 transform -translate-y-1/2 max-lg:translate-y-0"
             width={300}
             height={300}
+            style={{ filter: "brightness(0) invert(1)" }}
           />
         </div>
         <motion.h1

@@ -216,39 +216,48 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <Marquee className="mt-8 py-8" gradient={false} speed={50} direction="right" autoFill={true}>
-              <div className="flex space-x-8 ml-8 h-44 text-left">
-                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
-                    <div className="card-body">
-                      <h2 className="card-title">John Doe</h2>
-                      <p>"The best plant-based dining experience I've ever had!"</p>
-                    </div>
-                  </div>
-                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
-                    <div className="card-body">
-                      <h2 className="card-title">Jane Smith</h2>
-                      <p>"Absolutely delicious and sustainable food options."</p>
-                    </div>
-                  </div>
-                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
-                    <div className="card-body">
-                      <h2 className="card-title">Alice Johnson</h2>
-                      <p>"A unique plant-based dining experience that celebrates global cuisines."</p>
-                    </div>
-                  </div>
-                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
-                    <div className="card-body">
-                      <h2 className="card-title">Bob Brown</h2>
-                      <p>"I love the variety of plant-based options available."</p>
-                    </div>
-                  </div>
-                  <div className="card bg-secondary shadow-xl h-full  w-[300px] mx-auto">
-                    <div className="card-body">
-                      <h2 className="card-title">Emily Davis</h2>
-                      <p>"The gift cards are perfect for any occasion!"</p>
-                    </div>
-                  </div>
-                </div>
-            </Marquee>
+  <div className="flex space-x-8 ml-8 h-52 text-left">
+    {[
+      {
+        name: "John Doe",
+        quote: "The best plant-based dining experience I've ever had!",
+        image: "https://randomuser.me/api/portraits/men/32.jpg",
+      },
+      {
+        name: "Jane Smith",
+        quote: "Absolutely delicious and sustainable food options.",
+        image: "https://randomuser.me/api/portraits/women/32.jpg",
+      },
+      {
+        name: "Alice Johnson",
+        quote: "A unique plant-based dining experience that celebrates global cuisines.",
+        image: "https://randomuser.me/api/portraits/women/31.jpg",
+      },
+      {
+        name: "Bob Brown",
+        quote: "I love the variety of plant-based options available.",
+        image: "https://randomuser.me/api/portraits/men/21.jpg",
+      },
+      {
+        name: "Emily Davis",
+        quote: "The gift cards are perfect for any occasion!",
+        image: "https://randomuser.me/api/portraits/women/2.jpg",
+      },
+    ].map((testimonial, index) => (
+      <div key={index} className="card bg-secondary shadow-2xl rounded-xl h-full w-[350px] mx-auto transform transition-transform hover:scale-105">
+        <div className="card-body flex items-center">
+          <img
+            src={testimonial.image}
+            alt={`${testimonial.name}'s picture`}
+            className="rounded-full w-16 h-16 mb-4"
+          />
+          <h2 className="card-title text-lg font-semibold">{testimonial.name}</h2>
+          <p className="text-sm">{testimonial.quote}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</Marquee>
           </motion.div>  </div>
       </div>
       <div className="bg-black w-full text-background py-16 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>

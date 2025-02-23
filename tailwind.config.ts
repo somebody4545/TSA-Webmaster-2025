@@ -10,11 +10,11 @@ export default {
     extend: {
       colors: {
         'text': '#000000',
-        'background': '#FAF3DD',
-        'primary': '#0f633c',
-        'secondary': '#39b2aa',
-        'accent': '#c64d8e',
-       },
+        'background': '#f5fcef',
+        'primary': '#a1cc80',
+        'secondary': '#95e8cf',
+        'accent': '#e49ae6',
+       },       
     },
     fontSize: {
       sm: '0.750rem',
@@ -41,15 +41,11 @@ export default {
     themes: [
       {
         myTheme: {
-          "primary": "#0f633c",
-          "secondary": "#39b2aa",
-          "accent": "#c64d8e",
-          "neutral": "#43350a",
-          "base-100": "#FAF3DD",
-          "info": "#3ABFF8",
-          "success": "#36D399",
-          "warning": "#FBBD23",
-          "error": "#F87272",
+          "primary": "#a1cc80",
+          "secondary": "#95e8cf",
+          "accent": "#e49ae6",
+          "neutral": "#25400c",
+          "base-100": "#f5fcef",
         },
       },
     ],

@@ -52,12 +52,12 @@ export default function Header() {
         </label>
         <ul
           tabIndex={0}
-          className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
         >
           <li>
             <Link
               href="/"
-              className={`hover:underline ${pathname === "/" ? "underline" : ""} focus:outline-none`}
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} focus:outline-none`}
             >
               Home
             </Link>
@@ -65,7 +65,7 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "underline" : ""} focus:outline-none`}
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} focus:outline-none`}
             >
               Menu
             </Link>
@@ -73,7 +73,7 @@ export default function Header() {
           <li>
             <Link
               href="contact"
-              className={`hover:underline ${pathname === "/contact" ? "underline" : ""} focus:outline-none`}
+              className={`hover:underline ${pathname === "/contact" ? "font-bold" : ""} focus:outline-none`}
             >
               Contact
             </Link>
@@ -85,7 +85,7 @@ export default function Header() {
           <li>
             <Link
               href="/"
-              className={`hover:underline ${pathname === "/" ? "underline" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950`}
             >
               Home
             </Link>
@@ -93,7 +93,7 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "underline" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950`}
             >
               Menu
             </Link>
@@ -101,7 +101,7 @@ export default function Header() {
           <li>
             <Link
               href="contact"
-              className={`hover:underline ${pathname === "/contact" ? "underline" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/contact" ? "font-bold" : ""} active:!bg-green-950`}
             >
               Contact
             </Link>

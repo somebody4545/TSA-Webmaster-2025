@@ -81,7 +81,7 @@ export default function Header() {
         </ul>
       </div>
       <nav className="hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
+        <ul className="menu menu-horizontal p-0 gap-2">
           <li>
             <Link
               href="/"

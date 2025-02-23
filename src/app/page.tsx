@@ -24,7 +24,7 @@ export default function Home() {
           <Image
             src="/img/backgrounds/-8.png"
             alt="Left Leaf"
-            className="absolute left-0 top-1/2 max-lg:-top-32 max-lg:rotate-[24deg] max-lg:left-0 transform -translate-y-1/2 max-lg:translate-y-0"
+            className="absolute left-0 top-1/2 max-lg:-top-32 max-lg:rotate-[24deg] max-lg:left-0 transform -translate-y-1/2 max-lg:translate-y-0 transition-all duration-500"
             width={300}
             height={300}
             style={{ filter: "brightness(0) invert(1)" }}
@@ -32,7 +32,7 @@ export default function Home() {
           <Image
             src="/img/backgrounds/-8.png"
             alt="Right Leaf"
-            className="absolute right-0 top-1/2 max-lg:bottom-20 rotate-180 max-lg:rotate-[204deg] max-lg:-right-10 transform -translate-y-1/2 max-lg:translate-y-0"
+            className="absolute right-0 top-1/2 max-lg:bottom-20 rotate-180 max-lg:rotate-[204deg] max-lg:-right-10 transform -translate-y-1/2 max-lg:translate-y-0 transition-all duration-500"
             width={300}
             height={300}
             style={{ filter: "brightness(0) invert(1)" }}

@@ -11,7 +11,11 @@ export default {
       colors: {
         'text': '#000000',
         'background': '#f5fcef',
+        'background-dim': '#ebf2e5',
         'primary': '#a1cc80',
+        'primary-darker': '#789960',
+        'primary-darkest': '#647f50',
+        'primary-superdark': '#506640',
         'secondary': '#95e8cf',
         'accent': '#e49ae6',
        },       
@@ -36,6 +40,7 @@ export default {
   },
   plugins: [
     require('daisyui'),
+    require('tailwind-scrollbar'),
   ],
   daisyui: {
     themes: [

@@ -6,6 +6,7 @@ import Marquee from "react-fast-marquee";
 export default function Home() {
   return (
     <>
+      {/* Background Section */}
       <div className="bg-secondary text-background text-xl relative min-h-[500px] max-h-[90vh] h-[700px] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <Image
           src="/img/backgrounds/bg.jpg"
@@ -70,16 +71,31 @@ export default function Home() {
           1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
         </motion.p>
       </div>
-      <div className="bg-background lg:h-96 w-full text-text p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
-        <div className="flex flex-col lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
-          <div className='w-full lg:w-full flex flex-col justify-center h-full text-center max-w-[66vw] mx-auto'>
+
+          {/* About Section */}
+      <div
+        className="bg-background lg:h-[700px] w-full text-text p-16 z-20"
+        style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}
+      >
+        <div className="flex flex-col lg:flex-row flex-2 h-full max-w-screen-2xl mx-auto gap-16">
+          <div className="w-full lg:w-1/2 flex justify-center items-center h-full">
+            <motion.img
+              src="/img/about.png"
+              alt="About Us"
+              className="rounded-2xl w-full lg:w-[90%] h-full object-cover"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+          <div className="w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
               <motion.h2
-                className="text-3xl font-heading"
+                className="text-4xl font-heading mb-4"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -87,6 +103,7 @@ export default function Home() {
                 What We're About
               </motion.h2>
               <motion.p
+                className="text-lg"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -100,6 +117,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* Menu Section */}
       <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
         <div className="flex flex-col lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
@@ -140,6 +158,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Gift Cards Section */}
       <div className="bg-primary lg:h-96 w-full overflow-clip text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left'>
@@ -179,6 +199,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Testimonials Section */}
       <div className="bg-background lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col h-full w-full text-center">
           <motion.h2
@@ -209,57 +231,61 @@ export default function Home() {
                   <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
                   <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
                   <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            </Marquee>  </motion.div>
+            </Marquee>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Marquee className="mt-8 py-8" gradient={false} speed={50} direction="right" autoFill={true}>
-  <div className="flex space-x-8 ml-8 h-52 text-left">
-    {[
-      {
-        name: "John Doe",
-        quote: "The best plant-based dining experience I've ever had!",
-        image: "https://randomuser.me/api/portraits/men/32.jpg",
-      },
-      {
-        name: "Jane Smith",
-        quote: "Absolutely delicious and sustainable food options.",
-        image: "https://randomuser.me/api/portraits/women/32.jpg",
-      },
-      {
-        name: "Alice Johnson",
-        quote: "A unique plant-based dining experience that celebrates global cuisines.",
-        image: "https://randomuser.me/api/portraits/women/31.jpg",
-      },
-      {
-        name: "Bob Brown",
-        quote: "I love the variety of plant-based options available.",
-        image: "https://randomuser.me/api/portraits/men/21.jpg",
-      },
-      {
-        name: "Emily Davis",
-        quote: "The gift cards are perfect for any occasion!",
-        image: "https://randomuser.me/api/portraits/women/2.jpg",
-      },
-    ].map((testimonial, index) => (
-      <div key={index} className="card bg-secondary shadow-2xl rounded-xl h-full w-[350px] mx-auto transform transition-transform hover:scale-105">
-        <div className="card-body flex items-center">
-          <img
-            src={testimonial.image}
-            alt={`${testimonial.name}'s picture`}
-            className="rounded-full w-16 h-16 mb-4"
-          />
-          <h2 className="card-title text-lg font-semibold">{testimonial.name}</h2>
-          <p className="text-sm">{testimonial.quote}</p>
+            <Marquee className="mt-8 py-8" gradient={false} speed={60} direction="right" autoFill={true}>
+              <div className="flex space-x-8 ml-8 h-52 text-left">
+                {[
+                  {
+                    name: "John Doe",
+                    quote: "The best plant-based dining experience I've ever had!",
+                    image: "https://randomuser.me/api/portraits/men/32.jpg",
+                  },
+                  {
+                    name: "Jane Smith",
+                    quote: "Absolutely delicious and sustainable food options.",
+                    image: "https://randomuser.me/api/portraits/women/32.jpg",
+                  },
+                  {
+                    name: "Alice Johnson",
+                    quote: "A unique plant-based dining experience that celebrates global cuisines.",
+                    image: "https://randomuser.me/api/portraits/women/31.jpg",
+                  },
+                  {
+                    name: "Bob Brown",
+                    quote: "I love the variety of plant-based options available.",
+                    image: "https://randomuser.me/api/portraits/men/21.jpg",
+                  },
+                  {
+                    name: "Emily Davis",
+                    quote: "The gift cards are perfect for any occasion!",
+                    image: "https://randomuser.me/api/portraits/women/2.jpg",
+                  },
+                ].map((testimonial, index) => (
+                  <div key={index} className="card bg-secondary shadow-2xl rounded-xl h-full w-[350px] mx-auto transform transition-transform duration-300 ease-in-out hover:scale-95">
+                    <div className="card-body flex items-center">
+                      <img
+                        src={testimonial.image}
+                        alt={`${testimonial.name}'s picture`}
+                        className="rounded-full w-16 h-16 mb-4"
+                      />
+                      <h2 className="card-title text-lg font-semibold">{testimonial.name}</h2>
+                      <p className="text-sm">{testimonial.quote}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Marquee>
+          </motion.div>
         </div>
       </div>
-    ))}
-  </div>
-</Marquee>
-          </motion.div>  </div>
-      </div>
+
+      {/* Locations Section */}
       <div className="bg-black w-full text-background py-16 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <motion.div
           className="absolute inset-0 z-20"

@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 export default function Home() {
   return (
     <>
-      <div className="bg-secondary text-background relative min-h-[500px] max-h-[90vh] h-[700px] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+      <div className="bg-secondary text-background text-xl relative min-h-[500px] max-h-[90vh] h-[700px] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <Image
           src="/img/backgrounds/bg.jpg"
           alt="Main Background"
@@ -53,7 +53,7 @@ export default function Home() {
           animate={{ opacity: 0.6, x: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          /ˈmaɪtsoʊ/
+          /ˈmaɪtsoʊ/ <br />
         </motion.p>
         <motion.p className="text-center italic pb-6"
           initial={{ opacity: 0, x: -50 }}
@@ -67,7 +67,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          1. Green in Malagasy. <br />2. A plant-based experience from every cuisine.
+          1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
         </motion.p>
       </div>
       <div className="bg-background lg:h-96 w-full text-text p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
@@ -93,14 +93,14 @@ export default function Home() {
               >
                 At Maitso, we believe in providing a unique plant-based dining experience that celebrates the diversity of global cuisines. Our mission is to offer delicious and sustainable food options that are good for you and the planet.
               </motion.p>
-              <button className="btn btn-primary mt-4 rounded-full max-w-max">
+              <button className="btn btn-primary mt-4 rounded-full max-w-max shadow-md">
                 Read More
               </button>
             </motion.div>
           </div>
         </div>
       </div>
-      <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+      <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
         <div className="flex flex-col lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div
@@ -123,7 +123,7 @@ export default function Home() {
               >
                 From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
               </motion.p>
-              <button className="btn btn-primary mt-4 rounded-full max-w-32">
+              <button className="btn btn-primary mt-4 rounded-full max-w-32 shadow-lg">
                 View Menu
               </button>
             </motion.div>
@@ -163,7 +163,7 @@ export default function Home() {
               >
                 Whether it's Christmas, a birthday, or you're just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
-              <button className="btn btn-secondary text-black mt-4 rounded-full max-w-max">
+              <button className="btn btn-secondary text-black mt-4 rounded-full max-w-max shadow-lg">
                 Purchase Gift Cards
               </button>
             </motion.div>
@@ -190,7 +190,7 @@ export default function Home() {
             Testimonials
           </motion.h2>
           <motion.p
-            className="mx-16"
+            className="mx-16 text-xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -202,81 +202,71 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50}>
-              <div className="flex space-x-8 md:w-screen md:w-screen-2xl min-w-screen h-24 mr-8">
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news.png" alt="News 1" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news1.png" alt="News 2" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news5.png" alt="News 6" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news2.png" alt="News 3" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news3.png" alt="News 4" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-                <div className="w-1/5 h-full flex flex-col items-center justify-center max-w-[300px] md:max-w-full">
-                  <img src="/img/news4.png" alt="News 5" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
-                </div>
-              </div>
+            <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} autoFill={true}>
+                  <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+                  <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+                  <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+                  <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+                  <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+                  <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
             </Marquee>  </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} direction="right">
-              <div className="flex space-x-8 min-w-screen mr-8 text-text text-left">
-                <div className="w-1/5 min-w-[200px]">
-                  <div className="card bg-secondary shadow-xl h-full">
+            <Marquee className="mt-8 py-8" gradient={false} speed={50} direction="right" autoFill={true}>
+              <div className="flex space-x-8 ml-8 h-44 text-left">
+                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
                     <div className="card-body">
                       <h2 className="card-title">John Doe</h2>
                       <p>"The best plant-based dining experience I've ever had!"</p>
                     </div>
                   </div>
-                </div>
-                <div className="w-1/5 min-w-[200px]">
-                  <div className="card bg-secondary shadow-xl h-full">
+                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
                     <div className="card-body">
                       <h2 className="card-title">Jane Smith</h2>
                       <p>"Absolutely delicious and sustainable food options."</p>
                     </div>
                   </div>
-                </div>
-                <div className="w-1/5 min-w-[200px]">
-                  <div className="card bg-secondary shadow-xl h-full">
+                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
                     <div className="card-body">
                       <h2 className="card-title">Alice Johnson</h2>
                       <p>"A unique plant-based dining experience that celebrates global cuisines."</p>
                     </div>
                   </div>
-                </div>
-                <div className="w-1/5 min-w-[200px]">
-                  <div className="card bg-secondary shadow-xl h-full">
+                  <div className="card bg-secondary shadow-xl h-full w-[300px] mx-auto">
                     <div className="card-body">
                       <h2 className="card-title">Bob Brown</h2>
                       <p>"I love the variety of plant-based options available."</p>
                     </div>
                   </div>
-                </div>
-                <div className="w-1/5 min-w-[200px]">
-                  <div className="card bg-secondary shadow-xl h-full">
+                  <div className="card bg-secondary shadow-xl h-full  w-[300px] mx-auto">
                     <div className="card-body">
                       <h2 className="card-title">Emily Davis</h2>
                       <p>"The gift cards are perfect for any occasion!"</p>
                     </div>
                   </div>
                 </div>
-              </div>
             </Marquee>
           </motion.div>  </div>
       </div>
-      <div className="bg-accent w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
-        <div className="flex flex-col h-full w-full text-center items-center justify-center">
+      <div className="bg-black w-full text-background py-16 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+        <motion.div
+          className="absolute inset-0 z-20"
+          style={{ filter: "brightness(0.2)" }}
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src="/img/backgrounds/location.jpeg"
+            alt="Main Background"
+            layout="fill"
+            objectFit="cover"
+          />
+        </motion.div>
+        <div className="flex flex-col h-full w-full text-center items-center justify-center relative z-30">
           <motion.h2
             className="text-3xl font-heading"
             initial={{ opacity: 0 }}
@@ -286,7 +276,7 @@ export default function Home() {
             Locations
           </motion.h2>
           <motion.p
-            className="mx-16"
+            className="mx-16 text-xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

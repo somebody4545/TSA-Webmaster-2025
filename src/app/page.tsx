@@ -198,6 +198,9 @@
                     <img src="/img/news1.png" alt="News 2" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
                   </div>
                   <div className="w-1/5 h-full flex flex-col items-center justify-center">
+                    <img src="/img/news5.png" alt="News 6" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
+                  </div>
+                  <div className="w-1/5 h-full flex flex-col items-center justify-center">
                     <img src="/img/news2.png" alt="News 3" className="max-h-full max-w-full aspect-auto" style={{ filter: "brightness(0)" }} />
                   </div>
                   <div className="w-1/5 h-full flex flex-col items-center justify-center">

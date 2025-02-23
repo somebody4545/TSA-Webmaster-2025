@@ -72,10 +72,10 @@ export default function Header() {
           </li>
           <li>
             <Link
-              href="contact"
-              className={`hover:underline ${pathname === "/contact" ? "font-bold" : ""} focus:outline-none`}
+              href="mission"
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} focus:outline-none`}
             >
-              Contact
+              Mission
             </Link>
           </li>
         </ul>
@@ -100,10 +100,10 @@ export default function Header() {
           </li>
           <li>
             <Link
-              href="contact"
-              className={`hover:underline ${pathname === "/contact" ? "font-bold" : ""} active:!bg-green-950`}
+              href="mission"
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              Contact
+              Mission
             </Link>
           </li>
         </ul>

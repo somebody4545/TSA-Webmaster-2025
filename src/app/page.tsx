@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 export default function Home() {
   return (
     <>
-      <div className="bg-secondary text-background relative min-h-[500px] max-h-[80vh] h-[700px] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+      <div className="bg-secondary text-background relative min-h-[500px] max-h-[90vh] h-[700px] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <Image
           src="/img/backgrounds/bg.jpg"
           alt="Main Background"

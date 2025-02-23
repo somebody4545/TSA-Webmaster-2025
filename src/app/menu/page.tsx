@@ -66,7 +66,7 @@ const sampleMenuItems = [
     "price": "$24.99",
     "calories": "550",
     "imageUrl": "/img/menu/poke-bowl.jpg",
-    "tags": [ "Hawaiian", "Gluten-Free"],
+    "tags": ["Raw", "Hawaiian", "Gluten-Free"],
     "category": "Lunch"
   },
   {

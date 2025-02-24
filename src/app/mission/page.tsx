@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Mission = () => {
+const Page = () => {
   return (
     <div>Mission</div>
   )
 }
 
-export default Mission
+export default Page

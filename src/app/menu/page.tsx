@@ -143,7 +143,7 @@ const sampleMenuItems = [
   }
 ];
 
-const Menu = () => {
+const Page = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   return (
@@ -216,4 +216,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Page;

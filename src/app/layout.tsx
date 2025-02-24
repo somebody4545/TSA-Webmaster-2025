@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-body flex flex-col min-h-screen bg-primary scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
+      <body className="lg:px-10 font-body flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 bg-background text-text flex flex-col">
           {children}

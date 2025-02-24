@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import MenuCard from '@/components/menu_card';
+import MenuCard from '@/components/MenuCard';
 
 const menuCategories = ["Vegan", "Gluten Free"];
 
@@ -174,7 +174,7 @@ const Menu = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Increaseing your love for vegetarian or sum thing bro idk.
+              Embrace fresh, vibrant flavors!
             </motion.p>
           </div>
         </div>

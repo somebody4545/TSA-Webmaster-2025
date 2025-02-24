@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import MenuCard from '@/components/MenuCard';
 
-const menuCategories = ["Vegan", "Gluten Free", "Healthy", "Low Carb", "Spicy", "High Protein", "Superfood", "Indian", "Korean", "Raw", "Hawaiian", "Comfort Food", "Italian"];
+const menuCategories = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
 
 const sampleMenuItems = [
   {
@@ -21,7 +21,7 @@ const sampleMenuItems = [
     "price": "$19.99",
     "calories": "580",
     "imageUrl": "/img/menu/mediterranean-bowl.jpg",
-    "tags": ["Healthy", "Gluten-Free"],
+    "tags": ["Gluten-Free"],
     "category": "Lunch"
   },
   {
@@ -30,7 +30,7 @@ const sampleMenuItems = [
     "price": "$26.99",
     "calories": "520",
     "imageUrl": "/img/menu/lettucewrap.jpg",
-    "tags": ["Low Carb", "Omega-3"],
+    "tags": ["Low Carb"],
     "category": "Dinner"
   },
   {
@@ -39,7 +39,7 @@ const sampleMenuItems = [
     "price": "$18.99",
     "calories": "490",
     "imageUrl": "/img/menu/buddha-bowl.jpg",
-    "tags": ["Vegan", "Gluten-Free", "Superfood"],
+    "tags": ["Vegan", "Gluten-Free"],
     "category": "Lunch"
   },
   {
@@ -48,7 +48,7 @@ const sampleMenuItems = [
     "price": "$23.99",
     "calories": "720",
     "imageUrl": "/img/menu/tikka-masala.jpg",
-    "tags": ["Indian", "Spicy", "Popular"],
+    "tags": ["Spicy"],
     "category": "Dinner"
   },
   {
@@ -57,7 +57,7 @@ const sampleMenuItems = [
     "price": "$14.99",
     "calories": "420",
     "imageUrl": "/img/menu/avocado-toast.jpg",
-    "tags": ["High Protein", "Breakfast"],
+    "tags": ["High Protein"],
     "category": "Breakfast"
   },
   {
@@ -66,7 +66,7 @@ const sampleMenuItems = [
     "price": "$24.99",
     "calories": "550",
     "imageUrl": "/img/menu/poke-bowl.jpg",
-    "tags": ["Raw", "Hawaiian", "Gluten-Free"],
+    "tags": ["Gluten-Free"],
     "category": "Lunch"
   },
   {
@@ -75,7 +75,7 @@ const sampleMenuItems = [
     "price": "$21.99",
     "calories": "680",
     "imageUrl": "/img/menu/mushroom-risotto.jpg",
-    "tags": ["Italian", "Creamy"],
+    "tags": [],
     "category": "Dinner"
   },
   {
@@ -84,7 +84,7 @@ const sampleMenuItems = [
     "price": "$15.99",
     "calories": "390",
     "imageUrl": "/img/menu/acai-bowl.jpg",
-    "tags": ["Vegan", "Breakfast", "Superfood"],
+    "tags": ["Vegan"],
     "category": "Breakfast"
   },
   {
@@ -93,7 +93,7 @@ const sampleMenuItems = [
     "price": "$25.99",
     "calories": "690",
     "imageUrl": "/img/menu/korean-bbq.jpg",
-    "tags": ["Korean", "Spicy", "High Protein"],
+    "tags": ["Spicy", "High Protein"],
     "category": "Dinner"
   },
   {
@@ -102,7 +102,7 @@ const sampleMenuItems = [
     "price": "$17.99",
     "calories": "440",
     "imageUrl": "/img/menu/green-goddess.jpg",
-    "tags": ["Healthy", "Low Carb", "High Protein"],
+    "tags": ["Low Carb", "High Protein"],
     "category": "Lunch"
   },
   {
@@ -111,7 +111,7 @@ const sampleMenuItems = [
     "price": "$13.99",
     "calories": "580",
     "imageUrl": "/img/menu/breakfast-burrito.jpg",
-    "tags": ["Mexican", "Breakfast", "High Protein"],
+    "tags": ["High Protein"],
     "category": "Breakfast"
   },
   {
@@ -120,7 +120,7 @@ const sampleMenuItems = [
     "price": "$20.99",
     "calories": "610",
     "imageUrl": "/img/menu/pad-thai.jpg",
-    "tags": ["Thai", "Spicy"],
+    "tags": ["Spicy"],
     "category": "Dinner"
   },
   {
@@ -138,7 +138,7 @@ const sampleMenuItems = [
     "price": "$19.99",
     "calories": "590",
     "imageUrl": "/img/menu/miso-ramen.jpg",
-    "tags": ["Japanese", "Soup", "Comfort Food"],
+    "tags": [],
     "category": "Dinner"
   }
 ];

@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import MenuCard from '@/components/MenuCard';
 
-const menuCategories = ["Vegan", "Gluten Free"];
+const menuCategories = ["Vegan", "Gluten Free", "Healthy", "Low Carb", "Spicy", "High Protein", "Superfood", "Indian", "Korean", "Raw", "Hawaiian", "Comfort Food", "Italian"];
 
 const sampleMenuItems = [
   {
@@ -21,7 +21,7 @@ const sampleMenuItems = [
     "price": "$19.99",
     "calories": "580",
     "imageUrl": "/img/menu/mediterranean-bowl.jpg",
-    "tags": ["Vegetarian", "Healthy", "Gluten-Free"],
+    "tags": ["Healthy", "Gluten-Free"],
     "category": "Lunch"
   },
   {
@@ -57,7 +57,7 @@ const sampleMenuItems = [
     "price": "$14.99",
     "calories": "420",
     "imageUrl": "/img/menu/avocado-toast.jpg",
-    "tags": ["Vegetarian", "Breakfast", "High Protein"],
+    "tags": ["High Protein", "Breakfast"],
     "category": "Breakfast"
   },
   {
@@ -75,7 +75,7 @@ const sampleMenuItems = [
     "price": "$21.99",
     "calories": "680",
     "imageUrl": "/img/menu/mushroom-risotto.jpg",
-    "tags": ["Vegetarian", "Italian", "Creamy"],
+    "tags": ["Italian", "Creamy"],
     "category": "Dinner"
   },
   {
@@ -120,7 +120,7 @@ const sampleMenuItems = [
     "price": "$20.99",
     "calories": "610",
     "imageUrl": "/img/menu/pad-thai.jpg",
-    "tags": ["Thai", "Spicy", "Vegetarian"],
+    "tags": ["Thai", "Spicy"],
     "category": "Dinner"
   },
   {
@@ -144,75 +144,81 @@ const sampleMenuItems = [
 ];
 
 const Page = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const filterMenuItems = useMemo(() => {
+    return sampleMenuItems.filter(item => {
+      return selectedTags.every(tag => item.tags.includes(tag));
+    });
+  }, [selectedTags]);
+
+  const toggleTag = (tag) => {
+    setSelectedTags(prevSelectedTags => {
+      if (prevSelectedTags.includes(tag)) {
+        return prevSelectedTags.filter(t => t !== tag);
+      } else {
+        return [...prevSelectedTags, tag];
+      }
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Promo Banner 
-      <div className="w-full bg-[#f3ffa1] py-2 text-center">
-        <p className="text-sm">
-          Maybe somethign here just going off purple carrot?{' '}
-        </p>
-      </div> */}
+      <div className="min-h-screen bg-background">
+        <div className="relative bg-[#e6f7f7] px-6 py-6 flex items-center justify-center"
+             style={{ backgroundImage: 'url(/img/menu_hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh' }}>
+          <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
+            <div className="bg-white bg-opacity-0 p-6 rounded-lg">
+              <motion.h1
+                  className="text-5xl md:text-6xl font-sans tracking-tight text-black"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+              >
+                Fresh, Vegetarian,<br />and Perfect!
+              </motion.h1>
+              <motion.p
+                  className="text-xl text-black-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                Embrace fresh, vibrant flavors!
+              </motion.p>
+            </div>
+          </div>
+        </div>
 
+        <div className="flex justify-center gap-4 py-8">
+          {menuCategories.map((category) => (
+              <button
+                  key={category}
+                  className={`px-4 py-2 rounded-full transition-all ${
+                      selectedTags.includes(category)
+                          ? 'bg-accent text-text'
+                          : 'bg-secondary hover:bg-accent/80'
+                  }`}
+                  onClick={() => toggleTag(category)}
+              >
+                {category}
+              </button>
+          ))}
+        </div>
 
-      <div className="relative bg-[#e6f7f7] px-6 py-6 flex items-center justify-center" 
-      style={{ backgroundImage: 'url(/img/menu_hero.png)', backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh' }}>
-        <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
-          <div className="bg-white bg-opacity-0 p-6 rounded-lg">
-            <motion.h1 
-              className="text-5xl md:text-6xl font-sans tracking-tight text-black"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Fresh, Vegetarian,<br />and Perfect!
-            </motion.h1>
-            <motion.p 
-              className="text-xl text-black-200"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              Embrace fresh, vibrant flavors!
-            </motion.p>
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filterMenuItems.map((item, index) => (
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <MenuCard {...item} />
+                </motion.div>
+            ))}
           </div>
         </div>
       </div>
-
-
-      <div className="flex justify-center gap-4 py-8">
-        {menuCategories.map((category) => (
-          <button
-            key={category}
-            className={`px-4 py-2 rounded-full transition-all ${
-              activeCategory === category 
-                ? 'bg-accent text-text' 
-                : 'bg-secondary hover:bg-accent/80'
-            }`}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sampleMenuItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <MenuCard {...item} />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 };
 

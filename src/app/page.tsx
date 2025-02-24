@@ -72,21 +72,28 @@ export default function Home() {
         </motion.p>
       </div>
 
-          {/* About Section */}
+      {/* About Section */}
       <div
         className="bg-background lg:h-[700px] w-full text-text p-16 z-20"
         style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}
       >
         <div className="flex flex-col lg:flex-row flex-2 h-full max-w-screen-2xl mx-auto gap-16">
-          <div className="w-full lg:w-1/2 flex justify-center items-center h-full">
-            <motion.img
-              src="/img/about.png"
-              alt="About Us"
-              className="rounded-2xl w-full lg:w-[90%] h-full object-cover"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            />
+          <div className="w-full max-lg:max-w-[300px] mx-auto lg:w-1/3 flex justify-center items-center h-full aspect-square">
+            <motion.div
+              className="relative aspect-square"
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
+            >
+              <motion.img
+                src="/img/about.png"
+                alt="About Us"
+                className="object-cover w-full h-full rounded-full"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              />
+            </motion.div>
           </div>
           <div className="w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left mx-auto">
             <motion.div
@@ -225,12 +232,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} autoFill={true}>
-                  <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-                  <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-                  <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-                  <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-                  <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-                  <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
             </Marquee>
           </motion.div>
           <motion.div

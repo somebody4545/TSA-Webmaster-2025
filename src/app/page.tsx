@@ -13,7 +13,7 @@ export default function Home() {
           alt="Main Background"
           layout="fill"
           objectFit="cover"
-          className="absolute inset-0 -z-10"
+          className="rounded-b-lg absolute inset-0 -z-10"
           style={{ filter: "brightness(0.2)" }}
         />
         <motion.div
@@ -40,7 +40,7 @@ export default function Home() {
           />
         </motion.div>
         <motion.h1
-          className="text-4xl font-heading"
+          className="text-5xl font-heading"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -75,7 +75,7 @@ export default function Home() {
       {/* About Section */}
       <div
         className="bg-background lg:h-[700px] w-full text-text p-16 z-20"
-        style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}
+        
       >
         <div className="flex flex-col lg:flex-row flex-2 h-full max-w-screen-2xl mx-auto gap-16">
           <div className="w-full max-lg:max-w-[300px] mx-auto lg:w-1/3 flex justify-center items-center h-full aspect-square">
@@ -102,7 +102,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <motion.h2
-                className="text-4xl font-heading mb-4"
+                className="text-5xl font-heading mb-4"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -110,7 +110,7 @@ export default function Home() {
                 What We're About
               </motion.h2>
               <motion.p
-                className="text-lg"
+                className="text-xl"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </div>
       {/* Menu Section */}
-      <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
+      <div className="bg-primary rounded-lg lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div
@@ -134,7 +134,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <motion.h2
-                className="text-3xl font-heading"
+                className="text-4xl font-heading"
                 initial={{ opacity: 0, x: -25 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -145,10 +145,11 @@ export default function Home() {
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
+                className="text-xl"
               >
                 From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
               </motion.p>
-              <button className="btn btn-primary mt-4 rounded-full max-w-32 shadow-lg">
+              <button className="bg-background btn btn-primary mt-4 rounded-full max-w-32 shadow-lg">
                 View Menu
               </button>
             </motion.div>
@@ -165,9 +166,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <br></br>
 
       {/* Gift Cards Section */}
-      <div className="bg-primary lg:h-96 w-full overflow-clip text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+      <div className="rounded-lg bg-accent lg:h-96 w-full overflow-clip text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left'>
             <motion.div
@@ -176,7 +178,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <motion.h2
-                className="text-3xl font-heading"
+                className="text-4xl font-heading"
                 initial={{ opacity: 0, x: 25 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
@@ -187,10 +189,11 @@ export default function Home() {
                 initial={{ opacity: 0, x: 12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
+                className="text-xl"
               >
                 Whether it's Christmas, a birthday, or you're just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
-              <button className="btn btn-secondary text-black mt-4 rounded-full max-w-max shadow-lg">
+              <button className="btn btn-secondary text-black mt-4 rounded-full max-w-max shadow-lg bg-background">
                 Purchase Gift Cards
               </button>
             </motion.div>
@@ -206,12 +209,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+        <br></br>
       {/* Testimonials Section */}
-      <div className="bg-background lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+      <div className="rounded-lg bg-background lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col h-full w-full text-center">
           <motion.h2
-            className="text-3xl font-heading"
+            className="text-4xl font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -291,9 +294,9 @@ export default function Home() {
           </motion.div>
         </div>
       </div>
-
+                <br></br>
       {/* Locations Section */}
-      <div className="bg-black w-full text-background py-16 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+      <div className="rounded-t-lg bg-black w-full text-background py-16 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <motion.div
           className="absolute inset-0 z-20"
           style={{ filter: "brightness(0.2)" }}
@@ -310,7 +313,7 @@ export default function Home() {
         </motion.div>
         <div className="flex flex-col h-full w-full text-center items-center justify-center relative z-30">
           <motion.h2
-            className="text-3xl font-heading"
+            className="text-4xl font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

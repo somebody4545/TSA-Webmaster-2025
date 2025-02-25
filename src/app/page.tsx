@@ -56,7 +56,7 @@ export default function Home() {
           />
         </motion.div>
         <motion.h1
-          className="text-4xl font-heading text-primary"
+          className="text-5xl font-heading text-primary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -227,7 +227,7 @@ export default function Home() {
       <div className="bg-background outline-background-dim outline outline-4 lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col h-full w-full text-center">
           <motion.h2
-            className="text-2xl font-heading"
+            className="text-3xl font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

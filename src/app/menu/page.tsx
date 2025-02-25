@@ -213,7 +213,7 @@ const Page = () => {
           <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
             <div className="bg-white bg-opacity-0 p-6 rounded-lg">
               <motion.h1
-                  className="text-5xl md:text-6xl font-sans tracking-tight text-black"
+                  className="text-4xl font-heading xl:text-5xl font-sans tracking-tight text-black"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}

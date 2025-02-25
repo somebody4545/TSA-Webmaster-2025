@@ -28,7 +28,7 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
+      className={`w-full grain flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
         isScrolledUp ? "bg-primary text-text" : "bg-text bg-opacity-80 text-background"
       } backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
     >

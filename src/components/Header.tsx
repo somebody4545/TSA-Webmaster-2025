@@ -101,7 +101,7 @@ export default function Header() {
           <li>
             <Link
               href="/"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Home
             </Link>
@@ -109,7 +109,7 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Menu
             </Link>
@@ -117,7 +117,7 @@ export default function Header() {
           <li>
             <Link
               href="mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Mission
             </Link>
@@ -125,7 +125,7 @@ export default function Header() {
           <li>
             <Link
               href="/locations"
-              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Locations
             </Link>
@@ -133,7 +133,7 @@ export default function Header() {
           <li>
             <Link
               href="/gifts"
-              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Gifts
             </Link>

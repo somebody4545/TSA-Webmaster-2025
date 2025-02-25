@@ -235,19 +235,21 @@ const Page = () => {
         </div>
 
         <div className="flex justify-center gap-4 py-8">
-          {tags.map((category) => (
+            <div className="flex flex-wrap justify-center gap-2 px-4">
+            {tags.map((category) => (
               <button
-                  key={category}
-                  className={`px-4 py-2 rounded-full transition-all ${
-                      selectedTags.includes(category)
-                          ? "bg-accent text-text"
-                          : "bg-secondary hover:bg-accent/80"
-                  }`}
-                  onClick={() => toggleTag(category)}
+                key={category}
+                className={`px-4 py-2 rounded-full transition-all ${
+                  selectedTags.includes(category)
+                    ? "bg-accent text-text"
+                    : "bg-secondary hover:bg-accent/80"
+                }`}
+                onClick={() => toggleTag(category)}
               >
                 {category}
               </button>
-          ))}
+            ))}
+            </div>
         </div>
 
         {/* Category Filter */}

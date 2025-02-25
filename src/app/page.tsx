@@ -140,8 +140,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* Menu Section */}
-      <div className="bg-black lg:h-[48rem] w-full text-background p-16 py-24 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+      {/* Page Section */}
+      <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
         <div className="flex flex-col-reverse lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div

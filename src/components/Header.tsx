@@ -78,6 +78,22 @@ export default function Header() {
               Mission
             </Link>
           </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} focus:outline-none`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/gifts"
+              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} focus:outline-none`}
+            >
+              Gifts
+            </Link>
+          </li>
         </ul>
       </div>
       <nav className="hidden lg:flex">
@@ -104,6 +120,22 @@ export default function Header() {
               className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
             >
               Mission
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/gifts"
+              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950`}
+            >
+              Gifts
             </Link>
           </li>
         </ul>

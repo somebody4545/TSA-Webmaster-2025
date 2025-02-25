@@ -174,8 +174,8 @@ const items = [
 ];
 
 const Page = () => {
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filterMenuItems = useMemo(() => {
     return items.filter((item) => {
@@ -185,7 +185,7 @@ const Page = () => {
     });
   }, [selectedTags, selectedCategory]);
 
-  const toggleTag = (tag) => {
+  const toggleTag = (tag: string) => {
     setSelectedTags((prevSelectedTags) => {
       if (prevSelectedTags.includes(tag)) {
         return prevSelectedTags.filter((t) => t !== tag);
@@ -195,7 +195,7 @@ const Page = () => {
     });
   };
 
-  const selectCategory = (category) => {
+  const selectCategory = (category: string | null) => {
     setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
   };
 

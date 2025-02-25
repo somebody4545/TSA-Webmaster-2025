@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
+import { motion } from "framer-motion";
 
 export default function Header() {
   const pathname = usePathname();
@@ -28,11 +29,20 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
-        isScrolledUp ? "bg-primary" : "bg-primary bg-opacity-80"
-      } text-text backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
+      className={`w-full grain flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
+        isScrolledUp ? "bg-primary text-text" : "bg-text bg-opacity-80 text-background"
+      } backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
+      id="start"
     >
-      <Link href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-all">Maitso</h1></Link>
+      <Link href="/#start">
+        <motion.h1
+          className="text-2xl font-bold font-heading max-lg:px-4"
+          whileHover={{ scale: 1, transition: { type: "spring", stiffness: 500 } }}
+          whileTap={{ scale: 0.9,}}
+        >
+          Maitso
+        </motion.h1>
+      </Link>
       <div className="dropdown dropdown-end lg:hidden">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">
           <svg
@@ -56,7 +66,7 @@ export default function Header() {
         >
           <li>
             <Link
-              href="/"
+              href="/#start"
               className={`hover:underline ${pathname === "/" ? "font-bold" : ""} focus:outline-none`}
             >
               Home
@@ -78,14 +88,30 @@ export default function Header() {
               Mission
             </Link>
           </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} focus:outline-none`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/gifts"
+              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} focus:outline-none`}
+            >
+              Gifts
+            </Link>
+          </li>
         </ul>
       </div>
       <nav className="hidden lg:flex">
         <ul className="menu menu-horizontal p-0 gap-2">
           <li>
             <Link
-              href="/"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950`}
+              href="/#start"
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Home
             </Link>
@@ -93,7 +119,7 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Menu
             </Link>
@@ -101,9 +127,25 @@ export default function Header() {
           <li>
             <Link
               href="mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Mission
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/gifts"
+              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+            >
+              Gifts
             </Link>
           </li>
         </ul>

@@ -310,9 +310,18 @@ export default function Home() {
 
       {/* Locations Section */}
       <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
-        <div
-          className="absolute inset-0 z-20"
+        <motion.div
+          className="absolute inset-0 z-20 min-w-[125vw] min-h-[125vh]"
           style={{ filter: "brightness(0.2)" }}
+          animate={{
+            x: ["-1%", "0%", "-1%", "-2%", "-1%"],
+            y: ["-1%", "0%", "-1%", "-2%", "-1%"],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         >
           <Image
             src="/img/backgrounds/location.jpeg"
@@ -320,7 +329,7 @@ export default function Home() {
             layout="fill"
             objectFit="cover"
           />
-        </div>
+        </motion.div>
         <div className="flex flex-col h-full w-full text-center items-center justify-center relative z-30">
           <motion.h2
             className="text-3xl font-heading"

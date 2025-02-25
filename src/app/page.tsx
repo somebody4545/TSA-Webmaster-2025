@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       {/* Background Section */}
-      <div className="bg-secondary text-primary text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+      <div className="bg-secondary text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <ParallaxBackground />
         <motion.div
           className="-z-10 opacity-25"
@@ -56,7 +56,7 @@ export default function Home() {
           />
         </motion.div>
         <motion.h1
-          className="text-4xl font-heading"
+          className="text-5xl font-heading text-primary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </div>
       {/* Page Section */}
-      <div className="bg-accent lg:h-96 w-full text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
+      <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
         <div className="flex flex-col-reverse lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div
@@ -227,7 +227,7 @@ export default function Home() {
       <div className="bg-background outline-background-dim outline outline-4 lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col h-full w-full text-center">
           <motion.h2
-            className="text-2xl font-heading"
+            className="text-3xl font-heading"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -311,11 +311,17 @@ export default function Home() {
       {/* Locations Section */}
       <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <motion.div
-          className="absolute inset-0 z-20"
+          className="absolute inset-0 z-20 min-w-[125vw] min-h-[125vh]"
           style={{ filter: "brightness(0.2)" }}
-          initial={{ y: -50 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
+          animate={{
+            x: ["-1%", "0%", "-1%", "-2%", "-1%"],
+            y: ["-1%", "0%", "-1%", "-2%", "-1%"],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         >
           <Image
             src="/img/backgrounds/location.jpeg"

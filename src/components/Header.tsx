@@ -29,10 +29,10 @@ export default function Header() {
   return (
     <header
       className={`w-full flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
-        isScrolledUp ? "bg-primary" : "bg-primary bg-opacity-80"
-      } text-text backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
+        isScrolledUp ? "bg-primary text-text" : "bg-text bg-opacity-80 text-background"
+      } backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
     >
-      <Link href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-all">Maitso</h1></Link>
+      <Link href="/"><h1 className="text-2xl font-bold font-heading max-lg:px-4 transition-transform">Maitso</h1></Link>
       <div className="dropdown dropdown-end lg:hidden">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">
           <svg

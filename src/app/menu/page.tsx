@@ -174,8 +174,8 @@ const items = [
 ];
 
 const Page = () => {
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filterMenuItems = useMemo(() => {
     return items.filter((item) => {
@@ -185,7 +185,7 @@ const Page = () => {
     });
   }, [selectedTags, selectedCategory]);
 
-  const toggleTag = (tag) => {
+  const toggleTag = (tag: string) => {
     setSelectedTags((prevSelectedTags) => {
       if (prevSelectedTags.includes(tag)) {
         return prevSelectedTags.filter((t) => t !== tag);
@@ -195,7 +195,7 @@ const Page = () => {
     });
   };
 
-  const selectCategory = (category) => {
+  const selectCategory = (category: string | null) => {
     setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
   };
 
@@ -213,7 +213,7 @@ const Page = () => {
           <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
             <div className="bg-white bg-opacity-0 p-6 rounded-lg">
               <motion.h1
-                  className="text-5xl md:text-6xl font-sans tracking-tight text-black"
+                  className="text-4xl font-heading xl:text-5xl font-sans tracking-tight text-black"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -235,19 +235,21 @@ const Page = () => {
         </div>
 
         <div className="flex justify-center gap-4 py-8">
-          {tags.map((category) => (
+            <div className="flex flex-wrap justify-center gap-2 px-4">
+            {tags.map((category) => (
               <button
-                  key={category}
-                  className={`px-4 py-2 rounded-full transition-all ${
-                      selectedTags.includes(category)
-                          ? "bg-accent text-text"
-                          : "bg-secondary hover:bg-accent/80"
-                  }`}
-                  onClick={() => toggleTag(category)}
+                key={category}
+                className={`px-4 py-2 rounded-full transition-all ${
+                  selectedTags.includes(category)
+                    ? "bg-accent text-text"
+                    : "bg-secondary hover:bg-accent/80"
+                }`}
+                onClick={() => toggleTag(category)}
               >
                 {category}
               </button>
-          ))}
+            ))}
+            </div>
         </div>
 
         {/* Category Filter */}

@@ -52,22 +52,24 @@ html {
 .btn-shine::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: -50%;
   left: -100%;
-  width: 20%;
-  height: 100%;
+  width: 80%;
+  height: 300%;
   background: linear-gradient(120deg,
       transparent,
-      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.05),
       transparent);
-  transform: skewX(-15deg);
-  /* Only apply transition when moving forward */
-  transition: left 0.8s ease-in-out;
+  transform: rotate(25deg);
+  transition: left 0.7s ease-in-out;
+  border-radius: 50%;
+  filter: blur(3px);
 }
 
 .btn-shine:hover::after {
-  left: 150%;
-  /* No transition needed here */
+  left: 130%;
 }
 
 .btn-shine:not(:hover)::after {
@@ -76,6 +78,6 @@ html {
 }
 
 .btn-shine:hover {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.5s ease;
 }

@@ -29,7 +29,7 @@ html {
 
 .dot-matrix-background {
     background-color: black;
-    background-image: radial-gradient(white 1px, transparent 1px);
+    background-image: radial-gradient(theme('colors.primary') 1px, transparent 1px);
     background-size: 10px 10px;
     mask-image: linear-gradient(to right, transparent, black var(--mask-start), black var(--mask-end), transparent),
                  linear-gradient(to bottom, transparent, black var(--mask-start), black var(--mask-end), transparent),

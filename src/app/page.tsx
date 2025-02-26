@@ -211,15 +211,22 @@ export default function Home() {
               </button>
             </motion.div>
           </div>
-          <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
-            <Image
-              src="/img/giftcards.png"
-              alt="Gift Cards"
-              className="mx-auto lg:mx-0"
-              width={400}
-              height={300}
-            />
-          </div>
+            <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
+            <motion.div
+              className="w-full h-full flex justify-center items-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src="/img/giftcards.png"
+                alt="Gift Cards"
+                width={1000}
+                height={1000}
+                className="rounded-xl shadow-xl object-cover w-full h-full"
+              />
+            </motion.div>
+            </div>
         </div>
       </div>
 

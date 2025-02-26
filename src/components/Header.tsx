@@ -141,12 +141,12 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link
+            <a
               href="/gifts"
               className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
             >
               Gifts
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>

@@ -34,14 +34,14 @@ const Model = () => {
 const Page = () => {
   return (
     <section className="bg-black text-background">
-      <div className="h-[80vh] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
+      <div className="min-h-[80vh] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
         <div className='lg:w-1/2 max-lg:px-16'>
           <h1 className="text-4xl leading-none font-heading text-primary mb-4 max-lg:pt-32">Gift Cards</h1>
           <p className="text-lg lg:mr-32">
             Whether it be a birthday, anniversary, or just because, give the gift of a delicious meal with a Maitso gift card.
           </p>
         </div>
-        <div className='lg:w-1/2 w-full max-lg:px-8 relative h-full'>
+        <div className='lg:w-1/2 w-full max-lg:px-8 relative h-full aspect-square'>
           <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center'>
             <div className='m-auto dot-matrix-background w-full aspect-square flex items-center justify-center absolute'></div>
             <div className='w-full max-h-full aspect-square flex items-center justify-center'>

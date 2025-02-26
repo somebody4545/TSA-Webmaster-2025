@@ -9,13 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.2",
+    "@react-three/fiber": "^9.0.4",
+    "@types/three": "^0.173.0",
     "framer-motion": "^12.4.7",
     "next": "15.1.7",
+    "popmotion": "^11.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
-    "react-multi-carousel": "^2.8.5"
+    "react-multi-carousel": "^2.8.5",
+    "react-three-fiber": "^6.0.13",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -23,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.173.0",
     "autoprefixer": "^10.4.20",
     "daisyui": "^4.12.23",
     "eslint": "^9",

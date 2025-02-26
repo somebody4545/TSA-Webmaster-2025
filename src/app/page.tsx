@@ -133,7 +133,7 @@ export default function Home() {
               >
                 At Maitso, we believe in providing a unique plant-based dining experience that celebrates the diversity of global cuisines. Our mission is to offer delicious and sustainable food options that are good for you and the planet.
               </motion.p>
-              <button className="btn btn-primary mt-4 rounded-full max-w-max shadow-md">
+              <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md">
                 Read More
               </button>
             </motion.div>
@@ -157,14 +157,14 @@ export default function Home() {
               >
                 Our Menu
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
               </motion.p>
-              <button className="btn btn-primary mt-4 rounded-full max-w-32 shadow-lg">
+              <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
                 View Menu
               </button>
             </motion.div>
@@ -206,7 +206,7 @@ export default function Home() {
               >
                 Whether it's Christmas, a birthday, or you're just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
-              <button className="btn btn-primary text-black mt-4 rounded-full max-w-max shadow-lg">
+              <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
                 Purchase Gift Cards
               </button>
             </motion.div>
@@ -348,7 +348,7 @@ export default function Home() {
             We're all over the United States! Find a location near you and come visit us today.
           </motion.p>
           <motion.button
-            className="btn btn-primary text-text mt-4 rounded-full max-w-max"
+            className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

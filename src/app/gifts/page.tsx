@@ -1,19 +1,23 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useLoader } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import * as THREE from 'three';
+
 const Model = () => {
   const gltf = useLoader(GLTFLoader, '/maitsocard.glb');
   const object = gltf.scene.getObjectByName('Plane');
   const objectRef = useRef<THREE.Object3D>(null);
 
-  if (object) {
-    object.rotation.y = 3.14159;
-  }
+  useEffect(() => {
+    if (object) {
+      object.rotation.y = 3.14159;
+    }
+  }, [object]);
+
   useFrame((state, delta) => {
     if (objectRef.current) {
       objectRef.current.rotation.y += delta * Math.PI * 0.1; // Adjust the speed as needed
@@ -41,17 +45,16 @@ const Page = () => {
           <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center'>
             <div className='m-auto dot-matrix-background w-full aspect-square flex items-center justify-center absolute'></div>
             <div className='w-full max-h-full aspect-square flex items-center justify-center'>
-            <Canvas camera={{ position: [-0.7, 0.25, 0.7], fov: 30 } }>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[0, 5, 5]} intensity={1} />
-              <Model />
-              <OrbitControls enableZoom={false} enablePan={false} enableDamping={true} dampingFactor={0.2}/>
-              <Environment files="/img/cannon_1k.exr" background={false} />
-            </Canvas>
+              <Canvas camera={{ position: [-0.7, 0.25, 0.7], fov: 30 }}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[0, 5, 5]} intensity={1} />
+                <Model />
+                <OrbitControls enableZoom={false} enablePan={false} enableDamping={true} dampingFactor={0.2} />
+                <Environment files="/img/cannon_1k.exr" background={false} />
+              </Canvas>
             </div>
           </div>
         </div>
-    
       </div>
     </section>
   );

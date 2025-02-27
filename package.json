@@ -21,7 +21,8 @@
     "react-icons": "^5.5.0",
     "react-multi-carousel": "^2.8.5",
     "react-three-fiber": "^6.0.13",
-    "three": "^0.173.0"
+    "three": "^0.173.0",
+    "webmaster2": "file:"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

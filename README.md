@@ -3,3 +3,5 @@
 Inesh, Ishaan, Anirudh, Sathkrith, Yohaan, Rishabh
 
 https://maitsotsawebmaster.vercel.app/
+
+wagwan pluhs

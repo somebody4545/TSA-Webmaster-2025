@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Header() {
@@ -30,15 +30,20 @@ export default function Header() {
   return (
     <header
       className={`w-full grain flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
-        isScrolledUp ? "bg-primary text-text" : "bg-text bg-opacity-80 text-background"
+        isScrolledUp
+          ? "bg-primary text-text"
+          : "bg-text bg-opacity-80 text-background"
       } backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
       id="start"
     >
       <Link href="/#start">
         <motion.h1
           className="text-2xl font-bold font-heading max-lg:px-4"
-          whileHover={{ scale: 1, transition: { type: "spring", stiffness: 500 } }}
-          whileTap={{ scale: 0.9,}}
+          whileHover={{
+            scale: 1,
+            transition: { type: "spring", stiffness: 500 },
+          }}
+          whileTap={{ scale: 0.9 }}
         >
           Maitso
         </motion.h1>
@@ -67,7 +72,9 @@ export default function Header() {
           <li>
             <Link
               href="/#start"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} focus:outline-none`}
+              className={`hover:underline ${
+                pathname === "/" ? "font-bold" : ""
+              } focus:outline-none`}
             >
               Home
             </Link>
@@ -75,7 +82,9 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} focus:outline-none`}
+              className={`hover:underline ${
+                pathname === "/menu" ? "font-bold" : ""
+              } focus:outline-none`}
             >
               Menu
             </Link>
@@ -83,7 +92,9 @@ export default function Header() {
           <li>
             <Link
               href="mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} focus:outline-none`}
+              className={`hover:underline ${
+                pathname === "/mission" ? "font-bold" : ""
+              } focus:outline-none`}
             >
               Mission
             </Link>
@@ -91,7 +102,9 @@ export default function Header() {
           <li>
             <Link
               href="/locations"
-              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} focus:outline-none`}
+              className={`hover:underline ${
+                pathname === "/locations" ? "font-bold" : ""
+              } focus:outline-none`}
             >
               Locations
             </Link>
@@ -99,7 +112,9 @@ export default function Header() {
           <li>
             <Link
               href="/gifts"
-              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} focus:outline-none`}
+              className={`hover:underline ${
+                pathname === "/gifts" ? "font-bold" : ""
+              } focus:outline-none`}
             >
               Gifts
             </Link>
@@ -111,7 +126,11 @@ export default function Header() {
           <li>
             <Link
               href="/#start"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+              className={`hover:underline ${
+                pathname === "/" ? "font-bold" : ""
+              } active:!bg-green-950 ${
+                !isScrolledUp ? "focus:text-white" : ""
+              }`}
             >
               Home
             </Link>
@@ -119,7 +138,11 @@ export default function Header() {
           <li>
             <Link
               href="menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+              className={`hover:underline ${
+                pathname === "/menu" ? "font-bold" : ""
+              } active:!bg-green-950 ${
+                !isScrolledUp ? "focus:text-white" : ""
+              }`}
             >
               Menu
             </Link>
@@ -127,7 +150,11 @@ export default function Header() {
           <li>
             <Link
               href="mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+              className={`hover:underline ${
+                pathname === "/mission" ? "font-bold" : ""
+              } active:!bg-green-950 ${
+                !isScrolledUp ? "focus:text-white" : ""
+              }`}
             >
               Mission
             </Link>
@@ -135,7 +162,11 @@ export default function Header() {
           <li>
             <Link
               href="/locations"
-              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+              className={`hover:underline ${
+                pathname === "/locations" ? "font-bold" : ""
+              } active:!bg-green-950 ${
+                !isScrolledUp ? "focus:text-white" : ""
+              }`}
             >
               Locations
             </Link>
@@ -143,7 +174,11 @@ export default function Header() {
           <li>
             <a
               href="/gifts"
-              className={`hover:underline ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950 ${!isScrolledUp ? "focus:text-white" : ""}`}
+              className={`hover:underline ${
+                pathname === "/gifts" ? "font-bold" : ""
+              } active:!bg-green-950 ${
+                !isScrolledUp ? "focus:text-white" : ""
+              }`}
             >
               Gifts
             </a>

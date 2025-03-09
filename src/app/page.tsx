@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { useRef } from "react";
+import Link from 'next/link';
 
 function ParallaxBackground() {
   const ref = useRef(null);
@@ -133,9 +134,11 @@ export default function Home() {
               >
                 At Maitso, we believe in providing a unique plant-based dining experience that celebrates the diversity of global cuisines. Our mission is to offer delicious and sustainable food options that are good for you and the planet.
               </motion.p>
-              <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md">
-                Read More
-              </button>
+              <Link href="/mission">
+                <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md">
+                  Read More
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -164,9 +167,11 @@ export default function Home() {
               >
                 From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
               </motion.p>
-              <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
-                View Menu
-              </button>
+              <Link href="/menu">
+                <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
+                  View Menu
+                </button>
+              </Link>
             </motion.div>
           </div>
           <div className="w-full lg:w-2/3 flex flex-col justify-center h-full p-32 bg-black">
@@ -206,9 +211,11 @@ export default function Home() {
               >
                 Whether it's Christmas, a birthday, or you're just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
-              <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
-                Purchase Gift Cards
-              </button>
+              <a href="/gifts">
+                <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
+                  Purchase Gift Cards
+                </button>
+              </a>
             </motion.div>
           </div>
             <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
@@ -354,14 +361,16 @@ export default function Home() {
           >
             We're all over the United States! Find a location near you and come visit us today.
           </motion.p>
-          <motion.button
-            className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            Find a Location
-          </motion.button>
+          <Link href="/locations">
+            <motion.button
+              className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Find a Location
+            </motion.button>
+          </Link>
         </div>
       </div>
     </>

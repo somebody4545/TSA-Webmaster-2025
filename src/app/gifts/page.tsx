@@ -33,6 +33,7 @@ const Model = () => {
 
 const Page = () => {
   return (
+    <>
     <section className="bg-black text-background">
       <div className="min-h-[80vh] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
         <div className='lg:w-1/2 max-lg:px-16'>
@@ -57,6 +58,25 @@ const Page = () => {
         </div>
       </div>
     </section>
+    <section className="bg-background text-black min-h-[80vh] w-screen flex flex-col">
+      <div className='m-16'>
+        <div className='max-lg:p-8 rounded-xl bg-background-dimmer w-full lg:h-[16rem] flex max-lg:flex-col justify-stretch gap-8'>
+          <div className='h-full flex flex-col justify-center pl-16 '>
+            <h2 className='text-2xl font-bold max-lg:pt-8'>
+              LIMITED TIME CHRISTMAS CARD
+            </h2>
+            <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md">
+                Buy Now
+            </button>
+          </div>
+          {/* this image should overflow its space by 10px, visible overflow */}
+          <img src="/img/gift_card.jpg" className='lg:h-[114%] relative lg:top-[-7%] lg:ml-auto aspect-video object-cover  bg-black' />
+
+          
+        </div>
+      </div>
+    </section>
+    </>
   );
 };
 

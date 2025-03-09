@@ -14,6 +14,7 @@ export default {
         'text': '#000000',
         'background': '#f5fcef',
         'background-dim': '#ebf2e5',
+        'background-dimmer': '#d6e5cb',
         'primary': '#a1cc80',
         'primary-darker': '#789960',
         'primary-darkest': '#647f50',

@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <div className="flex-shrink max-w-64 mr-8 mb-4">
             <h4 className="font-bold mb-2">Our Vision</h4>
             <p className="text-emerald-100 text-sm">
-              At Maitso, we celebrate nature's bounty through thoughtfully crafted
+              At Maitso, we celebrate nature&apos;s bounty through thoughtfully crafted
               plant-based cuisine that nourishes both people and planet.
             </p>
           </div>

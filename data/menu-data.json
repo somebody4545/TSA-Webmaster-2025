@@ -1,0 +1,174 @@
+[
+    {
+    "title": "General Tso's Tofu",
+    "subtitle": "with Quinoa & Broccoli",
+    "price": "$22.99",
+    "calories": "640",
+    "imageUrl": "/img/menu/general-tso.jpg",
+    "tags": ["Vegan", "High Protein", "Spicy", "Gluten Free"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Chinese"
+  },
+  {
+    "title": "Mediterranean Bowl",
+    "subtitle": "with Falafel & Hummus",
+    "price": "$19.99",
+    "calories": "580",
+    "imageUrl": "/img/menu/mediterranean-bowl.jpg",
+    "description": "A Mediterranean Bowl is a vibrant, wholesome dish featuring a base of quinoa or couscous, topped with fresh veggies like cucumbers, tomatoes, and bell peppers. Topped with hummus, tzatziki, olives, feta, and fresh herbs, it can be finished with tofu. A drizzle of olive oil and a squeeze of lemon tie everything together, offering a perfect balance of refreshing flavors and textures.",
+    "ingredients": ["Quinoa", "Falafel", "Hummus", "Cucumbers", "Tomatoes", "Bell Peppers", "Tzatziki", "Olives", "Feta", "Fresh Herbs", "Olive Oil", "Lemon"],
+    "tags": ["Gluten Free", "Vegan", "High Protein"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Mediterranean"
+  },
+  {
+    "title": "Grilled Lettuce Wrap",
+    "subtitle": "with Cottage Cheese & Wild Rice",
+    "price": "$26.99",
+    "calories": "520",
+    "imageUrl": "/img/menu/lettucewrap.jpg",
+    "tags": ["Low Carb", "Gluten Free", "High Protein"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Buddha Bowl",
+    "subtitle": "with Sweet Potato & Kale",
+    "price": "$18.99",
+    "calories": "490",
+    "imageUrl": "/img/menu/buddha-bowl.jpg",
+    "tags": ["Vegan", "Gluten Free", "Low Carb"],
+    "categories": ["Lunch"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Paneer Tikka Masala",
+    "subtitle": "with Basmati Rice & Naan",
+    "price": "$23.99",
+    "calories": "720",
+    "imageUrl": "/img/menu/tikka-masala.jpg",
+    "tags": ["Spicy", "High Protein"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Indian"
+  },
+  {
+    "title": "Avocado Toast",
+    "subtitle": "with Poached Eggs & Microgreens",
+    "price": "$14.99",
+    "calories": "420",
+    "imageUrl": "/img/menu/avocado-toast.jpg",
+    "tags": ["High Protein", "Low Carb"],
+    "categories": ["Breakfast"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Poke Bowl",
+    "subtitle": "with Vegetables & Mango",
+    "price": "$24.99",
+    "calories": "550",
+    "imageUrl": "/img/menu/poke-bowl.jpg",
+    "tags": ["Gluten Free", "Low Carb"],
+    "categories": ["Lunch"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Mushroom Risotto",
+    "subtitle": "with Truffle Oil & Parmesan",
+    "price": "$21.99",
+    "calories": "680",
+    "imageUrl": "/img/menu/mushroom-risotto.jpg",
+    "tags": ["Gluten Free"],
+    "categories": ["Dinner"],
+    "cuisine": "Italian"
+  },
+  {
+    "title": "Acai Bowl",
+    "subtitle": "with Fresh Berries & Granola",
+    "price": "$15.99",
+    "calories": "390",
+    "imageUrl": "/img/menu/acai-bowl.jpg",
+    "tags": ["Vegan", "Gluten Free"],
+    "categories": ["Breakfast"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Korean BBQ Bowl",
+    "subtitle": "with Bulgogi & Kimchi",
+    "price": "$25.99",
+    "calories": "690",
+    "imageUrl": "/img/menu/korean-bbq.jpg",
+    "tags": ["Spicy", "High Protein", "Gluten Free"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Korean"
+  },
+  {
+    "title": "Green Goddess Salad",
+    "subtitle": "with Grilled Chicken & Avocado",
+    "price": "$17.99",
+    "calories": "440",
+    "imageUrl": "/img/menu/green-goddess.jpg",
+    "tags": ["Low Carb", "High Protein", "Gluten Free"],
+    "categories": ["Lunch"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Breakfast Burrito",
+    "subtitle": "with Eggs & Black Beans",
+    "price": "$13.99",
+    "calories": "580",
+    "imageUrl": "/img/menu/breakfast-burrito.jpg",
+    "tags": ["High Protein"],
+    "categories": ["Breakfast"],
+    "cuisine": "Mexican"
+  },
+  {
+    "title": "Pad Thai",
+    "subtitle": "with Tofu & Peanuts",
+    "price": "$20.99",
+    "calories": "610",
+    "imageUrl": "/img/menu/pad-thai.jpg",
+    "tags": ["Spicy", "Vegan", "High Protein"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Thai"
+  },
+  {
+    "title": "Quinoa Power Bowl",
+    "subtitle": "with Roasted Vegetables",
+    "price": "$18.99",
+    "calories": "520",
+    "imageUrl": "/img/menu/quinoa-bowl.jpg",
+    "tags": ["Vegan", "High Protein", "Gluten Free", "Low Carb"],
+    "categories": ["Lunch"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Miso Ramen",
+    "subtitle": "with Soft-Boiled Egg & Nori",
+    "price": "$19.99",
+    "calories": "590",
+    "imageUrl": "/img/menu/miso-ramen.jpg",
+    "tags": ["High Protein", "Spicy"],
+    "categories": ["Lunch", "Dinner"],
+    "cuisine": "Japanese"
+  },
+  {
+    "title": "Chia Pudding",
+    "subtitle": "with Coconut Milk & Berries",
+    "price": "$12.99",
+    "calories": "320",
+    "imageUrl": "/img/menu/chia-pudding.jpg",
+    "tags": ["Vegan", "Gluten Free", "Low Carb"],
+    "categories": ["Breakfast"],
+    "cuisine": "American"
+  },
+  {
+    "title": "Falafel Wrap",
+    "subtitle": "with Tahini & Pickles",
+    "price": "$16.99",
+    "calories": "450",
+    "imageUrl": "/img/menu/falafel-wrap.jpg",
+    "tags": ["Vegan", "High Protein"],
+    "categories": ["Lunch"],
+    "cuisine": "Mediterranean"
+  }
+]

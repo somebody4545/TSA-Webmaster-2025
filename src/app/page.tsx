@@ -2,14 +2,14 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import MenuCard from '@/components/MenuCard';
 import menuData from '../data/menu-data.json';
 
-function ParallaxBackground() {
+const ParallaxBackground = memo(() => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -25,37 +25,105 @@ function ParallaxBackground() {
         alt="Main Background"
         layout="fill"
         objectFit="cover"
+        priority
         style={{ filter: "brightness(0.2)" }}
       />
     </motion.div>
   );
-}
+});
+
+ParallaxBackground.displayName = 'ParallaxBackground';
+
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5 } }
+};
+
+const CustomButtonGroup = memo(({ next, previous }) => (
+  <div className="custom-button-group">
+    <motion.button
+      onClick={previous}
+      className="carousel-btn-prev"
+      aria-label="Previous slide"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.8 }}
+      transition={{ duration: 0.2 }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </motion.button>
+    <motion.button
+      onClick={next}
+      className="carousel-btn-next"
+      aria-label="Next slide"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.8 }}
+      transition={{ duration: 0.2 }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </motion.button>
+  </div>
+));
+
+CustomButtonGroup.displayName = 'CustomButtonGroup';
+
+const testimonials = [
+  {
+    name: "John Doe",
+    quote: "The best plant-based dining experience I've ever had!",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    rating: 5,
+    location: "New York"
+  },
+  {
+    name: "Jane Smith",
+    quote: "Absolutely delicious and sustainable food options.",
+    image: "https://randomuser.me/api/portraits/women/32.jpg",
+    rating: 5,
+    location: "Los Angeles"
+  },
+  {
+    name: "Alice Johnson",
+    quote: "A unique plant-based dining experience that celebrates global cuisines.",
+    image: "https://randomuser.me/api/portraits/women/31.jpg",
+    rating: 4,
+    location: "Chicago"
+  },
+  {
+    name: "Bob Brown",
+    quote: "I love the variety of plant-based options available.",
+    image: "https://randomuser.me/api/portraits/men/21.jpg",
+    rating: 5,
+    location: "Miami"
+  },
+  {
+    name: "Emily Davis",
+    quote: "The gift cards are perfect for any occasion!",
+    image: "https://randomuser.me/api/portraits/women/2.jpg",
+    rating: 5,
+    location: "Austin"
+  }
+];
+
+const responsive = {
+  superLargeDesktop: { breakpoint: { max: 4000, min: 1536 }, items: 2 },
+  desktop: { breakpoint: { max: 1536, min: 1024 }, items: 2 },
+  tablet: { breakpoint: { max: 1024, min: 640 }, items: 1 },
+  mobile: { breakpoint: { max: 640, min: 0 }, items: 1 }
+};
 
 export default function Home() {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 1536 },
-      items: 2
-    },
-    desktop: {
-      breakpoint: { max: 1536, min: 1024 },
-      items: 2
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 640 },
-      items: 1
-    },
-    mobile: {
-      breakpoint: { max: 640, min: 0 },
-      items: 1
-    }
-  };
-
-  const featuredMenuItems = menuData.slice(0, 8);
+  const featuredMenuItems = menuData.slice(0, 6);
 
   return (
     <>
-      {/* Background Section */}
       <div className="bg-black text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <ParallaxBackground />
         <motion.div
@@ -113,7 +181,6 @@ export default function Home() {
         </motion.p>
       </div>
 
-      {/* About Section */}
       <div
         className="bg-background outline-background-dim outline outline-4 lg:h-[700px] w-full text-text p-16 z-20"
         style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}
@@ -138,24 +205,14 @@ export default function Home() {
           </div>
           <div className="w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left mx-auto">
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
             >
-              <motion.h2
-                className="text-3xl font-heading mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.h2 className="text-3xl font-heading mb-4">
                 What We&apos;re About
               </motion.h2>
-              <motion.p
-                className="text-base"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.p className="text-base">
                 At Maitso, we believe in providing a unique plant-based dining experience that celebrates the diversity of global cuisines. Our mission is to offer delicious and sustainable food options that are good for you and the planet.
               </motion.p>
               <Link href="/mission">
@@ -167,28 +224,19 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* Menu Section */}
+
       <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
         <div className="flex flex-col-reverse lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
             >
-              <motion.h2
-                className="text-3xl font-heading"
-                initial={{ opacity: 0, x: -25 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.h2 className="text-3xl font-heading">
                 Our Menu
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.p>
                 From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
               </motion.p>
               <Link href="/menu">
@@ -226,7 +274,7 @@ export default function Home() {
                   partialVisible={false}
                   ssr={true}
                 >
-                  {featuredMenuItems.slice(0, 6).map((item, index) => (  // Limit to 6 items
+                  {featuredMenuItems.map((item, index) => (
                     <div key={index} className="px-4 py-2">
                       <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
                         <motion.div
@@ -253,28 +301,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Gift Cards Section */}
       <div className="bg-background outline-background-dim outline outline-4 lg:h-[36rem] w-full overflow-clip text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col-reverse lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
           <div className='w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left'>
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
             >
-              <motion.h2
-                className="text-3xl font-heading"
-                initial={{ opacity: 0, x: 25 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.h2 className="text-3xl font-heading">
                 Gift Cards
               </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, x: 12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <motion.p>
                 Whether it&apos;s Christmas, a birthday, or you&apos;re just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
               <Link href="/gifts">
@@ -303,83 +341,49 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Testimonials Section */}
       <div className="bg-background outline-background-dim outline outline-4 lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <div className="flex flex-col h-full w-full text-center">
           <motion.h2
             className="text-3xl font-heading"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
           >
             Testimonials
           </motion.h2>
           <motion.p
             className="mx-16 text-base"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
           >
             Don&apos;t just take our word for it. News outlets and customers alike have been raving about us.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
           >
             <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} autoFill={true}>
-              <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-              <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-              <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-              <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-              <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-              <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+              {[1, 2, 5, 3, 4].map((num, i) => (
+                <img
+                  key={i}
+                  src={`/img/news${num === 5 ? num : (num === 1 ? '' : num)}.png`}
+                  alt={`News ${i + 1}`}
+                  className="h-16 px-8"
+                  style={{ filter: "brightness(0)" }}
+                />
+              ))}
             </Marquee>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
           >
             <Marquee className="mt-8 py-8" gradient={false} speed={60} direction="right" autoFill={true}>
               <div className="flex space-x-8 ml-8 h-64 text-left">
-                {[
-                  {
-                    name: "John Doe",
-                    quote: "The best plant-based dining experience I've ever had!",
-                    image: "https://randomuser.me/api/portraits/men/32.jpg",
-                    rating: 5,
-                    location: "New York"
-                  },
-                  {
-                    name: "Jane Smith",
-                    quote: "Absolutely delicious and sustainable food options.",
-                    image: "https://randomuser.me/api/portraits/women/32.jpg",
-                    rating: 5,
-                    location: "Los Angeles"
-                  },
-                  {
-                    name: "Alice Johnson",
-                    quote: "A unique plant-based dining experience that celebrates global cuisines.",
-                    image: "https://randomuser.me/api/portraits/women/31.jpg",
-                    rating: 4,
-                    location: "Chicago"
-                  },
-                  {
-                    name: "Bob Brown",
-                    quote: "I love the variety of plant-based options available.",
-                    image: "https://randomuser.me/api/portraits/men/21.jpg",
-                    rating: 5,
-                    location: "Miami"
-                  },
-                  {
-                    name: "Emily Davis",
-                    quote: "The gift cards are perfect for any occasion!",
-                    image: "https://randomuser.me/api/portraits/women/2.jpg",
-                    rating: 5,
-                    location: "Austin"
-                  },
-                ].map((testimonial, index) => (
+                {testimonials.map((testimonial, index) => (
                   <div key={index} className="card w-[350px] mx-auto transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2">
                     <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl shadow-lg hover:shadow-xl overflow-hidden h-full">
                       <div className="card-body p-6 flex flex-col">
@@ -426,7 +430,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Locations Section */}
       <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
         <motion.div
           className="absolute inset-0 z-20 min-w-[125vw] min-h-[125vh]"
@@ -449,69 +452,19 @@ export default function Home() {
           />
         </motion.div>
         <div className="flex flex-col h-full w-full text-center items-center justify-center relative z-30">
-          <motion.h2
-            className="text-3xl font-heading"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            Locations
-          </motion.h2>
-          <motion.p
-            className="mx-16 text-xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            We&apos;re all over the United States! Find a location near you and come visit us today.
-          </motion.p>
-          <Link href="/locations">
-            <motion.button
-              className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Find a Location
-            </motion.button>
-          </Link>
+          <motion.div variants={sectionVariants} initial="hidden" whileInView="visible">
+            <h2 className="text-3xl font-heading">Locations</h2>
+            <p className="mx-16 text-xl mt-4">
+              We&apos;re all over the United States! Find a location near you and come visit us today.
+            </p>
+            <Link href="/locations">
+              <button className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max">
+                Find a Location
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </>
-  );
-}
-
-function CustomButtonGroup({ next, previous }: any) {
-  return (
-    <div className="custom-button-group">
-      <motion.button
-        onClick={previous}
-        className="carousel-btn-prev"
-        aria-label="Previous slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </motion.button>
-      <motion.button
-        onClick={next}
-        className="carousel-btn-next"
-        aria-label="Next slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </motion.button>
-    </div>
   );
 }

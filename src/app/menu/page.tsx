@@ -1,35 +1,13 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import MenuCard from "@/components/MenuCard";
 import items from "../../../data/menu-data.json";
 import Link from "next/link";
 
-const tags = [
-  "Vegan",
-  "Gluten Free",
-  "Low Carb",
-  "Spicy",
-  "High Protein",
-];
-
-const categories = [
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-];
-
-const cuisines = [
-  "Chinese",
-  "Mediterranean",
-  "American",
-  "Indian",
-  "Italian",
-  "Korean",
-  "Mexican",
-  "Thai",
-  "Japanese",
-];
+const tags = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
+const categories = ["Breakfast", "Lunch", "Dinner"];
+const cuisines = ["Chinese", "Mediterranean", "American", "Indian", "Italian", "Korean", "Mexican", "Thai", "Japanese"];
 
 const Page = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -37,34 +15,32 @@ const Page = () => {
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const filterMenuItems = useMemo(() => {
-    return items.filter((item) => {
-      const tagMatches = selectedTags.every((tag) => item.tags.includes(tag));
-      const categoryMatches = selectedCategory
-        ? item.categories.includes(selectedCategory)
-        : true;
-      const cuisineMatches = selectedCuisine ? item.cuisine === selectedCuisine : true;
+  const filterMenuItems = useMemo(() =>
+    items.filter(item => {
+      const tagMatches = selectedTags.every(tag => item.tags.includes(tag));
+      const categoryMatches = !selectedCategory || item.categories?.includes(selectedCategory);
+      const cuisineMatches = !selectedCuisine || item.cuisine === selectedCuisine;
       return tagMatches && categoryMatches && cuisineMatches;
-    });
-  }, [selectedTags, selectedCategory, selectedCuisine]);
+    }),
+    [selectedTags, selectedCategory, selectedCuisine]);
 
-  const toggleTag = (tag: string) => {
-    setSelectedTags((prevSelectedTags) => {
-      if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter((t) => t !== tag);
-      } else {
-        return [...prevSelectedTags, tag];
-      }
-    });
-  };
+  const toggleTag = useCallback((tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
+  }, []);
 
-  const selectCategory = (category: string | null) => {
-    setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
-  };
+  const selectCategory = useCallback((category: string | null) => {
+    setSelectedCategory(prev => prev === category ? null : category);
+  }, []);
 
-  const selectCuisine = (cuisine: string) => {
-    setSelectedCuisine((prevCuisine) => (prevCuisine === cuisine ? null : cuisine));
-  };
+  const selectCuisine = useCallback((cuisine: string) => {
+    setSelectedCuisine(prev => prev === cuisine ? null : cuisine);
+  }, []);
+
+  const toggleFilters = useCallback(() => {
+    setIsFilterOpen(prev => !prev);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -100,68 +76,69 @@ const Page = () => {
           </div>
         </div>
       </div>
+
       <div className="flex max-lg:flex-col lg:flex-row" id="menu">
         <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
             <button
               className="lg:hidden bg-primary text-text px-4 py-2 rounded-full"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              onClick={toggleFilters}
             >
               {isFilterOpen ? "Hide Filters" : "Show Filters"}
             </button>
           </div>
+
           <div className={`lg:block ${isFilterOpen ? "block" : "hidden"}`}>
             <p className="max-lg:pt-8 font-bold">Meals</p>
-            {/* Category Filter */}
             <div className="flex gap-2 py-4">
-              {categories.map((category) => (
-          <button
-            key={category}
-            className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
-              ? "bg-primary text-text"
-              : "bg-secondary hover:bg-primary/80"
-              }`}
-            onClick={() => {selectCategory(category)}}
-          >
-            {category}
-          </button>
+              {categories.map(category => (
+                <button
+                  key={category}
+                  className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
+                      ? "bg-primary text-text"
+                      : "bg-secondary hover:bg-primary/80"
+                    }`}
+                  onClick={() => selectCategory(category)}
+                >
+                  {category}
+                </button>
               ))}
             </div>
+
             <p className="font-bold">Cuisines</p>
-            {/* Cuisine Filter */}
             <div className="flex gap-4 py-4">
               <div className="flex flex-wrap gap-2">
-          {cuisines.map((cuisine) => (
-            <button
-              key={cuisine}
-              className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
-                ? "bg-primary text-text"
-                : "bg-secondary hover:bg-primary/80"
-                }`}
-              onClick={() => selectCuisine(cuisine)}
-            >
-              {cuisine}
-            </button>
-          ))}
+                {cuisines.map(cuisine => (
+                  <button
+                    key={cuisine}
+                    className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
+                        ? "bg-primary text-text"
+                        : "bg-secondary hover:bg-primary/80"
+                      }`}
+                    onClick={() => selectCuisine(cuisine)}
+                  >
+                    {cuisine}
+                  </button>
+                ))}
               </div>
             </div>
+
             <p className="font-bold">Dietary Choices</p>
-            {/* Tags Filter */}
             <div className="flex gap-4 py-4">
               <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
-                ? "bg-primary text-text"
-                : "bg-secondary hover:bg-primary/80"
-                }`}
-              onClick={() => toggleTag(tag)}
-            >
-              {tag}
-            </button>
-          ))}
+                {tags.map(tag => (
+                  <button
+                    key={tag}
+                    className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
+                        ? "bg-primary text-text"
+                        : "bg-secondary hover:bg-primary/80"
+                      }`}
+                    onClick={() => toggleTag(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
               </div>
             </div>
           </div>

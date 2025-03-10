@@ -1,6 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import menuData from "../../data/menu-data.json";
+import { useEffect, useState, useCallback } from "react";
 
 interface Nutrition {
   calories: string;
@@ -19,25 +18,19 @@ interface Nutrition {
   potassium: string;
 }
 
-interface ClientNutritionModalProps {
+interface NutritionLabelProps {
   nutrition: Nutrition;
 }
 
-const nutritionLabel: React.FC<ClientNutritionModalProps> = ({ nutrition }) => {
+const NutritionLabel: React.FC<NutritionLabelProps> = ({ nutrition }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openModal = useCallback(() => setIsModalOpen(true), []);
+  const closeModal = useCallback(() => setIsModalOpen(false), []);
 
   useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = isModalOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isModalOpen]);
 
   return (
@@ -55,7 +48,7 @@ const nutritionLabel: React.FC<ClientNutritionModalProps> = ({ nutrition }) => {
           onClick={closeModal}
         >
           <div
-            className="bg-background shadow-lg p-6 relative w-11/12 max-w-md max-h-screen m-2x overflow-y-auto"
+            className="bg-background shadow-lg p-6 relative w-11/12 max-w-md max-h-screen overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -89,4 +82,4 @@ const nutritionLabel: React.FC<ClientNutritionModalProps> = ({ nutrition }) => {
   );
 };
 
-export default nutritionLabel;
+export default NutritionLabel;

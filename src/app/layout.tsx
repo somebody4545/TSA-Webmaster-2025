@@ -5,7 +5,9 @@ import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
   title: 'Maitso',
-  description: 'A Resturant wesbite designed for TSA',
+  description: 'A Restaurant website designed for TSA',
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#a1cc80',
 };
 
 export default function RootLayout({

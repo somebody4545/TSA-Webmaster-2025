@@ -18,7 +18,7 @@ const Model = () => {
       object.rotation.y = 3.14159;
     }
   }, [object]);
-  
+
   useFrame((state, delta) => {
     if (objectRef.current) {
       objectRef.current.rotation.y += delta * Math.PI * 0.1; // Adjust the speed as needed
@@ -37,13 +37,13 @@ const Page = () => {
     <>
       <section className="bg-black text-background">
         <div className="min-h-[80vh] lg:max-h-[750px] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
-          <motion.div 
+          <motion.div
             className='lg:w-1/2 max-lg:px-16'
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-4xl leading-none font-heading text-primary mb-4 max-lg:pt-32"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const Page = () => {
             >
               Gift Cards
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-lg lg:mr-32"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ const Page = () => {
             >
               Whether it be a birthday, anniversary, or just because, give the gift of a delicious meal with a Maitso gift card.
             </motion.p>
-            <motion.p 
+            <motion.p
               className='font-bold pt-8'
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const Page = () => {
               3d card is interactive! Click and drag to rotate.
             </motion.p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className='lg:w-1/2 w-full max-lg:px-8 relative h-full aspect-square'
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -90,7 +90,7 @@ const Page = () => {
         </div>
       </section>
       <section className="bg-background text-black min-h-[80vh] w-screen max-w-screen-xl mx-auto flex flex-col">
-        <motion.h2 
+        <motion.h2
           className='text-3xl font-bold text-center pt-16 px-12'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ const Page = () => {
         >
           Purchase Gift Cards
         </motion.h2>
-        <motion.div 
+        <motion.div
           className='m-16'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -106,7 +106,7 @@ const Page = () => {
         >
           <div className='max-lg:py-8 rounded-xl bg-background-dimmer w-full lg:h-[16rem] flex max-lg:flex-col justify-stretch gap-8'>
             <div className='h-full flex flex-col justify-center lg:pl-16 max-lg:px-8'>
-              <motion.h3 
+              <motion.h3
                 className='text-2xl font-bold max-lg:pt-8'
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ const Page = () => {
               >
                 LIMITED <span className='font-normal'>Holiday Card</span>
               </motion.h3>
-              <motion.button 
+              <motion.button
                 className="btn btn-primary btn-shine mt-4 rounded-full select-disabled max-w-max shadow-md "
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -124,8 +124,8 @@ const Page = () => {
               </motion.button>
             </div>
             {/* this image should overflow its space by 10px, visible overflow */}
-            <motion.img 
-              src="/img/cards/holiday.png" 
+            <motion.img
+              src="/img/cards/holiday.png"
               className='lg:h-[114%] relative lg:top-[-7%] lg:ml-auto aspect-video object-contain'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -133,7 +133,7 @@ const Page = () => {
             />
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div
           className='m-16 mt-8'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -142,15 +142,15 @@ const Page = () => {
           <div className='flex flex-wrap'>
             <div className='w-full lg:w-1/3 p-4'>
               <div className='rounded-xl bg-background-dimmer p-8 h-full flex flex-col justify-between'>
-                <motion.img 
-                  src="/img/cards/image.png" 
-                  alt="" 
+                <motion.img
+                  src="/img/cards/image.png"
+                  alt=""
                   className='w-full aspect-square'
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 />
-                <motion.h3 
+                <motion.h3
                   className='text-xl font-bold'
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -158,7 +158,7 @@ const Page = () => {
                 >
                   The Gift of Maitso <span className='text-nowrap'>($5-$50)</span>
                 </motion.h3>
-                <motion.button 
+                <motion.button
                   className="btn btn-primary btn-shine select-disabled mt-4 rounded-full max-w-max shadow-md"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -170,15 +170,15 @@ const Page = () => {
             </div>
             <div className='w-full lg:w-1/3 p-4'>
               <div className='rounded-xl bg-background-dimmer p-8 h-full flex flex-col justify-between'>
-                <motion.img 
-                  src="/img/cards/veggie.png" 
-                  alt="" 
+                <motion.img
+                  src="/img/cards/veggie.png"
+                  alt=""
                   className='w-full aspect-square'
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 />
-                <motion.h3 
+                <motion.h3
                   className='text-xl font-bold'
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ const Page = () => {
                 >
                   Veggie Delight <span className='text-nowrap'>($10-$100)</span>
                 </motion.h3>
-                <motion.button 
+                <motion.button
                   className="btn btn-primary btn-shine mt-4 select-disabled rounded-full max-w-max shadow-md"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -198,15 +198,15 @@ const Page = () => {
             </div>
             <div className='w-full lg:w-1/3 p-4'>
               <div className='rounded-xl bg-background-dimmer p-8 h-full flex flex-col justify-between'>
-                <motion.img 
-                  src="/img/cards/prem.png" 
-                  alt="" 
+                <motion.img
+                  src="/img/cards/prem.png"
+                  alt=""
                   className='w-full aspect-square'
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 />
-                <motion.h3 
+                <motion.h3
                   className='text-xl font-bold'
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ const Page = () => {
                 >
                   Premium Card <span className='text-nowrap'>($50-$200)</span>
                 </motion.h3>
-                <motion.button 
+                <motion.button
                   className="btn btn-primary btn-shine mt-4 select-disabled rounded-full max-w-max shadow-md"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}

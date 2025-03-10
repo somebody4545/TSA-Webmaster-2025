@@ -2,7 +2,6 @@ import React from "react";
 import menuData from "../../../data/menu-data.json";
 import NotFound from "@/app/not-found";
 import NutritionLabel from "@/components/NutritionLabel";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface MenuItemPageProps {

@@ -358,7 +358,11 @@ function MenuSection() {
                 itemClass="carousel-item-padding"
                 arrows={false}
                 renderButtonGroupOutside={true}
-                customButtonGroup={<CarouselNavigationButtons />}
+                customButtonGroup={<CarouselNavigationButtons next={function (): void {
+                  throw new Error("Function not implemented.");
+                }} previous={function (): void {
+                  throw new Error("Function not implemented.");
+                }} />}
                 shouldResetAutoplay={false}
                 partialVisible={false}
                 ssr={true}

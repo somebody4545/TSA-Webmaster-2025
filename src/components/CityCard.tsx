@@ -12,7 +12,7 @@ const CityCard = ({ city, image, onArrowClick, isSelected }) => {
 
   return (
     <motion.div
-      className="bg-primary-darkest rounded-lg overflow-hidden relative"
+      className="bg-primary-darker hover:bg-primary-darkest rounded-lg overflow-hidden relative duration-100"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}

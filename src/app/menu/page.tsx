@@ -1,191 +1,250 @@
 "use client";
+
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import MenuCard from "@/components/MenuCard";
-import items from "../../../data/menu-data.json";
 import Link from "next/link";
+import MenuCard from "@/components/MenuCard";
+import menuItems from "../../../data/menu-data.json";
 
-const tags = [
-  "Vegan",
-  "Gluten Free",
-  "Low Carb",
-  "Spicy",
-  "High Protein",
+const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
+const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner"];
+const CUISINE_TYPES = [
+  "Chinese", "Mediterranean", "American", "Indian",
+  "Italian", "Korean", "Mexican", "Thai", "Japanese",
 ];
 
-const categories = [
-  "Breakfast",
-  "Lunch",
-  "Dinner",
-];
-
-const cuisines = [
-  "Chinese",
-  "Mediterranean",
-  "American",
-  "Indian",
-  "Italian",
-  "Korean",
-  "Mexican",
-  "Thai",
-  "Japanese",
-];
-
-const Page = () => {
+export default function MenuPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
 
-  const filterMenuItems = useMemo(() => {
-    return items.filter((item) => {
-      const tagMatches = selectedTags.every((tag) => item.tags.includes(tag));
-      const categoryMatches = selectedCategory
-        ? item.categories.includes(selectedCategory)
-        : true;
-      const cuisineMatches = selectedCuisine ? item.cuisine === selectedCuisine : true;
-      return tagMatches && categoryMatches && cuisineMatches;
+  const filteredMenuItems = useMemo(() => {
+    return menuItems.filter(item => {
+      const matchesTags = selectedTags.length === 0 ||
+        selectedTags.every(tag => item.tags?.includes(tag));
+      const matchesCategory = !selectedCategory ||
+        item.categories?.includes(selectedCategory);
+      const matchesCuisine = !selectedCuisine ||
+        item.cuisine === selectedCuisine;
+
+      return matchesTags && matchesCategory && matchesCuisine;
     });
   }, [selectedTags, selectedCategory, selectedCuisine]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags((prevSelectedTags) => {
-      if (prevSelectedTags.includes(tag)) {
-        return prevSelectedTags.filter((t) => t !== tag);
-      } else {
-        return [...prevSelectedTags, tag];
-      }
-    });
+    setSelectedTags(prevTags =>
+      prevTags.includes(tag)
+        ? prevTags.filter(t => t !== tag)
+        : [...prevTags, tag]
+    );
   };
 
-  const selectCategory = (category: string | null) => {
-    setSelectedCategory((prevCategory) => (prevCategory === category ? null : category));
+  const toggleCategory = (category: string | null) => {
+    setSelectedCategory(prev => prev === category ? null : category);
   };
 
-  const selectCuisine = (cuisine: string) => {
-    setSelectedCuisine((prevCuisine) => (prevCuisine === cuisine ? null : cuisine));
+  const toggleCuisine = (cuisine: string) => {
+    setSelectedCuisine(prev => prev === cuisine ? null : cuisine);
   };
+
+  const toggleFilterVisibility = () => setIsFilterExpanded(!isFilterExpanded);
 
   return (
     <div className="min-h-screen bg-background">
-      <div
-        className="relative min-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
-        style={{
-          backgroundImage: "url(/img/menu_hero.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "90vh",
-        }}
-      >
-        <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
-          <div className="bg-white bg-opacity-0 rounded-lg">
-            <motion.h1
-              className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black md:px-24 px-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Fresh, Vegetarian,
-              <br />
-              and Perfect!
-            </motion.h1>
-            <motion.p
-              className="text-xl text-black-200 md:px-24 px-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              Embrace fresh, vibrant flavors!
-            </motion.p>
-          </div>
-        </div>
-      </div>
+      <HeroSection />
       <div className="flex max-lg:flex-col lg:flex-row" id="menu">
-        <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
-          <div className="flex items-center justify-between">
-            <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
-            <button
-              className="lg:hidden bg-primary text-text px-4 py-2 rounded-full"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-            >
-              {isFilterOpen ? "Hide Filters" : "Show Filters"}
-            </button>
-          </div>
-          <div className={`lg:block ${isFilterOpen ? "block" : "hidden"}`}>
-            <p className="max-lg:pt-8 font-bold">Meals</p>
-            {/* Category Filter */}
-            <div className="flex gap-2 py-4">
-              {categories.map((category) => (
-          <button
-            key={category}
-            className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
-              ? "bg-primary text-text"
-              : "bg-secondary hover:bg-primary/80"
-              }`}
-            onClick={() => {selectCategory(category)}}
-          >
-            {category}
-          </button>
-              ))}
-            </div>
-            <p className="font-bold">Cuisines</p>
-            {/* Cuisine Filter */}
-            <div className="flex gap-4 py-4">
-              <div className="flex flex-wrap gap-2">
-          {cuisines.map((cuisine) => (
-            <button
-              key={cuisine}
-              className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
-                ? "bg-primary text-text"
-                : "bg-secondary hover:bg-primary/80"
-                }`}
-              onClick={() => selectCuisine(cuisine)}
-            >
-              {cuisine}
-            </button>
-          ))}
-              </div>
-            </div>
-            <p className="font-bold">Dietary Choices</p>
-            {/* Tags Filter */}
-            <div className="flex gap-4 py-4">
-              <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <button
-              key={tag}
-              className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
-                ? "bg-primary text-text"
-                : "bg-secondary hover:bg-primary/80"
-                }`}
-              onClick={() => toggleTag(tag)}
-            >
-              {tag}
-            </button>
-          ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <FilterSidebar
+          selectedTags={selectedTags}
+          selectedCategory={selectedCategory}
+          selectedCuisine={selectedCuisine}
+          isExpanded={isFilterExpanded}
+          toggleTag={toggleTag}
+          toggleCategory={toggleCategory}
+          toggleCuisine={toggleCuisine}
+          toggleVisibility={toggleFilterVisibility}
+        />
+        <MenuGrid items={filteredMenuItems} />
+      </div>
+    </div>
+  );
+}
 
-        <div className="container mx-auto px-4 py-8 w-4/5">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filterMenuItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
-                  <MenuCard {...item} />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+function HeroSection() {
+  return (
+    <div
+      className="relative min-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+      style={{
+        backgroundImage: "url(/img/menu_hero.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "90vh",
+      }}
+    >
+      <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
+        <div className="bg-white bg-opacity-0 rounded-lg">
+          <motion.h1
+            className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black md:px-24 px-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Fresh, Vegetarian,
+            <br />
+            and Perfect!
+          </motion.h1>
+          <motion.p
+            className="text-xl text-black-200 md:px-24 px-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Embrace fresh, vibrant flavors!
+          </motion.p>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Page;
+interface FilterSidebarProps {
+  selectedTags: string[];
+  selectedCategory: string | null;
+  selectedCuisine: string | null;
+  isExpanded: boolean;
+  toggleTag: (tag: string) => void;
+  toggleCategory: (category: string | null) => void;
+  toggleCuisine: (cuisine: string) => void;
+  toggleVisibility: () => void;
+}
+
+function FilterSidebar({
+  selectedTags,
+  selectedCategory,
+  selectedCuisine,
+  isExpanded,
+  toggleTag,
+  toggleCategory,
+  toggleCuisine,
+  toggleVisibility
+}: FilterSidebarProps) {
+  return (
+    <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
+        <button
+          className="lg:hidden bg-primary text-text px-4 py-2 rounded-full"
+          onClick={toggleVisibility}
+        >
+          {isExpanded ? "Hide Filters" : "Show Filters"}
+        </button>
+      </div>
+
+      <div className={`lg:block ${isExpanded ? "block" : "hidden"}`}>
+        <FilterSection title="Meals">
+          <FilterButtonGroup
+            items={MEAL_CATEGORIES}
+            selectedItem={selectedCategory}
+            onSelect={toggleCategory}
+          />
+        </FilterSection>
+
+        <FilterSection title="Cuisines">
+          <FilterButtonGroup
+            items={CUISINE_TYPES}
+            selectedItem={selectedCuisine}
+            onSelect={toggleCuisine}
+          />
+        </FilterSection>
+
+        <FilterSection title="Dietary Choices">
+          <FilterButtonGroup
+            items={DIETARY_TAGS}
+            selectedItems={selectedTags}
+            onSelect={toggleTag}
+            multiSelect={true}
+          />
+        </FilterSection>
+      </div>
+    </div>
+  );
+}
+
+interface FilterSectionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+function FilterSection({ title, children }: FilterSectionProps) {
+  return (
+    <>
+      <p className="max-lg:pt-8 font-bold">{title}</p>
+      <div className="flex gap-4 py-4">
+        <div className="flex flex-wrap gap-2">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+interface FilterButtonGroupProps {
+  items: string[];
+  selectedItem?: string | null;
+  selectedItems?: string[];
+  onSelect: (item: any) => void;
+  multiSelect?: boolean;
+}
+
+function FilterButtonGroup({
+  items,
+  selectedItem,
+  selectedItems = [],
+  onSelect,
+  multiSelect = false
+}: FilterButtonGroupProps) {
+  const isSelected = (item: string) =>
+    multiSelect ? selectedItems.includes(item) : selectedItem === item;
+
+  return (
+    <>
+      {items.map(item => (
+        <button
+          key={item}
+          className={`px-4 py-2 rounded-full transition-all ${isSelected(item)
+            ? "bg-primary text-text"
+            : "bg-secondary hover:bg-primary/80"
+            }`}
+          onClick={() => onSelect(item)}
+        >
+          {item}
+        </button>
+      ))}
+    </>
+  );
+}
+
+interface MenuGridProps {
+  items: typeof menuItems;
+}
+
+function MenuGrid({ items }: MenuGridProps) {
+  return (
+    <div className="container mx-auto px-4 py-8 w-4/5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {items.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+              <MenuCard {...item} />
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const CityCard = ({ city, image, onArrowClick, isSelected, hours, pictures }) => {
+const CityCard = ({ city, image, onArrowClick, isSelected }) => {
   const handleArrowClick = () => {
     onArrowClick(city);
   };

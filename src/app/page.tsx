@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       {/* Background Section */}
-      <div className="bg-secondary text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+      <div className="bg-black text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <ParallaxBackground />
         <motion.div
           className="-z-10 opacity-25"

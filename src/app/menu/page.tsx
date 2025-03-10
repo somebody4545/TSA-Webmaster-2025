@@ -80,7 +80,7 @@ const Page = () => {
         <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
           <div className="bg-white bg-opacity-0 rounded-lg">
             <motion.h1
-              className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black px-24"
+              className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black md:px-24 px-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -90,7 +90,7 @@ const Page = () => {
               and Perfect!
             </motion.h1>
             <motion.p
-              className="text-xl text-black-200 px-24"
+              className="text-xl text-black-200 md:px-24 px-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}

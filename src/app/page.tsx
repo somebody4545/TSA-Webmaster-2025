@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -148,7 +148,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                What We're About
+                What We&apos;re About
               </motion.h2>
               <motion.p
                 className="text-base"
@@ -275,13 +275,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                Whether it's Christmas, a birthday, or you're just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
+                Whether it&apos;s Christmas, a birthday, or you&apos;re just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
               </motion.p>
-              <a href="/gifts">
+              <Link href="/gifts">
                 <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
                   Purchase Gift Cards
                 </button>
-              </a>
+              </Link>
             </motion.div>
           </div>
           <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
@@ -320,7 +320,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Don't just take our word for it. News outlets and customers alike have been raving about us.
+            Don&apos;t just take our word for it. News outlets and customers alike have been raving about us.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -342,43 +342,81 @@ export default function Home() {
             transition={{ duration: 0.5 }}
           >
             <Marquee className="mt-8 py-8" gradient={false} speed={60} direction="right" autoFill={true}>
-              <div className="flex space-x-8 ml-8 h-52 text-left">
+              <div className="flex space-x-8 ml-8 h-64 text-left">
                 {[
                   {
                     name: "John Doe",
                     quote: "The best plant-based dining experience I've ever had!",
                     image: "https://randomuser.me/api/portraits/men/32.jpg",
+                    rating: 5,
+                    location: "New York"
                   },
                   {
                     name: "Jane Smith",
                     quote: "Absolutely delicious and sustainable food options.",
                     image: "https://randomuser.me/api/portraits/women/32.jpg",
+                    rating: 5,
+                    location: "Los Angeles"
                   },
                   {
                     name: "Alice Johnson",
                     quote: "A unique plant-based dining experience that celebrates global cuisines.",
                     image: "https://randomuser.me/api/portraits/women/31.jpg",
+                    rating: 4,
+                    location: "Chicago"
                   },
                   {
                     name: "Bob Brown",
                     quote: "I love the variety of plant-based options available.",
                     image: "https://randomuser.me/api/portraits/men/21.jpg",
+                    rating: 5,
+                    location: "Miami"
                   },
                   {
                     name: "Emily Davis",
                     quote: "The gift cards are perfect for any occasion!",
                     image: "https://randomuser.me/api/portraits/women/2.jpg",
+                    rating: 5,
+                    location: "Austin"
                   },
                 ].map((testimonial, index) => (
-                  <div key={index} className="card bg-primary shadow-lg rounded-xl h-full w-[350px] mx-auto transform transition-transform duration-300 ease-in-out hover:scale-95">
-                    <div className="card-body flex items-center">
-                      <img
-                        src={testimonial.image}
-                        alt={`${testimonial.name}'s picture`}
-                        className="rounded-full w-16 h-16 mb-4"
-                      />
-                      <h2 className="card-title text-base font-semibold">{testimonial.name}</h2>
-                      <p className="text-sm">{testimonial.quote}</p>
+                  <div key={index} className="card w-[350px] mx-auto transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2">
+                    <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl shadow-lg hover:shadow-xl overflow-hidden h-full">
+                      <div className="card-body p-6 flex flex-col">
+                        <div className="flex items-center mb-4">
+                          <div className="relative">
+                            <img
+                              src={testimonial.image}
+                              alt={`${testimonial.name}'s picture`}
+                              className="rounded-full w-16 h-16 border-2 border-background object-cover"
+                            />
+                            <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-1">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="green" stroke="none">
+                                <path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="ml-4">
+                            <h2 className="card-title text-lg font-bold">{testimonial.name}</h2>
+                            <div className="text-sm opacity-75">{testimonial.location}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center mb-3">
+                          {[...Array(5)].map((_, i) => (
+                            <svg key={i} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill={i < testimonial.rating ? "#fcba03" : "none"}
+                              stroke="#fcba03" strokeWidth="1.5" className="mr-1">
+                              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                          ))}
+                        </div>
+                        <div className="relative">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.1)" className="absolute -top-1 -left-2">
+                            <path d="M14,17L17,17L17,14L19,14L19,17L22,17L22,19L19,19L19,22L17,22L17,19L14,19L14,17M5,3L19,3L19,9.68L17,9.68L17,5L7,5L7,19L11.1,19L11.1,21L5,21L5,3Z" />
+                          </svg>
+                          <p className="text-base italic font-medium leading-snug">{testimonial.quote}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -425,7 +463,7 @@ export default function Home() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            We're all over the United States! Find a location near you and come visit us today.
+            We&apos;re all over the United States! Find a location near you and come visit us today.
           </motion.p>
           <Link href="/locations">
             <motion.button

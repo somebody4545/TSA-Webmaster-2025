@@ -112,6 +112,9 @@ html {
   height: auto;
   max-height: 420px;
   transform-origin: center bottom;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .carousel-card .relative.h-40 {

@@ -69,7 +69,7 @@ const Page = () => {
   return (
     <div className="min-h-screen bg-background">
       <div
-        className="relative min-h-[900px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+        className="relative min-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
         style={{
           backgroundImage: "url(/img/menu_hero.png)",
           backgroundSize: "cover",

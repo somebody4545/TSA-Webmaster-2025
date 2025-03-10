@@ -1,7 +1,6 @@
 "use client";
 
-import { createRoot } from 'react-dom/client';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useLoader } from '@react-three/fiber';
@@ -12,7 +11,13 @@ const Model = () => {
   const gltf = useLoader(GLTFLoader, '/maitsocard.glb');
   const object = gltf.scene.getObjectByName('Plane');
   const objectRef = useRef<THREE.Object3D>(null);
-  object.rotation.y = 3.14159;
+
+  useEffect(() => {
+    if (object) {
+      object.rotation.y = 3.14159;
+    }
+  }, [object]);
+  
   useFrame((state, delta) => {
     if (objectRef.current) {
       objectRef.current.rotation.y += delta * Math.PI * 0.1; // Adjust the speed as needed

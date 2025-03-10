@@ -69,7 +69,7 @@ const Page = () => {
   return (
     <div className="min-h-screen bg-background">
       <div
-        className="relative bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+        className="relative min-h-[900px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
         style={{
           backgroundImage: "url(/img/menu_hero.png)",
           backgroundSize: "cover",
@@ -100,8 +100,8 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex max-lg:flex-col lg:flex-row">
-        <div className="lg:w-1/5 min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-32 h-min z-20 bg-background max-lg:shadow-lg">
+      <div className="flex max-lg:flex-col lg:flex-row" id="menu">
+        <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
             <button
@@ -116,52 +116,52 @@ const Page = () => {
             {/* Category Filter */}
             <div className="flex gap-2 py-4">
               {categories.map((category) => (
-                <button
-                  key={category}
-                  className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
-                    ? "bg-primary text-text"
-                    : "bg-secondary hover:bg-primary/80"
-                    }`}
-                  onClick={() => selectCategory(category)}
-                >
-                  {category}
-                </button>
+          <button
+            key={category}
+            className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
+              ? "bg-primary text-text"
+              : "bg-secondary hover:bg-primary/80"
+              }`}
+            onClick={() => {selectCategory(category)}}
+          >
+            {category}
+          </button>
               ))}
             </div>
             <p className="font-bold">Cuisines</p>
             {/* Cuisine Filter */}
             <div className="flex gap-4 py-4">
               <div className="flex flex-wrap gap-2">
-                {cuisines.map((cuisine) => (
-                  <button
-                    key={cuisine}
-                    className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
-                      ? "bg-primary text-text"
-                      : "bg-secondary hover:bg-primary/80"
-                      }`}
-                    onClick={() => selectCuisine(cuisine)}
-                  >
-                    {cuisine}
-                  </button>
-                ))}
+          {cuisines.map((cuisine) => (
+            <button
+              key={cuisine}
+              className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
+                ? "bg-primary text-text"
+                : "bg-secondary hover:bg-primary/80"
+                }`}
+              onClick={() => selectCuisine(cuisine)}
+            >
+              {cuisine}
+            </button>
+          ))}
               </div>
             </div>
             <p className="font-bold">Dietary Choices</p>
             {/* Tags Filter */}
             <div className="flex gap-4 py-4">
               <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <button
-                    key={tag}
-                    className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
-                      ? "bg-primary text-text"
-                      : "bg-secondary hover:bg-primary/80"
-                      }`}
-                    onClick={() => toggleTag(tag)}
-                  >
-                    {tag}
-                  </button>
-                ))}
+          {tags.map((tag) => (
+            <button
+              key={tag}
+              className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
+                ? "bg-primary text-text"
+                : "bg-secondary hover:bg-primary/80"
+                }`}
+              onClick={() => toggleTag(tag)}
+            >
+              {tag}
+            </button>
+          ))}
               </div>
             </div>
           </div>

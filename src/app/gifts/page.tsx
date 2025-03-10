@@ -91,7 +91,7 @@ const Page = () => {
       </section>
       <section className="bg-background text-black min-h-[80vh] w-screen max-w-screen-xl mx-auto flex flex-col">
         <motion.h2 
-          className='text-3xl font-bold text-center pt-16'
+          className='text-3xl font-bold text-center pt-16 px-12'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -104,8 +104,8 @@ const Page = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className='max-lg:p-8 rounded-xl bg-background-dimmer w-full lg:h-[16rem] flex max-lg:flex-col justify-stretch gap-8'>
-            <div className='h-full flex flex-col justify-center pl-16 '>
+          <div className='max-lg:py-8 rounded-xl bg-background-dimmer w-full lg:h-[16rem] flex max-lg:flex-col justify-stretch gap-8'>
+            <div className='h-full flex flex-col justify-center lg:pl-16 max-lg:px-8'>
               <motion.h3 
                 className='text-2xl font-bold max-lg:pt-8'
                 initial={{ opacity: 0, y: -20 }}
@@ -115,7 +115,7 @@ const Page = () => {
                 LIMITED <span className='font-normal'>Holiday Card</span>
               </motion.h3>
               <motion.button 
-                className="btn btn-primary btn-shine mt-4 rounded-full select-disabled max-w-max shadow-md"
+                className="btn btn-primary btn-shine mt-4 rounded-full select-disabled max-w-max shadow-md "
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}

@@ -35,6 +35,7 @@ const Page = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const filterMenuItems = useMemo(() => {
     return items.filter((item) => {
@@ -68,7 +69,7 @@ const Page = () => {
   return (
     <div className="min-h-screen bg-background">
       <div
-        className="relative bg-[#e6f7f7] px-6 py-6 flex items-center justify-center"
+        className="relative bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
         style={{
           backgroundImage: "url(/img/menu_hero.png)",
           backgroundSize: "cover",
@@ -99,74 +100,88 @@ const Page = () => {
           </div>
         </div>
       </div>
-
-      {/* Category Filter */}
-      <div className="flex justify-center gap-4 py-4">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`px-4 py-2 rounded-full transition-all ${
-              selectedCategory === category
-                ? "bg-accent text-text"
-                : "bg-secondary hover:bg-accent/80"
-            }`}
-            onClick={() => selectCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Cuisine Filter */}
-      <div className="flex justify-center gap-4 py-4">
-        {cuisines.map((cuisine) => (
-          <button
-            key={cuisine}
-            className={`px-4 py-2 rounded-full transition-all ${
-              selectedCuisine === cuisine
-                ? "bg-accent text-text"
-                : "bg-secondary hover:bg-accent/80"
-            }`}
-            onClick={() => selectCuisine(cuisine)}
-          >
-            {cuisine}
-          </button>
-        ))}
-      </div>
-
-      {/* Tags Filter */}
-      <div className="flex justify-center gap-4 py-4">
-        <div className="flex flex-wrap justify-center gap-2 px-4">
-          {tags.map((tag) => (
+      <div className="flex max-lg:flex-col lg:flex-row">
+        <div className="lg:w-1/5 min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-32 h-min z-20 bg-background max-lg:shadow-lg">
+          <div className="flex items-center justify-between">
+            <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
             <button
-              key={tag}
-              className={`px-4 py-2 rounded-full transition-all ${
-                selectedTags.includes(tag)
-                  ? "bg-accent text-text"
-                  : "bg-secondary hover:bg-accent/80"
-              }`}
-              onClick={() => toggleTag(tag)}
+              className="lg:hidden bg-primary text-text px-4 py-2 rounded-full"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
             >
-              {tag}
+              {isFilterOpen ? "Hide Filters" : "Show Filters"}
             </button>
-          ))}
+          </div>
+          <div className={`lg:block ${isFilterOpen ? "block" : "hidden"}`}>
+            <p className="max-lg:pt-8 font-bold">Meals</p>
+            {/* Category Filter */}
+            <div className="flex gap-2 py-4">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`px-4 py-2 rounded-full transition-all ${selectedCategory === category
+                    ? "bg-primary text-text"
+                    : "bg-secondary hover:bg-primary/80"
+                    }`}
+                  onClick={() => selectCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <p className="font-bold">Cuisines</p>
+            {/* Cuisine Filter */}
+            <div className="flex gap-4 py-4">
+              <div className="flex flex-wrap gap-2">
+                {cuisines.map((cuisine) => (
+                  <button
+                    key={cuisine}
+                    className={`px-4 py-2 rounded-full transition-all ${selectedCuisine === cuisine
+                      ? "bg-primary text-text"
+                      : "bg-secondary hover:bg-primary/80"
+                      }`}
+                    onClick={() => selectCuisine(cuisine)}
+                  >
+                    {cuisine}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <p className="font-bold">Dietary Choices</p>
+            {/* Tags Filter */}
+            <div className="flex gap-4 py-4">
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <button
+                    key={tag}
+                    className={`px-4 py-2 rounded-full transition-all ${selectedTags.includes(tag)
+                      ? "bg-primary text-text"
+                      : "bg-secondary hover:bg-primary/80"
+                      }`}
+                    onClick={() => toggleTag(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filterMenuItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
-                <MenuCard {...item} />
-              </Link>
-            </motion.div>
-          ))}
+        <div className="container mx-auto px-4 py-8 w-4/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filterMenuItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                  <MenuCard {...item} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

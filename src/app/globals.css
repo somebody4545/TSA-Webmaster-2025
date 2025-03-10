@@ -81,3 +81,148 @@ html {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   transition: box-shadow 0.5s ease;
 }
+
+.modern-carousel {
+  position: relative;
+  overflow: visible;
+  padding: 2rem 0;
+}
+
+/* Enhance carousel transitions */
+.modern-carousel .react-multi-carousel-item {
+  transition: opacity 600ms ease-in-out, transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-carousel .react-multi-carousel-item--active {
+  opacity: 1;
+}
+
+.modern-carousel .react-multi-carousel-item:not(.react-multi-carousel-item--active) {
+  opacity: 0;
+}
+
+.carousel-item-padding {
+  padding: 0 10px;
+  transition: all 0.4s ease;
+}
+
+.carousel-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  height: auto;
+  max-height: 420px;
+  transform-origin: center bottom;
+}
+
+.carousel-card .relative.h-40 {
+  height: 180px;
+}
+
+.carousel-card:hover {
+  border-color: theme('colors.primary');
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px theme('colors.primary');
+}
+
+/* Custom navigation dots */
+.custom-dot-list-style {
+  bottom: -10px !important;
+}
+
+.custom-dot-list-style button {
+  background: theme('colors.background') !important;
+  border: none !important;
+  opacity: 0.5;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  margin: 0 5px !important;
+  transition: all 0.3s ease;
+}
+
+.custom-dot-list-style .react-multi-carousel-dot--active button {
+  opacity: 1;
+  background: theme('colors.primary') !important;
+  transform: scale(1.2);
+}
+
+/* Custom navigation buttons */
+.custom-button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 110%;
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-btn-prev,
+.carousel-btn-next {
+  background-color: theme('colors.primary');
+  color: theme('colors.text');
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add shine effect to buttons */
+.carousel-btn-prev::after,
+.carousel-btn-next::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 80%;
+  height: 300%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.05),
+      transparent);
+  transform: rotate(25deg);
+  transition: left 0.7s ease-in-out;
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+.carousel-container:hover .carousel-btn-prev,
+.carousel-container:hover .carousel-btn-next {
+  opacity: 1;
+}
+
+.carousel-btn-prev:hover::after,
+.carousel-btn-next:hover::after {
+  left: 130%;
+}
+
+.carousel-btn-prev:not(:hover)::after,
+.carousel-btn-next:not(:hover)::after {
+  left: -100%;
+  transition: none;
+}
+
+.carousel-btn-prev:hover,
+.carousel-btn-next:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Carousel container styling */
+.carousel-container {
+  position: relative;
+  padding: 0 30px;
+}

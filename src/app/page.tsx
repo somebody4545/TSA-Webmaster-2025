@@ -2,8 +2,12 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from 'next/link';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import MenuCard from '@/components/MenuCard';
+import menuData from '../data/menu-data.json';
 
 function ParallaxBackground() {
   const ref = useRef(null);
@@ -12,7 +16,7 @@ function ParallaxBackground() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 600]); // Adjust for desired parallax depth
+  const y = useTransform(scrollYProgress, [0, 1], [0, 600]);
 
   return (
     <motion.div ref={ref} style={{ y }} className="absolute inset-0 -z-10">
@@ -28,6 +32,27 @@ function ParallaxBackground() {
 }
 
 export default function Home() {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 1536 },
+      items: 2
+    },
+    desktop: {
+      breakpoint: { max: 1536, min: 1024 },
+      items: 2
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 640 },
+      items: 1
+    },
+    mobile: {
+      breakpoint: { max: 640, min: 0 },
+      items: 1
+    }
+  };
+
+  const featuredMenuItems = menuData.slice(0, 8);
+
   return (
     <>
       {/* Background Section */}
@@ -61,7 +86,6 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-        // style={{ textShadow: "0 0 40px green" }}
         >
           Maitso
         </motion.h1>
@@ -174,15 +198,57 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-          <div className="w-full lg:w-2/3 flex flex-col justify-center h-full p-32 bg-black">
-            <motion.p
-              className="text-3xl"
+          <div className="w-full lg:w-2/3 flex flex-col justify-center h-full">
+            <motion.div
+              className="w-full"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              insert a carousel or smth
-            </motion.p>
+              <div className="carousel-container relative">
+                <Carousel
+                  responsive={responsive}
+                  infinite={true}
+                  autoPlay={true}
+                  autoPlaySpeed={4000}
+                  keyBoardControl={true}
+                  centerMode={false}
+                  customTransition="all 600ms cubic-bezier(0.4, 0, 0.2, 1)"
+                  transitionDuration={600}
+                  containerClass="modern-carousel"
+                  removeArrowOnDeviceType={["mobile"]}
+                  dotListClass="custom-dot-list-style"
+                  itemClass="carousel-item-padding"
+                  arrows={false}
+                  renderButtonGroupOutside={true}
+                  customButtonGroup={<CustomButtonGroup />}
+                  shouldResetAutoplay={false}
+                  partialVisible={false}
+                  ssr={true}
+                >
+                  {featuredMenuItems.slice(0, 6).map((item, index) => (  // Limit to 6 items
+                    <div key={index} className="px-4 py-2">
+                      <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
+                        <motion.div
+                          whileHover={{ scale: 1.03, y: -5 }}
+                          className="transition-all duration-300"
+                        >
+                          <MenuCard
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            price={item.price}
+                            calories={item.calories}
+                            imageUrl={item.imageUrl || `https://placehold.co/600x400?text=${encodeURIComponent(item.title)}`}
+                            tags={item.tags && item.tags.length > 0 ? item.tags.slice(0, 2) : []}
+                            className="carousel-card shadow-xl hover:shadow-2xl"
+                          />
+                        </motion.div>
+                      </Link>
+                    </div>
+                  ))}
+                </Carousel>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -218,7 +284,7 @@ export default function Home() {
               </a>
             </motion.div>
           </div>
-            <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
             <motion.div
               className="w-full h-full flex justify-center items-center"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -233,7 +299,7 @@ export default function Home() {
                 className="rounded-xl shadow-xl object-cover w-full h-full"
               />
             </motion.div>
-            </div>
+          </div>
         </div>
       </div>
 
@@ -374,5 +440,40 @@ export default function Home() {
         </div>
       </div>
     </>
+  );
+}
+
+function CustomButtonGroup({ next, previous }: any) {
+  return (
+    <div className="custom-button-group">
+      <motion.button
+        onClick={previous}
+        className="carousel-btn-prev"
+        aria-label="Previous slide"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 0.2 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </motion.button>
+      <motion.button
+        onClick={next}
+        className="carousel-btn-next"
+        aria-label="Next slide"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 0.2 }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </motion.button>
+    </div>
   );
 }

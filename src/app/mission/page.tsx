@@ -1,6 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import { Citrus, Tractor, Users } from "lucide-react";
+import {
+  Citrus,
+  Tractor,
+  Truck,
+  Quote as QuoteIcon,
+  CarTaxiFront,
+  Bike,
+  ChefHat,
+  CookingPot,
+  Salad,
+  Users,
+} from "lucide-react";
 
 const MissionPage = () => {
   return (
@@ -105,6 +116,17 @@ const MissionPage = () => {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
+          {/* Large text box below first box */}
+          <div className="w-full h-screen relative overflow-hidden">
+            <div className="absolute inset-0"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <h1 className="text-xl md:text-xl lg:text-2xl font-heading font-bold text-primary-darker mb-4 max-w-2xl sm:max-w-2xl text-center">
+                Since emissions from transportations account for{" "}
+                <span className="text-black font-bold">28%</span> of greenhouse
+                gas emissions we use...
+              </h1>
             </div>
           </div>
         </div>

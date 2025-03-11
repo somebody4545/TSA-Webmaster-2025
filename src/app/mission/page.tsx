@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+const MissionPage = () => {
 const Page = () => {
   return (
     <div className="grid grid-cols-2 gap-8 ml-80 mr-80">
@@ -80,4 +80,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default MissionPage;

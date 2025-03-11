@@ -7,49 +7,45 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   const pathname = usePathname();
-  const [isScrolledUp, setIsScrolledUp] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        setIsScrolledUp(true);
-      } else {
-        setIsScrolledUp(false);
-      }
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
     window.addEventListener("scroll", handleScroll);
-
-    // Check scroll position on mount
     handleScroll();
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navigationItems = [
+    { path: "/#start", label: "Home", match: "/" },
+    { path: "menu", label: "Menu", match: "/menu" },
+    { path: "mission", label: "Mission", match: "/mission" },
+    { path: "/locations", label: "Locations", match: "/locations" },
+    { path: "/gifts", label: "Gifts", match: "/gifts" }
+  ];
+
+  const headerBackground = isScrolled
+    ? "bg-text bg-opacity-80 text-background"
+    : "bg-primary text-text";
 
   return (
     <header
-      className={`w-full grain flex justify-between items-center p-4 lg:px-16 xl:px-32 ${
-        isScrolledUp
-          ? "bg-primary text-text"
-          : "bg-text bg-opacity-80 text-background"
-      } backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
+      className={`w-full grain h-20 flex justify-between items-center p-4 lg:px-16 xl:px-32 ${headerBackground} backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
       id="start"
     >
       <Link href="/#start">
         <motion.h1
           className="text-2xl font-bold font-heading max-lg:px-4"
-          whileHover={{
-            scale: 1,
-            transition: { type: "spring", stiffness: 500 },
-          }}
+          whileHover={{ scale: 1, transition: { type: "spring", stiffness: 500 } }}
           whileTap={{ scale: 0.9 }}
         >
           Maitso
         </motion.h1>
       </Link>
+
       <div className="dropdown dropdown-end lg:hidden">
-        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+        <label tabIndex={0} className="btn btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -69,120 +65,31 @@ export default function Header() {
           tabIndex={0}
           className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
         >
-          <li>
-            <Link
-              href="/#start"
-              className={`hover:underline ${
-                pathname === "/" ? "font-bold" : ""
-              } focus:outline-none`}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="menu"
-              className={`hover:underline ${
-                pathname === "/menu" ? "font-bold" : ""
-              } focus:outline-none`}
-            >
-              Menu
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="mission"
-              className={`hover:underline ${
-                pathname === "/mission" ? "font-bold" : ""
-              } focus:outline-none`}
-            >
-              Mission
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/locations"
-              className={`hover:underline ${
-                pathname === "/locations" ? "font-bold" : ""
-              } focus:outline-none`}
-            >
-              Locations
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/gifts"
-              className={`hover:underline ${
-                pathname === "/gifts" ? "font-bold" : ""
-              } focus:outline-none`}
-            >
-              Gifts
-            </Link>
-          </li>
+          {navigationItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                href={item.path}
+                className={`hover:underline ${pathname === item.match ? "font-bold" : ""} focus:outline-none`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
+
       <nav className="hidden lg:flex">
         <ul className="menu menu-horizontal p-0 gap-2">
-          <li>
-            <Link
-              href="/#start"
-              className={`hover:underline ${
-                pathname === "/" ? "font-bold" : ""
-              } active:!bg-green-950 ${
-                !isScrolledUp ? "focus:text-white" : ""
-              }`}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="menu"
-              className={`hover:underline ${
-                pathname === "/menu" ? "font-bold" : ""
-              } active:!bg-green-950 ${
-                !isScrolledUp ? "focus:text-white" : ""
-              }`}
-            >
-              Menu
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="mission"
-              className={`hover:underline ${
-                pathname === "/mission" ? "font-bold" : ""
-              } active:!bg-green-950 ${
-                !isScrolledUp ? "focus:text-white" : ""
-              }`}
-            >
-              Mission
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/locations"
-              className={`hover:underline ${
-                pathname === "/locations" ? "font-bold" : ""
-              } active:!bg-green-950 ${
-                !isScrolledUp ? "focus:text-white" : ""
-              }`}
-            >
-              Locations
-            </Link>
-          </li>
-          <li>
-            <a
-              href="/gifts"
-              className={`hover:underline ${
-                pathname === "/gifts" ? "font-bold" : ""
-              } active:!bg-green-950 ${
-                !isScrolledUp ? "focus:text-white" : ""
-              }`}
-            >
-              Gifts
-            </a>
-          </li>
+          {navigationItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                href={item.path}
+                className={`hover:underline ${pathname === item.match ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

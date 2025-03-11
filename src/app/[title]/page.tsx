@@ -1,6 +1,9 @@
 import React from "react";
 import menuData from "../../../data/menu-data.json";
 import NotFound from "@/app/not-found";
+import NutritionLabel from "@/components/NutritionLabel";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 interface MenuItemPageProps {
   params: Promise<{ title: string }>;
@@ -10,53 +13,114 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
   const { title } = await params;
   const formattedTitle = title.replace(/-/g, " ");
   const item = menuData.find(
-      (menuItem) => menuItem.title.toLocaleLowerCase() === formattedTitle
+    (menuItem) => menuItem.title.toLocaleLowerCase() === formattedTitle
   );
   if (!item) {
     return <NotFound />;
   }
+  const allowedKeys = ["calories", "totalFat", "totalCarbohydrates", "protein"];
+
+  const similarRecipes = menuData.filter(
+    (menuItem) =>
+      menuItem.title.toLocaleLowerCase() !== formattedTitle &&
+      (menuItem.cuisine === item.cuisine ||
+        menuItem.tags.filter((tag) => item.tags.includes(tag)).length > 2)
+  );
 
   return (
-      <div className="flex flex-col items-center">
-        <div
-            className={
-                "w-full h-[30vh] top-0 left-0 bg-cover bg-center bg-[url(" +
-                item.imageUrl +
-                ")]"
-            }
-        ></div>
-        <div className="p-10 max-w-screen-2xl lg:w-2/3 flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
-          <h1 className="text-4xl font-heading mb-0">{item.title}</h1>
-          <h2 className="mb-5">{item.subtitle}</h2>
-          {item.description ? <p className="mb-5">{item.description}</p> : null}
-          <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
-            {item.tags.map((tag, index) => (
-                <span
-                    key={index}
-                    className="px-2 py-1 bg-primary text-text text-xs rounded-full"
-                >
+    <div className="flex flex-col items-center">
+      <div
+        className={"w-full h-96 top-0 left-0 bg-cover bg-center max-h-[50vh]"}
+        style={{ backgroundImage: `url(${"/img/backgrounds/bg.jpg"})` }}
+      ></div>
+      <div className="p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
+        <a href="/menu" className="text-left text-text hover:underline">
+          ← Back to Menu
+        </a>
+        <h1 className="font-heading mb-5 flex flex-col lg:flex-row lg:items-baseline lg:justify-between text-center justify-center lg:text-left">
+          <div>
+            <span className="text-3xl">{item.title}</span>
+            <div>{item.subtitle}</div>
+          </div>
+          <span className="text-xl">{item.price}</span>
+        </h1>
+
+        {item.description ? <p className="mb-5">{item.description}</p> : null}
+        <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
+          {item.tags.map((tag, index) => (
+            <span
+              key={index}
+              className="px-2 py-1 bg-primary text-text text-xs rounded-full"
+            >
               {tag}
             </span>
+          ))}
+        </div>
+        <div className="flex w-full mb-4 flex-col lg:flex-row lg:items-start items-center">
+          {item.ingredients ? (
+            <div className="w-full lg:w-3/4 mb-4">
+              <h1 className="text-2xl font-heading mb-2">Ingredients</h1>
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                {item.ingredients.map((ingredient, index) => (
+                  <div
+                    key={index}
+                    className="bg-primary shadow-md p-3 w-40 rounded-lg"
+                  >
+                    <p>{ingredient}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+          {item.nutrition ? (
+            <div className="w-full lg:w-1/4">
+              <h1 className="text-2xl font-heading mb-2">
+                Nutrition
+                <span className="text-[16px] font-body"> (per serving)</span>
+              </h1>
+              {Object.entries(item.nutrition)
+                .filter(([key]) => allowedKeys.includes(key))
+                .map(([key, value]) => {
+                  const capitalizedKey =
+                    key.charAt(0).toUpperCase() +
+                    key.replace(/([A-Z])/g, " $1").slice(1);
+                  return (
+                    <div key={key}>
+                      <hr className="border border-black" />
+                      <div className="flex flex-row text-left p-1 justify-between">
+                        <span>{capitalizedKey}</span>
+                        <span>{value}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              <hr className="border border-black" />
+              <NutritionLabel nutrition={item.nutrition} />
+            </div>
+          ) : null}
+        </div>
+        {similarRecipes ? (
+          <div className="w-full mt-10">
+            <h2 className="text-2xl font-heading mb-5">Similar Recipes</h2>
+
+            {similarRecipes.map((recipe, index) => (
+              <div key={index} className="p-2">
+                <div className="bg-background shadow-lg rounded-lg p-4">
+                  <h3 className="text-xl font-heading">{recipe.title}</h3>
+                  <p>{recipe.subtitle}</p>
+                  <a
+                    href={`/${recipe.title.replace(/\s+/g, "-").toLowerCase()}`}
+                    className="text-green-900 hover:underline"
+                  >
+                    View Recipe
+                  </a>
+                </div>
+              </div>
             ))}
           </div>
-          {item.ingredients ? (
-              <>
-                <h1 className="text-2xl font-heading mb-2">Ingredients</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                  {item.ingredients.map((ingredient, index) => (
-                      <div
-                          key={index}
-                          className="bg-primary shadow-md p-4 rounded-lg"
-                      >
-                        <p>{ingredient}</p>
-                      </div>
-                  ))}
-                </div>
-              </>
-          ) : null}
-          <p>Price: {item.price}</p>
-        </div>
+        ) : null}
       </div>
+    </div>
   );
 };
 

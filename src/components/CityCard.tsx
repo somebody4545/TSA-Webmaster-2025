@@ -20,7 +20,7 @@ const CityCard = ({ city, image, onArrowClick, isSelected }) => {
       transition={{ duration: 0.3 }}
     >
       <motion.h3
-        className="text-2xl text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+        className="text-2xl text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}

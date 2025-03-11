@@ -11,6 +11,7 @@ import {
   CookingPot,
   Salad,
   Users,
+  Utensils,
 } from "lucide-react";
 
 const MissionPage = () => {
@@ -180,6 +181,179 @@ const MissionPage = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <p className="text-lg md:text-2xl font-heading font-bold text-white">
                         Green Freight
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-full">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-start p-6">
+                      <div className="flex items-start">
+                        <ChefHat
+                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
+                          strokeWidth={1.5}
+                        />
+                        <p className="text-lg font-heading font-bold text-white">
+                          World Cuisine
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-start p-6">
+                      <div className="flex items-start">
+                        <CookingPot
+                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
+                          strokeWidth={1.5}
+                        />
+                        <p className="text-lg font-heading font-bold text-white">
+                          Cooking Techniques
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-start p-6">
+                      <div className="flex items-start">
+                        <Utensils
+                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
+                          strokeWidth={1.5}
+                        />
+                        <p className="text-lg font-heading font-bold text-white">
+                          Cultural Stories
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quote Section */}
+      <div className="py-8 bg-primary-darker">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="mb-3 flex justify-center">
+              <QuoteIcon className="w-10 h-10 text-background-dim" />
+            </div>
+            <div className="text-lg md:text-xl font-body font-bold italic text-white">
+              "Nothing will benefit human health and increase chances for
+              survival of life on Earth as much as the evolution to a vegetarian
+              diet."
+              <div className="text-sm text-background-dim mt-3">
+                — Albert Einstein
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Our Commitments Section */}
+      <div className="relative">
+        {/* Full-width pig image */}
+        <div className="relative w-full h-screen">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/api/placeholder/1200/800')" }}
+          >
+            <div
+              className="absolute inset-0 bg-black bg-opacity-40"
+              aria-hidden="true"
+            ></div>
+          </div>
+
+          {/* Our Commitments Heading */}
+          <div className="absolute top-0 left-0 w-full py-10">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white text-center">
+              Our Commitments
+            </h2>
+          </div>
+
+          {/* Commitment cards without animation */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="container mx-auto px-6">
+              <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+                {/* Card 1: Global Cuisines */}
+                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <Image
+                        src="/api/placeholder/60/60"
+                        alt="Globe icon"
+                        width={60}
+                        height={60}
+                        className="h-12 w-12"
+                      />
+                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
+                        Authentic Global Cuisines
+                      </h3>
+                    </div>
+                    <div className="text-text font-body">
+                      <p>
+                        We showcase authentic dishes from across the world,
+                        respecting traditional techniques while incorporating
+                        local, sustainable ingredients. Each dish tells a
+                        cultural story.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Food Waste */}
+                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <Image
+                        src="/api/placeholder/60/60"
+                        alt="Food waste icon"
+                        width={60}
+                        height={60}
+                        className="h-12 w-12"
+                      />
+                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
+                        Minimizing Food Waste
+                      </h3>
+                    </div>
+                    <div className="text-text font-body">
+                      <p>
+                        We partner with food security organizations to ensure
+                        leftover food goes to those in need. Our prep techniques
+                        maximize ingredient usage while minimizing waste.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Sustainable Sourcing */}
+                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <Image
+                        src="/api/placeholder/60/60"
+                        alt="Sustainability icon"
+                        width={60}
+                        height={60}
+                        className="h-12 w-12"
+                      />
+                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
+                        Sustainable Sourcing
+                      </h3>
+                    </div>
+                    <div className="text-text font-body">
+                      <p>
+                        We carefully select ingredients that are organic, local,
+                        and in season. Our packaging is 100% compostable or
+                        recyclable. We prioritize vendors who share our
+                        environmental values.
                       </p>
                     </div>
                   </div>

@@ -6,7 +6,7 @@ import { useRef } from "react";
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import menuData from '../data/menu-data.json';
+import menuData from '../../data/menu-data.json';
 import MenuCard from '@/components/MenuCard';
 
 type CarouselButtonGroupProps = {
@@ -95,32 +95,24 @@ function ParallaxBackground() {
 
 function CarouselNavigationButtons({ next, previous }: CarouselButtonGroupProps) {
   return (
-    <div className="custom-button-group">
+    <div className="custom-button-group absolute top-1/2 -translate-y-1/2 w-full flex justify-between pointer-events-none">
       <motion.button
         onClick={previous}
-        className="carousel-btn-prev"
-        aria-label="Previous slide"
+        className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto ml-4"
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M15 18l-6-6 6-6" />
         </svg>
       </motion.button>
       <motion.button
         onClick={next}
-        className="carousel-btn-next"
-        aria-label="Next slide"
+        className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto mr-4"
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 18l6-6-6-6" />
         </svg>
       </motion.button>
@@ -302,7 +294,13 @@ function AboutSection() {
 }
 
 function MenuSection() {
-  const featuredMenuItems = menuData.slice(0, 8);
+  // Import the data directly from the correct path
+  // First, let's check if we're getting the right data
+  console.log("Menu data length:", menuData.length);
+  console.log("First item in menu data:", menuData[0]?.title);
+  
+  // Create a reference to the data to ensure we're using the right one
+  const menuItems = menuData;
 
   return (
     <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
@@ -330,7 +328,7 @@ function MenuSection() {
             </motion.p>
             <Link href="/menu">
               <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
-                View Menu
+                View Full Menu
               </button>
             </Link>
           </motion.div>
@@ -350,42 +348,79 @@ function MenuSection() {
                 autoPlaySpeed={4000}
                 keyBoardControl={true}
                 centerMode={false}
-                customTransition="all 600ms cubic-bezier(0.4, 0, 0.2, 1)"
-                transitionDuration={600}
+                customTransition="all 800ms cubic-bezier(0.4, 0, 0.2, 1)"
+                transitionDuration={800}
                 containerClass="modern-carousel"
                 removeArrowOnDeviceType={["mobile"]}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding"
                 arrows={false}
                 renderButtonGroupOutside={true}
-                customButtonGroup={<CarouselNavigationButtons next={function (): void {
-                  throw new Error("Function not implemented.");
-                }} previous={function (): void {
-                  throw new Error("Function not implemented.");
-                }} />}
-                shouldResetAutoplay={false}
+                customButtonGroup={<CarouselNavigationButtons next={() => {}} previous={() => {}} />}
+                shouldResetAutoplay={true}
                 partialVisible={false}
                 ssr={true}
               >
-                {featuredMenuItems.slice(0, 6).map((item, index) => (
-                  <div key={index} className="px-4 py-2">
-                    <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
+                {menuItems.map((item, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="px-4 py-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      duration: 0.5,
+                      delay: Math.min(index * 0.1, 0.8),
+                      ease: "easeOut"
+                    }}
+                  >
+                    <Link href={`/menu/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
                       <motion.div
-                        whileHover={{ scale: 1.03, y: -5 }}
+                        whileHover={{ 
+                          scale: 1.05,
+                          y: -10,
+                          transition: { duration: 0.2 }
+                        }}
+                        whileTap={{ scale: 0.98 }}
                         className="transition-all duration-300"
                       >
-                        <MenuCard
-                          title={item.title}
-                          subtitle={item.subtitle}
-                          price={item.price}
-                          calories={item.calories}
-                          imageUrl={item.imageUrl || `https://placehold.co/600x400?text=${encodeURIComponent(item.title)}`}
-                          tags={item.tags && item.tags.length > 0 ? item.tags.slice(0, 2) : []}
-                          className="carousel-card shadow-xl hover:shadow-2xl"
-                        />
+                        {/* Custom card with prominent name display */}
+                        <div className="bg-primary rounded-lg overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                          <div className="relative w-full h-48 overflow-hidden">
+                            <img 
+                              src={item.imageUrl} 
+                              alt={item.title}
+                              className="w-full h-full object-cover"
+                            />
+                            {/* Overlay with cuisine type */}
+                            {item.cuisine && (
+                              <div className="absolute top-2 right-2 bg-background text-primary text-xs px-2 py-1 rounded-full">
+                                {item.cuisine}
+                              </div>
+                            )}
+                          </div>
+                          
+                          <div className="p-4">
+                            {/* Prominent title */}
+                            <h3 className="text-xl font-bold text-background mb-1">{item.title}</h3>
+                            <p className="text-sm text-background/80 mb-2">{item.subtitle}</p>
+                            
+                            <div className="flex justify-between items-center">
+                              <p className="font-bold text-background">{item.price}</p>
+                              <p className="text-sm text-background/80">{item.calories} cal</p>
+                            </div>
+                            
+                            <div className="mt-2 flex flex-wrap gap-1">
+                              {item.tags && item.tags.slice(0, 2).map((tag, i) => (
+                                <span key={i} className="bg-background text-primary text-xs px-2 py-1 rounded-full">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       </motion.div>
                     </Link>
-                  </div>
+                  </motion.div>
                 ))}
               </Carousel>
             </div>

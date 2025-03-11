@@ -4,10 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { useRef, useState } from "react";
 import Link from 'next/link';
-// Removed react-multi-carousel imports as we're using custom carousel
 import menuData from '../../data/menu-data.json';
 
-// Removed CarouselButtonGroupProps type and CAROUSEL_RESPONSIVE as they're no longer needed
 
 const TESTIMONIALS = [
   {
@@ -47,7 +45,17 @@ const TESTIMONIALS = [
   }
 ];
 
-function MenuCarousel({ items }) {
+interface MenuItem {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  cuisine?: string;
+  price: string;
+  calories: number;
+  tags?: string[];
+}
+
+function MenuCarousel({ items }: { items: MenuItem[] }) {
   const [index, setIndex] = useState(0);
 
   const nextSlide = () => {
@@ -62,7 +70,7 @@ function MenuCarousel({ items }) {
     <div className="relative w-full mx-auto h-[450px] py-8">
       <div className="relative flex items-center justify-center h-full">
         {items.map((item, i) => {
-          let position = i === index
+          const position = i === index
             ? "translate-x-0 scale-100 z-30 opacity-100"
             : i === (index + 1) % items.length
               ? "translate-x-[75%] scale-90 z-20 opacity-20"
@@ -375,12 +383,13 @@ function AboutSection() {
 }
 
 function MenuSection() {
-  // Import the data directly from the correct path
   console.log("Menu data length:", menuData.length);
   console.log("First item in menu data:", menuData[0]?.title);
 
-  // Create a reference to the data to ensure we're using the right one
-  const menuItems = menuData;
+  const menuItems = menuData.map(item => ({
+    ...item,
+    calories: Number(item.calories)
+  }));
 
   return (
     <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>

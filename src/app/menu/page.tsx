@@ -83,6 +83,9 @@ export default function MenuPage() {
         />
         <MenuGrid items={filteredMenuItems} />
       </div>
+      <div className="absolute bottom-16" id="menu">
+
+      </div>
     </div>
   );
 }
@@ -144,9 +147,6 @@ function HeroSection() {
           </svg>
         </div>
       </motion.div>
-      <div className="absolute bottom-16" id="menu">
-
-      </div>
     </div>
   );
 }

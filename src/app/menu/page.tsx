@@ -73,18 +73,18 @@ export default function MenuPage() {
 function HeroSection() {
   return (
     <div
-      className="relative min-h-[400px] max-h-[800px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+      className="relative min-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
       style={{
         backgroundImage: "url(/img/menu_hero.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "80vh",
+        height: "90vh",
       }}
     >
       <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
         <div className="bg-white bg-opacity-0 rounded-lg">
           <motion.h1
-            className="text-3xl font-heading xl:text-4xl font-sans tracking-tight text-black md:px-24 px-12"
+            className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black md:px-24 px-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -129,7 +129,7 @@ function FilterSidebar({
   toggleVisibility
 }: FilterSidebarProps) {
   return (
-    <div className="lg:w-1/5 overflow-y-auto min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark scrollbar-thin">
+    <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
         <button

@@ -33,10 +33,6 @@
   --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* ======= BASE STYLES ======= */
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   font-family: 'Inter', sans-serif;

@@ -19,6 +19,13 @@ export default function MenuPage() {
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
 
+  const scrollToMenu = () => {
+    const menuSection = document.getElementById("menu");
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "instant" });
+    }
+  };
+
   const filteredMenuItems = useMemo(() => {
     return menuItems.filter(item => {
       const matchesTags = selectedTags.length === 0 ||
@@ -33,19 +40,29 @@ export default function MenuPage() {
   }, [selectedTags, selectedCategory, selectedCuisine]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prevTags =>
-      prevTags.includes(tag)
+    setSelectedTags(prevTags => {
+      const newTags = prevTags.includes(tag)
         ? prevTags.filter(t => t !== tag)
-        : [...prevTags, tag]
-    );
+        : [...prevTags, tag];
+      scrollToMenu();
+      return newTags;
+    });
   };
 
   const toggleCategory = (category: string | null) => {
-    setSelectedCategory(prev => prev === category ? null : category);
+    setSelectedCategory(prev => {
+      const newCategory = prev === category ? null : category;
+      scrollToMenu();
+      return newCategory;
+    });
   };
 
   const toggleCuisine = (cuisine: string) => {
-    setSelectedCuisine(prev => prev === cuisine ? null : cuisine);
+    setSelectedCuisine(prev => {
+      const newCuisine = prev === cuisine ? null : cuisine;
+      scrollToMenu();
+      return newCuisine;
+    });
   };
 
   const toggleFilterVisibility = () => setIsFilterExpanded(!isFilterExpanded);
@@ -53,7 +70,7 @@ export default function MenuPage() {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <div className="flex max-lg:flex-col lg:flex-row" id="menu">
+      <div className="flex max-lg:flex-col lg:flex-row">
         <FilterSidebar
           selectedTags={selectedTags}
           selectedCategory={selectedCategory}
@@ -127,6 +144,9 @@ function HeroSection() {
           </svg>
         </div>
       </motion.div>
+      <div className="absolute bottom-16" id="menu">
+
+      </div>
     </div>
   );
 }

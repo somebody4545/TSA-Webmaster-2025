@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import MenuCard from "@/components/MenuCard";
@@ -128,6 +128,21 @@ function FilterSidebar({
   toggleCuisine,
   toggleVisibility
 }: FilterSidebarProps) {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="lg:w-1/5 overflow-y-auto min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark scrollbar-thin">
       <div className="flex items-center justify-between">
@@ -140,7 +155,12 @@ function FilterSidebar({
         </button>
       </div>
 
-      <div className={`lg:block ${isExpanded ? "block" : "hidden"}`}>
+      <motion.div
+        className={`lg:block ${isExpanded || isLargeScreen ? "block" : "hidden"}`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: isExpanded || isLargeScreen ? 1 : 0, y: isExpanded || isLargeScreen ? 0 : -20 }}
+        transition={{ duration: 0.3 }}
+      >
         <FilterSection title="Meals">
           <FilterButtonGroup
             items={MEAL_CATEGORIES}
@@ -165,7 +185,7 @@ function FilterSidebar({
             multiSelect={true}
           />
         </FilterSection>
-      </div>
+      </motion.div>
     </div>
   );
 }

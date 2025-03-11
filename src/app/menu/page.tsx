@@ -140,12 +140,7 @@ function FilterSidebar({
         </button>
       </div>
 
-      <motion.div
-        className={`lg:block ${isExpanded ? "block" : "hidden"}`}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: isExpanded ? 1 : 0, y: isExpanded ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
-      >
+      <div className={`lg:block ${isExpanded ? "block" : "hidden"}`}>
         <FilterSection title="Meals">
           <FilterButtonGroup
             items={MEAL_CATEGORIES}
@@ -170,7 +165,7 @@ function FilterSidebar({
             multiSelect={true}
           />
         </FilterSection>
-      </motion.div>
+      </div>
     </div>
   );
 }

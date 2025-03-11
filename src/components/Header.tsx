@@ -22,7 +22,6 @@ export default function Header() {
     { path: "menu", label: "Menu", match: "/menu" },
     { path: "mission", label: "Mission", match: "/mission" },
     { path: "/locations", label: "Locations", match: "/locations" },
-    { path: "/gifts", label: "Gifts", match: "/gifts" }
   ];
 
   const headerBackground = isScrolled
@@ -90,6 +89,9 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          <li>
+            <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+          </li>
         </ul>
       </nav>
     </header>

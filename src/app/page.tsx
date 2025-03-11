@@ -192,7 +192,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
         <div className="card-body p-6 flex flex-col">
           <div className="flex items-center mb-4">
             <div className="relative">
-              <Image
+              <img
                 src={testimonial.image}
                 alt={`${testimonial.name}'s picture`}
                 className="rounded-full w-16 h-16 border-2 border-background object-cover"

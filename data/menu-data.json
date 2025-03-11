@@ -30,7 +30,7 @@
       "iron": "4mg",
       "potassium": "500mg"
     },
-    "imageUrl": "/img/menu/mediterranean-bowl.jpg",
+    "imageUrl": "/img/menu/mediterranean-bowl.png",
     "description": "A Mediterranean Bowl is a vibrant, wholesome dish featuring a base of quinoa or couscous, topped with fresh veggies like cucumbers, tomatoes, and bell peppers. Topped with hummus, tzatziki, olives, feta, and fresh herbs, it can be finished with tofu. A drizzle of olive oil and a squeeze of lemon tie everything together, offering a perfect balance of refreshing flavors and textures.",
     "ingredients": ["Quinoa", "Falafel", "Hummus", "Cucumbers", "Tomatoes", "Bell Peppers", "Tzatziki", "Olives", "Feta", "Fresh Herbs", "Olive Oil", "Lemon"],
     "tags": ["Gluten Free", "Vegan", "High Protein"],
@@ -52,7 +52,7 @@
     "subtitle": "with Sweet Potato & Kale",
     "price": "$18.99",
     "calories": "490",
-    "imageUrl": "/img/menu/buddha-bowl.jpg",
+    "imageUrl": "/img/menu/buddha-bowl.png",
     "tags": ["Vegan", "Gluten Free", "Low Carb"],
     "categories": ["Lunch"],
     "cuisine": "American"

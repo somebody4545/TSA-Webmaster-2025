@@ -30,10 +30,12 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
   return (
     <div className="flex flex-col items-center">
       <div
-        className={"w-full h-96 top-0 left-0 bg-cover bg-center max-h-[50vh]"}
-        style={{ backgroundImage: `url(${"/img/backgrounds/bg.jpg"})` }}
+        className={
+          "w-full h-96 top-0 left-0 bg-cover bg-center max-h-[50vh] blur-sm"
+        }
+        style={{ backgroundImage: `url(${item.imageUrl})` }}
       ></div>
-      <div className="p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
+      <div className="z-10 p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
         <a href="/menu" className="text-left text-text hover:underline">
           ← Back to Menu
         </a>

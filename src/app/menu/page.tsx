@@ -90,12 +90,12 @@ export default function MenuPage() {
 function HeroSection() {
   return (
     <div
-      className="relative min-h-[550px] max-h-[800px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+      className="relative min-h-[550px] max-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
       style={{
         backgroundImage: "url(/img/menu_hero.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "80vh",
+        height: "90vh",
       }}
     >
       <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">

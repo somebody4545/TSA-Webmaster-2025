@@ -95,7 +95,7 @@ const MissionPage = () => {
                   >
                     <div className="aspect-9:16 bg-background-dim rounded-lg shadow-sm flex items-center justify-center transition-transform hover:scale-105">
                       <Image
-                        src={`/img/partner${index}.png`} // Replace with your actual image path
+                        src={`/img/partner${index}.png`} 
                         alt={`Partner ${index} logo`}
                         width={200}
                         height={200}

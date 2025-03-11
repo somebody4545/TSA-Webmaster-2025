@@ -73,7 +73,7 @@ export default function MenuPage() {
 function HeroSection() {
   return (
     <div
-      className="relative min-h-[400px] max-h-[800px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+      className="relative min-h-[550px] max-h-[800px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
       style={{
         backgroundImage: "url(/img/menu_hero.png)",
         backgroundSize: "cover",

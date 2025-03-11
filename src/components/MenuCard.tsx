@@ -13,7 +13,7 @@ type MenuCardProps = {
 };
 
 const combineClassNames = (...classes: (string | undefined)[]) =>
-  classes.filter(Boolean).join(' ');
+  classes.filter(Boolean).join(" ");
 
 export const MenuCard: React.FC<MenuCardProps> = ({
   title,
@@ -22,7 +22,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({
   calories,
   imageUrl,
   tags = [],
-  className
+  className,
 }) => {
   return (
     <div className={combineClassNames("w-full group/card", className)}>
@@ -66,6 +66,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({
           >
             {subtitle}
           </motion.p>
+
           <div className="flex flex-wrap gap-2 mt-2">
             {tags.map((tag, index) => (
               <motion.span

@@ -36,7 +36,10 @@ export default function Header() {
       <Link href="/#start">
         <motion.h1
           className="text-2xl font-bold font-heading max-lg:px-4"
-          whileHover={{ scale: 1, transition: { type: "spring", stiffness: 500 } }}
+          whileHover={{
+            scale: 1,
+            transition: { type: "spring", stiffness: 500 },
+          }}
           whileTap={{ scale: 0.9 }}
         >
           Maitso
@@ -68,7 +71,9 @@ export default function Header() {
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`hover:underline ${pathname === item.match ? "font-bold" : ""} focus:outline-none`}
+                className={`hover:underline ${
+                  pathname === item.match ? "font-bold" : ""
+                } focus:outline-none`}
               >
                 {item.label}
               </Link>
@@ -86,7 +91,11 @@ export default function Header() {
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`hover:underline ${pathname === item.match ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}
+                className={`hover:underline ${
+                  pathname === item.match ? "font-bold" : ""
+                } active:!bg-green-950 ${
+                  !isScrolled ? "" : "focus:text-white"
+                }`}
               >
                 {item.label}
               </Link>

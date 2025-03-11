@@ -510,12 +510,12 @@ function TestimonialsSection() {
           transition={{ duration: 0.5 }}
         >
           <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} autoFill={true}>
-            <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news.png" alt="News 1" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news1.png" alt="News 2" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news5.png" alt="News 6" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news2.png" alt="News 3" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news3.png" alt="News 4" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
+            <img src="/img/news4.png" alt="News 5" className="h-10 px-8" style={{ filter: "brightness(0)" }} />
           </Marquee>
         </motion.div>
         <motion.div

@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 type MenuCardProps = {
   title: string;
@@ -66,7 +66,6 @@ export const MenuCard: React.FC<MenuCardProps> = ({
           >
             {subtitle}
           </motion.p>
-
           <div className="flex flex-wrap gap-2 mt-2">
             {tags.map((tag, index) => (
               <motion.span

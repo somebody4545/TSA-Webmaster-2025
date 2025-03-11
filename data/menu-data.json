@@ -42,7 +42,7 @@
     "subtitle": "with Cottage Cheese & Wild Rice",
     "price": "$26.99",
     "calories": "520",
-    "imageUrl": "/img/menu/lettucewrap.jpg",
+    "imageUrl": "/img/menu/lettucewrap.png",
     "tags": ["Low Carb", "Gluten Free", "High Protein"],
     "categories": ["Lunch", "Dinner"],
     "cuisine": "American"
@@ -102,7 +102,7 @@
     "subtitle": "with Fresh Berries & Granola",
     "price": "$15.99",
     "calories": "390",
-    "imageUrl": "/img/menu/acai-bowl.jpg",
+    "imageUrl": "/img/menu/acai-bowl.png",
     "tags": ["Vegan", "Gluten Free"],
     "categories": ["Breakfast"],
     "cuisine": "American"
@@ -119,7 +119,7 @@
   },
   {
     "title": "Green Goddess Salad",
-    "subtitle": "with Grilled Chicken & Avocado",
+    "subtitle": "with Grilled Pineapple & Avocado",
     "price": "$17.99",
     "calories": "440",
     "imageUrl": "/img/menu/green-goddess.jpg",
@@ -142,7 +142,7 @@
     "subtitle": "with Tofu & Peanuts",
     "price": "$20.99",
     "calories": "610",
-    "imageUrl": "/img/menu/pad-thai.jpg",
+    "imageUrl": "/img/menu/pad-thai.png",
     "tags": ["Spicy", "Vegan", "High Protein"],
     "categories": ["Lunch", "Dinner"],
     "cuisine": "Thai"
@@ -162,29 +162,9 @@
     "subtitle": "with Soft-Boiled Egg & Nori",
     "price": "$19.99",
     "calories": "590",
-    "imageUrl": "/img/menu/miso-ramen.jpg",
+    "imageUrl": "/img/menu/miso-ramen.png",
     "tags": ["High Protein", "Spicy"],
     "categories": ["Lunch", "Dinner"],
     "cuisine": "Japanese"
-  },
-  {
-    "title": "Chia Pudding",
-    "subtitle": "with Coconut Milk & Berries",
-    "price": "$12.99",
-    "calories": "320",
-    "imageUrl": "/img/menu/chia-pudding.jpg",
-    "tags": ["Vegan", "Gluten Free", "Low Carb"],
-    "categories": ["Breakfast"],
-    "cuisine": "American"
-  },
-  {
-    "title": "Falafel Wrap",
-    "subtitle": "with Tahini & Pickles",
-    "price": "$16.99",
-    "calories": "450",
-    "imageUrl": "/img/menu/falafel-wrap.jpg",
-    "tags": ["Vegan", "High Protein"],
-    "categories": ["Lunch"],
-    "cuisine": "Mediterranean"
   }
 ]

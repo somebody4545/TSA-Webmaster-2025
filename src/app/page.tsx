@@ -2,36 +2,10 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from 'next/link';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import menuData from '../data/menu-data.json';
-import MenuCard from '@/components/MenuCard';
+import menuData from '../../data/menu-data.json';
 
-type CarouselButtonGroupProps = {
-  next: () => void;
-  previous: () => void;
-};
-
-const CAROUSEL_RESPONSIVE = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 1536 },
-    items: 2
-  },
-  desktop: {
-    breakpoint: { max: 1536, min: 1024 },
-    items: 2
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 640 },
-    items: 1
-  },
-  mobile: {
-    breakpoint: { max: 640, min: 0 },
-    items: 1
-  }
-};
 
 const TESTIMONIALS = [
   {
@@ -71,6 +45,122 @@ const TESTIMONIALS = [
   }
 ];
 
+interface MenuItem {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  cuisine?: string;
+  price: string;
+  calories: number;
+  tags?: string[];
+}
+
+function MenuCarousel({ items }: { items: MenuItem[] }) {
+  const [index, setIndex] = useState(0);
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % items.length);
+  };
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  return (
+    <div className="relative w-full mx-auto h-[450px] py-8">
+      <div className="relative flex items-center justify-center h-full">
+        {items.map((item, i) => {
+          const position = i === index
+            ? "translate-x-0 scale-100 z-30 opacity-100"
+            : i === (index + 1) % items.length
+              ? "translate-x-[75%] scale-90 z-20 opacity-20"
+              : i === (index - 1 + items.length) % items.length
+                ? "translate-x-[-75%] scale-90 z-20 opacity-20"
+                : "translate-x-0 scale-75 z-10 opacity-0";
+
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: i === index ? 1 : i === (index + 1) % items.length || i === (index - 1 + items.length) % items.length ? 0.2 : 0 }}
+              transition={{ duration: 0.7 }}
+              className={`absolute w-[70%] md:w-[50%] h-[350px] rounded-xl bg-white shadow-xl flex flex-col transition-all duration-500 ease-in-out ${position}`}
+            >
+              <Link href={`/menu/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block h-full">
+                <div className="flex flex-col h-full p-6">
+                  <div className="relative w-full h-1/2 overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {item.cuisine && (
+                      <div className="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                        {item.cuisine}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-primary">{item.title}</h3>
+                    <p className="text-sm text-gray-600 mb-2">{item.subtitle}</p>
+
+                    <div className="flex justify-between items-center mt-auto">
+                      <p className="font-bold text-primary">{item.price}</p>
+                      <p className="text-sm text-gray-500">{item.calories} cal</p>
+                    </div>
+
+                    <div className="mt-2 flex flex-wrap gap-1">
+                      {item.tags && item.tags.slice(0, 2).map((tag, j) => (
+                        <span key={j} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
+        <motion.button
+          onClick={prevSlide}
+          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </motion.button>
+        <motion.button
+          onClick={nextSlide}
+          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </motion.button>
+      </div>
+
+      <div className="flex justify-center mt-4 gap-2">
+        {items.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-gray-300"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ParallaxBackground() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -93,40 +183,7 @@ function ParallaxBackground() {
   );
 }
 
-function CarouselNavigationButtons({ next, previous }: CarouselButtonGroupProps) {
-  return (
-    <div className="custom-button-group">
-      <motion.button
-        onClick={previous}
-        className="carousel-btn-prev"
-        aria-label="Previous slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </motion.button>
-      <motion.button
-        onClick={next}
-        className="carousel-btn-next"
-        aria-label="Next slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ duration: 0.2 }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </motion.button>
-    </div>
-  );
-}
+// Removed the CarouselNavigationButtons function as it's no longer needed
 
 function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
   return (
@@ -135,7 +192,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
         <div className="card-body p-6 flex flex-col">
           <div className="flex items-center mb-4">
             <div className="relative">
-              <img
+              <Image
                 src={testimonial.image}
                 alt={`${testimonial.name}'s picture`}
                 className="rounded-full w-16 h-16 border-2 border-background object-cover"
@@ -239,6 +296,30 @@ function Hero() {
       >
         1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
       </motion.p>
+      <motion.div
+        className="absolute bottom-8 animate-bounce"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+      >
+        <p className="text-sm text-center">Scroll Down</p>
+        <div className="flex justify-center items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="feather feather-chevron-down"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -302,7 +383,13 @@ function AboutSection() {
 }
 
 function MenuSection() {
-  const featuredMenuItems = menuData.slice(0, 8);
+  console.log("Menu data length:", menuData.length);
+  console.log("First item in menu data:", menuData[0]?.title);
+
+  const menuItems = menuData.map(item => ({
+    ...item,
+    calories: Number(item.calories)
+  }));
 
   return (
     <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
@@ -330,7 +417,7 @@ function MenuSection() {
             </motion.p>
             <Link href="/menu">
               <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
-                View Menu
+                View Full Menu
               </button>
             </Link>
           </motion.div>
@@ -342,53 +429,7 @@ function MenuSection() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="carousel-container relative">
-              <Carousel
-                responsive={CAROUSEL_RESPONSIVE}
-                infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={4000}
-                keyBoardControl={true}
-                centerMode={false}
-                customTransition="all 600ms cubic-bezier(0.4, 0, 0.2, 1)"
-                transitionDuration={600}
-                containerClass="modern-carousel"
-                removeArrowOnDeviceType={["mobile"]}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding"
-                arrows={false}
-                renderButtonGroupOutside={true}
-                customButtonGroup={<CarouselNavigationButtons next={function (): void {
-                  throw new Error("Function not implemented.");
-                }} previous={function (): void {
-                  throw new Error("Function not implemented.");
-                }} />}
-                shouldResetAutoplay={false}
-                partialVisible={false}
-                ssr={true}
-              >
-                {featuredMenuItems.slice(0, 6).map((item, index) => (
-                  <div key={index} className="px-4 py-2">
-                    <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block">
-                      <motion.div
-                        whileHover={{ scale: 1.03, y: -5 }}
-                        className="transition-all duration-300"
-                      >
-                        <MenuCard
-                          title={item.title}
-                          subtitle={item.subtitle}
-                          price={item.price}
-                          calories={item.calories}
-                          imageUrl={item.imageUrl || `https://placehold.co/600x400?text=${encodeURIComponent(item.title)}`}
-                          tags={item.tags && item.tags.length > 0 ? item.tags.slice(0, 2) : []}
-                          className="carousel-card shadow-xl hover:shadow-2xl"
-                        />
-                      </motion.div>
-                    </Link>
-                  </div>
-                ))}
-              </Carousel>
-            </div>
+            <MenuCarousel items={menuItems} />
           </motion.div>
         </div>
       </div>
@@ -421,11 +462,11 @@ function GiftCardSection() {
             >
               Whether it&apos;s Christmas, a birthday, or you&apos;re just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
             </motion.p>
-            <Link href="/gifts">
+            <a href="/gifts">
               <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
                 Purchase Gift Cards
               </button>
-            </Link>
+            </a>
           </motion.div>
         </div>
         <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
@@ -475,12 +516,13 @@ function TestimonialsSection() {
           transition={{ duration: 0.5 }}
         >
           <Marquee className="flex mt-8 flex-1 py-8" gradient={false} speed={50} autoFill={true}>
-            <img src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
-            <img src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news.png" alt="News 1" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news1.png" alt="News 2" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news5.png" alt="News 6" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news2.png" alt="News 3" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news3.png" alt="News 4" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+            <Image src="/img/news4.png" alt="News 5" className="h-16 px-8" style={{ filter: "brightness(0)" }} />
+
           </Marquee>
         </motion.div>
         <motion.div

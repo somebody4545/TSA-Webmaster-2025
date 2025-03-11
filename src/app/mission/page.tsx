@@ -90,7 +90,7 @@ const MissionPage = () => {
           </div>
           <div className="flex justify-center mb-12">
             <div className="w-full md:w-4/5 max-w-4xl text-center">
-              <div className="text-2xl font-heading font-bold text-primary-darker">
+              <div className="text-3xl font-heading font-bold text-primary-darker">
                 Our Partners
               </div>
             </div>
@@ -106,7 +106,7 @@ const MissionPage = () => {
                   >
                     <div className="aspect-9:16 bg-background-dim rounded-lg shadow-sm flex items-center justify-center transition-transform hover:scale-105">
                       <Image
-                        src={`/img/partner${index}.png`} // Replace with your actual image path
+                        src={`/img/partner${index}.png`}
                         alt={`Partner ${index} logo`}
                         width={200}
                         height={200}
@@ -118,7 +118,6 @@ const MissionPage = () => {
               </div>
             </div>
           </div>
-          {/* Large text box below first box */}
           <div className="w-full h-screen relative overflow-hidden">
             <div className="absolute inset-0"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -127,6 +126,65 @@ const MissionPage = () => {
                 <span className="text-black font-bold">28%</span> of greenhouse
                 gas emissions we use...
               </h1>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-20 mt-16">
+            <div className="flex flex-col items-center">
+              <div className="text-center mb-10">
+                <h3 className="text-3xl font-heading font-bold text-primary-darker">
+                  Sustainable Transportation
+                </h3>
+              </div>
+              <div className="w-full">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
+                    <Image
+                      src="/img/bikedelivery.jpg"
+                      alt="Eco-friendly Transport"
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                        Bike Delivery
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
+                    <Image
+                      src="/img/robotdelivery.jpg"
+                      alt="Electric Vehicles"
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                        EVs & Robot Delivery
+                      </p>
+                    </div>
+                  </div>
+                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
+                    <Image
+                      src="/img/greenfreight.jpg"
+                      alt="Bicycle Couriers"
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                        Green Freight
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

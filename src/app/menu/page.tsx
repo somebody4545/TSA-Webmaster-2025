@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import MenuCard from "@/components/MenuCard";
@@ -19,6 +19,13 @@ export default function MenuPage() {
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
 
+  const scrollToMenu = () => {
+    const menuSection = document.getElementById("menu");
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "instant" });
+    }
+  };
+
   const filteredMenuItems = useMemo(() => {
     return menuItems.filter(item => {
       const matchesTags = selectedTags.length === 0 ||
@@ -33,19 +40,29 @@ export default function MenuPage() {
   }, [selectedTags, selectedCategory, selectedCuisine]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prevTags =>
-      prevTags.includes(tag)
+    setSelectedTags(prevTags => {
+      const newTags = prevTags.includes(tag)
         ? prevTags.filter(t => t !== tag)
-        : [...prevTags, tag]
-    );
+        : [...prevTags, tag];
+      scrollToMenu();
+      return newTags;
+    });
   };
 
   const toggleCategory = (category: string | null) => {
-    setSelectedCategory(prev => prev === category ? null : category);
+    setSelectedCategory(prev => {
+      const newCategory = prev === category ? null : category;
+      scrollToMenu();
+      return newCategory;
+    });
   };
 
   const toggleCuisine = (cuisine: string) => {
-    setSelectedCuisine(prev => prev === cuisine ? null : cuisine);
+    setSelectedCuisine(prev => {
+      const newCuisine = prev === cuisine ? null : cuisine;
+      scrollToMenu();
+      return newCuisine;
+    });
   };
 
   const toggleFilterVisibility = () => setIsFilterExpanded(!isFilterExpanded);
@@ -53,7 +70,7 @@ export default function MenuPage() {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <div className="flex max-lg:flex-col lg:flex-row" id="menu">
+      <div className="flex max-lg:flex-col lg:flex-row pb-16">
         <FilterSidebar
           selectedTags={selectedTags}
           selectedCategory={selectedCategory}
@@ -73,18 +90,18 @@ export default function MenuPage() {
 function HeroSection() {
   return (
     <div
-      className="relative min-h-[900px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
+      className="relative min-h-[550px] max-h-[800px] max-lg:min-h-[400px] bg-background px-6 py-6 flex items-center justify-center shadow-md z-30"
       style={{
         backgroundImage: "url(/img/menu_hero.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "90vh",
+        height: "80vh",
       }}
     >
       <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
         <div className="bg-white bg-opacity-0 rounded-lg">
           <motion.h1
-            className="text-3xl font-heading xl:text-5xl font-sans tracking-tight text-black md:px-24 px-12"
+            className="text-3xl font-heading xl:text-4xl font-sans tracking-tight text-black md:px-24 px-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -103,6 +120,31 @@ function HeroSection() {
           </motion.p>
         </div>
       </div>
+      <motion.div
+        className="absolute bottom-8 animate-bounce"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <p className="text-sm text-center">Scroll Down</p>
+        <div className="flex justify-center items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="feather feather-chevron-down"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+      </motion.div>
+      <div className="absolute bottom-20" id="menu"></div>
     </div>
   );
 }
@@ -128,8 +170,23 @@ function FilterSidebar({
   toggleCuisine,
   toggleVisibility
 }: FilterSidebarProps) {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="lg:w-1/5 overflow-y-scroll min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark">
+    <div className="lg:w-1/5 overflow-y-auto min-w-96 px-12 max-lg:py-4 lg:pb-16 sticky top-20 lg:top-20 h-min max-h-[calc(100vh-4rem)] z-20 bg-background max-lg:shadow-lg scrollbar scrollbar-w-2 scrollbar-thumb-primary-darker hover:scrollbar-thumb-primary-darkest active:scrollbar-thumb-primary-superdark scrollbar-thin">
       <div className="flex items-center justify-between">
         <h2 className="font-bold text-2xl lg:py-8">Filters</h2>
         <button
@@ -140,7 +197,12 @@ function FilterSidebar({
         </button>
       </div>
 
-      <div className={`lg:block ${isExpanded ? "block" : "hidden"}`}>
+      <motion.div
+        className={`lg:block ${isExpanded || isLargeScreen ? "block" : "hidden"}`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: isExpanded || isLargeScreen ? 1 : 0, y: isExpanded || isLargeScreen ? 0 : -20 }}
+        transition={{ duration: 0.3 }}
+      >
         <FilterSection title="Meals">
           <FilterButtonGroup
             items={MEAL_CATEGORIES}
@@ -165,7 +227,7 @@ function FilterSidebar({
             multiSelect={true}
           />
         </FilterSection>
-      </div>
+      </motion.div>
     </div>
   );
 }

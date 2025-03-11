@@ -70,7 +70,7 @@ export default function MenuPage() {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
-      <div className="flex max-lg:flex-col lg:flex-row">
+      <div className="flex max-lg:flex-col lg:flex-row pb-16">
         <FilterSidebar
           selectedTags={selectedTags}
           selectedCategory={selectedCategory}

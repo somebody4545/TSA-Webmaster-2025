@@ -7,17 +7,6 @@ import Map from "@/components/Map";
 const Locations = () => {
   const [selectedCity, setSelectedCity] = useState("Seattle");
 
-  interface CityCardProps {
-    city: string;
-    image: string;
-    onArrowClick: (city: string) => void;
-    isSelected: boolean;
-  }
-
-  interface MapProps {
-    city: string;
-  }
-
   const handleCityClick = (city: string): void => {
     setSelectedCity(city);
   };

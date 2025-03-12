@@ -127,7 +127,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
       <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
         <motion.button
           onClick={prevSlide}
-          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          className="btn btn-circle btn-primary btn-shine text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -137,7 +137,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
         </motion.button>
         <motion.button
           onClick={nextSlide}
-          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          className="btn btn-circle btn-primary btn-shine text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -216,8 +216,8 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
-                fill={i < testimonial.rating ? "#fcba03" : "none"}
-                stroke="#fcba03"
+                fill={i < testimonial.rating ? "black" : "none"}
+                stroke="black"
                 strokeWidth="1.5"
                 className="mr-1"
               >
@@ -239,7 +239,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
 
 function Hero() {
   return (
-    <div className="bg-black text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+    <div className="bg-black text-background text-xl relative min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
       <ParallaxBackground />
       <motion.div
         className="-z-10 opacity-25"
@@ -273,6 +273,14 @@ function Hero() {
         Maitso
       </motion.h1>
       <motion.p
+        className="text-center relative -top-4 text-xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        Dine-in & Carry-out<br />
+      </motion.p>
+      <motion.p
         className="text-center mt-4 italic text-xl"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 0.6, x: 0 }}
@@ -286,7 +294,7 @@ function Hero() {
         animate={{ opacity: 0.6, x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        noun
+        adj/noun
       </motion.p>
       <motion.p
         className="text-center"
@@ -507,7 +515,7 @@ function TestimonialsSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-        >
+        >(Note, this section is for competition display only and is not factual)<br /><br />
           Don&apos;t just take our word for it. News outlets and customers alike have been raving about us.
         </motion.p>
         <motion.div

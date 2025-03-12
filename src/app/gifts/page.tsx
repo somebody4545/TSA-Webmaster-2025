@@ -108,7 +108,7 @@ const GiftsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              3d card is interactive! Click and drag to rotate.
+              3D card is interactive! Click and drag to rotate.
             </motion.p>
           </motion.div>
           <motion.div

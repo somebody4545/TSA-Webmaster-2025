@@ -274,9 +274,9 @@ function Hero() {
       </motion.h1>
       <motion.p
         className="text-center relative -top-4 text-xl"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 0.6, x: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         Dine-in & Carry-out<br />
       </motion.p>

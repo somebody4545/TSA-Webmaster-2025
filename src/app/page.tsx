@@ -515,7 +515,7 @@ function TestimonialsSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-        >
+        >(Note, this section is for competition display only and is not factual)<br /><br />
           Don&apos;t just take our word for it. News outlets and customers alike have been raving about us.
         </motion.p>
         <motion.div

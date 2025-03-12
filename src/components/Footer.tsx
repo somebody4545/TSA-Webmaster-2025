@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-row gap-1 mb-2">
             <Link href="/contact">
               <button className="text-sm font-bold text-emerald-300 bg-transparent border border-emerald-300 px-3 py-1 rounded-md hover:bg-emerald-700">
-                Reserve
+                Contact
               </button>
             </Link>
             <div className="flex items-center">

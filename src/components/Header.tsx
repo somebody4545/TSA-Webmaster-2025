@@ -22,7 +22,7 @@ export default function Header() {
     { path: "menu", label: "Menu", match: "/menu" },
     { path: "mission", label: "Mission", match: "/mission" },
     { path: "/locations", label: "Locations", match: "/locations" },
-    { path: "/Refrences", label: "Refrences", match: "/Refrences" },
+    { path: "/Refrences", label: "References", match: "/References" },
   ];
 
   const headerBackground = isScrolled
@@ -72,9 +72,8 @@ export default function Header() {
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`hover:underline ${
-                  pathname === item.match ? "font-bold" : ""
-                } focus:outline-none`}
+                className={`hover:underline ${pathname === item.match ? "font-bold" : ""
+                  } focus:outline-none`}
               >
                 {item.label}
               </Link>
@@ -92,11 +91,9 @@ export default function Header() {
             <li key={item.path}>
               <Link
                 href={item.path}
-                className={`hover:underline ${
-                  pathname === item.match ? "font-bold" : ""
-                } active:!bg-green-950 ${
-                  !isScrolled ? "" : "focus:text-white"
-                }`}
+                className={`hover:underline ${pathname === item.match ? "font-bold" : ""
+                  } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                  }`}
               >
                 {item.label}
               </Link>

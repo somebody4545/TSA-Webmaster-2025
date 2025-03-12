@@ -226,9 +226,6 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
             ))}
           </div>
           <div className="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(0,0,0,0.1)" className="absolute -top-1 -left-2">
-              <path d="M14,17L17,17L17,14L19,14L19,17L22,17L22,19L19,19L19,22L17,22L17,19L14,19L14,17M5,3L19,3L19,9.68L17,9.68L17,5L7,5L7,19L11.1,19L11.1,21L5,21L5,3Z" />
-            </svg>
             <p className="text-base italic font-medium leading-snug">{testimonial.quote}</p>
           </div>
         </div>

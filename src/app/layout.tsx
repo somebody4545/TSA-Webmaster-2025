@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
   title: 'Maitso',
-  description: 'A Resturant wesbite designed for TSA',
+  description: 'A Restaurant Website designed for TSA 2024-2025',
 };
 
 export default function RootLayout({

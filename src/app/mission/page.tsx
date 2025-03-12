@@ -1,8 +1,10 @@
 "use client";
 
+export const SpanishFlag = () => <CircleFlag countryCode="es" height="35" />;
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import GlobalCuisineMap from "@/components/GlobalCuisineMap";
 
 import {
   Citrus,
@@ -14,7 +16,6 @@ import {
   Utensils,
 } from "lucide-react";
 
-// Partner carousel function
 function PartnerCarousel() {
   const [index, setIndex] = useState(0);
   const partners = [1, 2, 3, 4, 5, 6, 7, 8].map((number) => ({
@@ -138,7 +139,6 @@ function PartnerCarousel() {
 }
 
 const MissionPage = () => {
-  // Define state hooks for the flip cards
   const [bikeFlipped, setBikeFlipped] = useState(false);
   const [robotFlipped, setRobotFlipped] = useState(false);
   const [freightFlipped, setFreightFlipped] = useState(false);
@@ -252,7 +252,6 @@ const MissionPage = () => {
               </div>
               <div className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  {/* Bike Delivery Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setBikeFlipped(true)}
@@ -274,7 +273,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -289,7 +287,6 @@ const MissionPage = () => {
                     </motion.div>
                   </div>
 
-                  {/* Robot Delivery Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setRobotFlipped(true)}
@@ -311,7 +308,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -327,7 +323,6 @@ const MissionPage = () => {
                     </motion.div>
                   </div>
 
-                  {/* Electric Trucking Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setFreightFlipped(true)}
@@ -349,7 +344,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -369,7 +363,6 @@ const MissionPage = () => {
             <div className="flex flex-col items-center">
               <div className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  {/* Electric Vehicles Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setWaterFlipped(true)}
@@ -391,7 +384,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -406,7 +398,6 @@ const MissionPage = () => {
                     </motion.div>
                   </div>
 
-                  {/* Green Shipping Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setEnergyFlipped(true)}
@@ -428,7 +419,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -444,7 +434,6 @@ const MissionPage = () => {
                     </motion.div>
                   </div>
 
-                  {/* Low-Carbon Logistics Card */}
                   <div
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setPackagingFlipped(true)}
@@ -466,7 +455,6 @@ const MissionPage = () => {
                       </div>
                     </div>
 
-                    {/* Green overlay that slides up */}
                     <motion.div
                       className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
                       initial={{ y: "100%" }}
@@ -503,6 +491,7 @@ const MissionPage = () => {
           </div>
         </div>
       </div>
+      <GlobalCuisineMap />
     </div>
   );
 };

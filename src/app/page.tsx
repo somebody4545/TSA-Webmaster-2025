@@ -239,7 +239,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
 
 function Hero() {
   return (
-    <div className="bg-black text-background text-xl relative min-h-[500px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+    <div className="bg-black text-background text-xl relative min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
       <ParallaxBackground />
       <motion.div
         className="-z-10 opacity-25"
@@ -273,6 +273,14 @@ function Hero() {
         Maitso
       </motion.h1>
       <motion.p
+        className="text-center relative -top-4 text-xl"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 0.6, x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        Dine-in & Carry-out<br />
+      </motion.p>
+      <motion.p
         className="text-center mt-4 italic text-xl"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 0.6, x: 0 }}
@@ -286,7 +294,7 @@ function Hero() {
         animate={{ opacity: 0.6, x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        noun
+        adj/noun
       </motion.p>
       <motion.p
         className="text-center"

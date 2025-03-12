@@ -513,11 +513,10 @@ const MissionPage = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Kitchen Feature 1 */}
                 <div className="bg-background rounded-lg shadow-md overflow-hidden">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src="/img/kitchen-seasonal.jpg"
+                      src="/img/seasonalingredients.jpg"
                       alt="Seasonal Ingredients"
                       className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
                     />
@@ -536,12 +535,10 @@ const MissionPage = () => {
                     </p>
                   </div>
                 </div>
-
-                {/* Kitchen Feature 2 */}
                 <div className="bg-background rounded-lg shadow-md overflow-hidden">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src="/img/kitchen-zerowaste.jpg"
+                      src="/img/zerowastecooking.jpg"
                       alt="Zero Waste Cooking"
                       className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
                     />
@@ -567,7 +564,7 @@ const MissionPage = () => {
                 <div className="bg-background rounded-lg shadow-md overflow-hidden">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src="/img/kitchen-energy.jpg"
+                      src="/img/energyefficientkitchen.jpg"
                       alt="Energy Efficient Kitchen"
                       className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
                     />
@@ -626,7 +623,7 @@ const MissionPage = () => {
                 </div>
                 <div className="md:w-1/2 h-80 md:h-auto mt-6 md:mt-0">
                   <img
-                    src="/img/kitchen-chefs.jpg"
+                    src="/img/kitchenteam.jpg"
                     alt="Our Kitchen Team"
                     className="w-full h-full object-cover rounded-lg"
                   />
@@ -637,7 +634,6 @@ const MissionPage = () => {
         </div>
       </div>
 
-      {/* Vegetarian Plate Diagram Section */}
       <div className="py-16 bg-background">
         <div className="container mx-auto px-3">
           <div className="flex justify-center">

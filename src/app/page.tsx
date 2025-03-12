@@ -127,7 +127,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
       <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
         <motion.button
           onClick={prevSlide}
-          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          className="btn btn-circle btn-primary btn-shine text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -137,7 +137,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
         </motion.button>
         <motion.button
           onClick={nextSlide}
-          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          className="btn btn-circle btn-primary btn-shine text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >

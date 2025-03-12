@@ -22,6 +22,7 @@ export default function Header() {
     { path: "menu", label: "Menu", match: "/menu" },
     { path: "mission", label: "Mission", match: "/mission" },
     { path: "/locations", label: "Locations", match: "/locations" },
+    { path: "/Refrences", label: "Refrences", match: "/Refrences" },
   ];
 
   const headerBackground = isScrolled

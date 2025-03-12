@@ -1,12 +1,53 @@
 [
-    {
+  {
     "title": "General Tso's Tofu",
     "subtitle": "with Quinoa & Broccoli",
     "price": "$22.99",
     "calories": "640",
+    "nutrition": {
+      "calories": "640",
+      "totalFat": "28g",
+      "saturatedFat": "4g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "950mg",
+      "totalCarbohydrates": "75g",
+      "dietaryFiber": "10g",
+      "sugars": "15g",
+      "protein": "25g",
+      "vitaminD": "0mcg",
+      "calcium": "150mg",
+      "iron": "6mg",
+      "potassium": "620mg"
+    },
     "imageUrl": "/img/menu/general-tso.jpg",
-    "tags": ["Vegan", "High Protein", "Spicy", "Gluten Free"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/general-tsos-tofu",
+    "description": "Our General Tso's Tofu features crispy tofu cubes tossed in a sweet and spicy sauce, served with steamed broccoli and a bed of protein-rich quinoa. This plant-based take on the Chinese-American classic delivers bold flavors with a nutritious twist, balancing the perfect amount of heat with subtle sweetness and umami depth.",
+    "ingredients": [
+      "Extra-Firm Tofu",
+      "Quinoa",
+      "Broccoli",
+      "Tamari",
+      "Rice Vinegar",
+      "Maple Syrup",
+      "Garlic",
+      "Ginger",
+      "Chili Flakes",
+      "Sesame Oil",
+      "Cornstarch",
+      "Green Onions",
+      "Sesame Seeds"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Spicy",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Chinese"
   },
   {
@@ -31,10 +72,31 @@
       "potassium": "500mg"
     },
     "imageUrl": "/img/menu/mediterranean-bowl.png",
+    "link": "/mediterranean-bowl",
     "description": "A Mediterranean Bowl is a vibrant, wholesome dish featuring a base of quinoa or couscous, topped with fresh veggies like cucumbers, tomatoes, and bell peppers. Topped with hummus, tzatziki, olives, feta, and fresh herbs, it can be finished with tofu. A drizzle of olive oil and a squeeze of lemon tie everything together, offering a perfect balance of refreshing flavors and textures.",
-    "ingredients": ["Quinoa", "Falafel", "Hummus", "Cucumbers", "Tomatoes", "Bell Peppers", "Tzatziki", "Olives", "Feta", "Fresh Herbs", "Olive Oil", "Lemon"],
-    "tags": ["Gluten Free", "Vegan", "High Protein"],
-    "categories": ["Lunch", "Dinner"],
+    "ingredients": [
+      "Quinoa",
+      "Falafel",
+      "Hummus",
+      "Cucumbers",
+      "Tomatoes",
+      "Bell Peppers",
+      "Tzatziki",
+      "Olives",
+      "Feta",
+      "Fresh Herbs",
+      "Olive Oil",
+      "Lemon"
+    ],
+    "tags": [
+      "Gluten Free",
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Mediterranean"
   },
   {
@@ -42,9 +104,48 @@
     "subtitle": "with Cottage Cheese & Wild Rice",
     "price": "$26.99",
     "calories": "520",
+    "nutrition": {
+      "calories": "520",
+      "totalFat": "18g",
+      "saturatedFat": "6g",
+      "transFat": "0g",
+      "cholesterol": "30mg",
+      "sodium": "680mg",
+      "totalCarbohydrates": "45g",
+      "dietaryFiber": "8g",
+      "sugars": "5g",
+      "protein": "35g",
+      "vitaminD": "0mcg",
+      "calcium": "250mg",
+      "iron": "3mg",
+      "potassium": "580mg"
+    },
     "imageUrl": "/img/menu/lettucewrap.png",
-    "tags": ["Low Carb", "Gluten Free", "High Protein"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/grilled-lettuce-wrap",
+    "description": "Our Grilled Lettuce Wrap features fresh butter lettuce leaves filled with a savory mix of wild rice, creamy cottage cheese, and grilled vegetables. Each wrap is packed with vitamins and protein while keeping carbs low. The combination of crunchy lettuce, hearty rice, and rich cottage cheese creates a satisfying texture profile that's both refreshing and filling.",
+    "ingredients": [
+      "Butter Lettuce",
+      "Cottage Cheese",
+      "Wild Rice",
+      "Grilled Zucchini",
+      "Bell Peppers",
+      "Red Onion",
+      "Cherry Tomatoes",
+      "Avocado",
+      "Fresh Herbs",
+      "Lemon Juice",
+      "Olive Oil",
+      "Cracked Black Pepper"
+    ],
+    "tags": [
+      "Low Carb",
+      "Gluten Free",
+      "High Protein"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "American"
   },
   {
@@ -52,9 +153,47 @@
     "subtitle": "with Sweet Potato & Kale",
     "price": "$18.99",
     "calories": "490",
+    "nutrition": {
+      "calories": "490",
+      "totalFat": "20g",
+      "saturatedFat": "2.5g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "450mg",
+      "totalCarbohydrates": "65g",
+      "dietaryFiber": "14g",
+      "sugars": "12g",
+      "protein": "16g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "5mg",
+      "potassium": "780mg"
+    },
     "imageUrl": "/img/menu/buddha-bowl.png",
-    "tags": ["Vegan", "Gluten Free", "Low Carb"],
-    "categories": ["Lunch"],
+    "link": "/buddha-bowl",
+    "description": "Our Buddha Bowl is a nourishing composition of roasted sweet potatoes, massaged kale, chickpeas, and quinoa, artfully arranged to showcase vibrant colors and textures. Drizzled with a tahini-lemon dressing and topped with avocado, hemp seeds, and microgreens, this bowl delivers a perfect balance of complex carbohydrates, plant proteins, and healthy fats to fuel your day.",
+    "ingredients": [
+      "Sweet Potato",
+      "Kale",
+      "Quinoa",
+      "Chickpeas",
+      "Avocado",
+      "Red Cabbage",
+      "Tahini",
+      "Lemon",
+      "Maple Syrup",
+      "Hemp Seeds",
+      "Microgreens",
+      "Extra Virgin Olive Oil"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free",
+      "Low Carb"
+    ],
+    "categories": [
+      "Lunch"
+    ],
     "cuisine": "American"
   },
   {
@@ -62,9 +201,50 @@
     "subtitle": "with Basmati Rice & Naan",
     "price": "$23.99",
     "calories": "720",
+    "nutrition": {
+      "calories": "720",
+      "totalFat": "32g",
+      "saturatedFat": "12g",
+      "transFat": "0g",
+      "cholesterol": "60mg",
+      "sodium": "880mg",
+      "totalCarbohydrates": "85g",
+      "dietaryFiber": "6g",
+      "sugars": "8g",
+      "protein": "28g",
+      "vitaminD": "0mcg",
+      "calcium": "350mg",
+      "iron": "4mg",
+      "potassium": "480mg"
+    },
     "imageUrl": "/img/menu/tikka-masala.jpg",
-    "tags": ["Spicy", "High Protein"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/paneer-tikka-masala",
+    "description": "Our Paneer Tikka Masala features cubes of marinated and grilled Indian cottage cheese simmered in a rich, aromatic tomato-based sauce with traditional spices. Served with fragrant basmati rice and warm naan bread, this hearty dish offers the perfect balance of creaminess, spice, and texture. The house-made sauce blends garam masala, fenugreek, and other authentic spices for a truly memorable dining experience.",
+    "ingredients": [
+      "Paneer Cheese",
+      "Tomatoes",
+      "Cream",
+      "Basmati Rice",
+      "Naan Bread",
+      "Onions",
+      "Garlic",
+      "Ginger",
+      "Garam Masala",
+      "Turmeric",
+      "Cumin",
+      "Fenugreek",
+      "Cilantro",
+      "Ghee",
+      "Yogurt"
+    ],
+    "tags": [
+      "Spicy",
+      "High Protein"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Indian"
   },
   {
@@ -72,9 +252,43 @@
     "subtitle": "with Poached Eggs & Microgreens",
     "price": "$14.99",
     "calories": "420",
+    "nutrition": {
+      "calories": "420",
+      "totalFat": "24g",
+      "saturatedFat": "5g",
+      "transFat": "0g",
+      "cholesterol": "370mg",
+      "sodium": "580mg",
+      "totalCarbohydrates": "35g",
+      "dietaryFiber": "9g",
+      "sugars": "3g",
+      "protein": "18g",
+      "vitaminD": "2mcg",
+      "calcium": "80mg",
+      "iron": "4mg",
+      "potassium": "720mg"
+    },
     "imageUrl": "/img/menu/avocado-toast.jpg",
-    "tags": ["High Protein", "Low Carb"],
-    "categories": ["Breakfast"],
+    "link": "/avocado-toast",
+    "description": "Our Avocado Toast elevates the classic breakfast with artisanal sourdough bread topped with creamy mashed avocado, perfectly poached eggs with runny yolks, and a sprinkle of microgreens. Finished with a dusting of red pepper flakes, flaky sea salt, and a drizzle of extra virgin olive oil, this dish combines healthy fats and proteins for a satisfying start to your day.",
+    "ingredients": [
+      "Sourdough Bread",
+      "Avocado",
+      "Pasture-Raised Eggs",
+      "Microgreens",
+      "Red Pepper Flakes",
+      "Flaky Sea Salt",
+      "Extra Virgin Olive Oil",
+      "Black Pepper",
+      "Lemon Juice"
+    ],
+    "tags": [
+      "High Protein",
+      "Low Carb"
+    ],
+    "categories": [
+      "Breakfast"
+    ],
     "cuisine": "American"
   },
   {
@@ -82,9 +296,48 @@
     "subtitle": "with Vegetables & Mango",
     "price": "$24.99",
     "calories": "550",
+    "nutrition": {
+      "calories": "550",
+      "totalFat": "18g",
+      "saturatedFat": "2.5g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "650mg",
+      "totalCarbohydrates": "70g",
+      "dietaryFiber": "8g",
+      "sugars": "18g",
+      "protein": "22g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "3mg",
+      "potassium": "680mg"
+    },
     "imageUrl": "/img/menu/poke-bowl.jpg",
-    "tags": ["Gluten Free", "Low Carb"],
-    "categories": ["Lunch"],
+    "link": "/poke-bowl",
+    "description": "Our plant-based Poke Bowl features marinated smoked tofu cubes atop a bed of seasoned sushi rice, surrounded by fresh vegetables and tropical mango. With cucumber, edamame, avocado, and radish arranged artfully around the bowl, each bite offers a different combination of flavors. Finished with a spicy mayo, crispy wonton strips, and a sprinkle of furikake seasoning, this bowl delivers the perfect balance of textures and tastes.",
+    "ingredients": [
+      "Smoked Tofu",
+      "Sushi Rice",
+      "Mango",
+      "Cucumber",
+      "Avocado",
+      "Edamame",
+      "Radish",
+      "Green Onions",
+      "Sesame Seeds",
+      "Nori",
+      "Wonton Strips",
+      "Spicy Mayo",
+      "Soy Sauce",
+      "Rice Vinegar"
+    ],
+    "tags": [
+      "Gluten Free",
+      "Low Carb"
+    ],
+    "categories": [
+      "Lunch"
+    ],
     "cuisine": "American"
   },
   {
@@ -92,9 +345,46 @@
     "subtitle": "with Truffle Oil & Parmesan",
     "price": "$21.99",
     "calories": "680",
+    "nutrition": {
+      "calories": "680",
+      "totalFat": "25g",
+      "saturatedFat": "8g",
+      "transFat": "0g",
+      "cholesterol": "22mg",
+      "sodium": "780mg",
+      "totalCarbohydrates": "92g",
+      "dietaryFiber": "4g",
+      "sugars": "5g",
+      "protein": "16g",
+      "vitaminD": "1mcg",
+      "calcium": "180mg",
+      "iron": "2mg",
+      "potassium": "420mg"
+    },
     "imageUrl": "/img/menu/mushroom-risotto.jpg",
-    "tags": ["Gluten Free"],
-    "categories": ["Dinner"],
+    "link": "/mushroom-risotto",
+    "description": "Our Mushroom Risotto celebrates the earthy flavors of a medley of wild mushrooms, slowly cooked with arborio rice in a flavorful vegetable broth until creamy and tender. Finished with a drizzle of truffle oil, freshly grated parmesan cheese, and a sprinkle of chives, this Italian comfort food classic delivers rich umami flavors and a luxurious texture that melts in your mouth with every spoonful.",
+    "ingredients": [
+      "Arborio Rice",
+      "Mixed Wild Mushrooms",
+      "Shallots",
+      "Garlic",
+      "White Wine",
+      "Vegetable Broth",
+      "Parmesan Cheese",
+      "Truffle Oil",
+      "Butter",
+      "Thyme",
+      "Chives",
+      "Black Pepper",
+      "Olive Oil"
+    ],
+    "tags": [
+      "Gluten Free"
+    ],
+    "categories": [
+      "Dinner"
+    ],
     "cuisine": "Italian"
   },
   {
@@ -102,9 +392,45 @@
     "subtitle": "with Fresh Berries & Granola",
     "price": "$15.99",
     "calories": "390",
+    "nutrition": {
+      "calories": "390",
+      "totalFat": "12g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "35mg",
+      "totalCarbohydrates": "65g",
+      "dietaryFiber": "11g",
+      "sugars": "28g",
+      "protein": "8g",
+      "vitaminD": "0mcg",
+      "calcium": "80mg",
+      "iron": "2mg",
+      "potassium": "450mg"
+    },
     "imageUrl": "/img/menu/acai-bowl.png",
-    "tags": ["Vegan", "Gluten Free"],
-    "categories": ["Breakfast"],
+    "link": "/acai-bowl",
+    "description": "Our Acai Bowl features a thick, creamy base of blended acai berries, bananas, and almond milk topped with an artful arrangement of fresh seasonal berries, house-made granola, banana slices, and crunchy chia seeds. Drizzled with honey and sprinkled with coconut flakes, this nutrient-dense bowl offers a perfect balance of antioxidants, healthy fats, and natural sweetness for an energizing breakfast or refreshing snack.",
+    "ingredients": [
+      "Acai Berries",
+      "Banana",
+      "Strawberries",
+      "Blueberries",
+      "Almond Milk",
+      "House-made Granola",
+      "Honey",
+      "Chia Seeds",
+      "Coconut Flakes",
+      "Hemp Seeds",
+      "Goji Berries"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Breakfast"
+    ],
     "cuisine": "American"
   },
   {
@@ -112,9 +438,50 @@
     "subtitle": "with Bulgogi & Kimchi",
     "price": "$25.99",
     "calories": "690",
+    "nutrition": {
+      "calories": "690",
+      "totalFat": "26g",
+      "saturatedFat": "5g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "1120mg",
+      "totalCarbohydrates": "82g",
+      "dietaryFiber": "8g",
+      "sugars": "18g",
+      "protein": "32g",
+      "vitaminD": "0mcg",
+      "calcium": "150mg",
+      "iron": "6mg",
+      "potassium": "780mg"
+    },
     "imageUrl": "/img/menu/korean-bbq.jpg",
-    "tags": ["Spicy", "High Protein", "Gluten Free"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/korean-bbq-bowl",
+    "description": "Our Korean BBQ Bowl features plant-based bulgogi made with marinated seitan or soy curls, served over steamed rice with house-made kimchi, stir-fried vegetables, and a sunny side up egg. Garnished with sesame seeds, green onions, and a drizzle of gochujang sauce, this bowl delivers the perfect balance of sweet, savory, and spicy flavors that capture the essence of Korean cuisine.",
+    "ingredients": [
+      "Plant-based Bulgogi",
+      "Steamed Rice",
+      "Kimchi",
+      "Carrots",
+      "Spinach",
+      "Bean Sprouts",
+      "Zucchini",
+      "Gochujang",
+      "Soy Sauce",
+      "Sesame Oil",
+      "Garlic",
+      "Ginger",
+      "Green Onions",
+      "Sesame Seeds"
+    ],
+    "tags": [
+      "Spicy",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Korean"
   },
   {
@@ -122,9 +489,48 @@
     "subtitle": "with Grilled Pineapple & Avocado",
     "price": "$17.99",
     "calories": "440",
+    "nutrition": {
+      "calories": "440",
+      "totalFat": "28g",
+      "saturatedFat": "4g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "320mg",
+      "totalCarbohydrates": "38g",
+      "dietaryFiber": "12g",
+      "sugars": "20g",
+      "protein": "15g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "4mg",
+      "potassium": "850mg"
+    },
     "imageUrl": "/img/menu/green-goddess.jpg",
-    "tags": ["Low Carb", "High Protein", "Gluten Free"],
-    "categories": ["Lunch"],
+    "link": "/green-goddess-salad",
+    "description": "Our Green Goddess Salad combines crisp mixed greens with sweet grilled pineapple, creamy avocado, and protein-rich edamame beans. Topped with cucumber ribbons, watermelon radish, and toasted pepitas for crunch, this refreshing salad is dressed with our house-made green goddess dressing—a creamy blend of herbs, avocado, and tahini. Perfect for a light lunch or dinner that doesn't compromise on flavor or satisfaction.",
+    "ingredients": [
+      "Mixed Greens",
+      "Grilled Pineapple",
+      "Avocado",
+      "Edamame",
+      "Cucumber",
+      "Watermelon Radish",
+      "Pepitas",
+      "Fresh Herbs",
+      "Tahini",
+      "Lemon Juice",
+      "Apple Cider Vinegar",
+      "Olive Oil",
+      "Green Onions"
+    ],
+    "tags": [
+      "Low Carb",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Lunch"
+    ],
     "cuisine": "American"
   },
   {
@@ -132,9 +538,45 @@
     "subtitle": "with Eggs & Black Beans",
     "price": "$13.99",
     "calories": "580",
+    "nutrition": {
+      "calories": "580",
+      "totalFat": "24g",
+      "saturatedFat": "8g",
+      "transFat": "0g",
+      "cholesterol": "380mg",
+      "sodium": "850mg",
+      "totalCarbohydrates": "65g",
+      "dietaryFiber": "12g",
+      "sugars": "4g",
+      "protein": "28g",
+      "vitaminD": "2mcg",
+      "calcium": "220mg",
+      "iron": "5mg",
+      "potassium": "620mg"
+    },
     "imageUrl": "/img/menu/breakfast-burrito.jpg",
-    "tags": ["High Protein"],
-    "categories": ["Breakfast"],
+    "link": "/breakfast-burrito",
+    "description": "Our Breakfast Burrito wraps fluffy scrambled eggs, black beans, roasted potatoes, and melted cheese in a warm whole wheat tortilla. Stuffed with fresh avocado, pico de gallo, and a hint of chipotle sauce, every bite delivers a perfect blend of textures and flavors. Served with a side of house-made salsa and sour cream, this hearty breakfast option provides sustained energy to power your morning.",
+    "ingredients": [
+      "Whole Wheat Tortilla",
+      "Free-Range Eggs",
+      "Black Beans",
+      "Roasted Potatoes",
+      "Cheddar Cheese",
+      "Avocado",
+      "Pico de Gallo",
+      "Chipotle Sauce",
+      "Sour Cream",
+      "Cilantro",
+      "Red Onion",
+      "Bell Peppers"
+    ],
+    "tags": [
+      "High Protein"
+    ],
+    "categories": [
+      "Breakfast"
+    ],
     "cuisine": "Mexican"
   },
   {
@@ -142,9 +584,50 @@
     "subtitle": "with Tofu & Peanuts",
     "price": "$20.99",
     "calories": "610",
+    "nutrition": {
+      "calories": "610",
+      "totalFat": "22g",
+      "saturatedFat": "3g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "980mg",
+      "totalCarbohydrates": "85g",
+      "dietaryFiber": "6g",
+      "sugars": "16g",
+      "protein": "24g",
+      "vitaminD": "0mcg",
+      "calcium": "180mg",
+      "iron": "5mg",
+      "potassium": "480mg"
+    },
     "imageUrl": "/img/menu/pad-thai.png",
-    "tags": ["Spicy", "Vegan", "High Protein"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/pad-thai",
+    "description": "Our Pad Thai features rice noodles stir-fried in our signature tamarind sauce with crispy tofu, bean sprouts, and scrambled egg. Garnished with crushed peanuts, fresh cilantro, lime wedges, and a sprinkle of chili flakes, this Thai classic balances sweet, sour, salty, and spicy flavors in perfect harmony. Each serving is customizable to your preferred spice level for a truly personalized dining experience.",
+    "ingredients": [
+      "Rice Noodles",
+      "Tofu",
+      "Bean Sprouts",
+      "Green Onions",
+      "Garlic",
+      "Tamarind Paste",
+      "Palm Sugar",
+      "Soy Sauce",
+      "Lime",
+      "Peanuts",
+      "Cilantro",
+      "Chili Flakes",
+      "Vegetable Oil",
+      "Red Bell Pepper"
+    ],
+    "tags": [
+      "Spicy",
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Thai"
   },
   {
@@ -152,9 +635,50 @@
     "subtitle": "with Roasted Vegetables",
     "price": "$18.99",
     "calories": "520",
+    "nutrition": {
+      "calories": "520",
+      "totalFat": "22g",
+      "saturatedFat": "3g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "380mg",
+      "totalCarbohydrates": "68g",
+      "dietaryFiber": "14g",
+      "sugars": "8g",
+      "protein": "18g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "6mg",
+      "potassium": "820mg"
+    },
     "imageUrl": "/img/menu/quinoa-bowl.jpg",
-    "tags": ["Vegan", "High Protein", "Gluten Free", "Low Carb"],
-    "categories": ["Lunch"],
+    "link": "/quinoa-power-bowl",
+    "description": "Our Quinoa Power Bowl combines protein-rich tricolor quinoa with a rainbow of roasted seasonal vegetables, including sweet potatoes, Brussels sprouts, and red bell peppers. Topped with avocado slices, crunchy pumpkin seeds, and drizzled with a zesty lemon-tahini dressing, this nutrient-dense bowl provides sustained energy and complete plant-based protein. Each bowl is garnished with microgreens for a fresh, peppery finish.",
+    "ingredients": [
+      "Tricolor Quinoa",
+      "Sweet Potatoes",
+      "Brussels Sprouts",
+      "Red Bell Peppers",
+      "Broccoli",
+      "Avocado",
+      "Pumpkin Seeds",
+      "Tahini",
+      "Lemon Juice",
+      "Olive Oil",
+      "Garlic",
+      "Cumin",
+      "Microgreens",
+      "Chickpeas"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Gluten Free",
+      "Low Carb"
+    ],
+    "categories": [
+      "Lunch"
+    ],
     "cuisine": "American"
   },
   {
@@ -162,9 +686,49 @@
     "subtitle": "with Soft-Boiled Egg & Nori",
     "price": "$19.99",
     "calories": "590",
+    "nutrition": {
+      "calories": "590",
+      "totalFat": "18g",
+      "saturatedFat": "4g",
+      "transFat": "0g",
+      "cholesterol": "185mg",
+      "sodium": "1280mg",
+      "totalCarbohydrates": "78g",
+      "dietaryFiber": "8g",
+      "sugars": "6g",
+      "protein": "32g",
+      "vitaminD": "1mcg",
+      "calcium": "80mg",
+      "iron": "5mg",
+      "potassium": "520mg"
+    },
     "imageUrl": "/img/menu/miso-ramen.png",
-    "tags": ["High Protein", "Spicy"],
-    "categories": ["Lunch", "Dinner"],
+    "link": "/miso-ramen",
+    "description": "Our Miso Ramen features a rich, umami-packed broth made with fermented miso paste and house-made vegetable stock. Served with wavy ramen noodles and topped with a perfectly soft-boiled egg, seared tofu, corn, bean sprouts, and shiitake mushrooms. Garnished with sliced green onions, a sheet of nori seaweed, and a drizzle of chili oil, this comforting bowl delivers layers of flavor and texture in every spoonful.",
+    "ingredients": [
+      "Ramen Noodles",
+      "Miso Paste",
+      "Soft-Boiled Egg",
+      "Tofu",
+      "Shiitake Mushrooms",
+      "Bean Sprouts",
+      "Corn",
+      "Green Onions",
+      "Nori Seaweed",
+      "Sesame Oil",
+      "Chili Oil",
+      "Ginger",
+      "Garlic",
+      "Vegetable Stock"
+    ],
+    "tags": [
+      "High Protein",
+      "Spicy"
+    ],
+    "categories": [
+      "Lunch",
+      "Dinner"
+    ],
     "cuisine": "Japanese"
   }
 ]

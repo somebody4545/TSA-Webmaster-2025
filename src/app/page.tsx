@@ -216,8 +216,8 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
-                fill={i < testimonial.rating ? "#fcba03" : "none"}
-                stroke="#fcba03"
+                fill={i < testimonial.rating ? "black" : "none"}
+                stroke="black"
                 strokeWidth="1.5"
                 className="mr-1"
               >

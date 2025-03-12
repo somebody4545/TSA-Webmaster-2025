@@ -1,20 +1,151 @@
-import React from "react";
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+
 import {
   Citrus,
   Tractor,
-  Truck,
   Quote as QuoteIcon,
-  CarTaxiFront,
-  Bike,
   ChefHat,
   CookingPot,
-  Salad,
   Users,
   Utensils,
 } from "lucide-react";
 
+// Partner carousel function
+function PartnerCarousel() {
+  const [index, setIndex] = useState(0);
+  const partners = [1, 2, 3, 4, 5, 6, 7, 8].map((number) => ({
+    id: number,
+    imageUrl: `/img/partner${number}.png`,
+    alt: `Partner ${number} logo`,
+    href: `/img/partner${number}`,
+  }));
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % partners.length);
+  };
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev - 1 + partners.length) % partners.length);
+  };
+
+  return (
+    <div className="relative w-full mx-auto h-[400px] py-8">
+      <div className="relative flex items-center justify-center h-full">
+        {partners.map((partner, i) => {
+          const position =
+            i === index
+              ? "translate-x-0 scale-100 z-30 opacity-100"
+              : i === (index + 1) % partners.length
+              ? "translate-x-[75%] scale-90 z-20 opacity-20"
+              : i === (index - 1 + partners.length) % partners.length
+              ? "translate-x-[-75%] scale-90 z-20 opacity-20"
+              : "translate-x-0 scale-75 z-10 opacity-0";
+
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity:
+                  i === index
+                    ? 1
+                    : i === (index + 1) % partners.length ||
+                      i === (index - 1 + partners.length) % partners.length
+                    ? 0.2
+                    : 0,
+              }}
+              transition={{ duration: 0.7 }}
+              className={`absolute w-[90%] md:w-[75%] h-[350px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
+            >
+              <a href={partner.href} className="block h-full w-full">
+                <div className="flex items-center justify-center h-full w-full">
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img
+                      src={partner.imageUrl}
+                      alt={partner.alt}
+                      width="450"
+                      height="350"
+                      className="object-contain transition-transform hover:scale-105 rounded-xl"
+                    />
+                  </div>
+                </div>
+              </a>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
+        <motion.button
+          onClick={prevSlide}
+          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </motion.button>
+        <motion.button
+          onClick={nextSlide}
+          className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </motion.button>
+      </div>
+
+      <div className="flex justify-center mt-4 gap-2">
+        {partners.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              i === index ? "bg-primary" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const MissionPage = () => {
+  // Define state hooks for the flip cards
+  const [bikeFlipped, setBikeFlipped] = useState(false);
+  const [robotFlipped, setRobotFlipped] = useState(false);
+  const [freightFlipped, setFreightFlipped] = useState(false);
+  const [waterFlipped, setWaterFlipped] = useState(false);
+  const [energyFlipped, setEnergyFlipped] = useState(false);
+  const [packagingFlipped, setPackagingFlipped] = useState(false);
+
   return (
     <div className="min-h-screen">
       <div className="relative w-full h-screen">
@@ -78,18 +209,18 @@ const MissionPage = () => {
               </div>
               <div className="hidden md:flex md:w-3/5 items-center justify-center">
                 <div className="w-full h-80">
-                  <Image
+                  <img
                     src="/img/farmer.jpg"
                     alt="Farm image"
-                    width={480}
-                    height={270}
+                    width="480"
+                    height="270"
                     className="rounded-lg shadow-md object-cover w-full h-full"
                   />
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-4">
             <div className="w-full md:w-4/5 max-w-4xl text-center">
               <div className="text-3xl font-heading font-bold text-primary-darker">
                 Our Partners
@@ -98,25 +229,7 @@ const MissionPage = () => {
           </div>
           <div className="flex justify-center mb-12">
             <div className="w-full md:w-11/12 max-w-6xl">
-              <div className="grid grid-cols-4 md:grid-cols-8 gap-2 md:gap-4">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-                  <a
-                    key={index}
-                    href={`/img/partner${index}`}
-                    className="block"
-                  >
-                    <div className="aspect-9:16 bg-background-dim rounded-lg shadow-sm flex items-center justify-center transition-transform hover:scale-105">
-                      <Image
-                        src={`/img/partner${index}.png`}
-                        alt={`Partner ${index} logo`}
-                        width={200}
-                        height={200}
-                        className="object-contain"
-                      />
-                    </div>
-                  </a>
-                ))}
-              </div>
+              <PartnerCarousel />
             </div>
           </div>
           <div className="w-full h-screen relative overflow-hidden">
@@ -130,7 +243,7 @@ const MissionPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-20 mt-16">
+          <div className="flex flex-col gap-10 mt-16">
             <div className="flex flex-col items-center">
               <div className="text-center mb-10">
                 <h3 className="text-3xl font-heading font-bold text-primary-darker">
@@ -139,50 +252,116 @@ const MissionPage = () => {
               </div>
               <div className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
-                    <Image
-                      src="/img/bikedelivery.jpg"
-                      alt="Eco-friendly Transport"
-                      width={400}
-                      height={300}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                        Bike Delivery
-                      </p>
+                  {/* Bike Delivery Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setBikeFlipped(true)}
+                    onMouseLeave={() => setBikeFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/bikedelivery.jpg"
+                        alt="Bike Delivery"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Bike Delivery
+                        </p>
+                      </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: bikeFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        We use bikes for quick and eco-friendly deliveries in
+                        downtown areas. This keeps our streets less crowded and
+                        the air cleaner.
+                      </p>
+                    </motion.div>
                   </div>
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
-                    <Image
-                      src="/img/robotdelivery.jpg"
-                      alt="Electric Vehicles"
-                      width={400}
-                      height={300}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                        EVs & Robot Delivery
-                      </p>
+
+                  {/* Robot Delivery Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setRobotFlipped(true)}
+                    onMouseLeave={() => setRobotFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/robotdelivery.jpg"
+                        alt="Robot Delivery"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Robot Delivery
+                        </p>
+                      </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: robotFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        Compact delivery robots bring packages directly to
+                        customers without burning any fuel. They offer a
+                        futuristic, low-impact way to get goods where they need
+                        to go.
+                      </p>
+                    </motion.div>
                   </div>
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden">
-                    <Image
-                      src="/img/greenfreight.jpg"
-                      alt="Bicycle Couriers"
-                      width={400}
-                      height={300}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                        Green Freight
-                      </p>
+
+                  {/* Electric Trucking Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setFreightFlipped(true)}
+                    onMouseLeave={() => setFreightFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/greenfreight.jpg"
+                        alt="Electric Trucking"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Electric Trucking
+                        </p>
+                      </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: freightFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        For larger hauls, we depend on electric trucks built for
+                        heavy-duty transport. These vehicles move goods far and
+                        wide—without the carbon footprint of diesel engines.
+                      </p>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -190,47 +369,116 @@ const MissionPage = () => {
             <div className="flex flex-col items-center">
               <div className="w-full">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-start p-6">
-                      <div className="flex items-start">
-                        <ChefHat
-                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
-                          strokeWidth={1.5}
-                        />
-                        <p className="text-lg font-heading font-bold text-white">
-                          World Cuisine
+                  {/* Electric Vehicles Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setWaterFlipped(true)}
+                    onMouseLeave={() => setWaterFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/electricvehicles.png"
+                        alt="Electric Vehicles"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Electric Vehicles
                         </p>
                       </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: waterFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        Our electric cars and vans handle mid-range deliveries
+                        without relying on gas. By switching to EVs, we cut
+                        emissions and reduce noise pollution.
+                      </p>
+                    </motion.div>
                   </div>
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-start p-6">
-                      <div className="flex items-start">
-                        <CookingPot
-                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
-                          strokeWidth={1.5}
-                        />
-                        <p className="text-lg font-heading font-bold text-white">
-                          Cooking Techniques
+
+                  {/* Green Shipping Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setEnergyFlipped(true)}
+                    onMouseLeave={() => setEnergyFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/greenshipping.jpeg"
+                        alt="Green Shipping"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Green Shipping
                         </p>
                       </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: energyFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        Global imports and exports are powered by low-emission
+                        ships and planes. This approach reduces the
+                        environmental impact of getting goods from around the
+                        world.
+                      </p>
+                    </motion.div>
                   </div>
-                  <div className="h-48 md:h-64 relative rounded-lg overflow-hidden bg-background-dim">
-                    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                    <div className="absolute inset-0 flex items-start p-6">
-                      <div className="flex items-start">
-                        <Utensils
-                          className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0"
-                          strokeWidth={1.5}
-                        />
-                        <p className="text-lg font-heading font-bold text-white">
-                          Cultural Stories
+
+                  {/* Low-Carbon Logistics Card */}
+                  <div
+                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
+                    onMouseEnter={() => setPackagingFlipped(true)}
+                    onMouseLeave={() => setPackagingFlipped(false)}
+                  >
+                    <div className="absolute w-full h-full">
+                      <img
+                        src="/img/routeoptimization.jpg"
+                        alt="Low-Carbon Logistics"
+                        width="400"
+                        height="300"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
+                          Low-Carbon Logistics
                         </p>
                       </div>
                     </div>
+
+                    {/* Green overlay that slides up */}
+                    <motion.div
+                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
+                      initial={{ y: "100%" }}
+                      animate={{ y: packagingFlipped ? 0 : "100%" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-white text-center font-body">
+                        Through smarter route planning and optimized systems, we
+                        avoid unnecessary emissions. Our goal is to rethink
+                        every step of delivery to make it as green as possible.
+                      </p>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -238,8 +486,6 @@ const MissionPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Quote Section */}
       <div className="py-8 bg-primary-darker">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
@@ -252,112 +498,6 @@ const MissionPage = () => {
               diet."
               <div className="text-sm text-background-dim mt-3">
                 — Albert Einstein
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Our Commitments Section */}
-      <div className="relative">
-        {/* Full-width pig image */}
-        <div className="relative w-full h-screen">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/api/placeholder/1200/800')" }}
-          >
-            <div
-              className="absolute inset-0 bg-black bg-opacity-40"
-              aria-hidden="true"
-            ></div>
-          </div>
-
-          {/* Our Commitments Heading */}
-          <div className="absolute top-0 left-0 w-full py-10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white text-center">
-              Our Commitments
-            </h2>
-          </div>
-
-          {/* Commitment cards without animation */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="container mx-auto px-6">
-              <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-                {/* Card 1: Global Cuisines */}
-                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Image
-                        src="/api/placeholder/60/60"
-                        alt="Globe icon"
-                        width={60}
-                        height={60}
-                        className="h-12 w-12"
-                      />
-                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
-                        Authentic Global Cuisines
-                      </h3>
-                    </div>
-                    <div className="text-text font-body">
-                      <p>
-                        We showcase authentic dishes from across the world,
-                        respecting traditional techniques while incorporating
-                        local, sustainable ingredients. Each dish tells a
-                        cultural story.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2: Food Waste */}
-                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Image
-                        src="/api/placeholder/60/60"
-                        alt="Food waste icon"
-                        width={60}
-                        height={60}
-                        className="h-12 w-12"
-                      />
-                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
-                        Minimizing Food Waste
-                      </h3>
-                    </div>
-                    <div className="text-text font-body">
-                      <p>
-                        We partner with food security organizations to ensure
-                        leftover food goes to those in need. Our prep techniques
-                        maximize ingredient usage while minimizing waste.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3: Sustainable Sourcing */}
-                <div className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-xl overflow-hidden">
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <Image
-                        src="/api/placeholder/60/60"
-                        alt="Sustainability icon"
-                        width={60}
-                        height={60}
-                        className="h-12 w-12"
-                      />
-                      <h3 className="text-xl font-heading font-bold ml-4 text-primary-darker">
-                        Sustainable Sourcing
-                      </h3>
-                    </div>
-                    <div className="text-text font-body">
-                      <p>
-                        We carefully select ingredients that are organic, local,
-                        and in season. Our packaging is 100% compostable or
-                        recyclable. We prioritize vendors who share our
-                        environmental values.
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

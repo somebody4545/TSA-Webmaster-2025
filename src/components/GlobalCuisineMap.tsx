@@ -111,7 +111,7 @@ const GlobalCuisineMap = () => {
     : null;
 
   return (
-    <div className="py-16 bg-background-dim">
+    <div className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-heading font-bold text-primary-darker text-center mb-12">
           Global Culinary Influences
@@ -142,10 +142,6 @@ const GlobalCuisineMap = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setActivePopup(location.id)}
               >
-                <div
-                  className="absolute w-12 h-12 rounded-full bg-primary/30 animate-ping"
-                  style={{ animationDuration: "3s", top: "-3px", left: "-3px" }}
-                />
                 <CircleFlag
                   countryCode={location.countryCode}
                   height="30"
@@ -204,10 +200,10 @@ const GlobalCuisineMap = () => {
                         {activeLocation.signatureDish}
                       </p>
                       <p className="mt-2 text-sm text-primary font-semibold">
-                        Try our
+                        Try our{" "}
                         <span className="font-bold">
                           {activeLocation.menuReference}
-                        </span>
+                        </span>{" "}
                         from our menu!
                       </p>
                     </div>

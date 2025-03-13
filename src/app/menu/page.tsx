@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MenuCard from "@/components/MenuCard";
 import menuItems from "../../../data/menu-data.json";
+import { ChevronDown, ChevronUp, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 
 const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
 const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner"];
@@ -13,11 +14,33 @@ const CUISINE_TYPES = [
   "Italian", "Korean", "Mexican", "Thai", "Japanese",
 ];
 
+const SORT_OPTIONS = [
+  { id: 'default', label: 'Default', icon: <ArrowUpDown size={16} /> },
+  { id: 'nameAsc', label: 'Name: A to Z', icon: <ArrowUp size={16} /> },
+  { id: 'nameDesc', label: 'Name: Z to A', icon: <ArrowDown size={16} /> },
+  { id: 'priceAsc', label: 'Price: Low to High', icon: <ArrowUp size={16} /> },
+  { id: 'priceDesc', label: 'Price: High to Low', icon: <ArrowDown size={16} /> },
+];
+
 export default function MenuPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+  const [sortOption, setSortOption] = useState('default');
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setShowSortDropdown(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const scrollToMenu = () => {
     const menuSection = document.getElementById("menu");
@@ -26,8 +49,10 @@ export default function MenuPage() {
     }
   };
 
-  const filteredMenuItems = useMemo(() => {
-    return menuItems.filter(item => {
+  // Filter and sort the menu items
+  const processedMenuItems = useMemo(() => {
+    // First filter items
+    const filtered = menuItems.filter(item => {
       const matchesTags = selectedTags.length === 0 ||
         selectedTags.every(tag => item.tags?.includes(tag));
       const matchesCategory = !selectedCategory ||
@@ -37,7 +62,22 @@ export default function MenuPage() {
 
       return matchesTags && matchesCategory && matchesCuisine;
     });
-  }, [selectedTags, selectedCategory, selectedCuisine]);
+
+    return [...filtered].sort((a, b) => {
+      switch (sortOption) {
+        case 'nameAsc':
+          return a.title.localeCompare(b.title);
+        case 'nameDesc':
+          return b.title.localeCompare(a.title);
+        case 'priceAsc':
+          return parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', ''));
+        case 'priceDesc':
+          return parseFloat(b.price.replace('$', '')) - parseFloat(a.price.replace('$', ''));
+        default:
+          return 0;
+      }
+    });
+  }, [selectedTags, selectedCategory, selectedCuisine, sortOption]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prevTags => {
@@ -66,6 +106,15 @@ export default function MenuPage() {
   };
 
   const toggleFilterVisibility = () => setIsFilterExpanded(!isFilterExpanded);
+  const toggleSortDropdown = () => setShowSortDropdown(!showSortDropdown);
+
+  const handleSortChange = (option: string) => {
+    setSortOption(option);
+    setShowSortDropdown(false);
+  };
+
+  // Get current sort option label
+  const currentSortOption = SORT_OPTIONS.find(option => option.id === sortOption) || SORT_OPTIONS[0];
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,7 +130,85 @@ export default function MenuPage() {
           toggleCuisine={toggleCuisine}
           toggleVisibility={toggleFilterVisibility}
         />
-        <MenuGrid items={filteredMenuItems} />
+        <div className="container mx-auto px-4 py-8 w-4/5">
+          {/* Sort dropdown UI */}
+          <div className="flex justify-between items-center mb-6">
+            <div>
+              <span className="text-gray-700">{processedMenuItems.length} items</span>
+            </div>
+            <div className="relative" ref={sortRef}>
+              <button
+                onClick={toggleSortDropdown}
+                className="flex items-center space-x-2 px-4 py-2 bg-primary text-text rounded-full hover:bg-primary-darker transition-colors"
+              >
+                <span>Sort by: {currentSortOption.label}</span>
+                {showSortDropdown ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
+
+              <AnimatePresence>
+                {showSortDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 overflow-hidden"
+                  >
+                    <div className="py-1">
+                      {SORT_OPTIONS.map((option) => (
+                        <button
+                          key={option.id}
+                          onClick={() => handleSortChange(option.id)}
+                          className={`w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors ${sortOption === option.id ? 'bg-primary/10 font-medium' : ''
+                            }`}
+                        >
+                          <span className="text-primary">{option.icon}</span>
+                          <span>{option.label}</span>
+                          {sortOption === option.id && (
+                            <motion.span
+                              layoutId="activeSortIndicator"
+                              className="ml-auto text-primary"
+                            >
+                              ✓
+                            </motion.span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Menu grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {processedMenuItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                  <MenuCard {...item} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* No results message */}
+          {processedMenuItems.length === 0 && (
+            <motion.div
+              className="text-center py-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <h3 className="text-xl font-semibold mb-2">No results found</h3>
+              <p className="text-gray-600">Try adjusting your filters or sorting options</p>
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   );

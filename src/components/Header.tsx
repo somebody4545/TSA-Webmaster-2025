@@ -22,7 +22,6 @@ export default function Header() {
     { path: "/mission", label: "Mission", match: "/mission" },
     { path: "/menu", label: "Menu", match: "/menu" },
     { path: "/locations", label: "Locations", match: "/locations" },
-    { path: "/gifts", label: "Gifts", match: "/gifts" },
     { path: "/rewards", label: "Rewards", match: "/rewards" },
     { path: "/references", label: "References", match: "/references" },
   ];

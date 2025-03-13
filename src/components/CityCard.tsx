@@ -2,60 +2,52 @@
 
 import React from "react";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-interface CityCardProps {
+interface CardProps {
   city: string;
   image: string;
-  onArrowClick: (city: string) => void;
-  isSelected: boolean;
+  description: string;
+  link: string;
 }
 
-const CityCard: React.FC<CityCardProps> = ({ city, image, onArrowClick, isSelected }) => {
-  const handleArrowClick = () => {
-    onArrowClick(city);
-  };
-
+function CityCard({ city, image, description, link }: CardProps) {
   return (
+		<Link href={link} className="text-lg text-text text-left">
     <motion.div
-      className="bg-primary-darker hover:bg-primary-darkest rounded-lg overflow-hidden relative duration-100"
+      className="flex flex-col items-center"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.5 }}
     >
-      <motion.h3
-        className="text-2xl text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center"
+      <motion.div
+        className="relative w-full"
+        style={{ paddingBottom: '100%' }}
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Image
+          src={image}
+          alt={city}
+          layout="fill"
+          className="object-cover"
+        />
+      </motion.div>
+      <motion.div
+        className="mt-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
-        {city}
-      </motion.h3>
-      <Image
-        src={image}
-        alt={city}
-        layout="fill"
-        className="object-cover opacity-10"
-      />
-      <div className="absolute top-1/2 right-5 transform -translate-y-1/2">
-        <motion.div
-          className="cursor-pointer text-white"
-          onClick={handleArrowClick}
-          whileHover={{ x: 5 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{
-            x: { type: "spring", stiffness: 300 },
-            scale: { duration: 0.1 },
-          }}
-        >
-          <ChevronRight />
-        </motion.div>
-      </div>
+
+
+				<h2 className="text-2xl font-bold mb-2 text-primary font-heading">{city}</h2>
+        <p className="text-text mb-4">{description}</p>
+      </motion.div>
     </motion.div>
+		</Link>
   );
-};
+}
 
 export default CityCard;

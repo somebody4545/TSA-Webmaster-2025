@@ -21,7 +21,7 @@ const GiftCardModel = () => {
 
   useFrame((_, delta) => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += delta * Math.PI * 0.1;
+      modelRef.current.rotation.y += delta * Math.PI * 0.15;
     }
   });
 

@@ -67,15 +67,16 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
   };
 
   return (
-    <div className="relative w-full mx-auto h-[450px] py-8">
+    <div className="relative w-full mx-auto h-[450px] py-4 sm:py-8">
       <div className="relative flex items-center justify-center h-full">
         {items.map((item, i) => {
+          // Use smaller transform values on smaller screens
           const position = i === index
             ? "translate-x-0 scale-100 z-30 opacity-100"
             : i === (index + 1) % items.length
-              ? "translate-x-[75%] scale-90 z-20 opacity-20"
+              ? "translate-x-[40%] sm:translate-x-[60%] md:translate-x-[75%] scale-90 z-20 opacity-20"
               : i === (index - 1 + items.length) % items.length
-                ? "translate-x-[-75%] scale-90 z-20 opacity-20"
+                ? "translate-x-[-40%] sm:translate-x-[-60%] md:translate-x-[-75%] scale-90 z-20 opacity-20"
                 : "translate-x-0 scale-75 z-10 opacity-0";
 
           return (
@@ -84,9 +85,9 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: i === index ? 1 : i === (index + 1) % items.length || i === (index - 1 + items.length) % items.length ? 0.2 : 0 }}
               transition={{ duration: 0.7 }}
-              className={`absolute w-[70%] md:w-[50%] h-[350px] rounded-xl bg-white shadow-xl flex flex-col transition-all duration-500 ease-in-out ${position}`}
+              className={`absolute w-[80%] sm:w-[70%] md:w-[50%] h-[350px] rounded-xl bg-white shadow-xl flex flex-col transition-all duration-500 ease-in-out text-black ${position}`}
             >
-              <Link href={`/menu/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block h-full">
+              <Link href={`/menu/${item.title.replace(/\s+/g, "-").toLowerCase()}`} className="block h-full text-black">
                 <div className="flex flex-col h-full p-6">
                   <div className="relative w-full h-1/2 overflow-hidden rounded-lg mb-4">
                     <img
@@ -95,23 +96,23 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                       className="w-full h-full object-cover"
                     />
                     {item.cuisine && (
-                      <div className="absolute top-2 right-2 bg-primary text-white text-xs px-2 py-1 rounded-full">
+                      <div className="absolute top-2 right-2 bg-primary text-black text-xs px-2 py-1 rounded-full">
                         {item.cuisine}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-primary">{item.title}</h3>
+                    <h3 className="text-xl font-bold text-black">{item.title}</h3>
                     <p className="text-sm text-gray-600 mb-2">{item.subtitle}</p>
 
                     <div className="flex justify-between items-center mt-auto">
-                      <p className="font-bold text-primary">{item.price}</p>
-                      <p className="text-sm text-gray-500">{item.calories} cal</p>
+                      <p className="font-bold text-black">{item.price}</p>
+                      <p className="text-sm text-gray-700">{item.calories} cal</p>
                     </div>
 
                     <div className="mt-2 flex flex-wrap gap-1">
                       {item.tags && item.tags.slice(0, 2).map((tag, j) => (
-                        <span key={j} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                        <span key={j} className="bg-primary/10 text-black text-xs px-2 py-1 rounded-full">
                           {tag}
                         </span>
                       ))}
@@ -397,42 +398,48 @@ function MenuSection() {
   }));
 
   return (
-    <div className="bg-black lg:h-[44rem] w-full text-background p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
-      <div className="flex flex-col-reverse lg:flex-row flex-1 h-full max-w-screen-2xl mx-auto gap-16">
-        <div className='w-full lg:w-1/3 flex flex-col justify-center h-full max-lg:text-center'>
+    <div className="bg-black lg:min-h-[44rem] w-full text-background p-4 sm:p-8 md:p-12 lg:p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
+      <div className="flex flex-col h-full max-w-screen-2xl mx-auto">
+        {/* Text and button section - centered */}
+        <div className="w-full flex flex-col items-center justify-center text-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -25 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="max-w-2xl"
           >
             <motion.h2
-              className="text-3xl font-heading"
-              initial={{ opacity: 0, x: -25 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="text-2xl md:text-3xl font-heading mb-3"
+              initial={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               Our Menu
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              className="mb-6 px-4"
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              From entrees to desserts, we have a variety of plant-based options for you to enjoy. Come and explore our delicious offerings from a variety of cuisines.
+              From entrees to desserts, we have a variety of plant-based options for you to enjoy.
+              Come and explore our delicious offerings from a variety of cuisines.
             </motion.p>
             <Link href="/menu">
-              <button className="btn btn-primary btn-shine mt-4 rounded-full max-w-32 shadow-lg">
+              <button className="btn btn-primary btn-shine rounded-full shadow-lg">
                 View Full Menu
               </button>
             </Link>
           </motion.div>
         </div>
-        <div className="w-full lg:w-2/3 flex flex-col justify-center h-full">
+
+        {/* Carousel section - full width */}
+        <div className="w-full flex justify-center">
           <motion.div
-            className="w-full"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            className="w-full max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <MenuCarousel items={menuItems} />
           </motion.div>

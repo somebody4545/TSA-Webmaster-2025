@@ -1,6 +1,6 @@
 "use client";
 
-export const SpanishFlag = () => <CircleFlag countryCode="es" height="35" />;
+import { CircleFlag } from "react-circle-flags";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";

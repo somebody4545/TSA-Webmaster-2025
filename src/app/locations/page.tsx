@@ -18,7 +18,7 @@ const Locations = () => {
           Locations
         </motion.h1>
         <motion.p
-          className="text-center"
+          className="text-left"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}

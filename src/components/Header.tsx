@@ -81,6 +81,9 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          <li>
+            <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+          </li>
         </ul>
       </div>
 
@@ -98,6 +101,9 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          <li>
+            <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+          </li>
         </ul>
       </nav>
     </header>

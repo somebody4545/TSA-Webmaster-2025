@@ -112,7 +112,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
 
                     <div className="mt-2 flex flex-wrap gap-1">
                       {item.tags && item.tags.slice(0, 2).map((tag, j) => (
-                        <span key={j} className="bg-primary/10 text-black text-xs px-2 py-1 rounded-full">
+                        <span key={j} className="bg-primary text-black text-xs px-2 py-1 rounded-full">
                           {tag}
                         </span>
                       ))}

@@ -23,6 +23,7 @@
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
     "react-multi-carousel": "^2.8.5",
+    "react-qr-code": "^2.0.15",
     "react-three-fiber": "^6.0.13",
     "three": "^0.173.0",
     "vite": "^6.2.0",

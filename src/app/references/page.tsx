@@ -95,7 +95,7 @@ export default function ReferencesPage() {
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-2">Image Links</h2>
-        <p className="pb-3">All images rely on either the <span className="font-bold">Unsplash</span> or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span></p>
+        <p className="pb-3">All images rely on either the <span className="font-bold">Unsplash</span> or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span>, or are otherwise public domain</p>
         <ul className="list-disc pl-5">
           {devReferences.map((link, index) => (
             <li key={index} className="mb-1 break-words">

@@ -129,55 +129,17 @@ export default function MenuPage() {
           toggleCategory={toggleCategory}
           toggleCuisine={toggleCuisine}
           toggleVisibility={toggleFilterVisibility}
+          sortOption={sortOption}
+          showSortDropdown={showSortDropdown}
+          toggleSortDropdown={toggleSortDropdown}
+          handleSortChange={handleSortChange}
+          currentSortOption={currentSortOption}
+          sortRef={sortRef}
         />
         <div className="container mx-auto px-4 py-8 w-4/5">
-          {/* Sort dropdown UI */}
           <div className="flex justify-between items-center mb-6">
             <div>
               <span className="text-gray-700">{processedMenuItems.length} items</span>
-            </div>
-            <div className="relative" ref={sortRef}>
-              <button
-                onClick={toggleSortDropdown}
-                className="flex items-center space-x-2 px-4 py-2 bg-primary text-text rounded-full hover:bg-primary-darker transition-colors"
-              >
-                <span>Sort by: {currentSortOption.label}</span>
-                {showSortDropdown ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-              </button>
-
-              <AnimatePresence>
-                {showSortDropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 overflow-hidden"
-                  >
-                    <div className="py-1">
-                      {SORT_OPTIONS.map((option) => (
-                        <button
-                          key={option.id}
-                          onClick={() => handleSortChange(option.id)}
-                          className={`w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors ${sortOption === option.id ? 'bg-primary/10 font-medium' : ''
-                            }`}
-                        >
-                          <span className="text-primary">{option.icon}</span>
-                          <span>{option.label}</span>
-                          {sortOption === option.id && (
-                            <motion.span
-                              layoutId="activeSortIndicator"
-                              className="ml-auto text-primary"
-                            >
-                              ✓
-                            </motion.span>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </div>
 
@@ -225,7 +187,7 @@ function HeroSection() {
         height: "90vh",
       }}
     >
-      <div className="w-full md:w-1/2 space-y-5 text-left -ml-4">
+      <div className="w-full md:w-1/2 space-y-5 text-center">
         <div className="bg-white bg-opacity-0 rounded-lg">
           <motion.h1
             className="text-3xl font-heading xl:text-4xl font-sans tracking-tight text-black md:px-24 px-12"
@@ -285,6 +247,12 @@ interface FilterSidebarProps {
   toggleCategory: (category: string | null) => void;
   toggleCuisine: (cuisine: string) => void;
   toggleVisibility: () => void;
+  sortOption: string;
+  showSortDropdown: boolean;
+  toggleSortDropdown: () => void;
+  handleSortChange: (option: string) => void;
+  currentSortOption: typeof SORT_OPTIONS[0];
+  sortRef: React.RefObject<HTMLDivElement>;
 }
 
 function FilterSidebar({
@@ -295,7 +263,13 @@ function FilterSidebar({
   toggleTag,
   toggleCategory,
   toggleCuisine,
-  toggleVisibility
+  toggleVisibility,
+  sortOption,
+  showSortDropdown,
+  toggleSortDropdown,
+  handleSortChange,
+  currentSortOption,
+  sortRef
 }: FilterSidebarProps) {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
@@ -330,6 +304,52 @@ function FilterSidebar({
         animate={{ opacity: isExpanded || isLargeScreen ? 1 : 0, y: isExpanded || isLargeScreen ? 0 : -20 }}
         transition={{ duration: 0.3 }}
       >
+        <FilterSection title="Sort by">
+          <div className="relative" ref={sortRef}>
+            <button
+              onClick={toggleSortDropdown}
+              className="flex items-center space-x-2 px-4 py-2 bg-primary text-text rounded-full hover:bg-primary-darker transition-colors"
+            >
+              <span>Sort by: {currentSortOption.label}</span>
+              {showSortDropdown ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+
+            <AnimatePresence>
+              {showSortDropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 overflow-hidden"
+                >
+                  <div className="py-1">
+                    {SORT_OPTIONS.map((option) => (
+                      <button
+                        key={option.id}
+                        onClick={() => handleSortChange(option.id)}
+                        className={`w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors ${sortOption === option.id ? 'bg-primary/10 font-medium' : ''
+                          }`}
+                      >
+                        <span className="text-primary">{option.icon}</span>
+                        <span>{option.label}</span>
+                        {sortOption === option.id && (
+                          <motion.span
+                            layoutId="activeSortIndicator"
+                            className="ml-auto text-primary"
+                          >
+                            ✓
+                          </motion.span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </FilterSection>
+
         <FilterSection title="Meals">
           <FilterButtonGroup
             items={MEAL_CATEGORIES}

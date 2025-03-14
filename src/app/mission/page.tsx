@@ -15,7 +15,7 @@ import {
   Leaf,
   Sparkles,
   Recycle,
-	ChevronDown
+  ChevronDown
 } from "lucide-react";
 
 function CountUp({ end, duration = 2, className = "" }: { end: number; duration?: number; className?: string }) {
@@ -203,15 +203,34 @@ const MissionPage = () => {
             <span className="text-primary">Fork</span>
           </motion.h1>
         </div>
-				<motion.div
-          className="absolute bottom-8 animate-bounce text-background"
+        <motion.div
+          className="absolute bottom-8 animate-bounce cursor-pointer text-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
+          onClick={() => {
+            window.scrollTo({
+              top: window.innerHeight,
+              behavior: 'smooth'
+            });
+          }}
         >
           <p className="text-sm text-center">Scroll Down</p>
           <div className="flex justify-center items-center">
-            <ChevronDown />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-chevron-down"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </div>
         </motion.div>
       </div>

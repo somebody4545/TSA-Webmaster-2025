@@ -84,7 +84,7 @@ export default function Header() {
               className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
                 } focus:outline-none`}
             >
-              Mission
+              Process
             </Link>
           </li>
           <li>
@@ -153,7 +153,7 @@ export default function Header() {
                 } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
                 }`}
             >
-              Mission
+              Process
             </Link>
           </li>
           <li>

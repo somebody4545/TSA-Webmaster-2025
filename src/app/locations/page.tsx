@@ -89,7 +89,7 @@ const Locations = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <CityCard
               city="Los Angeles, CA"
-              image="/img/cities/Los Angeles.jpeg"
+              image="/img/cities/Los Angeles.jpg"
               description="Immerse yourself in the vibrant culture and exquisite cuisine of Los Angeles at our downtown venue."
               link="/locations/los-angeles"
             />

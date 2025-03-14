@@ -372,6 +372,7 @@ const MissionPage = () => {
                 <h3 className="text-3xl font-heading font-bold text-primary-darker">
                   Sustainable Transportation
                 </h3>
+                <p>Hover or tap to see info on each of our strategies!</p>
               </motion.div>
 
               <div className="w-full">

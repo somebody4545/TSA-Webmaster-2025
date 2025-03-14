@@ -25,7 +25,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
   };
 
   return (
-    <div className="relative w-full mx-auto h-[450px] py-4 sm:py-8">
+    <div className="relative w-full mx-auto h-[450px] py-4 sm:py-8 max-w-screen overflow-hidden">
       <div className="relative flex items-center justify-center h-full">
         {items.map((item, i) => {
           // Use smaller transform values on smaller screens

@@ -35,7 +35,7 @@ export default function ReferencesPage() {
     'https://www.gettyimages.com/detail/photo/collecting-food-for-donation-in-a-homeless-shelter-royalty-free-image/1286048476',
     'https://www.partstown.com/cm/resource-center/guides/gd2/tips-for-an-energy-efficient-kitchen',
     'https://unsplash.com/photos/man-in-white-crew-neck-t-shirt-standing-in-front-of-kitchen-sink-qm6yxe7SjWg',
-    
+
 
   ];
 
@@ -49,7 +49,10 @@ export default function ReferencesPage() {
     'https://sdgs.un.org/topics/sustainable-transport',
     'https://doublenpotatoes.com/',
     'https://www.helsingjunctionfarms.com/',
-    
+    'https://schuhfarmswa.com/',
+    'https://www.palousebrand.com/',
+    'https://carnationfarms.org/'
+
 
 
 

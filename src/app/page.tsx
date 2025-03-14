@@ -278,7 +278,7 @@ function MenuSection() {
   const menuItems = menuData
 
   return (
-    <div className="bg-black lg:min-h-[44rem] w-full text-background p-4 sm:p-8 md:p-12 lg:p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
+    <div className="bg-black lg:min-h-[44rem] w-full text-background sm:p-8 md:p-12 p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>
       <div className="flex flex-col h-full max-w-screen-2xl mx-auto">
         {/* Text and button section - centered */}
         <div className="w-full flex flex-col items-center justify-center text-center">

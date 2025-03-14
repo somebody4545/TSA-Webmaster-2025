@@ -730,5 +730,86 @@
       "Dinner"
     ],
     "cuisine": "Japanese"
+  },
+  {
+    "title": "Crispy Spring Rolls",
+    "description": "Crispy vegetable spring rolls served with sweet chili dipping sauce",
+    "price": "$8.99",
+    "image": "/img/menu/spring-rolls.jpg",
+    "categories": ["Appetizers"],
+    "tags": ["Vegan", "Spicy"],
+    "rating": 4.7
+  },
+  {
+    "title": "Loaded Nachos",
+    "description": "Corn tortilla chips topped with melted cheese, guacamole, sour cream, and jalapeños",
+    "price": "$10.99",
+    "image": "/img/menu/nachos.jpg",
+    "categories": ["Appetizers"],
+    "tags": ["Gluten Free", "Spicy"],
+    "rating": 4.8
+  },
+  {
+    "title": "Caprese Skewers",
+    "description": "With diced tomatoes, fresh basil, and balsamic glaze",
+    "price": "$9.99",
+    "image": "/img/menu/caprese.jpg",
+    "categories": ["Appetizers"],
+    "tags": ["Vegan", "Low Carb"],
+    "rating": 4.6
+  },
+  {
+    "title": "Berry Smoothie",
+    "description": "Refreshing blend of mixed berries, banana, and almond milk",
+    "price": "$6.99",
+    "image": "/img/menu/berry-smoothie.jpg",
+    "categories": ["Drinks"],
+    "tags": ["Vegan", "Gluten Free"],
+    "rating": 4.9
+  },
+  {
+    "title": "Iced Matcha Latte",
+    "description": "Premium matcha green tea with your choice of milk over ice",
+    "price": "$5.99",
+    "image": "/img/menu/matcha-latte.jpg",
+    "categories": ["Drinks"],
+    "tags": ["Vegan", "High Protein"],
+    "rating": 4.7
+  },
+  {
+    "title": "Fresh Mint Lemonade",
+    "description": "Freshly squeezed lemons with muddled mint leaves and a touch of honey",
+    "price": "$4.99",
+    "image": "/img/menu/mint-lemonade.png",
+    "categories": ["Drinks"],
+    "tags": ["Vegan", "Gluten Free"],
+    "rating": 4.8
+  },
+  {
+    "title": "Chocolate Lava Cake",
+    "description": "Warm chocolate cake with a molten center, served with vanilla ice cream",
+    "price": "$8.99",
+    "image": "/img/menu/lava-cake.png",
+    "categories": ["Desserts"],
+    "tags": ["Gluten Free"],
+    "rating": 4.9
+  },
+  {
+    "title": "Berry Cheesecake",
+    "description": "Creamy cheesecake topped with fresh seasonal berries and berry coulis",
+    "price": "$7.99",
+    "image": "/img/menu/berry-cheesecake.jpg",
+    "categories": ["Desserts"],
+    "tags": ["Low Carb"],
+    "rating": 4.8
+  },
+  {
+    "title": "Coconut Chia Pudding",
+    "description": "Coconut milk chia pudding topped with fresh mango and toasted coconut flakes",
+    "price": "$6.99",
+    "image": "/img/menu/chia-pudding.png",
+    "categories": ["Desserts"],
+    "tags": ["Vegan", "Gluten Free", "High Protein"],
+    "rating": 4.7
   }
 ]

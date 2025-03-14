@@ -8,7 +8,8 @@ import menuItems from "../../../data/menu-data.json";
 import { ChevronDown, ChevronUp, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 
 const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
-const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner", "Appetizers", "Drinks", "Desserts"];
+const MAIN_MEALS = ["Breakfast", "Lunch", "Dinner"];
+const OTHER_CATEGORIES = ["Appetizers", "Drinks", "Desserts"];
 const CUISINE_TYPES = [
   "Chinese", "Mediterranean", "American", "Indian",
   "Italian", "Korean", "Mexican", "Thai", "Japanese",
@@ -136,13 +137,13 @@ export default function MenuPage() {
 
               const safeItem = {
                 ...item,
-                imageUrl: item.imageUrl 
+                imageUrl: item.imageUrl
                   ? (item.imageUrl.startsWith('/') ? item.imageUrl : `/${item.imageUrl}`)
-                  : item.image 
+                  : item.image
                     ? (item.image.startsWith('/') ? item.image : `/${item.image}`)
                     : '/img/placeholder-food.jpg'
               };
-              
+
               return (
                 <motion.div
                   key={index}
@@ -209,10 +210,16 @@ function HeroSection() {
         </div>
       </div>
       <motion.div
-        className="absolute bottom-8 animate-bounce"
+        className="absolute bottom-8 animate-bounce cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        onClick={() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        }}
       >
         <p className="text-sm text-center">Scroll Down</p>
         <div className="flex justify-center items-center">
@@ -310,48 +317,37 @@ function FilterSidebar({
             </button>
 
             <AnimatePresence>
-              {showSortDropdown && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 overflow-hidden"
-                >
-                  <div className="py-1">
-                    {SORT_OPTIONS.map((option) => (
-                      <button
-                        key={option.id}
-                        onClick={() => handleSortChange(option.id)}
-                        className={`w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors ${sortOption === option.id ? 'bg-primary/10 font-medium' : ''
-                          }`}
-                      >
-                        <span className="text-primary">{option.icon}</span>
-                        <span>{option.label}</span>
-                        {sortOption === option.id && (
-                          <motion.span
-                            layoutId="activeSortIndicator"
-                            className="ml-auto text-primary"
-                          >
-                            ✓
-                          </motion.span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
+              {/* Dropdown content */}
             </AnimatePresence>
           </div>
         </FilterSection>
 
-        <FilterSection title="Meals">
+        {/* Add divider and spacing */}
+        <div className="my-4 border-b border-gray-200"></div>
+
+        {/* Main Meals Section */}
+        <FilterSection title="Main Meals">
           <FilterButtonGroup
-            items={MEAL_CATEGORIES}
+            items={MAIN_MEALS}
             selectedItem={selectedCategory}
             onSelect={toggleCategory}
           />
         </FilterSection>
+
+        {/* Add divider between sections */}
+        <div className="my-4 border-b border-gray-200"></div>
+
+        {/* Other Categories Section */}
+        <FilterSection title="Other Categories">
+          <FilterButtonGroup
+            items={OTHER_CATEGORIES}
+            selectedItem={selectedCategory}
+            onSelect={toggleCategory}
+          />
+        </FilterSection>
+
+        {/* Add more prominent divider before Dietary Choices */}
+        <div className="my-6 border-b-2 border-gray-200"></div>
 
         <FilterSection title="Dietary Choices">
           <FilterButtonGroup

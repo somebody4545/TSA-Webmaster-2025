@@ -186,10 +186,16 @@ function Hero() {
         1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
       </motion.p>
       <motion.div
-        className="absolute bottom-8 animate-bounce"
+        className="absolute bottom-8 animate-bounce cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
+        onClick={() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        }}
       >
         <p className="text-sm text-center">Scroll Down</p>
         <div className="flex justify-center items-center">

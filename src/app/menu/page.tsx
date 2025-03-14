@@ -8,8 +8,7 @@ import menuItems from "../../../data/menu-data.json";
 import { ChevronDown, ChevronUp, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 
 const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
-const MAIN_MEALS = ["Breakfast", "Lunch", "Dinner"];
-const OTHER_CATEGORIES = ["Appetizers", "Drinks", "Desserts"];
+const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner"];
 const CUISINE_TYPES = [
   "Chinese", "Mediterranean", "American", "Indian",
   "Italian", "Korean", "Mexican", "Thai", "Japanese",
@@ -26,6 +25,7 @@ const SORT_OPTIONS = [
 export default function MenuPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [sortOption, setSortOption] = useState('default');
   const [showSortDropdown, setShowSortDropdown] = useState(false);
@@ -57,8 +57,10 @@ export default function MenuPage() {
         selectedTags.every(tag => item.tags?.includes(tag));
       const matchesCategory = !selectedCategory ||
         item.categories?.includes(selectedCategory);
+      const matchesCuisine = !selectedCuisine ||
+        item.cuisine === selectedCuisine;
 
-      return matchesTags && matchesCategory;
+      return matchesTags && matchesCategory && matchesCuisine;
     });
 
     return [...filtered].sort((a, b) => {
@@ -75,7 +77,7 @@ export default function MenuPage() {
           return 0;
       }
     });
-  }, [selectedTags, selectedCategory, sortOption]);
+  }, [selectedTags, selectedCategory, selectedCuisine, sortOption]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prevTags => {
@@ -92,6 +94,14 @@ export default function MenuPage() {
       const newCategory = prev === category ? null : category;
       scrollToMenu();
       return newCategory;
+    });
+  };
+
+  const toggleCuisine = (cuisine: string) => {
+    setSelectedCuisine(prev => {
+      const newCuisine = prev === cuisine ? null : cuisine;
+      scrollToMenu();
+      return newCuisine;
     });
   };
 
@@ -113,9 +123,11 @@ export default function MenuPage() {
         <FilterSidebar
           selectedTags={selectedTags}
           selectedCategory={selectedCategory}
+          selectedCuisine={selectedCuisine}
           isExpanded={isFilterExpanded}
           toggleTag={toggleTag}
           toggleCategory={toggleCategory}
+          toggleCuisine={toggleCuisine}
           toggleVisibility={toggleFilterVisibility}
           sortOption={sortOption}
           showSortDropdown={showSortDropdown}
@@ -133,30 +145,18 @@ export default function MenuPage() {
 
           {/* Menu grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processedMenuItems.map((item, index) => {
-
-              const safeItem = {
-                ...item,
-                imageUrl: item.imageUrl
-                  ? (item.imageUrl.startsWith('/') ? item.imageUrl : `/${item.imageUrl}`)
-                  : item.image
-                    ? (item.image.startsWith('/') ? item.image : `/${item.image}`)
-                    : '/img/placeholder-food.jpg'
-              };
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
-                    <MenuCard {...safeItem} />
-                  </Link>
-                </motion.div>
-              );
-            })}
+            {processedMenuItems.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                  <MenuCard {...item} />
+                </Link>
+              </motion.div>
+            ))}
           </div>
 
           {/* No results message */}
@@ -247,9 +247,11 @@ function HeroSection() {
 interface FilterSidebarProps {
   selectedTags: string[];
   selectedCategory: string | null;
+  selectedCuisine: string | null;
   isExpanded: boolean;
   toggleTag: (tag: string) => void;
   toggleCategory: (category: string | null) => void;
+  toggleCuisine: (cuisine: string) => void;
   toggleVisibility: () => void;
   sortOption: string;
   showSortDropdown: boolean;
@@ -262,9 +264,11 @@ interface FilterSidebarProps {
 function FilterSidebar({
   selectedTags,
   selectedCategory,
+  selectedCuisine,
   isExpanded,
   toggleTag,
   toggleCategory,
+  toggleCuisine,
   toggleVisibility,
   sortOption,
   showSortDropdown,
@@ -325,29 +329,14 @@ function FilterSidebar({
         {/* Add divider and spacing */}
         <div className="my-4 border-b border-gray-200"></div>
 
-        {/* Main Meals Section */}
-        <FilterSection title="Main Meals">
+
+        <FilterSection title="Cuisines">
           <FilterButtonGroup
-            items={MAIN_MEALS}
-            selectedItem={selectedCategory}
-            onSelect={toggleCategory}
+            items={CUISINE_TYPES}
+            selectedItem={selectedCuisine}
+            onSelect={toggleCuisine}
           />
         </FilterSection>
-
-        {/* Add divider between sections */}
-        <div className="my-4 border-b border-gray-200"></div>
-
-        {/* Other Categories Section */}
-        <FilterSection title="Other Categories">
-          <FilterButtonGroup
-            items={OTHER_CATEGORIES}
-            selectedItem={selectedCategory}
-            onSelect={toggleCategory}
-          />
-        </FilterSection>
-
-        {/* Add more prominent divider before Dietary Choices */}
-        <div className="my-6 border-b-2 border-gray-200"></div>
 
         <FilterSection title="Dietary Choices">
           <FilterButtonGroup

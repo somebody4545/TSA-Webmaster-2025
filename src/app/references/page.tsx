@@ -20,17 +20,25 @@ export default function ReferencesPage() {
     'https://unsplash.com/photos/white-rice-with-sliced-strawberries-and-brown-nuts-on-white-ceramic-plate-5pk7ZB1xyjU',
     'https://unsplash.com/photos/green-and-brown-vegetable-on-white-ceramic-plate-7GO11y7bznw',
     'https://www.flickr.com/photos/queenkv/13699777484/',
-    'https://www.mydarlingvegan.com/korean-barbecue-bowl/'
-
-
+    'https://www.mydarlingvegan.com/korean-barbecue-bowl/',
+    'https://unsplash.com/photos/cooked-foods-WmKXu-bzygo',
+    'https://unsplash.com/photos/a-blue-bowl-filled-with-vegetables-and-a-wooden-spoon-yhc4pSbl01A',
+    'https://unsplash.com/photos/bowl-of-vegetable-salads-IGfIGP5ONV0',
+    'https://unsplash.com/photos/noddles-on-black-bowl-V82GYnR98lY',
+    'https://unsplash.com/photos/fried-rice-with-green-vegetable-on-brown-ceramic-plate-708OpfCW4H8',
+    'https://www.flickr.com/photos/tabocat/50992810931/in/photolist-24Ue6eV-2kG4u8n-2pyTfEx-2oZBuxg-28BRpfm-DGeM4z-SFHFXV-2qM7Db8-2kSefDM-PCFD9y-24JCjhE-2quC5XQ-a13JLH-2ooTnwP-2nxGJT7-2i8qh5c-2i8qh4q-KwaTzB-2omJerY-2pCwbQq-mDpEi-2q37oDg-dbDkCb-2qR2b2F-2oM54dz-8aLTdv-2qR2b2q-2qR39Bv-22AnutA-2iM57jt-7oub6M-27AJFvN-2ibUAzZ-i9jpUs-8aLTT8-QRcGkq-2hacWKp-MjE3wm-a2MMqP-KiJLEE-BJazA1-PoZrDZ-8gnkZY-2np9V9Y-bU1X3i-S4iYd7-2kUtMqw-27whiVj-8aQbCJ',
+    'https://www.flickr.com/photos/heatherchristo/32034624680/in/photolist-QNMPRb-5eYg7q-hRP7vp-brqK1j-emvPht-22n6P3p-i3Eyh4-dtoRoP-nmqmLE-GRejzV-dTQm1R-dkR6iG-pZdSn7-pdbfP3-csyccY-aVgR7T-dQVauB-eahAf8-eecBJc-7KccTM-CRDUFt-bzAgqw-ytLAo-mjHrRe-VMRstA-uEi9g-pRjLMp-gSnzJX-Mji2yw-kUDmpn-GVCqUC-uEi9W-ioY33a-RTwxtj-hRQCbx-2758oyn-nrHFx1-aVjajP-aebRu6-hRQ751-okoUiJ-jRHYFv-27axTRD-WrJjEx-5xvunG-WwUk3K-wEHWUf-i6xxo7-Ui833N-jaXCSA',
+    'https://purepng.com/photo/4574/food-food-plate-top-view',
   ];
 
   return (
     <div className="container p-4 w-screen px-8 flex flex-col gap-4">
       <h1 className="text-2xl font-bold mb-4">References</h1>
+      <a className="text-primary-darker" href="/worklog.pdf">Work Log</a>
+      <a className="text-primary-darker" href="/copyright.pdf">Copyright Checklist</a>
       <div>
         <h2 className="text-xl font-semibold mb-2">Code Stack</h2>
-        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender.</p>
+        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop.</p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-2">Additional Libraries Utilized</h2>
@@ -46,6 +54,9 @@ export default function ReferencesPage() {
             </li>
             <li>
             <code>react-multi-carousel</code>: A library for creating carousels in React applications. 
+            </li>
+            <li>
+            <code>react-circle-flags</code>: A library for displaying flags in React applications.
             </li>
             <li>
               <code>https://randomuser.me/</code>: Used for generating random user images for testimonials, which have a free license for use.

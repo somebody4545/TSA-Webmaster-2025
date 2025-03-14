@@ -7,6 +7,7 @@ import { useLoader } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 const GiftCardModel = () => {
   const gltf = useLoader(GLTFLoader, '/maitsocard.glb');
@@ -79,7 +80,7 @@ const GiftsPage = () => {
   return (
     <>
       <section className="bg-black text-background">
-        <div className="min-h-[80vh] lg:max-h-[750px] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
+        <div className="min-h-[90vh] lg:max-h-[750px] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
           <motion.div
             className='lg:w-1/2 max-lg:px-16'
             initial={{ opacity: 0, x: -50 }}
@@ -111,6 +112,17 @@ const GiftsPage = () => {
               3D card is interactive! Click and drag to rotate.
             </motion.p>
           </motion.div>
+									<motion.div
+										className="absolute bottom-8 animate-bounce"
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										transition={{ duration: 1, delay: 1.5 }}
+									>
+										<p className="text-sm text-center">Scroll Down</p>
+										<div className="flex justify-center items-center">
+											<ChevronDown />
+										</div>
+									</motion.div>
           <motion.div
             className='lg:w-1/2 w-full max-lg:px-8 relative h-full aspect-square'
             initial={{ opacity: 0, x: 50 }}
@@ -134,7 +146,7 @@ const GiftsPage = () => {
       </section>
       <section className="bg-background text-black min-h-[80vh] w-screen max-w-screen-xl mx-auto flex flex-col">
         <motion.h2
-          className='text-3xl font-bold text-center pt-16 px-12'
+          className='text-3xl font-bold text-center pt-16 px-12 font-heading text-primary-darker'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

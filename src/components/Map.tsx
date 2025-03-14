@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, MapPin, Clock, Phone, Instagram, Facebook, Twitter } from "lucide-react";
+import { ChevronLeft, MapPin, Clock, Phone, Instagram, Facebook, Twitter, CircleCheck, MoveRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface MapProps {
@@ -46,14 +46,14 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
       >
         <button
           onClick={() => router.back()}
-          className="flex items-center text-lg text-text hover:text-primary transition-colors duration-200 px-8 py-8"
+          className="flex items-center text-lg text-text bg-background w-full hover:text-primary transition-colors duration-200 px-8 py-8"
         >
           <ChevronLeft className="mr-2" /> Back to Locations
         </button>
       </motion.div>
 
       <motion.div 
-        className="relative bg-gradient-to-r from-primary to-primary-darker text-white py-6 mb-8 px-8"
+        className="relative bg-background text-primary-darker py-6 mb-8 px-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -61,7 +61,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
         <div className="max-w-6xl mx-auto flex items-center justify-center">
           <h1 className="font-heading text-4xl">{city}</h1>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-300 to-green-100 opacity-30"></div>
+        {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-300 to-green-100 opacity-30"></div> */}
       </motion.div>
 
       <motion.div 
@@ -90,16 +90,16 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
           variants={containerVariants}
         >
           <motion.div 
-            className="bg-white rounded-lg overflow-hidden shadow-md border border-green-100 mb-6"
+            className="bg-background rounded-lg overflow-hidden shadow-md border border-green-100 mb-6"
             variants={itemVariants}
           >
-            <div className="bg-primary p-5 text-white">
+            <div className="bg-primary p-5 text-black">
               <h2 className="font-heading text-2xl">Location Details</h2>
             </div>
             
             <div className="p-6 space-y-6">
               <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center text-primary">
+                <div className="flex items-center text-primary-darker">
                   <Clock className="w-5 h-5 mr-2" />
                   <h3 className="text-xl font-bold">Hours:</h3>
                 </div>
@@ -111,14 +111,14 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
               </motion.div>
               
               <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center text-primary">
+                <div className="flex items-center text-primary-darker">
                   <MapPin className="w-5 h-5 mr-2" />
                   <h3 className="text-xl font-bold">Address:</h3>
                 </div>
                 <div className="pl-7">
                   <p className="text-gray-700">{addressNew}</p>
                   <Link
-                    className="text-primary hover:text-primary/80 underline mt-2 inline-block"
+                    className="text-primary-darker hover:text-primary-darker/80 underline mt-2 inline-block"
                     target="_blank"
                     href={`https://www.google.com/maps/place/${addressNew}`}
                   >
@@ -128,7 +128,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
               </motion.div>
               
               <motion.div variants={itemVariants} className="space-y-3">
-                <div className="flex items-center text-primary">
+                <div className="flex items-center text-primary-darker">
                   <Phone className="w-5 h-5 mr-2" />
                   <h3 className="text-xl font-bold">Contact:</h3>
                 </div>
@@ -141,13 +141,13 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
               
               <motion.div variants={itemVariants} className="pt-2">
                 <div className="flex justify-center space-x-4">
-                  <a href="#" className="text-gray-500 hover:text-primary transition-colors duration-200">
+                  <a href="#" className="text-text hover:text-primary-darker transition-colors duration-200">
                     <Facebook className="w-6 h-6" />
                   </a>
-                  <a href="#" className="text-gray-500 hover:text-primary transition-colors duration-200">
+                  <a href="#" className="text-text hover:text-primary-darker transition-colors duration-200">
                     <Instagram className="w-6 h-6" />
                   </a>
-                  <a href="#" className="text-gray-500 hover:text-primary transition-colors duration-200">
+                  <a href="#" className="text-text hover:text-primary-darker transition-colors duration-200">
                     <Twitter className="w-6 h-6" />
                   </a>
                 </div>
@@ -156,39 +156,34 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts }) => {
           </motion.div>
           
           <motion.div 
-            className="bg-green-50 rounded-lg p-5 border border-green-100 shadow-sm"
+            className="bg-background rounded-lg p-5 border border-green-100 shadow-sm"
             variants={itemVariants}
           >
-            <h3 className="text-xl font-bold text-primary mb-3">Sustainability Highlights</h3>
+            <h3 className="text-xl font-bold text-primary-darker mb-3">Sustainability Highlights</h3>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+                <CircleCheck className="w-5 h-5 text-primary-darker mr-2 mt-0.5" />
+                  
                 <span>100% plant-based menu using locally-sourced ingredients</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+							<CircleCheck className="w-5 h-5 text-primary-darker mr-2 mt-0.5" />
+
                 <span>Composting program reduces our waste by 85%</span>
               </li>
               <li className="flex items-start">
-                <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
+							<CircleCheck className="w-5 h-5 text-primary-darker mr-2 mt-0.5" />
+
                 <span>Energy-efficient kitchen and lighting systems</span>
               </li>
             </ul>
             <div className="mt-4">
               <Link 
                 href="/mission" 
-                className="text-primary hover:text-primary/80 font-medium text-sm flex items-center"
+                className="text-primary-darker hover:text-primary-darker/80 font-medium text-sm flex items-center"
               >
                 Learn more about our mission
-                <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+                <MoveRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
           </motion.div>

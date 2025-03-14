@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     { city: "New York" },
     { city: "Los Angeles" },
     { city: "Chicago" },
-    { city: "San Francisco" }
+    { city: "Seattle" }
   ];
 
   const currentYear = new Date().getFullYear();

@@ -33,12 +33,8 @@ function CityCard({ city, image, description, link }: CardProps) {
             alt={city}
             layout="fill"
             className="object-cover"
-          />
-          {/* Add a subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-40"></div>
-          
-          {/* Add a small "eco-friendly" badge */}
-          <div className="absolute top-4 right-4 bg-green-600/90 text-white text-xs px-2 py-1 rounded-full flex items-center">
+          />          
+          <div className="absolute top-4 right-4 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center">
 						<House className="w-3 h-3 mr-1" />
             Plant-Based
           </div>

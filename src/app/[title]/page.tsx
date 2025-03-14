@@ -65,7 +65,7 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
           {item.ingredients ? (
             <div className="w-full lg:w-3/4 mb-4">
               <h1 className="text-2xl font-heading mb-2">Ingredients</h1>
-              <div className="grid grid-cols-4 justify-center lg:justify-start">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center lg:justify-start">
                 {item.ingredients.map((ingredient, index) => (
                   <div key={index} className="p-1">
                     <p>
@@ -106,7 +106,7 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         </div>
         {similarRecipes.length > 0 ? (
           <>
-            <h2 className="text-2xl font-heading">Similar Recipes</h2>
+            <h2 className="text-2xl font-heading">Similar Dishes</h2>
 
             <div className="w-3/4 mx-auto">
               <Carousel items={similarRecipes} />

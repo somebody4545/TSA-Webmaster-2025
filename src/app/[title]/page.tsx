@@ -3,6 +3,7 @@ import menuData from "../../../data/menu-data.json";
 import NotFound from "@/app/not-found";
 import NutritionLabel from "@/components/NutritionLabel";
 import Carousel from "@/components/Carousel";
+import Link from "next/link";
 import "react-multi-carousel/lib/styles.css";
 
 interface MenuItemPageProps {
@@ -39,9 +40,9 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
       <div className="z-10 p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
-        <a href="/menu" className="text-left text-text hover:underline">
+        <Link href="/menu" className="text-left text-text hover:underline">
           ← Back to Menu
-        </a>
+        </Link>
         <h1 className="font-heading mb-5 flex flex-col lg:flex-row lg:items-baseline lg:justify-between text-center justify-center lg:text-left">
           <div>
             <span className="text-3xl">{item.title}</span>

@@ -210,16 +210,10 @@ function HeroSection() {
         </div>
       </div>
       <motion.div
-        className="absolute bottom-8 animate-bounce cursor-pointer"
+        className="absolute bottom-8 animate-bounce"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        onClick={() => {
-          window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
-          });
-        }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
         <p className="text-sm text-center">Scroll Down</p>
         <div className="flex justify-center items-center">
@@ -321,14 +315,48 @@ function FilterSidebar({
             </button>
 
             <AnimatePresence>
-              {/* Dropdown content */}
+              {showSortDropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 overflow-hidden"
+                >
+                  <div className="py-1">
+                    {SORT_OPTIONS.map((option) => (
+                      <button
+                        key={option.id}
+                        onClick={() => handleSortChange(option.id)}
+                        className={`w-full text-left px-4 py-2 flex items-center space-x-2 hover:bg-gray-100 transition-colors ${sortOption === option.id ? 'bg-primary/10 font-medium' : ''
+                          }`}
+                      >
+                        <span className="text-primary">{option.icon}</span>
+                        <span>{option.label}</span>
+                        {sortOption === option.id && (
+                          <motion.span
+                            layoutId="activeSortIndicator"
+                            className="ml-auto text-primary"
+                          >
+                            ✓
+                          </motion.span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </FilterSection>
 
-        {/* Add divider and spacing */}
-        <div className="my-4 border-b border-gray-200"></div>
-
+        <FilterSection title="Meals">
+          <FilterButtonGroup
+            items={MEAL_CATEGORIES}
+            selectedItem={selectedCategory}
+            onSelect={toggleCategory}
+          />
+        </FilterSection>
 
         <FilterSection title="Cuisines">
           <FilterButtonGroup

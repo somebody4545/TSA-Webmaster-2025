@@ -8,7 +8,7 @@ import { CircleCheck, ChevronDown } from "lucide-react";
 const Locations = () => {
   return (
     <>
-      <div className="bg-black text-background relative min-h-[500px] max-h-[80vh] h-[80vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+      <div className="bg-black text-background relative min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <ParallaxBackground />
         <motion.div
           className="absolute inset-0 bg-black/30 z-0"

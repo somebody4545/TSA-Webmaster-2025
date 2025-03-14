@@ -15,6 +15,7 @@ import {
   Leaf,
   Sparkles,
   Recycle,
+	ChevronDown
 } from "lucide-react";
 
 function CountUp({ end, duration = 2, className = "" }: { end: number; duration?: number; className?: string }) {
@@ -114,7 +115,7 @@ function PartnerCarousel() {
         })}
       </div>
 
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
+      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-40 px-4 pointer-events-none">
         <motion.button
           onClick={prevSlide}
           className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"
@@ -181,7 +182,7 @@ const MissionPage = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="relative w-full h-screen">
+      <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('img/farmtofork.webp')" }}
@@ -202,6 +203,17 @@ const MissionPage = () => {
             <span className="text-primary">Fork</span>
           </motion.h1>
         </div>
+				<motion.div
+          className="absolute bottom-8 animate-bounce text-background"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.5 }}
+        >
+          <p className="text-sm text-center">Scroll Down</p>
+          <div className="flex justify-center items-center">
+            <ChevronDown />
+          </div>
+        </motion.div>
       </div>
 
       <div className="py-12 px-4 bg-background">

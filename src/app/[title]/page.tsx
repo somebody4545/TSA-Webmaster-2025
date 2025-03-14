@@ -2,7 +2,7 @@ import React from "react";
 import menuData from "../../../data/menu-data.json";
 import NotFound from "@/app/not-found";
 import NutritionLabel from "@/components/NutritionLabel";
-import Carousel from "react-multi-carousel";
+import Carousel from "@/components/Carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface MenuItemPageProps {
@@ -18,6 +18,7 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
   if (!item) {
     return <NotFound />;
   }
+
   const allowedKeys = ["calories", "totalFat", "totalCarbohydrates", "protein"];
 
   const similarRecipes = menuData.filter(
@@ -33,9 +34,9 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         <img
           src={item.imageUrl}
           alt={item.title}
-          className="w-[130%] h-[130%] object-cover opacity-70 blur-sm"
+          className="w-[130%] h-[130%] object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
       <div className="z-10 p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
         <a href="/menu" className="text-left text-text hover:underline">
@@ -64,13 +65,13 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
           {item.ingredients ? (
             <div className="w-full lg:w-3/4 mb-4">
               <h1 className="text-2xl font-heading mb-2">Ingredients</h1>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center lg:justify-start">
                 {item.ingredients.map((ingredient, index) => (
-                  <div
-                    key={index}
-                    className="bg-primary shadow-md p-3 w-40 rounded-lg"
-                  >
-                    <p>{ingredient}</p>
+                  <div key={index} className="p-1">
+                    <p>
+                      <span className="text-primary text-xl font-bold">› </span>
+                      {ingredient}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -103,25 +104,14 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
             </div>
           ) : null}
         </div>
-        {similarRecipes ? (
-          <div className="w-full mt-10">
-            <h2 className="text-2xl font-heading mb-5">Similar Recipes</h2>
+        {similarRecipes.length > 0 ? (
+          <>
+            <h2 className="text-2xl font-heading">Similar Dishes</h2>
 
-            {similarRecipes.map((recipe, index) => (
-              <div key={index} className="p-2">
-                <div className="bg-background shadow-lg rounded-lg p-4">
-                  <h3 className="text-xl font-heading">{recipe.title}</h3>
-                  <p>{recipe.subtitle}</p>
-                  <a
-                    href={`/${recipe.title.replace(/\s+/g, "-").toLowerCase()}`}
-                    className="text-green-900 hover:underline"
-                  >
-                    View Recipe
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+            <div className="w-3/4 mx-auto">
+              <Carousel items={similarRecipes} />
+            </div>
+          </>
         ) : null}
       </div>
     </div>

@@ -33,9 +33,9 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         <img
           src={item.imageUrl}
           alt={item.title}
-          className="w-[130%] h-[130%] object-cover opacity-70 blur-sm"
+          className="w-[130%] h-[130%] object-cover"
         />
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
       <div className="z-10 p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
         <a href="/menu" className="text-left text-text hover:underline">

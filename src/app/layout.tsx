@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Maitso',
+  title: 'Maitso - International and Plant Powered',
   description: 'A Restaurant Website designed for TSA 2024-2025',
 };
 

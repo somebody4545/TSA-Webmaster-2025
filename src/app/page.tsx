@@ -354,11 +354,11 @@ function GiftCardSection() {
             >
               Whether it&apos;s Christmas, a birthday, or you&apos;re just feeling generous, our gift cards are perfect for any occasion. Give the gift of delicious plant-based food today!
             </motion.p>
-            <Link href="/gifts">
+            <a href="/gifts">
               <button className="btn btn-primary btn-shine text-black mt-4 rounded-full max-w-max shadow-lg">
                 Purchase Gift Cards
               </button>
-            </Link>
+            </a>
           </motion.div>
         </div>
         <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">

@@ -61,8 +61,8 @@ export default function RewardsPage() {
     }
 
     return (
-        <div className="bg-background-dimmer w-full py-16">
-            <div className='min-h-[400px] h-max bg-background m-16 rounded-xl p-8'>
+        <div className="bg-background-dimmer w-full lg:py-16 max-s">
+            <div className='min-h-[400px] h-max bg-background md:m-16 rounded-xl p-8'>
                 <h1 className='px-16 text-primary max-md:text-2xl text-3xl text-center font-heading py-8'>Maitso Rewards</h1>
                 <div className="flex max-lg:flex-col justify-between items-center">
                     <div className="flex-1 px-16">

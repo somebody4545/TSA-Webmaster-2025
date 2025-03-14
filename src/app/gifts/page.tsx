@@ -146,7 +146,7 @@ const GiftsPage = () => {
       </section>
       <section className="bg-background text-black min-h-[80vh] w-screen max-w-screen-xl mx-auto flex flex-col">
         <motion.h2
-          className='text-3xl font-bold text-center pt-16 px-12'
+          className='text-3xl font-bold text-center pt-16 px-12 font-heading'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

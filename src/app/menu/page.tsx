@@ -308,7 +308,7 @@ function FilterSidebar({
           <div className="relative" ref={sortRef}>
             <button
               onClick={toggleSortDropdown}
-              className="flex items-center space-x-2 px-4 py-2 bg-primary text-text rounded-full hover:bg-primary-darker transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 min-w-56 justify-center bg-primary text-text rounded-full hover:bg-primary-darker transition-colors"
             >
               <span>Sort by: {currentSortOption.label}</span>
               {showSortDropdown ? <ChevronUp size={16} /> : <ChevronDown size={16} />}

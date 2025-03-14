@@ -2,60 +2,71 @@
 
 import React from "react";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { House, MapPin, MoveRight } from "lucide-react";
 
-interface CityCardProps {
+interface CardProps {
   city: string;
   image: string;
-  onArrowClick: (city: string) => void;
-  isSelected: boolean;
+  description: string;
+  link: string;
 }
 
-const CityCard: React.FC<CityCardProps> = ({ city, image, onArrowClick, isSelected }) => {
-  const handleArrowClick = () => {
-    onArrowClick(city);
-  };
-
+function CityCard({ city, image, description, link }: CardProps) {
   return (
-    <motion.div
-      className="bg-primary-darker hover:bg-primary-darkest rounded-lg overflow-hidden relative duration-100"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
-    >
-      <motion.h3
-        className="text-2xl text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
+    <Link href={link} className="text-lg text-text text-left">
+      <motion.div
+        className="flex flex-col items-center bg-background rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        {city}
-      </motion.h3>
-      <Image
-        src={image}
-        alt={city}
-        layout="fill"
-        className="object-cover opacity-10"
-      />
-      <div className="absolute top-1/2 right-5 transform -translate-y-1/2">
         <motion.div
-          className="cursor-pointer text-white"
-          onClick={handleArrowClick}
-          whileHover={{ x: 5 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{
-            x: { type: "spring", stiffness: 300 },
-            scale: { duration: 0.1 },
-          }}
+          className="relative w-full"
+          style={{ height: "280px" }}
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.3 }}
         >
-          <ChevronRight />
+          <Image
+            src={image}
+            alt={city}
+            layout="fill"
+            className="object-cover"
+          />
+          {/* Add a subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-40"></div>
+          
+          {/* Add a small "eco-friendly" badge */}
+          <div className="absolute top-4 right-4 bg-green-600/90 text-white text-xs px-2 py-1 rounded-full flex items-center">
+						<House className="w-3 h-3 mr-1" />
+            Plant-Based
+          </div>
         </motion.div>
-      </div>
-    </motion.div>
+        
+        <motion.div
+          className="w-full p-5 border-t border-gray-100"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h2 className="text-2xl font-bold mb-2 text-primary font-heading flex items-center">
+            {city}
+            <span className="ml-2 text-primary">
+							<MapPin className="w-5 h-5"/>
+            </span>
+          </h2>
+          <p className="text-text mb-4">{description}</p>
+          <div className="flex justify-between items-center">
+            <span className="text-primary font-medium text-sm flex items-center">
+              Learn more
+							<MoveRight className="w-4 h-4 ml-1" />
+            </span>
+          </div>
+        </motion.div>
+      </motion.div>
+    </Link>
   );
-};
+}
 
 export default CityCard;

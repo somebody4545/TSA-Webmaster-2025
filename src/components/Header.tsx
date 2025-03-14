@@ -71,15 +71,6 @@ export default function Header() {
         >
           <li>
             <Link
-              href="/#start"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""
-                } focus:outline-none`}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
               href="/mission"
               className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
                 } focus:outline-none`}
@@ -136,16 +127,6 @@ export default function Header() {
 
       <nav className="hidden lg:flex">
         <ul className="menu menu-horizontal p-0 gap-2">
-          <li>
-            <Link
-              href="/#start"
-              className={`hover:underline ${pathname === "/" ? "font-bold" : ""
-                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                }`}
-            >
-              Home
-            </Link>
-          </li>
           <li>
             <Link
               href="/mission"

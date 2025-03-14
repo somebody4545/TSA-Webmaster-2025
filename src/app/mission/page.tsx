@@ -69,7 +69,7 @@ function PartnerCarousel() {
   };
 
   return (
-    <div className="relative w-full mx-auto h-[350px] py-8">
+    <div className="relative w-full mx-auto h-[350px] py-8 max-lg:overflow-clip">
       <div className="relative flex items-center justify-center h-full">
         {partners.map((partner, i) => {
           const position =
@@ -97,7 +97,6 @@ function PartnerCarousel() {
               transition={{ duration: 0.7 }}
               className={`absolute w-[85%] md:w-[70%] h-[300px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
             >
-              <a href={partner.href} className="block h-full w-full">
                 <div className="flex items-center justify-center h-full w-full">
                   <div className="relative w-full h-full flex items-center justify-center">
                     <img
@@ -109,7 +108,6 @@ function PartnerCarousel() {
                     />
                   </div>
                 </div>
-              </a>
             </motion.div>
           );
         })}

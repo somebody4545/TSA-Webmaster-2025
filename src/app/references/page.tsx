@@ -38,7 +38,7 @@ export default function ReferencesPage() {
       <a className="text-primary-darker" href="/copyright.pdf">Copyright Checklist</a>
       <div>
         <h2 className="text-xl font-semibold mb-2">Code Stack</h2>
-        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender.</p>
+        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop.</p>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-2">Additional Libraries Utilized</h2>
@@ -54,6 +54,9 @@ export default function ReferencesPage() {
             </li>
             <li>
             <code>react-multi-carousel</code>: A library for creating carousels in React applications. 
+            </li>
+            <li>
+            <code>react-circle-flags</code>: A library for displaying flags in React applications.
             </li>
             <li>
               <code>https://randomuser.me/</code>: Used for generating random user images for testimonials, which have a free license for use.

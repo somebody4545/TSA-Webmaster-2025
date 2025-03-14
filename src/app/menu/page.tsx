@@ -29,7 +29,7 @@ export default function MenuPage() {
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [sortOption, setSortOption] = useState('default');
   const [showSortDropdown, setShowSortDropdown] = useState(false);
-  const sortRef = useRef<HTMLDivElement>(null);
+  const sortRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -252,7 +252,7 @@ interface FilterSidebarProps {
   toggleSortDropdown: () => void;
   handleSortChange: (option: string) => void;
   currentSortOption: typeof SORT_OPTIONS[0];
-  sortRef: React.RefObject<HTMLDivElement>;
+  sortRef: React.RefObject<HTMLDivElement | null>;
 }
 
 function FilterSidebar({

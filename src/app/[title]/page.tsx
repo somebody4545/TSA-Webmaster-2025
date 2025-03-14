@@ -106,7 +106,7 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         </div>
         {similarRecipes.length > 0 ? (
           <>
-            <h2 className="text-2xl font-heading">Similar Recipes</h2>
+            <h2 className="text-2xl font-heading">Similar Dishes</h2>
 
             <div className="w-3/4 mx-auto">
               <Carousel items={similarRecipes} />

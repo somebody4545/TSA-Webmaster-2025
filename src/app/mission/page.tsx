@@ -114,7 +114,7 @@ function PartnerCarousel() {
         })}
       </div>
 
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-50 px-4 pointer-events-none">
+      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-40 px-4 pointer-events-none">
         <motion.button
           onClick={prevSlide}
           className="btn btn-circle btn-primary text-background hover:scale-110 transition-transform duration-200 pointer-events-auto shadow-md"

@@ -401,9 +401,6 @@ const MissionPage = () => {
                     </motion.div>
                   </motion.div>
 
-                  {/* Apply the same motion.div wrapper with variants to the remaining cards */}
-                  {/* Repeat the pattern for the other cards, for example: */}
-
                   <motion.div
                     variants={{
                       hidden: { opacity: 0, y: 30 },
@@ -620,15 +617,6 @@ const MissionPage = () => {
               <QuoteIcon className="w-10 h-10 text-background-dim" />
             </motion.div>
 
-            {/* Animated border */}
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="h-px bg-background-dim/30 absolute top-0 left-0"
-            />
-
             {/* Quote text with staggered words */}
             <motion.div
               initial="hidden"
@@ -673,15 +661,6 @@ const MissionPage = () => {
                 — Albert Einstein
               </motion.div>
             </motion.div>
-
-            {/* Animated border bottom */}
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="h-px bg-background-dim/30 absolute bottom-0 right-0"
-            />
           </motion.div>
         </div>
       </div>
@@ -753,7 +732,6 @@ const MissionPage = () => {
                   </div>
                 </motion.div>
 
-                {/* Zero-Waste Cooking - Adding animation */}
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 30 },
@@ -785,7 +763,6 @@ const MissionPage = () => {
                   </div>
                 </motion.div>
 
-                {/* Energy Efficiency - Adding animation */}
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 30 },
@@ -863,7 +840,34 @@ const MissionPage = () => {
                         minimizing energy use
                       </p>
                     </motion.div>
-                    {/* Repeat for other items */}
+
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                      }}
+                      className="flex items-start"
+                    >
+                      <Utensils className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
+                      <p className="text-text">
+                        Handcrafted preparations that preserve culinary heritage
+                        and artisanal quality
+                      </p>
+                    </motion.div>
+
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                      }}
+                      className="flex items-start"
+                    >
+                      <Leaf className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
+                      <p className="text-text">
+                        Plant-forward menu that celebrates vegetables as the
+                        star of the plate
+                      </p>
+                    </motion.div>
                   </motion.div>
                 </div>
                 <motion.div
@@ -909,7 +913,7 @@ const MissionPage = () => {
                 <motion.svg
                   initial={{ rotate: -90, opacity: 0 }}
                   whileInView={{ rotate: 0, opacity: 1 }}
-                  transition={{ duration: 1, ease: "easeOut" }} // Faster rotation
+                  transition={{ duration: 1, ease: "easeOut" }}
                   viewport={{ once: true, amount: 0.2 }}
                   viewBox="0 0 500 500"
                   className="w-full h-auto"
@@ -924,11 +928,10 @@ const MissionPage = () => {
                     strokeWidth="4"
                   />
 
-                  {/* Plate sections with quicker animations and smaller delay increments */}
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} // Faster with smaller delay
+                    transition={{ duration: 0.5, delay: 0.1 }}
                     viewport={{ once: true }}
                     d="M250 10 A240 240 0 0 1 490 250 L250 250 Z"
                     fill="#D35400"
@@ -937,7 +940,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} // Faster with smaller delay
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     viewport={{ once: true }}
                     d="M490 250 A240 240 0 0 1 250 490 L250 250 Z"
                     fill="#F4D03F"
@@ -946,7 +949,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.3 }} // Faster with smaller delay
+                    transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true }}
                     d="M250 490 A240 240 0 0 1 10 250 L250 250 Z"
                     fill="#27AE60"
@@ -955,7 +958,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.4 }} // Faster with smaller delay
+                    transition={{ duration: 0.5, delay: 0.4 }}
                     viewport={{ once: true }}
                     d="M10 250 A240 240 0 0 1 250 10 L250 250 Z"
                     fill="#9B59B6"
@@ -964,7 +967,7 @@ const MissionPage = () => {
                   <motion.circle
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.5 }} // Faster with smaller delay
+                    transition={{ duration: 0.5, delay: 0.5 }}
                     viewport={{ once: true }}
                     cx="250"
                     cy="250"
@@ -974,11 +977,10 @@ const MissionPage = () => {
                     strokeWidth="3"
                   />
 
-                  {/* Text elements - now wrapped in motion components to fade in AFTER diagram appears */}
                   <motion.g
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 }} // Delay to appear after plate sections
+                    transition={{ duration: 0.6, delay: 0.8 }}
                     viewport={{ once: true }}
                   >
                     {/* Legumes & Plant Proteins */}

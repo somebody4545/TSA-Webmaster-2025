@@ -1125,7 +1125,7 @@ const MissionPage = () => {
                       fill="#5D4037"
                       textAnchor="middle"
                     >
-                      30%
+                      25%
                     </motion.text>
 
                     {/* Fruits */}
@@ -1155,7 +1155,7 @@ const MissionPage = () => {
                       fill="#5D4037"
                       textAnchor="middle"
                     >
-                      20%
+                      25%
                     </motion.text>
 
                     {/* Healthy Fats - last element to appear */}

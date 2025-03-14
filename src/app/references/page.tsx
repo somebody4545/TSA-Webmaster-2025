@@ -34,6 +34,8 @@ export default function ReferencesPage() {
   return (
     <div className="container p-4 w-screen px-8 flex flex-col gap-4">
       <h1 className="text-2xl font-bold mb-4">References</h1>
+      <a className="text-primary-darker" href="/worklog.pdf">Work Log</a>
+      <a className="text-primary-darker" href="/copyright.pdf">Copyright Checklist</a>
       <div>
         <h2 className="text-xl font-semibold mb-2">Code Stack</h2>
         <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender.</p>

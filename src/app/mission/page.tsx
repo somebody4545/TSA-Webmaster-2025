@@ -53,7 +53,7 @@ function CountUp({ end, duration = 2, className = "" }: { end: number; duration?
 
 function PartnerCarousel() {
   const [index, setIndex] = useState(0);
-  const partners = [1, 2, 3, 4, 5, 6, 7, 8].map((number) => ({
+  const partners = [1, 2, 3, 4].map((number) => ({
     id: number,
     imageUrl: `/img/partner${number}.png`,
     alt: `Partner ${number} logo`,

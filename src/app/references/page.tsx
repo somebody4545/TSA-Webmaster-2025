@@ -8,15 +8,52 @@ export default function ReferencesPage() {
 		'https://unsplash.com/photos/landscape-photo-of-new-york-empire-state-building-5omwAMDxmkU',
 		'https://unsplash.com/photos/cloud-gate-in-city-during-daytime-cfmSStcrDn4?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
 		'https://unsplash.com/photos/green-palm-tree-and-city-view-UZVlSjrIJ3o?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
-		'https://unsplash.com/photos/high-rise-buildings-during-daytime-UmEYn_GYqFo?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash'
+		'https://unsplash.com/photos/high-rise-buildings-during-daytime-UmEYn_GYqFo?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
+    'https://unsplash.com/photos/green-vegetable-on-brown-wooden-table-qPcSUERqBAc',
+    'https://en.wikipedia.org/wiki/The_Washington_Post#/media/File:The_Logo_of_The_Washington_Post_Newspaper.svg',
+    'https://en.wikipedia.org/wiki/Forbes#/media/File:Forbes_logo.svg',
+    'https://en.wikipedia.org/wiki/File:The_Guardian_2018.svg',
+    'https://en.wikipedia.org/wiki/Today_(American_TV_program)#/media/File:Today_2023.svg',
+    'https://en.wikipedia.org/wiki/Los_Angeles_Times#/media/File:Los_Angeles_Times_logo.svg',
+    'https://en.wikipedia.org/wiki/File:NewYorkTimes.svg',
+    'https://www.pexels.com/photo/an-aerial-shot-of-a-busy-road-7358771/',
+    'https://unsplash.com/photos/white-rice-with-sliced-strawberries-and-brown-nuts-on-white-ceramic-plate-5pk7ZB1xyjU',
+    'https://unsplash.com/photos/green-and-brown-vegetable-on-white-ceramic-plate-7GO11y7bznw',
+    'https://www.flickr.com/photos/queenkv/13699777484/',
+    'https://www.mydarlingvegan.com/korean-barbecue-bowl/'
+
+
   ];
 
   return (
-    <div className="container p-4 w-screen px-8">
+    <div className="container p-4 w-screen px-8 flex flex-col gap-4">
       <h1 className="text-2xl font-bold mb-4">References</h1>
       <div>
         <h2 className="text-xl font-semibold mb-2">Code Stack</h2>
-        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. This site follows WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio, and header text with at least a AA contrast ratio.</p>
+        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender.</p>
+      </div>
+      <div>
+        <h2 className="text-xl font-semibold mb-2">Additional Libraries Utilized</h2>
+        <ul className="list-disc pl-5">
+            <li>
+              <code>lucide-react</code>: A library of icons for use in React applications.
+            </li>
+            <li>
+            <code>framer-motion</code>: A library for creating animations in React applications.
+            </li>
+            <li>
+            <code>three.js</code> (via <code>react-three-fiber</code>): A library for creating 3D graphics in React applications.
+            </li>
+            <li>
+            <code>react-multi-carousel</code>: A library for creating carousels in React applications. 
+            </li>
+            <li>
+              <code>https://randomuser.me/</code>: Used for generating random user images for testimonials, which have a free license for use.
+            </li>
+            <li>
+              <code>Google Maps API</code>: Used for generating maps for the locations page.
+            </li>
+        </ul>
       </div>
       <div>
         <h2 className="text-xl font-semibold mb-2">Image Links</h2>

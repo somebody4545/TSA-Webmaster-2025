@@ -80,7 +80,7 @@ const GiftsPage = () => {
   return (
     <>
       <section className="bg-black text-background">
-        <div className="min-h-[90vh] lg:max-h-[750px] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center">
+        <div className="min-h-[90vh] lg:max-h-[750px] w-screen lg:p-32 py-12 lg:gap-32 flex max-lg:flex-col items-center justify-center relative">
           <motion.div
             className='lg:w-1/2 max-lg:px-16'
             initial={{ opacity: 0, x: -50 }}

@@ -119,7 +119,7 @@ const GiftsPage = () => {
           >
             <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center'>
               <div className='m-auto dot-matrix-background w-full aspect-square flex items-center justify-center absolute'></div>
-              <div className='w-full max-h-full aspect-square flex items-center justify-center'>
+              <div className='w-full max-h-full aspect-square flex items-center justify-center'> 
                 <Canvas camera={{ position: [-0.7, 0.25, 0.7], fov: 30 }}>
                   <ambientLight intensity={0.5} />
                   <directionalLight position={[0, 5, 5]} intensity={1} />

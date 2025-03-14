@@ -185,7 +185,7 @@ const MissionPage = () => {
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('img/farmtofork.webp')" }}
+          style={{ backgroundImage: "url('img/farmtofork.jpg')", filter: "brightness(0.4)" }}
         >
           <div
             className="absolute inset-0 bg-black bg-opacity-50"
@@ -236,7 +236,7 @@ const MissionPage = () => {
       </div>
 
       <div className="py-12 px-4 bg-background">
-        <div className="container mx-auto px-3">
+        <div className="container mx-auto px-3 pt-8">
           <div className="flex justify-center mb-12">
             <motion.div
               initial={{ opacity: 0 }}
@@ -336,6 +336,7 @@ const MissionPage = () => {
               <div className="text-3xl font-heading font-bold text-primary-darker">
                 Our Partners
               </div>
+              <p>(Fictional, Demo only)</p>
             </div>
           </motion.div>
           <div className="flex justify-center mb-12">
@@ -343,7 +344,7 @@ const MissionPage = () => {
               <PartnerCarousel />
             </div>
           </div>
-          <div className="w-full h-screen relative overflow-hidden">
+          <div className="w-full h-[75vh] relative overflow-hidden">
             <div className="absolute inset-0"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <motion.h1
@@ -361,7 +362,7 @@ const MissionPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-10 mt-16">
+          <div className="flex flex-col gap-10 mt-16 mb-16">
             <div className="flex flex-col items-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -919,7 +920,7 @@ const MissionPage = () => {
         </div>
       </div>
 
-      <div className="py-16 bg-background">
+      <div className="py-16 bg-background mb-32">
         <div className="container mx-auto px-3">
           <div className="flex justify-center">
             <div className="w-full md:w-11/12 max-w-6xl">

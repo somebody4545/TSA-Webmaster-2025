@@ -29,6 +29,21 @@ export default function ReferencesPage() {
     'https://www.flickr.com/photos/tabocat/50992810931/in/photolist-24Ue6eV-2kG4u8n-2pyTfEx-2oZBuxg-28BRpfm-DGeM4z-SFHFXV-2qM7Db8-2kSefDM-PCFD9y-24JCjhE-2quC5XQ-a13JLH-2ooTnwP-2nxGJT7-2i8qh5c-2i8qh4q-KwaTzB-2omJerY-2pCwbQq-mDpEi-2q37oDg-dbDkCb-2qR2b2F-2oM54dz-8aLTdv-2qR2b2q-2qR39Bv-22AnutA-2iM57jt-7oub6M-27AJFvN-2ibUAzZ-i9jpUs-8aLTT8-QRcGkq-2hacWKp-MjE3wm-a2MMqP-KiJLEE-BJazA1-PoZrDZ-8gnkZY-2np9V9Y-bU1X3i-S4iYd7-2kUtMqw-27whiVj-8aQbCJ',
     'https://www.flickr.com/photos/heatherchristo/32034624680/in/photolist-QNMPRb-5eYg7q-hRP7vp-brqK1j-emvPht-22n6P3p-i3Eyh4-dtoRoP-nmqmLE-GRejzV-dTQm1R-dkR6iG-pZdSn7-pdbfP3-csyccY-aVgR7T-dQVauB-eahAf8-eecBJc-7KccTM-CRDUFt-bzAgqw-ytLAo-mjHrRe-VMRstA-uEi9g-pRjLMp-gSnzJX-Mji2yw-kUDmpn-GVCqUC-uEi9W-ioY33a-RTwxtj-hRQCbx-2758oyn-nrHFx1-aVjajP-aebRu6-hRQ751-okoUiJ-jRHYFv-27axTRD-WrJjEx-5xvunG-WwUk3K-wEHWUf-i6xxo7-Ui833N-jaXCSA',
     'https://purepng.com/photo/4574/food-food-plate-top-view',
+    'https://unsplash.com/photos/a-white-plate-topped-with-sliced-tomatoes-and-veggies-zBNb71SxdaA'
+  ];
+
+  const researchReferences = [
+    'https://www.mdanderson.org/publications/focused-on-health/5-benefits-of-a-plant-based-diet.h20-1592991.html',
+    'https://www.hitchcockfarms.com/blog/farm-to-table-movement',
+    'https://www.sare.org/resources/farm-to-table-building-local-and-regional-food-systems/',
+    'https://www.myplate.gov/eat-healthy/what-is-myplate',
+    'https://www.w3.org/WAI/WCAG22/quickref/',
+    'https://www.nytimes.com/2023/03/14/dining/zero-waste-cooking.html',
+    'https://sdgs.un.org/topics/sustainable-transport',
+    'https://doublenpotatoes.com/'
+
+
+
   ];
 
   return (
@@ -70,6 +85,23 @@ export default function ReferencesPage() {
         <h2 className="text-xl font-semibold mb-2">Image Links</h2>
         <ul className="list-disc pl-5">
           {devReferences.map((link, index) => (
+            <li key={index} className="mb-1 break-words">
+              <a 
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline break-words"
+              >
+              {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 className="text-xl font-semibold mb-2">Research Links</h2>
+        <ul className="list-disc pl-5">
+          {researchReferences.map((link, index) => (
             <li key={index} className="mb-1 break-words">
               <a 
               href={link}

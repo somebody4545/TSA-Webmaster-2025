@@ -68,16 +68,16 @@ function PartnerCarousel() {
   };
 
   return (
-    <div className="relative w-full mx-auto h-[400px] py-8">
+    <div className="relative w-full mx-auto h-[350px] py-8">
       <div className="relative flex items-center justify-center h-full">
         {partners.map((partner, i) => {
           const position =
             i === index
               ? "translate-x-0 scale-100 z-30 opacity-100"
               : i === (index + 1) % partners.length
-                ? "translate-x-[75%] scale-90 z-20 opacity-20"
+                ? "translate-x-[60%] scale-90 z-20 opacity-30"
                 : i === (index - 1 + partners.length) % partners.length
-                  ? "translate-x-[-75%] scale-90 z-20 opacity-20"
+                  ? "translate-x-[-60%] scale-90 z-20 opacity-30"
                   : "translate-x-0 scale-75 z-10 opacity-0";
 
           return (
@@ -90,11 +90,11 @@ function PartnerCarousel() {
                     ? 1
                     : i === (index + 1) % partners.length ||
                       i === (index - 1 + partners.length) % partners.length
-                      ? 0.2
+                      ? 0.3
                       : 0,
               }}
               transition={{ duration: 0.7 }}
-              className={`absolute w-[90%] md:w-[75%] h-[350px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
+              className={`absolute w-[85%] md:w-[70%] h-[300px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
             >
               <a href={partner.href} className="block h-full w-full">
                 <div className="flex items-center justify-center h-full w-full">
@@ -912,13 +912,15 @@ const MissionPage = () => {
                 <motion.svg
                   initial={{ rotate: -90, opacity: 0 }}
                   whileInView={{ rotate: 0, opacity: 1 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
                   viewport={{ once: true, amount: 0.2 }}
                   viewBox="0 0 500 500"
                   className="w-full h-auto"
                 >
-                  {/* Base plate circle */}
-                  <circle
+                  <motion.circle
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                     cx="250"
                     cy="250"
                     r="240"
@@ -930,7 +932,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
+                    transition={{ duration: 0.4, delay: 0.4 }}
                     viewport={{ once: true }}
                     d="M250 10 A240 240 0 0 1 490 250 L250 250 Z"
                     fill="#D35400"
@@ -939,7 +941,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    transition={{ duration: 0.4, delay: 0.5 }}
                     viewport={{ once: true }}
                     d="M490 250 A240 240 0 0 1 250 490 L250 250 Z"
                     fill="#F4D03F"
@@ -948,7 +950,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
                     viewport={{ once: true }}
                     d="M250 490 A240 240 0 0 1 10 250 L250 250 Z"
                     fill="#27AE60"
@@ -957,7 +959,7 @@ const MissionPage = () => {
                   <motion.path
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    transition={{ duration: 0.4, delay: 0.7 }}
                     viewport={{ once: true }}
                     d="M10 250 A240 240 0 0 1 250 10 L250 250 Z"
                     fill="#9B59B6"
@@ -966,7 +968,7 @@ const MissionPage = () => {
                   <motion.circle
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
+                    transition={{ duration: 0.4, delay: 0.8 }}
                     viewport={{ once: true }}
                     cx="250"
                     cy="250"
@@ -977,13 +979,25 @@ const MissionPage = () => {
                   />
 
                   <motion.g
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: {
+                          delayChildren: 1.1,
+                          staggerChildren: 0.08
+                        }
+                      }
+                    }}
                   >
-                    {/* Legumes & Plant Proteins */}
-                    <text
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="370"
                       y="150"
                       fontSize="18"
@@ -992,8 +1006,13 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Legumes &amp;
-                    </text>
-                    <text
+                    </motion.text>
+
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="370"
                       y="175"
                       fontSize="18"
@@ -1002,8 +1021,13 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Plant Proteins
-                    </text>
-                    <text
+                    </motion.text>
+
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="370"
                       y="200"
                       fontSize="14"
@@ -1011,10 +1035,14 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       25%
-                    </text>
+                    </motion.text>
 
                     {/* Whole Grains */}
-                    <text
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="370"
                       y="350"
                       fontSize="18"
@@ -1023,8 +1051,13 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Whole Grains
-                    </text>
-                    <text
+                    </motion.text>
+
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="370"
                       y="375"
                       fontSize="14"
@@ -1032,10 +1065,14 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       25%
-                    </text>
+                    </motion.text>
 
                     {/* Vegetables */}
-                    <text
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="130"
                       y="350"
                       fontSize="18"
@@ -1044,8 +1081,13 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Vegetables
-                    </text>
-                    <text
+                    </motion.text>
+
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="130"
                       y="375"
                       fontSize="14"
@@ -1053,10 +1095,14 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       30%
-                    </text>
+                    </motion.text>
 
                     {/* Fruits */}
-                    <text
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="130"
                       y="150"
                       fontSize="18"
@@ -1065,8 +1111,13 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Fruits
-                    </text>
-                    <text
+                    </motion.text>
+
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="130"
                       y="175"
                       fontSize="14"
@@ -1074,10 +1125,14 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       20%
-                    </text>
+                    </motion.text>
 
-                    {/* Healthy Fats */}
-                    <text
+                    {/* Healthy Fats - last element to appear */}
+                    <motion.text
+                      variants={{
+                        hidden: { opacity: 0, y: -5 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
                       x="250"
                       y="255"
                       fontSize="14"
@@ -1086,7 +1141,7 @@ const MissionPage = () => {
                       textAnchor="middle"
                     >
                       Healthy Fats
-                    </text>
+                    </motion.text>
                   </motion.g>
                 </motion.svg>
               </motion.div>

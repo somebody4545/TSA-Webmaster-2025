@@ -69,39 +69,139 @@ export default function Header() {
           tabIndex={0}
           className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
         >
-          {navigationItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                href={item.path}
-                className={`hover:underline ${pathname === item.match ? "font-bold" : ""
-                  } focus:outline-none`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
           <li>
-            <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+            <Link
+              href="/#start"
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""
+                } focus:outline-none`}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/mission"
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
+                } focus:outline-none`}
+            >
+              Mission
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/menu"
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""
+                } focus:outline-none`}
+            >
+              Menu
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""
+                } focus:outline-none`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <details>
+              <summary>Earn</summary>
+              <ul className="text-black">
+                <li>
+                  <Link
+                    href="/rewards"
+                  >
+                    Rewards
+                  </Link>
+                </li>
+                <li>
+                  <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <Link
+              href="/references"
+              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
+                } focus:outline-none`}
+            >
+              References
+            </Link>
           </li>
         </ul>
       </div>
 
       <nav className="hidden lg:flex">
         <ul className="menu menu-horizontal p-0 gap-2">
-          {navigationItems.map((item) => (
-            <li key={item.path}>
-              <Link
-                href={item.path}
-                className={`hover:underline ${pathname === item.match ? "font-bold" : ""
-                  } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                  }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
           <li>
-            <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+            <Link
+              href="/#start"
+              className={`hover:underline ${pathname === "/" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/mission"
+              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              Mission
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/menu"
+              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              Menu
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/locations"
+              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              Locations
+            </Link>
+          </li>
+          <li>
+            <details>
+              <summary>Earn</summary>
+              <ul className="text-black">
+                <li>
+                  <Link
+                    href="/rewards"
+                  >
+                    Rewards
+                  </Link>
+                </li>
+                <li>
+                  <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <Link
+              href="/references"
+              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              References
+            </Link>
           </li>
         </ul>
       </nav>

@@ -12,21 +12,24 @@ export default function ReferencesPage() {
   ];
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container p-4 w-screen px-8">
       <h1 className="text-2xl font-bold mb-4">References</h1>
-      
+      <div>
+        <h2 className="text-xl font-semibold mb-2">Code Stack</h2>
+        <p>This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. This site follows WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio, and header text with at least a AA contrast ratio.</p>
+      </div>
       <div>
         <h2 className="text-xl font-semibold mb-2">Image Links</h2>
         <ul className="list-disc pl-5">
           {devReferences.map((link, index) => (
-            <li key={index} className="mb-1">
+            <li key={index} className="mb-1 break-words">
               <a 
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline break-words"
               >
-                {link}
+              {link}
               </a>
             </li>
           ))}

@@ -1,9 +1,7 @@
 "use client";
 
-import { CircleFlag } from "react-circle-flags";
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { motion, useInView } from "framer-motion";
 import GlobalCuisineMap from "@/components/GlobalCuisineMap";
 
 import {
@@ -19,19 +17,18 @@ import {
   Recycle,
 } from "lucide-react";
 
-// Add this CountUp component for statistics animation
-function CountUp({ end, duration = 2, className = "" }) {
+function CountUp({ end, duration = 2, className = "" }: { end: number; duration?: number; className?: string }) {
   const [count, setCount] = useState(0);
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(nodeRef, { once: true, amount: 0.5 });
 
   useEffect(() => {
     if (!inView) return;
 
-    let startTime;
-    let animationFrame;
+    let startTime: number | undefined;
+    let animationFrame: number | undefined;
 
-    const updateCount = (timestamp) => {
+    const updateCount = (timestamp: number): void => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / (duration * 1000), 1);
@@ -45,7 +42,9 @@ function CountUp({ end, duration = 2, className = "" }) {
 
     animationFrame = requestAnimationFrame(updateCount);
 
-    return () => cancelAnimationFrame(animationFrame);
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
   }, [end, duration, inView]);
 
   return <span ref={nodeRef} className={className}>{count}</span>;

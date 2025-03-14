@@ -390,7 +390,7 @@ function GiftCardSection() {
 
 function TestimonialsSection() {
   return (
-    <div className="bg-background outline-background-dim outline outline-4 lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+    <div className="bg-background outline-background-dim lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
       <div className="flex flex-col h-full w-full text-center">
         <motion.h2
           className="text-3xl font-heading"

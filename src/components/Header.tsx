@@ -1,13 +1,15 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isEarnOpen, setIsEarnOpen] = useState(false);
+  const earnDropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);
@@ -16,6 +18,23 @@ export default function Header() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (earnDropdownRef.current && !earnDropdownRef.current.contains(event.target as Node)) {
+        setIsEarnOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsEarnOpen(false);
+  }, [pathname]);
 
   const navigationItems = [
     { path: "/#start", label: "Home", match: "/" },
@@ -96,22 +115,39 @@ export default function Header() {
               Locations
             </Link>
           </li>
-          <li>
-            <details>
-              <summary>Earn</summary>
-              <ul className="text-black">
-                <li>
-                  <Link
-                    href="/rewards"
-                  >
-                    Rewards
-                  </Link>
-                </li>
-                <li>
-                  <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
-                </li>
-              </ul>
-            </details>
+          <li ref={earnDropdownRef}>
+            <div className="relative">
+              <button
+                onClick={() => setIsEarnOpen(!isEarnOpen)}
+                className="flex items-center w-full justify-between"
+              >
+                <span>Earn</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`h-4 w-4 ml-1 transition-transform duration-200 ${isEarnOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {isEarnOpen && (
+                <ul className="text-black p-2 bg-white shadow-md absolute top-full left-0 w-full rounded-md">
+                  <li>
+                    <Link href="/rewards">Rewards</Link>
+                  </li>
+                  <li>
+                    <Link href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""}`}>Gifts</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </li>
           <li>
             <Link
@@ -157,22 +193,37 @@ export default function Header() {
               Locations
             </Link>
           </li>
-          <li>
-            <details>
-              <summary>Earn</summary>
-              <ul className="text-black">
+          <li ref={earnDropdownRef} className="relative">
+            <button
+              onClick={() => setIsEarnOpen(!isEarnOpen)}
+              className={`hover:underline active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"} flex items-center`}
+            >
+              <span>Earn</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-4 w-4 ml-1 transition-transform duration-200 ${isEarnOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            {isEarnOpen && (
+              <ul className="text-black p-2 bg-white shadow-md absolute top-full left-0 rounded-md min-w-32">
                 <li>
-                  <Link
-                    href="/rewards"
-                  >
-                    Rewards
-                  </Link>
+                  <Link href="/rewards">Rewards</Link>
                 </li>
                 <li>
-                  <a href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""} active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"}`}>Gifts</a>
+                  <Link href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""}`}>Gifts</Link>
                 </li>
               </ul>
-            </details>
+            )}
           </li>
           <li>
             <Link

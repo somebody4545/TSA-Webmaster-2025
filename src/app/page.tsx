@@ -441,7 +441,91 @@ function TestimonialsSection() {
   );
 }
 
-function LocationsSection() {
+function GallerySection() {
+  const images = [
+    {
+      src: "/img/gallery/gallery1.jpg",
+      alt: "Plant-based dish 1",
+      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery2.jpg",
+      alt: "Plant-based dish 2",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery3.jpg",
+      alt: "Plant-based dish 3",
+      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery4.jpg",
+      alt: "Plant-based dish 4",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery5.jpg",
+      alt: "Plant-based dish 5",
+      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery6.jpg",
+      alt: "Plant-based dish 6",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery7.jpg",
+      alt: "Plant-based dish 7",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery8.jpg",
+      alt: "Plant-based dish 8",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery9.jpg",
+      alt: "Plant-based dish 9",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery10.jpg",
+      alt: "Plant-based dish 10",
+      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+    },
+    {
+      src: "/img/gallery/gallery11.jpg",
+      alt: "Plant-based dish 11",
+      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+    },
+  ];
+
+  return (
+    <section className="w-full bg-black py-16 px-4 md:px-16" style={{ boxShadow: "0 -10px 30px rgba(0,0,0,0.3)" }}>
+      <h2 className="text-4xl font-heading text-white mb-8 text-center">Gallery</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 grid-rows-3 gap-4 max-w-6xl mx-auto auto-rows-[minmax(90px,1fr)]">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center ${img.className}`}
+            style={{ minHeight: 0 }}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={400}
+              height={400}
+              className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/*function LocationsSection() {
   return (
     <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
       <motion.div
@@ -494,7 +578,7 @@ function LocationsSection() {
       </div>
     </div>
   );
-}
+}*/
 
 export default function HomePage() {
   return (
@@ -504,7 +588,8 @@ export default function HomePage() {
       <MenuSection />
       <GiftCardSection />
       <TestimonialsSection />
-      <LocationsSection />
+      <GallerySection />
+      
     </>
   );
 }

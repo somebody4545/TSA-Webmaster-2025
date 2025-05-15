@@ -146,7 +146,7 @@ const GlobalCuisineMap = () => {
                   countryCode={location.countryCode}
                   height="30"
                   width="30"
-                  className="shadow-md"
+                  title={location.name} 
                 />
               </motion.div>
             </div>
@@ -161,8 +161,9 @@ const GlobalCuisineMap = () => {
                 transition={{ duration: 0.3 }}
                 className="fixed inset-0 flex items-center justify-center p-4"
                 style={{ backgroundColor: "rgba(0,0,0,0.7)", zIndex: 50 }}
+                onClick={() => setActivePopup(null)}
               >
-                <div className="bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+                <div className="bg-background rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex items-center">
@@ -172,19 +173,19 @@ const GlobalCuisineMap = () => {
                           width="40"
                           className="mr-3"
                         />
-                        <h3 className="text-2xl font-heading font-bold text-primary-darker">
+                        <h3 className="text-2xl font-heading font-bold text-text">
                           {activeLocation.name}
                         </h3>
                       </div>
                       <button
                         onClick={() => setActivePopup(null)}
-                        className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                        className="p-1 rounded-full bg-background-dim hover:bg-background-dimmer transition-colors"
                       >
-                        <X className="w-5 h-5 text-gray-500" />
+                        <X className="w-5 h-5 text-text" />
                       </button>
                     </div>
 
-                    <h4 className="text-lg font-heading font-semibold text-primary mb-2">
+                    <h4 className="text-lg font-heading font-semibold text-text mb-2">
                       {activeLocation.cuisine}
                     </h4>
 
@@ -193,13 +194,13 @@ const GlobalCuisineMap = () => {
                     </p>
 
                     <div className="bg-background-dim p-4 rounded-lg">
-                      <span className="block text-sm font-medium text-primary-darker mb-1">
+                      <span className="block text-sm font-medium text-text mb-1">
                         Signature Dish:
                       </span>
                       <p className="text-black italic">
                         {activeLocation.signatureDish}
                       </p>
-                      <p className="mt-2 text-sm text-primary font-semibold">
+                      <p className="mt-2 text-sm text-primary-darker font-semibold">
                         Try our{" "}
                         <span className="font-bold">
                           {activeLocation.menuReference}

@@ -113,7 +113,7 @@ const GlobalCuisineMap = () => {
   return (
     <div className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-heading font-bold text-primary-darker text-center mb-12">
+        <h2 className="text-3xl font-heading font-bold text-text text-center mb-12">
           Global Culinary Influences
         </h2>
 
@@ -146,7 +146,7 @@ const GlobalCuisineMap = () => {
                   countryCode={location.countryCode}
                   height="30"
                   width="30"
-                  title={location.name} 
+                  title={location.name}
                 />
               </motion.div>
             </div>
@@ -163,7 +163,10 @@ const GlobalCuisineMap = () => {
                 style={{ backgroundColor: "rgba(0,0,0,0.7)", zIndex: 50 }}
                 onClick={() => setActivePopup(null)}
               >
-                <div className="bg-background rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+                <div
+                  className="bg-background rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex items-center">

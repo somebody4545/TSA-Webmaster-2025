@@ -58,14 +58,18 @@ const GiftCardItem: React.FC<GiftCardProps> = ({ image, title, priceRange }) => 
       >
         {title} <span className='text-nowrap'>{priceRange}</span>
       </motion.h3>
-      <motion.button
-        className="btn btn-primary btn-shine mt-4 select-disabled rounded-full max-w-max shadow-md"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-      >
-        Out of Stock
-      </motion.button>
+      <form action="/api/checkout_sessions" method="POST">
+        <motion.button
+          type="submit"
+          role="link"
+          className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          Order
+        </motion.button>
+      </form>
     </div>
   </div>
 );

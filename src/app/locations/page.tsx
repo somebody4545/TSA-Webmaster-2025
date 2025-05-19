@@ -74,10 +74,10 @@ const Locations = () => {
 
       <div className="py-12 bg-primary-50/50">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-3xl font-heading mb-4 text-primary">
+          <h2 className="text-3xl font-heading mb-4 text-primary-darker">
             Our Locations
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-black mb-6">
             Each Maitso location is thoughtfully designed to minimize
             environmental impact while maximizing your dining experience.
             Prioritizing locally-sourced ingredients to result in
@@ -86,15 +86,15 @@ const Locations = () => {
           </p>
           <div className="flex justify-center space-x-8">
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-primary-darker mr-2" />
               <span>100% Plant-Based</span>
             </div>
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-primary-darker mr-2" />
               <span>Locally Sourced</span>
             </div>
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-primary-darker mr-2" />
               <span>Zero Waste</span>
             </div>
           </div>

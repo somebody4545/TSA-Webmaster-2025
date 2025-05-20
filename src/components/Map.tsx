@@ -29,6 +29,10 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
   const cityThingsToDo = thingsToDo || [];
   const router = useRouter();
 
+  // Get current day of week
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const currentDay = daysOfWeek[new Date().getDay()];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -188,11 +192,15 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       <h3 className="text-xl font-bold font-heading">Hours</h3>
                     </div>
                     <div className="pl-8 space-y-2 text-gray-700">
-                      {cityHours.map((day, index) => (
-                        <p key={index} className={`${day.includes('Sunday') ? 'border-l-4 pl-2 border-primary' : ''}`}>
-                          {day}
-                        </p>
-                      ))}
+                      {cityHours.map((day, index) => {
+                        // Check if the current hour string contains the current day of week
+                        const isCurrentDay = day.includes(currentDay);
+                        return (
+                          <p key={index} className={`${isCurrentDay ? 'border-l-4 pl-2 border-primary' : ''}`}>
+                            {day}
+                          </p>
+                        );
+                      })}
                     </div>
                   </motion.div>
                   

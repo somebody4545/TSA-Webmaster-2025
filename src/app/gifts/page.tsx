@@ -241,7 +241,7 @@ const GiftsPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                LIMITED <span className='font-normal'>Holiday Card</span>
+                LIMITED DROP <span className='font-normal'>Holiday Card</span>
               </motion.h3>
               <motion.button
                 className="btn btn-primary hover:bg-background-dimmer mt-4 rounded-full select-disabled max-w-max shadow-md flex flex-col gap-1"

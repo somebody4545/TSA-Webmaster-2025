@@ -220,38 +220,25 @@ const LocationMap = () => {
     setSelectedLocation(location);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    // Get position relative to the container
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
-
-  // Effect to handle mouse position when hovering on 3D canvas
+  // Updated to track mouse position globally
   useEffect(() => {
-    if (!view3D || !canvasRef.current) return;
-    
-    const handleCanvasMouseMove = (e: MouseEvent) => {
-      const rect = canvasRef.current?.getBoundingClientRect();
-      if (rect) {
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY
+      });
     };
     
-    const canvasElement = canvasRef.current;
-    canvasElement.addEventListener('mousemove', handleCanvasMouseMove);
+    // Add event listener to the window
+    window.addEventListener('mousemove', handleGlobalMouseMove);
     
+    // Cleanup
     return () => {
-      canvasElement.removeEventListener('mousemove', handleCanvasMouseMove);
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
     };
-  }, [view3D]);
+  }, []);
 
-  // Function to handle transition between 2D and 3D views
+  // Effect to handle view transition
   const handleViewToggle = () => {
     setIsTransitioning(true);
     setTimeout(() => {
@@ -261,6 +248,25 @@ const LocationMap = () => {
       }, 300);
     }, 300);
   };
+  
+  // Update the cursor styling logic to only hide when hoveredLocation is active
+  useEffect(() => {
+    // Add a style tag to handle cursor hiding
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = `
+      #indoor:hover, #booth:hover, #openair:hover, #outdoor:hover {
+        cursor: ${hoveredLocation ? 'none' : 'pointer'} !important;
+      }
+      .canvas-container {
+        cursor: ${hoveredLocation ? 'none' : 'default'} !important;
+      }
+    `;
+    document.head.appendChild(styleTag);
+    
+    return () => {
+      document.head.removeChild(styleTag);
+    };
+  }, [hoveredLocation]); // Add hoveredLocation as dependency
   
   return (
     <div className="relative">
@@ -289,7 +295,7 @@ const LocationMap = () => {
         ) : view3D ? (
           <div 
             ref={canvasRef}
-            className="w-full h-[400px] bg-gray-800 rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out"
+            className="w-full h-[400px] bg-gray-800 rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out canvas-container"
           >
             <Canvas>
               <ambientLight intensity={0.5} />
@@ -306,14 +312,12 @@ const LocationMap = () => {
           </div>
         ) : (
           <div 
-          ref={canvasRef}
           className="w-full h-[400px] bg-gray-800 rounded-lg overflow-hidden transition-opacity duration-300 ease-in-out"
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="-10 -50 510  500" 
             className="w-full max-w-2xl mx-auto transition-opacity duration-300 ease-in-out"
-            onMouseMove={handleMouseMove}
           >
             <defs>
               <style>
@@ -398,11 +402,13 @@ const LocationMap = () => {
       
       {hoveredLocation && (
           <div 
-            className="absolute pointer-events-none w-max bg-background text-black px-2 py-1 rounded-md text-sm font-medium shadow-md transition-opacity duration-200 z-50"
+            className="fixed pointer-events-none w-max bg-background text-black px-2 py-1 rounded-md text-sm font-medium shadow-md z-50"
             style={{
-          left: `${mousePosition.x}px`,
-          top: `${mousePosition.y + 15}px`,
-          opacity: hoveredLocation ? 1 : 0
+              left: `${mousePosition.x}px`,
+              top: `${mousePosition.y}px`,
+              transform: 'translate(-50%, -50%)',
+              opacity: hoveredLocation ? 1 : 0,
+              animation: 'tooltipExpand 0.2s ease-out'
             }}
           >
             {locations[hoveredLocation as keyof typeof locations].name}

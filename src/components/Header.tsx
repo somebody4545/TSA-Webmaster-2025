@@ -3,16 +3,20 @@
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isEarnOpen, setIsEarnOpen] = useState(false);
   const earnDropdownRef = useRef<HTMLLIElement>(null);
+  const lastToggleRef = useRef<number>(0);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+      setIsEarnOpen(false);
+    };
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
@@ -26,49 +30,77 @@ export default function Header() {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    if (isEarnOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isEarnOpen]);
 
   useEffect(() => {
     setIsEarnOpen(false);
   }, [pathname]);
 
-  const navigationItems = [
-    { path: "/#start", label: "Home", match: "/" },
-    { path: "/mission", label: "Mission", match: "/mission" },
-    { path: "/menu", label: "Menu", match: "/menu" },
-    { path: "/locations", label: "Locations", match: "/locations" },
-    { path: "/rewards", label: "Rewards", match: "/rewards" },
-    { path: "/references", label: "References", match: "/references" },
-  ];
+  const handleNavigation = () => {
+    setIsEarnOpen(false);
+  };
+
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent) => {
+      if (isEarnOpen && earnDropdownRef.current) {
+        const now = Date.now();
+        if (now - lastToggleRef.current < 50) {
+          return;
+        }
+
+        if (!earnDropdownRef.current.contains(e.target as Node)) {
+          setIsEarnOpen(false);
+        }
+      }
+    };
+
+    // Use capture phase to ensure we catch all clicks
+    document.addEventListener('click', handleDocumentClick, true);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick, true);
+    };
+  }, [isEarnOpen]);
 
   const headerBackground = isScrolled
-    ? "bg-text bg-opacity-80 text-background"
+    ? "bg-text bg-opacity-80 text-background backdrop-blur-md"
     : "bg-primary text-text";
 
   return (
-    <header
-      className={`w-full grain h-20 flex justify-between items-center p-4 lg:px-16 xl:px-32 ${headerBackground} backdrop-blur-sm sticky top-0 z-50 transition-all duration-700`}
+    <motion.header
+      className={`w-full grain h-20 flex justify-between items-center p-4 lg:px-16 xl:px-32 ${headerBackground} backdrop-blur-md sticky top-0 z-50 transition-all duration-700 shadow-lg`}
       id="start"
     >
       <Link href="/#start">
         <motion.h1
           className="text-2xl font-bold font-heading max-lg:px-4"
           whileHover={{
-            scale: 1,
-            transition: { type: "spring", stiffness: 500 },
+            scale: 1.05,
+            transition: { duration: 0.3 },
           }}
-          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
         >
           Maitso
         </motion.h1>
-      </Link>
-
-      <div className="dropdown dropdown-end lg:hidden">
-        <label tabIndex={0} className="btn btn-ghost">
+      </Link>        <motion.div
+        className="dropdown dropdown-end lg:hidden"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
+        <motion.label
+          tabIndex={0}
+          className="btn btn-ghost"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -83,48 +115,71 @@ export default function Header() {
               d="M4 6h16M4 12h16m-7 6h7"
             />
           </svg>
-        </label>
+        </motion.label>
         <ul
           tabIndex={0}
           className="text-text menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 gap-2"
         >
-          <li>
+          <motion.li
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
             <Link
               href="/mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
-                } focus:outline-none`}
+              onClick={handleNavigation}
+              className="relative overflow-hidden group"
             >
-              Process
+              <span className={`${pathname === "/mission" ? "font-bold" : ""} focus:outline-none`}>Process</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
             <Link
               href="/menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""
-                } focus:outline-none`}
+              onClick={handleNavigation}
+              className="relative overflow-hidden group"
             >
-              Menu
+              <span className={`${pathname === "/menu" ? "font-bold" : ""} focus:outline-none`}>Menu</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
             <Link
               href="/locations"
-              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""
-                } focus:outline-none`}
+              onClick={handleNavigation}
+              className="relative overflow-hidden group"
             >
-              Locations
+              <span className={`${pathname === "/locations" ? "font-bold" : ""} focus:outline-none`}>Locations</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li ref={earnDropdownRef}>
+          </motion.li>
+          <motion.li
+            ref={earnDropdownRef}
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`${isEarnOpen ? 'z-50' : ''}`}
+          >
             <div className="relative">
               <button
-                onClick={() => setIsEarnOpen(!isEarnOpen)}
-                className="flex items-center w-full justify-between"
+                onClick={() => {
+                  lastToggleRef.current = Date.now();
+                  setIsEarnOpen(!isEarnOpen);
+                }}
+                onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
+                className="flex items-center w-full justify-between group relative overflow-hidden"
               >
                 <span>Earn</span>
-                <svg
+                <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className={`h-4 w-4 ml-1 transition-transform duration-200 ${isEarnOpen ? 'rotate-180' : ''}`}
+                  className="h-4 w-4 ml-1"
+                  animate={{ rotate: isEarnOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -135,73 +190,135 @@ export default function Header() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </svg>
+                </motion.svg>
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
               </button>
-              {isEarnOpen && (
-                <ul className="text-black p-2 bg-white shadow-md absolute top-full left-0 w-full rounded-md">
-                  <li>
-                    <Link href="/rewards">Rewards</Link>
-                  </li>
-                  <li>
-                    <Link href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""}`}>Gifts</Link>
-                  </li>
-                </ul>
-              )}
+              <AnimatePresence>
+                {isEarnOpen && (
+                  <motion.ul
+                    className="text-black p-2 bg-white shadow-md absolute top-full left-0 w-full rounded-md"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <motion.li
+                      initial={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      onClick={() => {
+                        // Allow the link to process before closing menu
+                        setTimeout(() => setIsEarnOpen(false), 100);
+                      }}
+                    >
+                      <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group">
+                        <span>Rewards</span>
+                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                      </Link>
+                    </motion.li>
+                    <motion.li
+                      initial={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      onClick={() => {
+                        // Allow the link to process before closing menu
+                        setTimeout(() => setIsEarnOpen(false), 100);
+                      }}
+                    >
+                      <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group">
+                        <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
+                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                      </Link>
+                    </motion.li>
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </div>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
             <Link
               href="/references"
-              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
-                } focus:outline-none`}
+              onClick={handleNavigation}
+              className="relative overflow-hidden group"
             >
-              References
+              <span className={`${pathname === "/references" ? "font-bold" : ""} focus:outline-none`}>References</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
+          </motion.li>
         </ul>
-      </div>
+      </motion.div>
 
-      <nav className="hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 gap-2">
-          <li>
+      <motion.nav
+        className="hidden lg:flex"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
+      >
+        <ul className="menu menu-horizontal p-0 gap-4">
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <Link
               href="/mission"
-              className={`hover:underline ${pathname === "/mission" ? "font-bold" : ""
-                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                }`}
+              onClick={handleNavigation}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              Process
+              <span>Process</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <Link
               href="/menu"
-              className={`hover:underline ${pathname === "/menu" ? "font-bold" : ""
-                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                }`}
+              onClick={handleNavigation}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              Menu
+              <span>Menu</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <Link
               href="/locations"
-              className={`hover:underline ${pathname === "/locations" ? "font-bold" : ""
-                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                }`}
+              onClick={handleNavigation}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              Locations
+              <span>Locations</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
-          <li ref={earnDropdownRef} className="relative">
+          </motion.li>
+          <motion.li
+            ref={earnDropdownRef}
+            className={`relative ${isEarnOpen ? 'z-50' : ''}`}
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            onMouseLeave={() => setIsEarnOpen(false)}
+          >
             <button
-              onClick={() => setIsEarnOpen(!isEarnOpen)}
-              className={`hover:underline active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"} flex items-center`}
+              onClick={() => {
+                lastToggleRef.current = Date.now();
+                setIsEarnOpen(!isEarnOpen);
+              }}
+              onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md flex items-center active:!bg-green-950`}
             >
               <span>Earn</span>
-              <svg
+              <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-4 w-4 ml-1 transition-transform duration-200 ${isEarnOpen ? 'rotate-180' : ''}`}
+                className="h-4 w-4 ml-1"
+                animate={{ rotate: isEarnOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -212,31 +329,66 @@ export default function Header() {
                   strokeWidth={2}
                   d="M19 9l-7 7-7-7"
                 />
-              </svg>
+              </motion.svg>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </button>
-            {isEarnOpen && (
-              <ul className="text-black p-2 bg-white shadow-md absolute top-full left-0 rounded-md min-w-32">
-                <li>
-                  <Link href="/rewards">Rewards</Link>
-                </li>
-                <li>
-                  <Link href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""}`}>Gifts</Link>
-                </li>
-              </ul>
-            )}
-          </li>
-          <li>
+            <AnimatePresence>
+              {isEarnOpen && (
+                <motion.ul
+                  className="text-black p-2 bg-white shadow-md absolute top-full left-0 rounded-md min-w-32"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.li
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    onClick={() => {
+                      // Allow the link to process before closing menu
+                      setTimeout(() => setIsEarnOpen(false), 100);
+                    }}
+                  >
+                    <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block">
+                      <span>Rewards</span>
+                      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                    </Link>
+                  </motion.li>
+                  <motion.li
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 1, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    onClick={() => {
+                      // Allow the link to process before closing menu
+                      setTimeout(() => setIsEarnOpen(false), 100);
+                    }}
+                  >
+                    <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block">
+                      <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
+                      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                    </Link>
+                  </motion.li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
+          </motion.li>
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <Link
               href="/references"
-              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
-                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
-                }`}
+              onClick={handleNavigation}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/references" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              References
+              <span>References</span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
             </Link>
-          </li>
+          </motion.li>
         </ul>
-      </nav>
-    </header>
+      </motion.nav>
+    </motion.header>
   );
 }

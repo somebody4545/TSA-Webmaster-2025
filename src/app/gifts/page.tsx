@@ -37,48 +37,98 @@ interface GiftCardProps {
   image: string;
   title: string;
   priceRange: string;
+  cardType: string;
 }
 
-const GiftCardItem: React.FC<GiftCardProps> = ({ image, title, priceRange }) => (
-  <div className='w-full lg:w-1/3 p-4'>
-    <div className='rounded-xl bg-background-dimmer p-8 h-full flex flex-col justify-between'>
-      <motion.img
-        src={image}
-        alt={title}
-        className='w-full aspect-square'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      />
-      <motion.h3
-        className='text-xl font-bold'
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        {title} <span className='text-nowrap'>{priceRange}</span>
-      </motion.h3>
-      <form action="/api/checkout_sessions" method="POST">
-        <motion.button
-          type="submit"
-          role="link"
-          className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md"
+const GiftCardItem: React.FC<GiftCardProps> = ({ image, title, priceRange, cardType }) => {
+  const [amount, setAmount] = React.useState('10');
+  
+  return (
+    <div className='w-full lg:w-1/3 p-4'>
+      <div className='rounded-xl bg-background-dimmer p-8 h-full flex flex-col justify-between'>
+        <motion.img
+          src={image}
+          alt={title}
+          className='w-full aspect-square'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        />
+        <motion.h3
+          className='text-xl font-bold'
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          Order
-        </motion.button>
-      </form>
+          {title} <span className='text-nowrap'>{priceRange}</span>
+        </motion.h3>
+        
+        <motion.div
+          className="mt-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <label htmlFor={`amount-${cardType}`} className="block text-sm px-1 font-medium mb-2">
+            Select Amount:
+          </label>
+          <select 
+            id={`amount-${cardType}`}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            className="w-full p-2 px-4 mb-3 rounded-full border border-gray-300 bg-background appearance-none select focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          >
+            {cardType === 'standard' && (
+              <>
+                <option value="5">$5</option>
+                <option value="10">$10</option>
+                <option value="25">$25</option>
+                <option value="50">$50</option>
+              </>
+            )}
+            {cardType === 'veggie' && (
+              <>
+                <option value="10">$10</option>
+                <option value="25">$25</option>
+                <option value="50">$50</option>
+                <option value="100">$100</option>
+              </>
+            )}
+            {cardType === 'premium' && (
+              <>
+                <option value="50">$50</option>
+                <option value="100">$100</option>
+                <option value="150">$150</option>
+                <option value="200">$200</option>
+              </>
+            )}
+          </select>
+        </motion.div>
+        
+        <form action="/api/checkout_sessions" method="POST">
+          <input type="hidden" name="cardType" value={cardType} />
+          <input type="hidden" name="amount" value={amount} />
+          <motion.button
+            type="submit"
+            role="link"
+            className="btn btn-primary btn-shine mt-4 rounded-full max-w-max shadow-md"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            Purchase
+          </motion.button>
+        </form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const GiftsPage = () => {
   const giftCards = [
-    { image: "/img/cards/image.png", title: "The Gift of Maitso", priceRange: "($5-$50)" },
-    { image: "/img/cards/veggie.png", title: "Veggie Delight", priceRange: "($10-$100)" },
-    { image: "/img/cards/prem.png", title: "Premium Card", priceRange: "($50-$200)" }
+    { image: "/img/cards/image.png", title: "The Gift of Maitso", priceRange: "($5-$50)", cardType: "standard" },
+    { image: "/img/cards/veggie.png", title: "Veggie Delight", priceRange: "($10-$100)", cardType: "veggie" },
+    { image: "/img/cards/prem.png", title: "Premium Card", priceRange: "($50-$200)", cardType: "premium" }
   ];
 
   return (
@@ -194,12 +244,13 @@ const GiftsPage = () => {
                 LIMITED <span className='font-normal'>Holiday Card</span>
               </motion.h3>
               <motion.button
-                className="btn btn-primary btn-shine mt-4 rounded-full select-disabled max-w-max shadow-md"
+                className="btn btn-primary hover:bg-background-dimmer mt-4 rounded-full select-disabled max-w-max shadow-md flex flex-col gap-1"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 Out of Stock
+                <p className='text-sm font-normal text-center'>Next drop 4th of July</p>
               </motion.button>
             </div>
             <motion.img
@@ -224,6 +275,7 @@ const GiftsPage = () => {
                 image={card.image}
                 title={card.title}
                 priceRange={card.priceRange}
+                cardType={card.cardType}
               />
             ))}
           </div>

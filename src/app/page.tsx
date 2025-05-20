@@ -444,42 +444,42 @@ function TestimonialsSection() {
 function GallerySection() {
   const images = [
     {
-      src: "/img/gallery/gallery1.jpg",
+      src: "/img/gallery/gallery1.png",
       alt: "Plant-based dish 1",
       className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery2.jpg",
+      src: "/img/gallery/gallery2.png",
       alt: "Plant-based dish 2",
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery3.jpg",
+      src: "/img/gallery/gallery3.png",
       alt: "Plant-based dish 3",
       className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery4.jpg",
+      src: "/img/gallery/gallery4.png",
       alt: "Plant-based dish 4",
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery5.jpg",
+      src: "/img/gallery/gallery7.png",
       alt: "Plant-based dish 5",
       className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery6.jpg",
+      src: "/img/gallery/gallery6.png",
       alt: "Plant-based dish 6",
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery7.jpg",
+      src: "/img/gallery/gallery5.png",
       alt: "Plant-based dish 7",
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery8.jpg",
+      src: "/img/gallery/gallery10.png",
       alt: "Plant-based dish 8",
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
@@ -489,7 +489,7 @@ function GallerySection() {
       className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
     },
     {
-      src: "/img/gallery/gallery10.jpg",
+      src: "/img/gallery/gallery8.png",
       alt: "Plant-based dish 10",
       className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
     },

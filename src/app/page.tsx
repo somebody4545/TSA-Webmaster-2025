@@ -310,7 +310,7 @@ function MenuSection() {
             >
               From entrees to desserts, we have a variety of plant-based options for you to enjoy.
               Come and explore our delicious offerings from a variety of cuisines.
-            </motion.p>
+            </motion.p> 
             <Link href="/menu">
               <button className="btn btn-primary btn-shine rounded-full shadow-lg">
                 View Full Menu

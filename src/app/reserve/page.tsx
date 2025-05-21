@@ -460,7 +460,8 @@ export default function ContactPage() {
     time: '',
     guests: '2',
     location: '',
-    message: ''
+    message: '',
+    restaurant: 'LA' // Default to LA location
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -607,6 +608,25 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
+                </div>
+                
+                <div>
+                  <label htmlFor="restaurant" className="block text-sm font-medium text-gray-700">
+                    Restaurant Location
+                  </label>
+                  <select
+                    name="restaurant"
+                    id="restaurant"
+                    required
+                    value={formData.restaurant}
+                    onChange={handleChange}
+                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                  >
+                    <option value="LA">Los Angeles</option>
+                    <option value="NY">New York</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Seattle">Seattle</option>
+                  </select>
                 </div>
                 
                 <div>

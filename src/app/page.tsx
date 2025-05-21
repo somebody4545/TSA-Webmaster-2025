@@ -503,11 +503,13 @@ function GallerySection() {
   return (
     <section className="w-full bg-black py-16 px-4 md:px-16" style={{ boxShadow: "0 -10px 30px rgba(0,0,0,0.3)" }}>
       <h2 className="text-4xl font-heading text-white mb-8 text-center">Gallery</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 grid-rows-3 gap-4 max-w-6xl mx-auto auto-rows-[minmax(90px,1fr)]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto auto-rows-[minmax(60px,auto)] sm:auto-rows-[minmax(90px,1fr)]">
         {images.map((img, idx) => (
           <div
             key={idx}
-            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center ${img.className}`}
+            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center max-h-[200px] sm:max-h-none ${
+              img.className.replace('col-span-2', 'col-span-1 sm:col-span-2')
+            }`}
             style={{ minHeight: 0 }}
           >
             <Image

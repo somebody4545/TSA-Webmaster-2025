@@ -34,10 +34,6 @@ function CityCard({ city, image, description, link }: CardProps) {
             layout="fill"
             className="object-cover"
           />          
-          <div className="absolute top-4 right-4 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center">
-						<House className="w-3 h-3 mr-1" />
-            Plant-Based
-          </div>
         </motion.div>
         
         <motion.div
@@ -46,7 +42,7 @@ function CityCard({ city, image, description, link }: CardProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h2 className="text-2xl font-bold mb-2 text-primary font-heading flex items-center">
+          <h2 className="text-2xl font-bold mb-2 text-primary-darker font-heading flex items-center">
             {city}
             <span className="ml-2 text-primary">
 							<MapPin className="w-5 h-5"/>
@@ -54,7 +50,7 @@ function CityCard({ city, image, description, link }: CardProps) {
           </h2>
           <p className="text-text mb-4">{description}</p>
           <div className="flex justify-between items-center">
-            <span className="text-primary font-medium text-sm flex items-center">
+            <span className="text-primary-darker font-medium text-sm flex items-center">
               Learn more
 							<MoveRight className="w-4 h-4 ml-1" />
             </span>

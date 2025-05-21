@@ -333,7 +333,7 @@ function MenuSection() {
         </div>
 
         {/* Carousel section - full width */}
-        <div className="w-full flex justify-center">
+        <div className="w-full text-center lg:text-left flex justify-center">
           <motion.div
             className="w-full max-w-4xl"
             initial={{ opacity: 0, y: 20 }}

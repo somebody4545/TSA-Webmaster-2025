@@ -730,7 +730,7 @@ export default function ContactPage() {
         </div>
       )}
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -754,7 +754,7 @@ export default function ContactPage() {
           <h3 className="text-lg font-medium text-gray-900">Hours</h3>
           <p className="mt-2 text-gray-600">Mon-Fri: 11am - 10pm<br />Sat-Sun: 10am - 11pm</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

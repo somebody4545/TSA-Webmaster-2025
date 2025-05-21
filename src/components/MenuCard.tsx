@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { Vegan, WheatOff, Croissant, Flame, Bean } from "lucide-react";
 type MenuCardProps = {
   title: string;
   subtitle: string;
@@ -11,7 +11,13 @@ type MenuCardProps = {
   tags?: string[];
   className?: string;
 };
-
+const tagIconMap: Record<string, React.ReactNode> = {
+  Vegan: <Vegan size={16} />,
+  "Gluten Free": <WheatOff size={16} />,
+  "Low Carb": <Croissant size={16} />,
+  Spicy: <Flame size={16} />,
+  "High Protein": <Bean size={16} />,
+};
 const combineClassNames = (...classes: (string | undefined)[]) =>
   classes.filter(Boolean).join(" ");
 
@@ -76,7 +82,7 @@ export const MenuCard: React.FC<MenuCardProps> = ({
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.15 }}
               >
-                {tag}
+                {tagIconMap[tag] || null}
               </motion.span>
             ))}
           </div>

@@ -4,8 +4,8 @@ import NotFound from "@/app/not-found";
 import NutritionLabel from "@/components/NutritionLabel";
 import Carousel from "@/components/Carousel";
 import Link from "next/link";
-import "react-multi-carousel/lib/styles.css";
-
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import SustainabilityGraphic from "@/components/SustainabilityGraphic";
 interface MenuItemPageProps {
   params: Promise<{ title: string }>;
 }
@@ -40,8 +40,8 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
         <div className="absolute inset-0 bg-black opacity-70"></div>
       </div>
       <div className="z-10 p-5 lg:mb-5 lg:p-10 max-w-screen-xl w-full flex flex-col justify-center h-full text-center lg:text-left mx-auto bg-background shadow-md mt-[-5vh]">
-        <Link href="/menu" className="text-left text-text hover:underline">
-          ← Back to Menu
+        <Link href="/menu" className="text-left flex items-center text-text hover:underline">
+          <ChevronLeft /> Back to Menu
         </Link>
         <h1 className="font-heading mb-5 flex flex-col lg:flex-row lg:items-baseline lg:justify-between text-center justify-center lg:text-left">
           <div>
@@ -68,11 +68,11 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
               <h1 className="text-2xl font-heading mb-2">Ingredients</h1>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center lg:justify-start">
                 {item.ingredients.map((ingredient, index) => (
-                  <div key={index} className="p-1">
-                    <p>
-                      <span className="text-primary text-xl font-bold">› </span>
+                  <div key={index} className="p-2">
+                    <span className="flex items-center gap-1">
+                      <span className="text-primary"><ChevronRight /></span>
                       {ingredient}
-                    </p>
+                    </span>
                   </div>
                 ))}
               </div>
@@ -113,6 +113,9 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
               <Carousel items={similarRecipes} />
             </div>
           </>
+        ) : null}
+        {item.sustainability ? (
+          <SustainabilityGraphic sustainability={item.sustainability}/>
         ) : null}
       </div>
     </div>

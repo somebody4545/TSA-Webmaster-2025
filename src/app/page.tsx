@@ -120,7 +120,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
 
 function Hero() {
   return (
-    <div className="bg-black text-background text-xl relative min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+    <div className="bg-black text-background text-xl relative min-h-[675px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
       <ParallaxBackground />
       <motion.div
         className="-z-10 opacity-25"
@@ -185,6 +185,21 @@ function Hero() {
       >
         1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
       </motion.p>
+      
+      {/* Reservation CTA Button */}
+      <motion.div
+        className="mt-8"
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.2 }}
+      >
+        <Link href="/reserve">
+          <button className="btn btn-primary btn-shine rounded-full px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform">
+            Reserve a Table
+          </button>
+        </Link>
+      </motion.div>
+      
       <motion.div
         className="absolute bottom-8 animate-bounce cursor-pointer"
         initial={{ opacity: 0 }}
@@ -234,7 +249,7 @@ function AboutSection() {
             transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
           >
             <motion.img
-              src="/img/about.png"
+              src="/img/hero_image.png"
               alt="About Us"
               className="object-cover w-full h-full rounded-full"
               initial={{ opacity: 0 }}
@@ -310,7 +325,7 @@ function MenuSection() {
             >
               From entrees to desserts, we have a variety of plant-based options for you to enjoy.
               Come and explore our delicious offerings from a variety of cuisines.
-            </motion.p>
+            </motion.p> 
             <Link href="/menu">
               <button className="btn btn-primary btn-shine rounded-full shadow-lg">
                 View Full Menu
@@ -441,7 +456,90 @@ function TestimonialsSection() {
   );
 }
 
-function LocationsSection() {
+function GallerySection() {
+  const images = [
+    {
+      src: "/img/gallery/gallery1.png",
+      alt: "Plant-based dish 1",
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
+    },
+    {
+      src: "/img/gallery/gallery2.png",
+      alt: "Plant-based dish 2",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery3.png",
+      alt: "Plant-based dish 3",
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
+    },
+    {
+      src: "/img/gallery/gallery4.png",
+      alt: "Plant-based dish 4",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery7.png",
+      alt: "Plant-based dish 5",
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
+    },
+    {
+      src: "/img/gallery/gallery6.png",
+      alt: "Plant-based dish 6",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery5.png",
+      alt: "Plant-based dish 7",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery10.png",
+      alt: "Plant-based dish 8",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery9.jpg",
+      alt: "Plant-based dish 9",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+    {
+      src: "/img/gallery/gallery8.png",
+      alt: "Plant-based dish 10",
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
+    },
+    {
+      src: "/img/gallery/gallery11.jpg",
+      alt: "Plant-based dish 11",
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
+    },
+  ];
+
+  return (
+    <section className="w-full bg-black py-16 px-4 md:px-16" style={{ boxShadow: "0 -10px 30px rgba(0,0,0,0.3)" }}>
+      <h2 className="text-4xl font-heading text-white mb-8 text-center">Gallery</h2>
+      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+        {images.map((img, idx) => (
+          <div
+            key={idx}
+            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center h-[150px] sm:h-[180px] md:h-[200px] ${img.className}`}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={400}
+              height={400}
+              className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/*function LocationsSection() {
   return (
     <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
       <motion.div
@@ -494,7 +592,7 @@ function LocationsSection() {
       </div>
     </div>
   );
-}
+}*/
 
 export default function HomePage() {
   return (
@@ -504,7 +602,8 @@ export default function HomePage() {
       <MenuSection />
       <GiftCardSection />
       <TestimonialsSection />
-      <LocationsSection />
+      <GallerySection />
+      
     </>
   );
 }

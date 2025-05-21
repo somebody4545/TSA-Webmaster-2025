@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       <div className="flex flex-row flex-wrap justify-between max-md:flex-col">
         <div className="flex flex-row flex-wrap max-md:flex-col">
           <div className="flex-shrink max-w-64 mr-8 mb-4">
-            <h4 className="font-bold mb-2">Our Vision</h4>
+            <h4 className="font-bold font-heading mb-2">Our Vision</h4>
             <p className="text-sm" style={{ color: '#2c513f' }}>
               At Maitso, we celebrate nature&apos;s bounty through thoughtfully crafted
               plant-based cuisine that nourishes both people and planet.
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="mr-8 mb-4">
-            <h4 className="font-bold mb-2">Find Us</h4>
+            <h4 className="font-bold font-heading mb-2">Find Us</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
               {locations.map((location, index) => (
                 <div key={index} className="flex items-center">
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <h4 className="font-bold mb-2">Connect With Us</h4>
+          <h4 className="font-bold font-heading mb-2">Connect With Us</h4>
           <div className="flex flex-row gap-1 mb-2">
             <Link href="/reserve">
               <button className="text-sm font-bold px-3 py-1 rounded-md"

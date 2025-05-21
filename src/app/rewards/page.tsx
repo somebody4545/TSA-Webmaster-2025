@@ -196,8 +196,8 @@ export default function RewardsPage() {
                   {loading
                     ? "Processing..."
                     : scansToday >= 3
-                    ? "Daily Limit Reached"
-                    : "Show QR Code"}
+                      ? "Daily Limit Reached"
+                      : "Show QR Code"}
                 </span>
               </button>
             ) : (
@@ -226,7 +226,7 @@ export default function RewardsPage() {
         </div>
         {/* How to Earn Points Section */}
         <section className="w-full bg-background py-16">
-          <h2 className="text-5xl font-extrabold text-center text-primary-darker mb-16">
+          <h2 className="text-3xl font-heading text-center text-primary-darker mb-12">
             How to Earn Points
           </h2>
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 justify-center items-stretch px-4">
@@ -248,7 +248,7 @@ export default function RewardsPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Sign Up Bonus
               </h3>
               <p className="text-lg text-text">
@@ -260,7 +260,7 @@ export default function RewardsPage() {
               <div className="w-16 h-16 bg-primary-darker rounded-xl flex items-center justify-center mb-6 shadow">
                 <QrCode className="size-14 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Scan QR Codes
               </h3>
               <p className="text-lg text-text">
@@ -286,7 +286,7 @@ export default function RewardsPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Redeem Points
               </h3>
               <p className="text-lg text-text">

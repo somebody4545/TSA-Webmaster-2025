@@ -42,7 +42,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                   )}
                 </div>
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-black">
+                  <h3 className="text-xl font-bold font-heading text-black">
                     {items[0].title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-2">
@@ -137,7 +137,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                     )}
                   </div>
                   <div className="flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-black">
+                    <h3 className="text-xl font-bold font-heading text-black">
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-600 mb-2">

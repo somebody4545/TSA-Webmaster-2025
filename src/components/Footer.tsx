@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
         <div className="mb-4">
           <h4 className="font-bold mb-2">Connect With Us</h4>
           <div className="flex flex-row gap-1 mb-2">
-            <Link href="/contact">
+            <Link href="/reserve">
               <button className="text-sm font-bold px-3 py-1 rounded-md"
                 style={{
                   color: '#1e3a2f',

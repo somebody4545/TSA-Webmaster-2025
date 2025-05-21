@@ -16,7 +16,33 @@ const NewYork = () => {
 				"Friday: 8:00 AM - 10:30 PM",
 				"Saturday: 8:00 AM - 10:30 PM",
 			]}
-			contacts={["Phone: (212) 123-4567"]}/>
+			contacts={["Phone: (212) 123-4567"]}
+			thingsToDo={[
+				{
+					title: "Empire State Building",
+					description: "Iconic Art Deco skyscraper with observation decks offering stunning city views.",
+					distance: "0.1 miles away",
+					image: "/img/attractions/empire-state-building.jpg"
+				},
+				{
+					title: "Bryant Park",
+					description: "Beautiful urban park with seasonal activities and a carousel.",
+					distance: "0.3 miles away",
+					image: "/img/attractions/bryant-park.jpg"
+				},
+				{
+					title: "Times Square",
+					description: "World-famous intersection known for its bright lights and entertainment.",
+					distance: "0.4 miles away",
+					image: "/img/attractions/times-square.jpg"
+				},
+				{
+					title: "Herald Square",
+					description: "Historic shopping district with Macy's flagship store and modern retail.",
+					distance: "0.2 miles away",
+					image: "/img/attractions/herald-square.jpg"
+				}
+			]}/>
 	)
 }
 

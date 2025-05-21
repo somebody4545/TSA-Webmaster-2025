@@ -48,7 +48,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Chinese"
+    "cuisine": "Chinese",
+    "sustainability": {
+      "carbonFootprint": "1.8 kg CO₂e",
+      "waterUsage": "680 liters",
+      "energyUsed": "0.45 kWh",
+      "sourcing": "Tofu: Locally sourced soy (organic)\nQuinoa: Imported from South America\nBroccoli: Local farm",
+      "transport": "Electric trucking & consolidated freight shipping",
+      "preparation": "Pan-fried (electric induction cooktop)",
+      "ingredients": "Tofu: Low impact (plant-based protein)\nQuinoa: Moderate impact (imported)\nBroccoli: Low impact (seasonal, local)"
+    }
   },
   {
     "title": "Mediterranean Bowl",
@@ -97,7 +106,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Mediterranean"
+    "cuisine": "Mediterranean",
+    "sustainability": {
+      "carbonFootprint": "1.2 kg CO₂e",
+      "waterUsage": "520 liters",
+      "energyUsed": "0.35 kWh",
+      "sourcing": "Quinoa: Imported from South America\nChickpeas: Local farm\nVegetables: Regional suppliers",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Falafel baked (electric oven)",
+      "ingredients": "Quinoa: Moderate impact (imported)\nChickpeas: Low impact (local)\nVegetables: Low impact (seasonal, local)"
+    }
   },
   {
     "title": "Grilled Lettuce Wrap",
@@ -146,7 +164,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.0 kg CO₂e",
+      "waterUsage": "400 liters",
+      "energyUsed": "0.30 kWh",
+      "sourcing": "Lettuce: Local farm\nWild Rice: Regional supplier\nVegetables: Local farm",
+      "transport": "Local trucking",
+      "preparation": "Grilled (electric grill)",
+      "ingredients": "Lettuce: Low impact (local)\nWild Rice: Moderate impact (regional)\nVegetables: Low impact (local)"
+    }
   },
   {
     "title": "Buddha Bowl",
@@ -194,7 +221,16 @@
     "categories": [
       "Lunch"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.1 kg CO₂e",
+      "waterUsage": "500 liters",
+      "energyUsed": "0.32 kWh",
+      "sourcing": "Sweet Potato: Local farm\nKale: Local farm\nQuinoa: Imported from South America",
+      "transport": "Local and regional trucking",
+      "preparation": "Roasted (electric oven)",
+      "ingredients": "Sweet Potato: Low impact (local)\nKale: Low impact (local)\nQuinoa: Moderate impact (imported)"
+    }
   },
   {
     "title": "Paneer Tikka Masala",
@@ -245,7 +281,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Indian"
+    "cuisine": "Indian",
+    "sustainability": {
+      "carbonFootprint": "2.2 kg CO₂e",
+      "waterUsage": "900 liters",
+      "energyUsed": "0.60 kWh",
+      "sourcing": "Paneer: Local dairy\nTomatoes: Local farm\nRice: Imported from India",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Simmered (gas stove)",
+      "ingredients": "Paneer: Moderate impact (dairy)\nTomatoes: Low impact (local)\nRice: Moderate impact (imported)"
+    }
   },
   {
     "title": "Avocado Toast",
@@ -289,7 +334,16 @@
     "categories": [
       "Breakfast"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.3 kg CO₂e",
+      "waterUsage": "350 liters",
+      "energyUsed": "0.22 kWh",
+      "sourcing": "Avocado: Imported from Mexico\nEggs: Local farm\nBread: Local bakery",
+      "transport": "Local and regional trucking",
+      "preparation": "Poached (electric stove)",
+      "ingredients": "Avocado: Moderate impact (imported)\nEggs: Moderate impact (local, animal-based)\nBread: Low impact (local)"
+    }
   },
   {
     "title": "Poke Bowl",
@@ -338,7 +392,16 @@
     "categories": [
       "Lunch"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.5 kg CO₂e",
+      "waterUsage": "600 liters",
+      "energyUsed": "0.40 kWh",
+      "sourcing": "Tofu: Local producer\nMango: Imported\nVegetables: Local farm",
+      "transport": "Mixed trucking and air freight",
+      "preparation": "Rice cooked (electric rice cooker)",
+      "ingredients": "Tofu: Low impact (local)\nMango: Moderate impact (imported)\nVegetables: Low impact (local)"
+    }
   },
   {
     "title": "Mushroom Risotto",
@@ -385,7 +448,16 @@
     "categories": [
       "Dinner"
     ],
-    "cuisine": "Italian"
+    "cuisine": "Italian",
+    "sustainability": {
+      "carbonFootprint": "1.4 kg CO₂e",
+      "waterUsage": "480 liters",
+      "energyUsed": "0.38 kWh",
+      "sourcing": "Mushrooms: Local farm\nRice: Imported from Italy\nDairy: Local producer",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Simmered (electric stove)",
+      "ingredients": "Mushrooms: Low impact (local)\nRice: Moderate impact (imported)\nDairy: Moderate impact (local)"
+    }
   },
   {
     "title": "Acai Bowl",
@@ -431,7 +503,16 @@
     "categories": [
       "Breakfast"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.0 kg CO₂e",
+      "waterUsage": "420 liters",
+      "energyUsed": "0.25 kWh",
+      "sourcing": "Acai: Imported from Brazil\nBerries: Local farm\nGranola: House-made",
+      "transport": "Mixed trucking and air freight",
+      "preparation": "Blended (electric blender)",
+      "ingredients": "Acai: Moderate impact (imported)\nBerries: Low impact (local)\nGranola: Low impact (house-made)"
+    }
   },
   {
     "title": "Korean BBQ Bowl",
@@ -482,7 +563,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Korean"
+    "cuisine": "Korean",
+    "sustainability": {
+      "carbonFootprint": "1.7 kg CO₂e",
+      "waterUsage": "650 liters",
+      "energyUsed": "0.42 kWh",
+      "sourcing": "Rice: Imported from Asia\nVegetables: Local farm\nSoy: Regional supplier",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Stir-fried (electric wok)",
+      "ingredients": "Rice: Moderate impact (imported)\nVegetables: Low impact (local)\nSoy: Moderate impact (regional)"
+    }
   },
   {
     "title": "Green Goddess Salad",
@@ -531,7 +621,16 @@
     "categories": [
       "Lunch"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.2 kg CO₂e",
+      "waterUsage": "410 liters",
+      "energyUsed": "0.28 kWh",
+      "sourcing": "Greens: Local farm\nPineapple: Imported\nAvocado: Imported from Mexico",
+      "transport": "Mixed trucking and air freight",
+      "preparation": "Grilled (electric grill)",
+      "ingredients": "Greens: Low impact (local)\nPineapple: Moderate impact (imported)\nAvocado: Moderate impact (imported)"
+    }
   },
   {
     "title": "Breakfast Burrito",
@@ -577,7 +676,16 @@
     "categories": [
       "Breakfast"
     ],
-    "cuisine": "Mexican"
+    "cuisine": "Mexican",
+    "sustainability": {
+      "carbonFootprint": "1.6 kg CO₂e",
+      "waterUsage": "480 liters",
+      "energyUsed": "0.33 kWh",
+      "sourcing": "Eggs: Local farm\nBeans: Regional supplier\nTortilla: Local bakery",
+      "transport": "Local and regional trucking",
+      "preparation": "Scrambled (electric stove)",
+      "ingredients": "Eggs: Moderate impact (local, animal-based)\nBeans: Low impact (regional)\nTortilla: Low impact (local)"
+    }
   },
   {
     "title": "Pad Thai",
@@ -628,7 +736,16 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Thai"
+    "cuisine": "Thai",
+    "sustainability": {
+      "carbonFootprint": "1.3 kg CO₂e",
+      "waterUsage": "430 liters",
+      "energyUsed": "0.27 kWh",
+      "sourcing": "Tofu: Local producer\nRice Noodles: Imported from Thailand\nVegetables: Local farm",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Stir-fried (electric wok)",
+      "ingredients": "Tofu: Low impact (local)\nRice Noodles: Moderate impact (imported)\nVegetables: Low impact (local)"
+    }
   },
   {
     "title": "Quinoa Power Bowl",
@@ -679,7 +796,16 @@
     "categories": [
       "Lunch"
     ],
-    "cuisine": "American"
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "1.2 kg CO₂e",
+      "waterUsage": "470 liters",
+      "energyUsed": "0.29 kWh",
+      "sourcing": "Quinoa: Imported from South America\nVegetables: Local farm\nChickpeas: Regional supplier",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Roasted (electric oven)",
+      "ingredients": "Quinoa: Moderate impact (imported)\nVegetables: Low impact (local)\nChickpeas: Low impact (regional)"
+    }
   },
   {
     "title": "Miso Ramen",
@@ -729,6 +855,15 @@
       "Lunch",
       "Dinner"
     ],
-    "cuisine": "Japanese"
+    "cuisine": "Japanese",
+    "sustainability": {
+      "carbonFootprint": "1.6 kg CO₂e",
+      "waterUsage": "530 liters",
+      "energyUsed": "0.36 kWh",
+      "sourcing": "Noodles: Imported from Japan\nEggs: Local farm\nVegetables: Local farm",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Simmered (electric stove)",
+      "ingredients": "Noodles: Moderate impact (imported)\nEggs: Moderate impact (local, animal-based)\nVegetables: Low impact (local)"
+    }
   }
-]
+] 

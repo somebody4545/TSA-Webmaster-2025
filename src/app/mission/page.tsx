@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import GlobalCuisineMap from "@/components/GlobalCuisineMap";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { PIE_DATA } from "@/components/TwoDPlate";
 
 import {
@@ -93,10 +94,10 @@ function PartnerCarousel() {
             i === index
               ? "translate-x-0 scale-100 z-30 opacity-100"
               : i === (index + 1) % partners.length
-              ? "translate-x-[60%] scale-90 z-20 opacity-30"
-              : i === (index - 1 + partners.length) % partners.length
-              ? "translate-x-[-60%] scale-90 z-20 opacity-30"
-              : "translate-x-0 scale-75 z-10 opacity-0";
+                ? "translate-x-[60%] scale-90 z-20 opacity-30"
+                : i === (index - 1 + partners.length) % partners.length
+                  ? "translate-x-[-60%] scale-90 z-20 opacity-30"
+                  : "translate-x-0 scale-75 z-10 opacity-0";
 
           return (
             <motion.div
@@ -108,8 +109,8 @@ function PartnerCarousel() {
                     ? 1
                     : i === (index + 1) % partners.length ||
                       i === (index - 1 + partners.length) % partners.length
-                    ? 0.3
-                    : 0,
+                      ? 0.3
+                      : 0,
               }}
               transition={{ duration: 0.7 }}
               className={`absolute w-[85%] md:w-[70%] h-[300px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
@@ -178,9 +179,8 @@ function PartnerCarousel() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${
-              i === index ? "bg-primary" : "bg-gray-300"
-            }`}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-gray-300"
+              }`}
           />
         ))}
       </div>
@@ -200,13 +200,18 @@ const MissionPage = () => {
   return (
     <div className="min-h-screen">
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('img/farmtofork.jpg')",
-            filter: "brightness(0.4)",
-          }}
-        >
+        <div className="absolute inset-0">
+          <Image
+            src="/img/farmtofork.jpg"
+            alt="Farm to Fork Hero"
+            fill
+            priority
+            className="object-cover"
+            style={{
+              filter: "brightness(0.4)",
+            }}
+            sizes="100vw"
+          />
           <div
             className="absolute inset-0 bg-black bg-opacity-50"
             aria-hidden="true"
@@ -995,7 +1000,7 @@ const MissionPage = () => {
                   your body and the planet.
                 </p>
               </div>
-                <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
+              <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
                 {/* Info Box */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -1005,20 +1010,20 @@ const MissionPage = () => {
                   className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-md p-6 flex flex-col justify-center items-center md:items-start z-10"
                 >
                   <h3 className="text-xl font-heading font-bold text-primary-darker mb-3">
-                  {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
+                    {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
                   </h3>
                   <p className="text-text">
-                  {selected !== null
-                    ? PIE_DATA[selected].description
-                    : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
+                    {selected !== null
+                      ? PIE_DATA[selected].description
+                      : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
                   </p>
                 </motion.div>
 
                 {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate
-                  onSelect={setSelected}
-                  selectedIndex={selected ?? undefined}
+                    onSelect={setSelected}
+                    selectedIndex={selected ?? undefined}
                   />
                 </div>
               </div>

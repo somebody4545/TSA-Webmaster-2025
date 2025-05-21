@@ -129,8 +129,8 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group"
             >
-              <span className={`${pathname === "/mission" ? "font-bold" : ""} focus:outline-none`}>Process</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={`${pathname === "/mission" ? "font-bold" : ""} focus:outline-none ${pathname === "/mission" && isScrolled ? "text-background" : ""}`}>Process</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -142,8 +142,8 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group"
             >
-              <span className={`${pathname === "/menu" ? "font-bold" : ""} focus:outline-none`}>Menu</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={`${pathname === "/menu" ? "font-bold" : ""} focus:outline-none ${pathname === "/menu" && isScrolled ? "text-background" : ""}`}>Menu</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -155,8 +155,8 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group"
             >
-              <span className={`${pathname === "/locations" ? "font-bold" : ""} focus:outline-none`}>Locations</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={`${pathname === "/locations" ? "font-bold" : ""} focus:outline-none ${pathname === "/locations" && isScrolled ? "text-background" : ""}`}>Locations</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -191,7 +191,7 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </motion.svg>
-                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
               </button>
               <AnimatePresence>
                 {isEarnOpen && (
@@ -209,8 +209,8 @@ export default function Header() {
                         setTimeout(() => setIsEarnOpen(false), 100);
                       }}
                     >                      <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">
-                        <span className={pathname === '/rewards' ? "font-bold" : ""}>Rewards</span>
-                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                        <span className={`${pathname === '/rewards' ? "font-bold" : ""} ${pathname === '/rewards' && isScrolled ? "text-background" : ""}`}>Rewards</span>
+                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
                       </Link>
                     </motion.li>
                     <motion.li
@@ -221,8 +221,8 @@ export default function Header() {
                         setTimeout(() => setIsEarnOpen(false), 100);
                       }}
                     >                      <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">
-                        <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
-                        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                        <span className={`${pathname === '/gifts' ? "font-bold" : ""} ${pathname === '/gifts' && isScrolled ? "text-background" : ""}`}>Gifts</span>
+                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
                       </Link>
                     </motion.li>
                   </motion.ul>
@@ -239,8 +239,8 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group"
             >
-              <span className={`${pathname === "/references" ? "font-bold" : ""} focus:outline-none`}>References</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={`${pathname === "/references" ? "font-bold" : ""} focus:outline-none ${pathname === "/references" && isScrolled ? "text-background" : ""}`}>References</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
         </ul>
@@ -262,8 +262,8 @@ export default function Header() {
               onClick={handleNavigation}
               className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              <span>Process</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={isScrolled && pathname === "/mission" ? "text-background" : ""}>Process</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -276,8 +276,8 @@ export default function Header() {
               onClick={handleNavigation}
               className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              <span>Menu</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={isScrolled && pathname === "/menu" ? "text-background" : ""}>Menu</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -290,8 +290,8 @@ export default function Header() {
               onClick={handleNavigation}
               className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              <span>Locations</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={isScrolled && pathname === "/locations" ? "text-background" : ""}>Locations</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
           <motion.li
@@ -310,10 +310,10 @@ export default function Header() {
               onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
               className={`relative overflow-hidden group px-3 py-2 rounded-md flex items-center active:!bg-green-950`}
             >
-              <span>Earn</span>
+              <span className={isScrolled ? "text-background" : ""}>Earn</span>
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 ml-1"
+                className={`h-4 w-4 ml-1 ${isScrolled ? "text-background" : ""}`}
                 animate={{ rotate: isEarnOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
                 fill="none"
@@ -327,7 +327,7 @@ export default function Header() {
                   d="M19 9l-7 7-7-7"
                 />
               </motion.svg>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </button>            <AnimatePresence>
               {isEarnOpen && (
                 <motion.ul className="text-black p-4 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg min-w-40 border border-gray-100"
@@ -345,8 +345,8 @@ export default function Header() {
                       // Allow the link to process before closing menu
                       setTimeout(() => setIsEarnOpen(false), 100);
                     }}                  >                    <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
-                      <span className={pathname === '/rewards' ? "font-bold" : ""}>Rewards</span>
-                      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                      <span className={`${pathname === '/rewards' ? "font-bold" : ""} ${pathname === '/rewards' && isScrolled ? "text-background" : ""}`}>Rewards</span>
+                      <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
                     </Link>
                   </motion.li>                  <motion.li
                     whileHover={{ scale: 1.05, x: 3 }}
@@ -358,8 +358,8 @@ export default function Header() {
                       setTimeout(() => setIsEarnOpen(false), 100);
                     }}
                   >                    <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
-                      <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
-                      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+                      <span className={`${pathname === '/gifts' ? "font-bold" : ""} ${pathname === '/gifts' && isScrolled ? "text-background" : ""}`}>Gifts</span>
+                      <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
                     </Link>
                   </motion.li>
                 </motion.ul>
@@ -376,8 +376,8 @@ export default function Header() {
               onClick={handleNavigation}
               className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/references" ? "font-bold" : ""} active:!bg-green-950`}
             >
-              <span>References</span>
-              <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className={isScrolled && pathname === "/references" ? "text-background" : ""}>References</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
         </ul>

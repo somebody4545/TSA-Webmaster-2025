@@ -21,7 +21,7 @@ export default function NotFound() {
       >
         Oops! The page you&apos;re looking for doesn&apos;t exist.
       </motion.p>
-      <Link href="/" className="btn btn-primary mt-4 rounded-full">
+      <Link href="/" className="btn btn-shine btn-primary mt-4 rounded-full">
         Go Home
       </Link>
     </div>

@@ -29,15 +29,14 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
   const cityThingsToDo = thingsToDo || [];
   const router = useRouter();
 
-  // Get current day of week
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const currentDay = daysOfWeek[new Date().getDay()];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         staggerChildren: 0.1,
         delayChildren: 0.3
       }
@@ -52,19 +51,19 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
   return (
     <>
       {/* Hero Section */}
-      <div className="relative h-[50vh] bg-black text-white">
+      <div className="relative h-[50vh] bg-black text-background-dim">
         <div className="absolute inset-0 z-10 bg-black/50" />
         <div className="absolute inset-0 z-0">
-          <Image 
-            src={`/img/cities/${city.split(',')[0]}.jpg`} 
-            alt={city} 
-            layout="fill" 
+          <Image
+            src={`/img/cities/${city.split(',')[0]}.jpg`}
+            alt={city}
+            layout="fill"
             objectFit="cover"
             priority
             className="opacity-80"
           />
         </div>
-        
+
         <div className="relative z-20 h-full container mx-auto px-4 flex flex-col justify-center items-center text-center">
           <motion.div
             initial={{ y: -20, opacity: 0 }}
@@ -74,13 +73,13 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           >
             <button
               onClick={() => router.back()}
-              className="flex items-center text-white hover:text-primary transition-colors duration-200"
+              className="flex items-center text-background-dim hover:text-primary transition-colors duration-200"
             >
               <ChevronLeft className="mr-1" /> Back
             </button>
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             className="text-5xl max-md:text-3xl lg:text-6xl font-heading mb-4 tracking-tight"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -88,7 +87,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           >
             {city}
           </motion.h1>
-          
+
           <motion.div
             className="flex items-center gap-2 text-primary"
             initial={{ opacity: 0 }}
@@ -100,7 +99,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
-            <span className="ml-2 text-white text-sm">Sustainable Plant-Based Dining</span>
+            <span className="ml-2 text-background-dim text-sm">Sustainable Plant-Based Dining</span>
           </motion.div>
         </div>
       </div>
@@ -110,13 +109,13 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Left Column - Map */}
-            <motion.div 
+            <motion.div
               className="w-full lg:w-2/3"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <motion.div 
+              <motion.div
                 className="bg-white rounded-xl overflow-hidden shadow-lg h-[400px] lg:h-[500px]"
                 variants={itemVariants}
               >
@@ -130,12 +129,12 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   title={`Map of ${city}`}
                 ></iframe>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4"
                 variants={containerVariants}
               >
-                <motion.div 
+                <motion.div
                   className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
@@ -145,8 +144,8 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   <h3 className="font-heading text-lg font-bold mb-2">Open Daily</h3>
                   <p className="text-gray-600">Experience our sustainable menu every day of the week</p>
                 </motion.div>
-                
-                <motion.div 
+
+                <motion.div
                   className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
@@ -156,8 +155,8 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   <h3 className="font-heading text-lg font-bold mb-2">Full Menu</h3>
                   <p className="text-gray-600">Enjoy our complete plant-based menu with global influences</p>
                 </motion.div>
-                
-                <motion.div 
+
+                <motion.div
                   className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-l-4 border-primary"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
@@ -169,22 +168,21 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                 </motion.div>
               </motion.div>
             </motion.div>
-            
-            {/* Right Column - Info */}
-            <motion.div 
+
+            <motion.div
               className="w-full lg:w-1/3"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              <motion.div 
+              <motion.div
                 className="bg-white rounded-xl overflow-hidden shadow-lg mb-8"
                 variants={itemVariants}
               >
                 <div className="bg-primary p-6 text-white">
                   <h2 className="font-heading text-2xl font-bold">Location Details</h2>
                 </div>
-                
+
                 <div className="p-6 space-y-8">
                   <motion.div variants={itemVariants} className="space-y-3">
                     <div className="flex items-center text-primary">
@@ -193,7 +191,6 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                     </div>
                     <div className="pl-8 space-y-2 text-gray-700">
                       {cityHours.map((day, index) => {
-                        // Check if the current hour string contains the current day of week
                         const isCurrentDay = day.includes(currentDay);
                         return (
                           <p key={index} className={`${isCurrentDay ? 'border-l-4 pl-2 border-primary' : ''}`}>
@@ -203,7 +200,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       })}
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={itemVariants} className="space-y-3">
                     <div className="flex items-center text-primary">
                       <MapPin className="w-5 h-5 mr-3" />
@@ -221,7 +218,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       </Link>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={itemVariants} className="space-y-3">
                     <div className="flex items-center text-primary">
                       <Phone className="w-5 h-5 mr-3" />
@@ -233,7 +230,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       ))}
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={itemVariants}>
                     <div className="flex justify-center space-x-5 pt-4">
                       <a href="#" className="bg-background rounded-full p-2 text-primary hover:bg-primary hover:text-white transition-colors duration-200">

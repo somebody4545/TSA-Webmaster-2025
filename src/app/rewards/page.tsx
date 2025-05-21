@@ -34,6 +34,12 @@ export default function RewardsPage() {
   const [scansToday, setScansToday] = useState(0);
   const [showQR, setShowQR] = useState(false);
 
+  // Function to pre-fill the judges test account
+  const fillJudgesAccount = () => {
+    setEmail("judges@tsa.com");
+    setPassword("judges!");
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -53,6 +59,41 @@ export default function RewardsPage() {
     });
 
     return () => unsubscribe();
+  }, []);
+
+  // Create test account for judges if it doesn't exist
+  useEffect(() => {
+    const createJudgesAccount = async () => {
+      try {
+        // Try to sign in with judges account to check if it exists
+        try {
+          await signInWithEmailAndPassword(auth, "judges@tsa.com", "judges!");
+          // If successful, sign out immediately
+          await signOut(auth);
+        } catch (error) {
+          // If account doesn't exist, create it
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            "judges@tsa.com",
+            "judges!"
+          );
+
+          // Initialize user with 5000 points (more points for testing purposes)
+          await setDoc(doc(db, "rewards", userCredential.user.uid), {
+            points: 5000,
+            createdAt: serverTimestamp(),
+          });
+
+          // Sign out after creating
+          await signOut(auth);
+        }
+      } catch (err) {
+        // Silently fail - this is just a convenience function
+        console.error("Error setting up judges account:", err);
+      }
+    };
+
+    createJudgesAccount();
   }, []);
 
   const checkTodayScans = async (userId: string) => {
@@ -196,8 +237,8 @@ export default function RewardsPage() {
                   {loading
                     ? "Processing..."
                     : scansToday >= 3
-                    ? "Daily Limit Reached"
-                    : "Show QR Code"}
+                      ? "Daily Limit Reached"
+                      : "Show QR Code"}
                 </span>
               </button>
             ) : (
@@ -226,7 +267,7 @@ export default function RewardsPage() {
         </div>
         {/* How to Earn Points Section */}
         <section className="w-full bg-background py-16">
-          <h2 className="text-5xl font-extrabold text-center text-primary-darker mb-16">
+          <h2 className="text-3xl font-heading text-center text-primary-darker mb-12">
             How to Earn Points
           </h2>
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 justify-center items-stretch px-4">
@@ -248,7 +289,7 @@ export default function RewardsPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Sign Up Bonus
               </h3>
               <p className="text-lg text-text">
@@ -260,7 +301,7 @@ export default function RewardsPage() {
               <div className="w-16 h-16 bg-primary-darker rounded-xl flex items-center justify-center mb-6 shadow">
                 <QrCode className="size-14 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Scan QR Codes
               </h3>
               <p className="text-lg text-text">
@@ -286,7 +327,7 @@ export default function RewardsPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-black">
+              <h3 className="text-2xl font-bold font-heading mb-2 text-black">
                 Redeem Points
               </h3>
               <p className="text-lg text-text">
@@ -311,6 +352,31 @@ export default function RewardsPage() {
             Join our rewards program to earn points, get exclusive offers, and
             enjoy special benefits at our restaurants.
           </p>
+
+          {/* Judges Test Account Information */}
+          <div
+            className="mt-8 p-6 border-2 border-primary rounded-lg bg-black/70 cursor-pointer hover:bg-black/90 transition-colors"
+            onClick={fillJudgesAccount}
+            style={{ boxShadow: '0 0 15px rgba(var(--color-primary-rgb), 0.5)' }}
+          >
+            <h3 className="font-heading text-primary text-xl mb-2 font-bold">
+              FOR TSA JUDGES
+            </h3>
+            <p className="text-white text-base">
+              Please use the following test account (click box to auto-fill):
+            </p>
+            <div className="mt-3 font-mono text-white text-base">
+              <p className="mb-1">
+                Email: <span className="text-primary font-bold">judges@tsa.com</span>
+              </p>
+              <p className="mb-3">
+                Password: <span className="text-primary font-bold">judges!</span>
+              </p>
+            </div>
+            <p className="text-white text-sm mt-2 border-t border-gray-700 pt-3">
+              Judges are also welcome to create their own accounts using the Sign Up button to experience the full rewards program workflow.
+            </p>
+          </div>
         </div>
         {/* Right: Form */}
         <div className="flex-1 flex flex-col items-center justify-center w-full max-w-md">

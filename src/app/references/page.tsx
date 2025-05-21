@@ -3,10 +3,10 @@
 export default function ReferencesPage() {
 
   const devReferences = [
-		'https://unsplash.com/photos/landscape-photo-of-new-york-empire-state-building-5omwAMDxmkU',
-		'https://unsplash.com/photos/cloud-gate-in-city-during-daytime-cfmSStcrDn4?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
-		'https://unsplash.com/photos/green-palm-tree-and-city-view-UZVlSjrIJ3o?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
-		'https://unsplash.com/photos/high-rise-buildings-during-daytime-UmEYn_GYqFo?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
+    'https://unsplash.com/photos/landscape-photo-of-new-york-empire-state-building-5omwAMDxmkU',
+    'https://unsplash.com/photos/cloud-gate-in-city-during-daytime-cfmSStcrDn4?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
+    'https://unsplash.com/photos/green-palm-tree-and-city-view-UZVlSjrIJ3o?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
+    'https://unsplash.com/photos/high-rise-buildings-during-daytime-UmEYn_GYqFo?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
     'https://unsplash.com/photos/a-pile-of-different-types-of-vegetables-on-a-white-surface-5aJVJvJ9rG8',
     'https://en.wikipedia.org/wiki/The_Washington_Post#/media/File:The_Logo_of_The_Washington_Post_Newspaper.svg',
     'https://en.wikipedia.org/wiki/Forbes#/media/File:Forbes_logo.svg',
@@ -52,15 +52,14 @@ export default function ReferencesPage() {
   ];
 
   return (
-    <div className="min-h-screen w-full px-4 py-6 md:px-8 lg:px-12">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">References</h1>
-      
-      {/* PDF Documents Section */}
-      <div className="flex flex-col gap-8 mb-12 w-full">
-        <div className="flex justify-center w-full">
-          <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">Work Log</h2>
-            <div className="h-[500px] md:h-[600px] lg:h-[800px] w-full">
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-center">References</h1>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Work Log</h2>
+            <div className="h-[500px] md:h-[600px] w-full">
               <iframe
                 src="/worklog.pdf"
                 className="w-full h-full rounded-lg border border-gray-300"
@@ -68,11 +67,10 @@ export default function ReferencesPage() {
               />
             </div>
           </div>
-        </div>
-        <div className="flex justify-center w-full">
-          <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">Copyright Checklist</h2>
-            <div className="h-[500px] md:h-[600px] lg:h-[800px] w-full">
+
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Copyright Checklist</h2>
+            <div className="h-[500px] md:h-[600px] w-full">
               <iframe
                 src="/copyright.pdf"
                 className="w-full h-full rounded-lg border border-gray-300"
@@ -81,89 +79,86 @@ export default function ReferencesPage() {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Code Stack Section */}
-      <div className="flex justify-center w-full mb-8">
-        <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Code Stack</h2>
-          <p className="text-lg md:text-xl leading-relaxed">
-            This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop.
-          </p>
-        </div>
-      </div>
-
-      {/* Libraries Section */}
-      <div className="flex justify-center w-full mb-8">
-        <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Additional Libraries Utilized</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <ul className="list-disc pl-6 text-lg md:text-xl">
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">lucide-react</code>: A library of icons for use in React applications.
-              </li>
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">framer-motion</code>: A library for creating animations in React applications.
-              </li>
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">three.js</code> (via <code className="bg-gray-200 px-2 py-1 rounded">react-three-fiber</code>): A library for creating 3D graphics in React applications.
-              </li>
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">react-multi-carousel</code>: A library for creating carousels in React applications.
-              </li>
-            </ul>
-            <ul className="list-disc pl-6 text-lg md:text-xl">
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">react-circle-flags</code>: A library for displaying flags in React applications.
-              </li>
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">https://randomuser.me/</code>: Used for generating random user images for testimonials, which have a free license for use.
-              </li>
-              <li className="mb-3">
-                <code className="bg-gray-200 px-2 py-1 rounded">Google Maps API</code>: Used for generating maps for the locations page.
-              </li>
-            </ul>
+        <div className="mb-8">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Code Stack</h2>
+            <p className="text-base md:text-lg leading-relaxed">
+              This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop.
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* Image Links Section */}
-      <div className="flex justify-center w-full mb-8">
-        <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Image Links</h2>
-          <p className="text-lg md:text-xl pb-4">All images rely on either the <span className="font-bold">Unsplash</span> or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span>, or are otherwise public domain</p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {devReferences.map((link, index) => (
-              <a
-                key={index}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-darker hover:underline break-words text-lg bg-white p-2 rounded-md hover:bg-gray-50 transition-colors"
-              >
-                {link}
-              </a>
-            ))}
+        <div className="mb-8">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Additional Libraries Utilized</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <ul className="list-disc pl-6 text-base md:text-lg">
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">lucide-react</code>: A library of icons for use in React applications.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">framer-motion</code>: A library for creating animations in React applications.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">three.js</code> (via <code className="bg-gray-100 px-2 py-1 rounded">react-three-fiber</code>): A library for creating 3D graphics in React applications.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">react-multi-carousel</code>: A library for creating carousels in React applications.
+                </li>
+              </ul>
+              <ul className="list-disc pl-6 text-base md:text-lg">
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">react-circle-flags</code>: A library for displaying flags in React applications.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">https://randomuser.me/</code>: Used for generating random user images for testimonials, which have a free license for use.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">Google Maps API</code>: Used for generating maps for the locations page.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Research Links Section */}
-      <div className="flex justify-center w-full">
-        <div className="bg-gray-100 rounded-lg p-4 md:p-6 w-full shadow-md">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Research Links</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {researchReferences.map((link, index) => (
-              <a
-                key={index}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-darker hover:underline break-words text-lg bg-white p-2 rounded-md hover:bg-gray-50 transition-colors"
-              >
-                {link}
-              </a>
-            ))}
+        {/* Image Links Section */}
+        <div className="mb-8">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Image Links</h2>
+            <p className="text-base md:text-lg pb-4">All images rely on either the <span className="font-bold">Unsplash</span> or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span>, or are otherwise public domain</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+              {devReferences.map((link, index) => (
+                <a
+                  key={index}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-darker hover:underline break-words text-sm md:text-base bg-gray-50 p-2 rounded-md hover:bg-gray-100 transition-colors"
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
+            <h2 className="text-2xl font-heading font-semibold mb-4">Research Links</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+              {researchReferences.map((link, index) => (
+                <a
+                  key={index}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-darker hover:underline break-words text-sm md:text-base bg-gray-50 p-2 rounded-md hover:bg-gray-100 transition-colors"
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

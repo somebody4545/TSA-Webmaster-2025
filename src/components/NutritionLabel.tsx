@@ -1,4 +1,6 @@
 "use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface NutritionData {
@@ -27,14 +29,7 @@ const NutritionLabel: React.FC<NutritionLabelProps> = ({ nutrition }) => {
 
   const toggleModal = (isOpen: boolean) => {
     setIsModalOpen(isOpen);
-    document.body.style.overflow = isOpen ? "hidden" : "";
   };
-
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
 
   const formatNutritionKey = (key: string): string => {
     return key
@@ -46,42 +41,48 @@ const NutritionLabel: React.FC<NutritionLabelProps> = ({ nutrition }) => {
     <div className="w-full text-center">
       <button
         onClick={() => toggleModal(true)}
-        className="text-center text-green-900 p-2 hover:underline hover:cursor-pointer"
+        className="btn btn-primary font-normal max-h-min py-0 btn-shine rounded-full shadow-sm mt-3"
       >
         View full Nutritional info
       </button>
-
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-50"
-          onClick={() => toggleModal(false)}
-        >
-          <div
-            className="bg-background shadow-lg p-6 relative w-11/12 max-w-md max-h-screen m-2x overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 flex items-center justify-center p-4"
+            style={{ backgroundColor: "rgba(0,0,0,0.7)", zIndex: 50 }}
+            onClick={() => toggleModal(false)}
           >
-            <button
-              onClick={() => toggleModal(false)}
-              className="absolute top-0 right-4 text-text hover:text-primary-darkest text-2xl font-bold"
+            <div
+              className="bg-background rounded-lg shadow-xl p-6 relative w-11/12 max-w-md max-h-screen m-2x overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-            <h2 className="text-2xl font-heading mb-4">Nutritional Info</h2>
-            <div>
-              {Object.entries(nutrition).map(([key, value]) => (
-                <div key={key}>
-                  <hr className="border border-black" />
-                  <div className="flex flex-row text-left p-1 justify-between">
-                    <span>{formatNutritionKey(key)}</span>
-                    <span>{value}</span>
+              <button
+                onClick={() => toggleModal(false)}
+                className="absolute top-4 right-4 p-1 rounded-full bg-background-dim hover:bg-background-dimmer transition-colors"
+              >
+                <X className="w-5 h-5 text-text" />
+              </button>
+              <h2 className="text-2xl font-heading mb-4">Nutritional Info</h2>
+              <div>
+                {Object.entries(nutrition).map(([key, value]) => (
+                  <div key={key}>
+                    <hr className="border border-black" />
+                    <div className="flex flex-row text-left p-1 justify-between">
+                      <span>{formatNutritionKey(key)}</span>
+                      <span>{value}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
-              <hr className="border border-black" />
+                ))}
+                <hr className="border border-black" />
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

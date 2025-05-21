@@ -5,7 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MenuCard from "@/components/MenuCard";
 import menuItems from "../../../data/menu-data.json";
-import { ChevronDown, ChevronUp, ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { ChevronDown, ChevronUp, ArrowUpDown, ArrowUp, ArrowDown, Vegan, WheatOff, Croissant, Flame, Bean } from "lucide-react";
+
+const tagIconMap: Record<string, React.ReactNode> = {
+  Vegan: <Vegan size={16} />,
+  "Gluten Free": <WheatOff size={16} />,
+  "Low Carb": <Croissant size={16} />,
+  Spicy: <Flame size={16} />,
+  "High Protein": <Bean size={16} />,
+};
 
 const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
 const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner"];
@@ -426,7 +434,10 @@ function FilterButtonGroup({
             }`}
           onClick={() => onSelect(item)}
         >
-          {item}
+          <span className="flex items-center gap-2">
+            {tagIconMap[item] || null}
+            {item}
+          </span>
         </button>
       ))}
     </>

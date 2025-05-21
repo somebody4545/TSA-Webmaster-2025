@@ -15,10 +15,18 @@ import {
   Leaf,
   Sparkles,
   Recycle,
-  ChevronDown
+  ChevronDown,
 } from "lucide-react";
 
-function CountUp({ end, duration = 2, className = "" }: { end: number; duration?: number; className?: string }) {
+function CountUp({
+  end,
+  duration = 2,
+  className = "",
+}: {
+  end: number;
+  duration?: number;
+  className?: string;
+}) {
   const [count, setCount] = useState(0);
   const nodeRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(nodeRef, { once: true, amount: 0.5 });
@@ -48,7 +56,11 @@ function CountUp({ end, duration = 2, className = "" }: { end: number; duration?
     };
   }, [end, duration, inView]);
 
-  return <span ref={nodeRef} className={className}>{count}</span>;
+  return (
+    <span ref={nodeRef} className={className}>
+      {count}
+    </span>
+  );
 }
 
 function PartnerCarousel() {
@@ -76,10 +88,10 @@ function PartnerCarousel() {
             i === index
               ? "translate-x-0 scale-100 z-30 opacity-100"
               : i === (index + 1) % partners.length
-                ? "translate-x-[60%] scale-90 z-20 opacity-30"
-                : i === (index - 1 + partners.length) % partners.length
-                  ? "translate-x-[-60%] scale-90 z-20 opacity-30"
-                  : "translate-x-0 scale-75 z-10 opacity-0";
+              ? "translate-x-[60%] scale-90 z-20 opacity-30"
+              : i === (index - 1 + partners.length) % partners.length
+              ? "translate-x-[-60%] scale-90 z-20 opacity-30"
+              : "translate-x-0 scale-75 z-10 opacity-0";
 
           return (
             <motion.div
@@ -91,23 +103,23 @@ function PartnerCarousel() {
                     ? 1
                     : i === (index + 1) % partners.length ||
                       i === (index - 1 + partners.length) % partners.length
-                      ? 0.3
-                      : 0,
+                    ? 0.3
+                    : 0,
               }}
               transition={{ duration: 0.7 }}
               className={`absolute w-[85%] md:w-[70%] h-[300px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
             >
-                <div className="flex items-center justify-center h-full w-full">
-                  <div className="relative w-full h-full flex items-center justify-center">
-                    <img
-                      src={partner.imageUrl}
-                      alt={partner.alt}
-                      width="450"
-                      height="350"
-                      className="object-contain transition-transform hover:scale-105 rounded-xl"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full w-full">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <img
+                    src={partner.imageUrl}
+                    alt={partner.alt}
+                    width="450"
+                    height="350"
+                    className="object-contain transition-transform hover:scale-105 rounded-xl"
+                  />
                 </div>
+              </div>
             </motion.div>
           );
         })}
@@ -161,8 +173,9 @@ function PartnerCarousel() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-gray-300"
-              }`}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              i === index ? "bg-primary" : "bg-gray-300"
+            }`}
           />
         ))}
       </div>
@@ -183,7 +196,10 @@ const MissionPage = () => {
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('img/farmtofork.jpg')", filter: "brightness(0.4)" }}
+          style={{
+            backgroundImage: "url('img/farmtofork.jpg')",
+            filter: "brightness(0.4)",
+          }}
         >
           <div
             className="absolute inset-0 bg-black bg-opacity-50"
@@ -209,7 +225,7 @@ const MissionPage = () => {
           onClick={() => {
             window.scrollTo({
               top: window.innerHeight,
-              behavior: 'smooth'
+              behavior: "smooth",
             });
           }}
         >
@@ -250,7 +266,7 @@ const MissionPage = () => {
                 viewport={{ once: true }}
                 className="p-6rounded-lg w-full md:w-2/5 md:h-80 flex flex-col justify-center"
               >
-                <h3 className="text-3xl font-heading font-bold mb-3 text-primary-darker">
+                <h3 className="text-3xl font-heading font-bold mb-3 text-text">
                   Local Farms
                 </h3>
                 <div className="space-y-3">
@@ -331,7 +347,7 @@ const MissionPage = () => {
             className="flex justify-center mb-4"
           >
             <div className="w-full md:w-4/5 max-w-4xl text-center">
-              <div className="text-3xl font-heading font-bold text-primary-darker">
+              <div className="text-3xl font-heading font-bold text-text">
                 Our Partners
               </div>
               <p>(Fictional, Demo only)</p>
@@ -350,12 +366,14 @@ const MissionPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, amount: 0.6 }}
-                className="text-xl md:text-xl lg:text-2xl font-heading font-bold text-primary-darker mb-4 max-w-2xl sm:max-w-2xl text-center"
+                className="text-xl md:text-xl lg:text-2xl font-heading font-bold text-text mb-4 max-w-2xl sm:max-w-2xl text-center"
               >
                 Since emissions from transportations account for{" "}
-                <span className="text-black font-bold">
+                <span className="text-primary-darker font-bold">
                   <CountUp end={28} duration={1.5} />
-                </span><span className="text-black">%</span> of greenhouse gas emissions we use...
+                </span>
+                <span className="text-primary-darker">%</span> of greenhouse gas
+                emissions we use...
               </motion.h1>
             </div>
           </div>
@@ -369,7 +387,7 @@ const MissionPage = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="text-center mb-10"
               >
-                <h3 className="text-3xl font-heading font-bold text-primary-darker">
+                <h3 className="text-3xl font-heading font-bold text-text">
                   Sustainable Transportation
                 </h3>
                 <p>Hover or tap to see info on each of our strategies!</p>
@@ -385,16 +403,20 @@ const MissionPage = () => {
                     visible: {
                       opacity: 1,
                       transition: {
-                        staggerChildren: 0.2
-                      }
-                    }
+                        staggerChildren: 0.2,
+                      },
+                    },
                   }}
                   className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
                 >
                   <motion.div
                     variants={{
                       hidden: { opacity: 0, y: 30 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.6 },
+                      },
                     }}
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setBikeFlipped(true)}
@@ -434,7 +456,11 @@ const MissionPage = () => {
                   <motion.div
                     variants={{
                       hidden: { opacity: 0, y: 30 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.6 },
+                      },
                     }}
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setRobotFlipped(true)}
@@ -475,7 +501,11 @@ const MissionPage = () => {
                   <motion.div
                     variants={{
                       hidden: { opacity: 0, y: 30 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.6 },
+                      },
                     }}
                     className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
                     onMouseEnter={() => setFreightFlipped(true)}
@@ -658,11 +688,11 @@ const MissionPage = () => {
                   opacity: 1,
                   transition: {
                     staggerChildren: 0.03,
-                    delayChildren: 0.4
-                  }
-                }
+                    delayChildren: 0.4,
+                  },
+                },
               }}
-              className="text-lg md:text-xl font-body font-bold italic text-white"
+              className="text-lg md:text-xl font-body font-bold italic text-background-dim"
             >
               {'"Nothing will benefit human health and increase chances for survival of life on Earth as much as the evolution to a vegetarian diet."'
                 .split(" ")
@@ -671,14 +701,17 @@ const MissionPage = () => {
                     key={i}
                     variants={{
                       hidden: { opacity: 0, y: 10 },
-                      visible: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.3 },
+                      },
                     }}
                     className="inline-block mx-0.5"
                   >
                     {word}
                   </motion.span>
-                ))
-              }
+                ))}
 
               {/* Attribution with fade-in */}
               <motion.div
@@ -708,7 +741,7 @@ const MissionPage = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-heading font-bold text-primary-darker mb-4">
+                <h2 className="text-3xl font-heading font-bold text-text mb-4">
                   Our Sustainable Kitchen
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
@@ -727,16 +760,20 @@ const MissionPage = () => {
                   visible: {
                     opacity: 1,
                     transition: {
-                      staggerChildren: 0.2
-                    }
-                  }
+                      staggerChildren: 0.2,
+                    },
+                  },
                 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6 },
+                    },
                   }}
                   className="bg-background rounded-lg shadow-md overflow-hidden"
                 >
@@ -750,7 +787,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <ChefHat className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Seasonal Menu
                       </h3>
                     </div>
@@ -765,7 +802,11 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6 },
+                    },
                   }}
                   className="bg-background rounded-lg shadow-md overflow-hidden"
                 >
@@ -779,7 +820,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <Recycle className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Zero-Waste Cooking
                       </h3>
                     </div>
@@ -796,7 +837,11 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6 },
+                    },
                   }}
                   className="bg-background rounded-lg shadow-md overflow-hidden"
                 >
@@ -810,7 +855,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <Sparkles className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Energy Efficiency
                       </h3>
                     </div>
@@ -832,7 +877,7 @@ const MissionPage = () => {
                 className="mt-16 flex flex-col md:flex-row items-center"
               >
                 <div className="md:w-1/2 pr-0 md:pr-8">
-                  <h3 className="text-2xl font-heading font-bold text-primary-darker mb-4">
+                  <h3 className="text-2xl font-heading font-bold text-text mb-4">
                     The Heart of Our Restaurant
                   </h3>
                   <p className="text-text mb-6">
@@ -851,16 +896,20 @@ const MissionPage = () => {
                         opacity: 1,
                         transition: {
                           staggerChildren: 0.2,
-                          delayChildren: 0.3
-                        }
-                      }
+                          delayChildren: 0.3,
+                        },
+                      },
                     }}
                     className="space-y-4"
                   >
                     <motion.div
                       variants={{
                         hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.5 },
+                        },
                       }}
                       className="flex items-start"
                     >
@@ -874,7 +923,11 @@ const MissionPage = () => {
                     <motion.div
                       variants={{
                         hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.5 },
+                        },
                       }}
                       className="flex items-start"
                     >
@@ -888,7 +941,11 @@ const MissionPage = () => {
                     <motion.div
                       variants={{
                         hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+                        visible: {
+                          opacity: 1,
+                          x: 0,
+                          transition: { duration: 0.5 },
+                        },
                       }}
                       className="flex items-start"
                     >
@@ -924,7 +981,7 @@ const MissionPage = () => {
           <div className="flex justify-center">
             <div className="w-full md:w-11/12 max-w-6xl">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-heading font-bold text-primary-darker mb-4">
+                <h2 className="text-3xl font-heading font-bold text-text mb-4">
                   The Plant-Based Plate
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
@@ -1019,15 +1076,15 @@ const MissionPage = () => {
                         opacity: 1,
                         transition: {
                           delayChildren: 1.1,
-                          staggerChildren: 0.08
-                        }
-                      }
+                          staggerChildren: 0.08,
+                        },
+                      },
                     }}
                   >
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="370"
                       y="150"
@@ -1042,7 +1099,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="370"
                       y="175"
@@ -1057,7 +1114,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="370"
                       y="200"
@@ -1072,7 +1129,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="370"
                       y="350"
@@ -1087,7 +1144,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="370"
                       y="375"
@@ -1102,7 +1159,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="130"
                       y="350"
@@ -1117,7 +1174,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="130"
                       y="375"
@@ -1132,7 +1189,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="130"
                       y="150"
@@ -1147,7 +1204,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="130"
                       y="175"
@@ -1162,7 +1219,7 @@ const MissionPage = () => {
                     <motion.text
                       variants={{
                         hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 }
+                        visible: { opacity: 1, y: 0 },
                       }}
                       x="250"
                       y="255"
@@ -1186,25 +1243,30 @@ const MissionPage = () => {
                   visible: {
                     opacity: 1,
                     transition: {
-                      staggerChildren: 0.15
-                    }
-                  }
+                      staggerChildren: 0.15,
+                    },
+                  },
                 }}
                 className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#D35400] mr-2"></div>
                     Legumes &amp; Plant Proteins
                   </h3>
@@ -1218,16 +1280,21 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#F4D03F] mr-2"></div>
                     Whole Grains
                   </h3>
@@ -1241,16 +1308,21 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#27AE60] mr-2"></div>
                     Vegetables
                   </h3>
@@ -1264,16 +1336,21 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#9B59B6] mr-2"></div>
                     Fruits
                   </h3>
@@ -1287,16 +1364,21 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#3498DB] mr-2"></div>
                     Healthy Fats
                   </h3>
@@ -1310,16 +1392,21 @@ const MissionPage = () => {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5 },
+                    },
                   }}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    boxShadow:
+                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                   }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
                 >
-                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3 flex items-center">
+                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
                     <div className="w-4 h-4 rounded-full bg-[#3498DB] opacity-50 mr-2"></div>
                     Water &amp; Hydration
                   </h3>

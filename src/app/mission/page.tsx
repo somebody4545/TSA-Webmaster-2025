@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import GlobalCuisineMap from "@/components/GlobalCuisineMap";
+import dynamic from "next/dynamic";
+import { PIE_DATA } from "@/components/TwoDPlate";
 
 import {
   Citrus,
@@ -18,6 +20,9 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+const TwoDPlate = dynamic(() => import("@/components/TwoDPlate"), {
+  ssr: false,
+});
 function CountUp({
   end,
   duration = 2,
@@ -190,6 +195,7 @@ const MissionPage = () => {
   const [waterFlipped, setWaterFlipped] = useState(false);
   const [energyFlipped, setEnergyFlipped] = useState(false);
   const [packagingFlipped, setPackagingFlipped] = useState(false);
+  const [selected, setSelected] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen">
@@ -989,434 +995,32 @@ const MissionPage = () => {
                   your body and the planet.
                 </p>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="relative max-w-2xl mx-auto"
-              >
-                <motion.svg
-                  initial={{ rotate: -90, opacity: 0 }}
-                  whileInView={{ rotate: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  viewBox="0 0 500 500"
-                  className="w-full h-auto"
-                >
-                  <motion.circle
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    cx="250"
-                    cy="250"
-                    r="240"
-                    fill="#F5F5F5"
-                    stroke="#E0E0E0"
-                    strokeWidth="4"
-                  />
-
-                  <motion.path
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    d="M250 10 A240 240 0 0 1 490 250 L250 250 Z"
-                    fill="#D35400"
-                  />
-
-                  <motion.path
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.4, delay: 0.5 }}
-                    viewport={{ once: true }}
-                    d="M490 250 A240 240 0 0 1 250 490 L250 250 Z"
-                    fill="#F4D03F"
-                  />
-
-                  <motion.path
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.4, delay: 0.6 }}
-                    viewport={{ once: true }}
-                    d="M250 490 A240 240 0 0 1 10 250 L250 250 Z"
-                    fill="#27AE60"
-                  />
-
-                  <motion.path
-                    initial={{ scale: 0.7, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.4, delay: 0.7 }}
-                    viewport={{ once: true }}
-                    d="M10 250 A240 240 0 0 1 250 10 L250 250 Z"
-                    fill="#9B59B6"
-                  />
-
-                  <motion.circle
-                    initial={{ scale: 0.5, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 0.85 }}
-                    transition={{ duration: 0.4, delay: 0.8 }}
-                    viewport={{ once: true }}
-                    cx="250"
-                    cy="250"
-                    r="60"
-                    fill="#3498DB"
-                    stroke="#F5F5F5"
-                    strokeWidth="3"
-                  />
-
-                  <motion.g
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: {
-                        opacity: 1,
-                        transition: {
-                          delayChildren: 1.1,
-                          staggerChildren: 0.08,
-                        },
-                      },
-                    }}
-                  >
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="370"
-                      y="150"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      Legumes &amp;
-                    </motion.text>
-
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="370"
-                      y="175"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      Plant Proteins
-                    </motion.text>
-
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="370"
-                      y="200"
-                      fontSize="14"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      25%
-                    </motion.text>
-
-                    {/* Whole Grains */}
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="370"
-                      y="350"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      Whole Grains
-                    </motion.text>
-
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="370"
-                      y="375"
-                      fontSize="14"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      25%
-                    </motion.text>
-
-                    {/* Vegetables */}
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="130"
-                      y="350"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      Vegetables
-                    </motion.text>
-
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="130"
-                      y="375"
-                      fontSize="14"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      25%
-                    </motion.text>
-
-                    {/* Fruits */}
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="130"
-                      y="150"
-                      fontSize="18"
-                      fontWeight="bold"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      Fruits
-                    </motion.text>
-
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="130"
-                      y="175"
-                      fontSize="14"
-                      fill="#5D4037"
-                      textAnchor="middle"
-                    >
-                      25%
-                    </motion.text>
-
-                    {/* Healthy Fats - last element to appear */}
-                    <motion.text
-                      variants={{
-                        hidden: { opacity: 0, y: -5 },
-                        visible: { opacity: 1, y: 0 },
-                      }}
-                      x="250"
-                      y="255"
-                      fontSize="14"
-                      fontWeight="bold"
-                      fill="#FFF"
-                      textAnchor="middle"
-                    >
-                      Healthy Fats
-                    </motion.text>
-                  </motion.g>
-                </motion.svg>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.15,
-                    },
-                  },
-                }}
-                className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
+                <div className="flex flex-col md:flex-row gap-2 items-center justify-center max-w-full overflow-clip">
+                {/* Info Box */}
                 <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="w-full md:w-1/3 bg-background rounded-lg shadow-md p-6 flex flex-col justify-center items-center md:items-start"
                 >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#D35400] mr-2"></div>
-                    Legumes &amp; Plant Proteins
+                  <h3 className="text-xl font-heading font-bold text-primary-darker mb-3">
+                  {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
                   </h3>
                   <p className="text-text">
-                    Includes beans, lentils, tofu, tempeh, and other plant-based
-                    proteins. These provide essential amino acids, iron, and
-                    zinc that would typically come from animal sources.
+                  {selected !== null
+                    ? PIE_DATA[selected].description
+                    : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
                   </p>
                 </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#F4D03F] mr-2"></div>
-                    Whole Grains
-                  </h3>
-                  <p className="text-text">
-                    Brown rice, quinoa, oats, and whole wheat provide complex
-                    carbohydrates for sustained energy, plus important B
-                    vitamins and fiber for digestive health.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#27AE60] mr-2"></div>
-                    Vegetables
-                  </h3>
-                  <p className="text-text">
-                    The largest portion of our plate includes diverse vegetables
-                    for vitamins, minerals, antioxidants, and phytonutrients. We
-                    emphasize variety in colors and types.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#9B59B6] mr-2"></div>
-                    Fruits
-                  </h3>
-                  <p className="text-text">
-                    Rich in vitamins, minerals, and natural sweetness, fruits
-                    provide essential nutrients and antioxidants while
-                    satisfying cravings for sweeter flavors.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#3498DB] mr-2"></div>
-                    Healthy Fats
-                  </h3>
-                  <p className="text-text">
-                    Avocados, nuts, seeds, and olive oil provide essential fatty
-                    acids, help with nutrient absorption, and add richness and
-                    satisfaction to meals.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.5 },
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow:
-                      "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="bg-background rounded-lg shadow-md p-6 cursor-pointer"
-                >
-                  <h3 className="text-xl font-heading font-bold text-text mb-3 flex items-center">
-                    <div className="w-4 h-4 rounded-full bg-[#3498DB] opacity-50 mr-2"></div>
-                    Water &amp; Hydration
-                  </h3>
-                  <p className="text-text">
-                    While not shown on the plate, staying hydrated with water,
-                    herbal teas, and consuming water-rich fruits and vegetables
-                    is essential for optimal health.
-                  </p>
-                </motion.div>
-              </motion.div>
+                {/* Plate Visualization - 2D Plate */}
+                <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
+                  <TwoDPlate
+                  onSelect={setSelected}
+                  selectedIndex={selected ?? undefined}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

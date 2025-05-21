@@ -11,7 +11,6 @@ import {
 } from "framer-motion";
 import GlobalCuisineMap from "@/components/GlobalCuisineMap";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { PIE_DATA } from "@/components/TwoDPlate";
 
 import {
@@ -313,18 +312,13 @@ const MissionPage = () => {
     <div className="min-h-screen">
       <style>{styles}</style>
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
-        <div className="absolute inset-0">
-          <Image
-            src="/img/farmtofork.jpg"
-            alt="Farm to Fork Hero"
-            fill
-            priority
-            className="object-cover"
-            style={{
-              filter: "brightness(0.4)",
-            }}
-            sizes="100vw"
-          />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('img/farmtofork.jpg')",
+            filter: "brightness(0.4)",
+          }}
+        >
           <div
             className="absolute inset-0 bg-black bg-opacity-50"
             aria-hidden="true"
@@ -770,6 +764,7 @@ const MissionPage = () => {
             viewport={{ once: true, amount: 0.6 }}
             className="max-w-3xl mx-auto text-center relative"
           >
+            {/* Animated quote marks */}
             <motion.div
               initial={{ opacity: 0, scale: 0.6 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -780,6 +775,7 @@ const MissionPage = () => {
               <QuoteIcon className="w-10 h-10 text-background-dim" />
             </motion.div>
 
+            {/* Quote text with staggered words */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -815,6 +811,7 @@ const MissionPage = () => {
                   </motion.span>
                 ))}
 
+              {/* Attribution with fade-in */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -829,251 +826,7 @@ const MissionPage = () => {
         </div>
       </div>
 
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-3">
-          <div className="flex justify-center mb-12">
-            <div className="w-full md:w-11/12 max-w-6xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl font-heading font-bold text-text mb-4">
-                  Our Sustainable Kitchen
-                </h2>
-                <p className="text-text max-w-3xl mx-auto">
-                  We believe that a sustainable restaurant begins in the
-                  kitchen. Our approach combines traditional cooking techniques
-                  with modern eco-conscious practices.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.2,
-                    },
-                  },
-                }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/seasonalingredients.jpg"
-                      alt="Seasonal Ingredients"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <ChefHat className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Seasonal Menu
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      Our menu changes with the seasons to showcase the freshest
-                      local ingredients at their peak. This reduces food miles
-                      and supports local agricultural biodiversity.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/zerowastecooking.jpg"
-                      alt="Zero Waste Cooking"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Recycle className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Zero-Waste Cooking
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      We practice root-to-stem and nose-to-tail cooking
-                      philosophies that utilize every part of our ingredients.
-                      Vegetable scraps become flavorful stocks, and creative
-                      preservation techniques extend the life of seasonal
-                      bounty.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/energyefficientkitchen.jpg"
-                      alt="Energy Efficient Kitchen"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Sparkles className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Energy Efficiency
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      Our kitchen is equipped with energy-efficient appliances
-                      and smart systems that minimize our carbon footprint. We
-                      use induction cooking and optimize our operations to
-                      reduce energy and water usage.
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="mt-16 flex flex-col md:flex-row items-center"
-              >
-                <div className="md:w-1/2 pr-0 md:pr-8">
-                  <h3 className="text-2xl font-heading font-bold text-text mb-4">
-                    The Heart of Our Restaurant
-                  </h3>
-                  <p className="text-text mb-6">
-                    Our kitchen is where global culinary traditions meet
-                    sustainable innovation. Led by our talented chefs, we honor
-                    time-tested techniques while embracing new approaches that
-                    reduce environmental impact without compromising on flavor.
-                  </p>
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: {
-                        opacity: 1,
-                        transition: {
-                          staggerChildren: 0.2,
-                          delayChildren: 0.3,
-                        },
-                      },
-                    }}
-                    className="space-y-4"
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <CookingPot className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Slow cooking methods that maximize flavor while
-                        minimizing energy use
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <Utensils className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Handcrafted preparations that preserve culinary heritage
-                        and artisanal quality
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <Leaf className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Plant-forward menu that celebrates vegetables as the
-                        star of the plate
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="md:w-1/2 h-80 md:h-auto mt-6 md:mt-0"
-                >
-                  <img
-                    src="/img/kitchenteam.jpg"
-                    alt="Our Kitchen Team"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Kitchen Section */}
 
       <div className="py-16 bg-background mb-32">
         <div className="container mx-auto px-3">
@@ -1089,6 +842,7 @@ const MissionPage = () => {
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
+                {/* Info Box */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1106,6 +860,7 @@ const MissionPage = () => {
                   </p>
                 </motion.div>
 
+                {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate
                     onSelect={setSelected}

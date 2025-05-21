@@ -76,8 +76,28 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
     return defaultOrder;
   };
 
+  // Add Safari detection
+  const [isSafari, setIsSafari] = useState<boolean>(false);
+
+  React.useEffect(() => {
+    // Check if browser is Safari
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    setIsSafari(isSafariBrowser);
+  }, []);
+
   return (
     <div className="relative w-full h-full flex items-center justify-center plate-3d-container" style={{ isolation: "isolate" }}>
+      {isSafari && (
+        <div
+          className="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none text-white text-xl sm:text-lg"
+          style={{ zIndex: 2, padding: "20% 20%" }}
+        >
+          <div className="flex items-center justify-center">Vegetables</div>
+          <div className="flex items-center justify-center">Protein</div>
+          <div className="flex items-center justify-center">Grains</div>
+          <div className="flex items-center justify-center">Fruits</div>
+        </div>
+      )}
       <svg
         viewBox="-1.125 -1.125 2.25 2.25"
         className="w-full h-full max-w-[600px] max-h-[600px] plate-3d"
@@ -183,22 +203,24 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
                   pointerEvents: "none",
                 }}
               >
-                <text
-                  x={Math.cos(midAngle) * 0.5}
-                  y={Math.sin(midAngle) * 0.5}
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fill="white"
-                  fontSize="0.1"
-                  fontWeight="bold"
-                  fontFamily="Inter, sans-serif"
-                  style={{
-                    pointerEvents: "none",
-                    textRendering: "geometricPrecision",
-                  }}
-                >
-                  {slice.label}
-                </text>
+                {!isSafari && (
+                  <text
+                    x={Math.cos(midAngle) * 0.5}
+                    y={Math.sin(midAngle) * 0.5}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fill="white"
+                    fontSize="0.1"
+                    fontWeight="bold"
+                    fontFamily="Inter, sans-serif"
+                    style={{
+                      pointerEvents: "none",
+                      textRendering: "geometricPrecision",
+                    }}
+                  >
+                    {slice.label}
+                  </text>
+                )}
               </motion.g>
             </motion.g>
           );

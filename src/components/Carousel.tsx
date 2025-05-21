@@ -14,7 +14,6 @@ interface MenuItem {
 }
 
 function MenuCarousel({ items }: { items: MenuItem[] }) {
-  // Return simple view if only one item exists
   if (items.length === 1) {
     return (
       <div className="relative w-full mx-auto h-[450px] py-4 sm:py-8">
@@ -43,7 +42,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                   )}
                 </div>
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-black">
+                  <h3 className="text-xl font-bold font-heading text-black">
                     {items[0].title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-2">
@@ -138,7 +137,7 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                     )}
                   </div>
                   <div className="flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-black">
+                    <h3 className="text-xl font-bold font-heading text-black">
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-600 mb-2">

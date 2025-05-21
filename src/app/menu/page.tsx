@@ -57,9 +57,7 @@ export default function MenuPage() {
     }
   };
 
-  // Filter and sort the menu items
   const processedMenuItems = useMemo(() => {
-    // First filter items
     const filtered = menuItems.filter(item => {
       const matchesTags = selectedTags.length === 0 ||
         selectedTags.every(tag => item.tags?.includes(tag));
@@ -121,7 +119,6 @@ export default function MenuPage() {
     setShowSortDropdown(false);
   };
 
-  // Get current sort option label
   const currentSortOption = SORT_OPTIONS.find(option => option.id === sortOption) || SORT_OPTIONS[0];
 
   return (
@@ -151,7 +148,6 @@ export default function MenuPage() {
             </div>
           </div>
 
-          {/* Menu grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processedMenuItems.map((item, index) => (
               <motion.div
@@ -167,7 +163,6 @@ export default function MenuPage() {
             ))}
           </div>
 
-          {/* No results message */}
           {processedMenuItems.length === 0 && (
             <motion.div
               className="text-center py-16"

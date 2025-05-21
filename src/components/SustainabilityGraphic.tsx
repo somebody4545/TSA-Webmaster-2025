@@ -2,6 +2,7 @@
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import Image from "next/image";
 
 interface SustainabilityGraphicProps {
   carbonFootprint: string;
@@ -65,7 +66,9 @@ function SustainabilityGraphic({
                   toggleInfo(index);
                 }}
               >
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src={`/img/menu/sustainability-graphic/${link}.svg`}
                   alt={"Graphic of " + link}
                   className="w-full h-full"

@@ -17,12 +17,12 @@ import {
   Leaf,
   Sparkles,
   Recycle,
+  ChevronDown,
 } from "lucide-react";
 
 const TwoDPlate = dynamic(() => import("@/components/TwoDPlate"), {
   ssr: false,
 });
-
 function CountUp({
   end,
   duration = 2,
@@ -272,7 +272,7 @@ const MissionPage = () => {
                 viewport={{ once: true }}
                 className="p-6rounded-lg w-full md:w-2/5 md:h-80 flex flex-col justify-center"
               >
-                <h3 className="text-3xl font-heading font-bold mb-3 text-primary-darker">
+                <h3 className="text-3xl font-heading font-bold mb-3 text-text">
                   Local Farms
                 </h3>
                 <div className="space-y-3">
@@ -353,7 +353,7 @@ const MissionPage = () => {
             className="flex justify-center mb-4"
           >
             <div className="w-full md:w-4/5 max-w-4xl text-center">
-              <div className="text-3xl font-heading font-bold text-primary-darker">
+              <div className="text-3xl font-heading font-bold text-text">
                 Our Partners
               </div>
               <p>(Fictional, Demo only)</p>
@@ -372,13 +372,13 @@ const MissionPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true, amount: 0.6 }}
-                className="text-xl md:text-xl lg:text-2xl font-heading font-bold text-primary-darker mb-4 max-w-2xl sm:max-w-2xl text-center"
+                className="text-xl md:text-xl lg:text-2xl font-heading font-bold text-text mb-4 max-w-2xl sm:max-w-2xl text-center"
               >
                 Since emissions from transportations account for{" "}
-                <span className="text-black font-bold">
+                <span className="text-primary-darker font-bold">
                   <CountUp end={28} duration={1.5} />
                 </span>
-                <span className="text-black">%</span> of greenhouse gas
+                <span className="text-primary-darker">%</span> of greenhouse gas
                 emissions we use...
               </motion.h1>
             </div>
@@ -393,7 +393,7 @@ const MissionPage = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="text-center mb-10"
               >
-                <h3 className="text-3xl font-heading font-bold text-primary-darker">
+                <h3 className="text-3xl font-heading font-bold text-text">
                   Sustainable Transportation
                 </h3>
                 <p>Hover or tap to see info on each of our strategies!</p>
@@ -698,7 +698,7 @@ const MissionPage = () => {
                   },
                 },
               }}
-              className="text-lg md:text-xl font-body font-bold italic text-white"
+              className="text-lg md:text-xl font-body font-bold italic text-background-dim"
             >
               {'"Nothing will benefit human health and increase chances for survival of life on Earth as much as the evolution to a vegetarian diet."'
                 .split(" ")
@@ -747,7 +747,7 @@ const MissionPage = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-heading font-bold text-primary-darker mb-4">
+                <h2 className="text-3xl font-heading font-bold text-text mb-4">
                   Our Sustainable Kitchen
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
@@ -793,7 +793,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <ChefHat className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Seasonal Menu
                       </h3>
                     </div>
@@ -826,7 +826,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <Recycle className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Zero-Waste Cooking
                       </h3>
                     </div>
@@ -861,7 +861,7 @@ const MissionPage = () => {
                   <div className="p-6">
                     <div className="flex items-center mb-3">
                       <Sparkles className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-primary-darker">
+                      <h3 className="text-xl font-heading font-bold text-text">
                         Energy Efficiency
                       </h3>
                     </div>
@@ -883,7 +883,7 @@ const MissionPage = () => {
                 className="mt-16 flex flex-col md:flex-row items-center"
               >
                 <div className="md:w-1/2 pr-0 md:pr-8">
-                  <h3 className="text-2xl font-heading font-bold text-primary-darker mb-4">
+                  <h3 className="text-2xl font-heading font-bold text-text mb-4">
                     The Heart of Our Restaurant
                   </h3>
                   <p className="text-text mb-6">
@@ -987,7 +987,7 @@ const MissionPage = () => {
           <div className="flex justify-center">
             <div className="w-full md:w-11/12 max-w-6xl">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-heading font-bold text-primary-darker mb-4">
+                <h2 className="text-3xl font-heading font-bold text-text mb-4">
                   The Plant-Based Plate
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
@@ -995,7 +995,6 @@ const MissionPage = () => {
                   your body and the planet.
                 </p>
               </div>
-
                 <div className="flex flex-col md:flex-row gap-2 items-center justify-center max-w-full overflow-clip">
                 {/* Info Box */}
                 <motion.div
@@ -1014,7 +1013,6 @@ const MissionPage = () => {
                     : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
                   </p>
                 </motion.div>
-
                 {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate

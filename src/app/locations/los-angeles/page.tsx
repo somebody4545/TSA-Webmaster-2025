@@ -16,7 +16,33 @@ const LosAngeles = () => {
 				"Friday: 8:00 AM - 10:30 PM",
 				"Saturday: 8:00 AM - 10:30 PM",
 			]}
-			contacts={["Phone: (213) 123-4567"]}/>
+			contacts={["Phone: (213) 123-4567"]}
+			thingsToDo={[
+				{
+					title: "The Broad Museum",
+					description: "Contemporary art museum featuring works by Warhol, Koons, and more.",
+					distance: "0.4 miles away",
+					image: "/img/attractions/broad-museum.jpg"
+				},
+				{
+					title: "Walt Disney Concert Hall",
+					description: "Stunning architectural masterpiece and home to the LA Philharmonic.",
+					distance: "0.3 miles away",
+					image: "/img/attractions/disney-concert-hall.jpg"
+				},
+				{
+					title: "Grand Central Market",
+					description: "Historic food hall featuring diverse local vendors and restaurants.",
+					distance: "0.2 miles away",
+					image: "/img/attractions/grand-central-market.jpg"
+				},
+				{
+					title: "The Last Bookstore",
+					description: "Iconic independent bookstore with unique architecture and rare books.",
+					distance: "0.5 miles away",
+					image: "/img/attractions/last-bookstore.jpg"
+				}
+			]}/>
 	)
 }
 

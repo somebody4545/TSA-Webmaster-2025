@@ -195,35 +195,32 @@ export default function Header() {
               </button>
               <AnimatePresence>
                 {isEarnOpen && (
-                  <motion.ul
-                    className="text-black p-2 bg-white shadow-md absolute top-full left-0 w-full rounded-md"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
+                  <motion.ul className="text-black p-3 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg w-48 border border-gray-100"
+                    initial={{ opacity: 0, y: -5, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -5, scale: 0.95 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     <motion.li
-                      initial={{ opacity: 1, y: 0 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, x: -5 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: 0.05 }}
                       onClick={() => {
-                        // Allow the link to process before closing menu
                         setTimeout(() => setIsEarnOpen(false), 100);
                       }}
-                    >
-                      <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group">
-                        <span>Rewards</span>
+                    >                      <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">
+                        <span className={pathname === '/rewards' ? "font-bold" : ""}>Rewards</span>
                         <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
                       </Link>
                     </motion.li>
                     <motion.li
-                      initial={{ opacity: 1, y: 0 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, x: -5 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: 0.1 }}
                       onClick={() => {
-                        // Allow the link to process before closing menu
                         setTimeout(() => setIsEarnOpen(false), 100);
                       }}
-                    >
-                      <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group">
+                    >                      <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">
                         <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
                         <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
                       </Link>
@@ -331,40 +328,36 @@ export default function Header() {
                 />
               </motion.svg>
               <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
-            </button>
-            <AnimatePresence>
+            </button>            <AnimatePresence>
               {isEarnOpen && (
-                <motion.ul
-                  className="text-black p-2 bg-white shadow-md absolute top-full left-0 rounded-md min-w-32"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
+                <motion.ul className="text-black p-4 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg min-w-40 border border-gray-100"
+                  initial={{ opacity: 0, y: -5, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -5, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   <motion.li
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.05, x: 3 }}
+                    initial={{ opacity: 0, x: -5 }}
                     animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: 0.05 }}
                     onClick={() => {
                       // Allow the link to process before closing menu
                       setTimeout(() => setIsEarnOpen(false), 100);
-                    }}
-                  >
-                    <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block">
-                      <span>Rewards</span>
+                    }}                  >                    <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
+                      <span className={pathname === '/rewards' ? "font-bold" : ""}>Rewards</span>
                       <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
                     </Link>
-                  </motion.li>
-                  <motion.li
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 1, x: 0 }}
+                  </motion.li>                  <motion.li
+                    whileHover={{ scale: 1.05, x: 3 }}
+                    initial={{ opacity: 0, x: -5 }}
                     animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
                     onClick={() => {
                       // Allow the link to process before closing menu
                       setTimeout(() => setIsEarnOpen(false), 100);
                     }}
-                  >
-                    <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block">
+                  >                    <Link href="/gifts" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
                       <span className={pathname === '/gifts' ? "font-bold" : ""}>Gifts</span>
                       <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
                     </Link>

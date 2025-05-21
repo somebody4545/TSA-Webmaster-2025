@@ -508,7 +508,8 @@ export default function ContactPage() {
         time: '',
         guests: '2',
         location: '',
-        message: ''
+        message: '',
+        restaurant: 'LA'
       });
       setSelectedLocation(null);
       

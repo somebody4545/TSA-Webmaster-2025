@@ -995,14 +995,14 @@ const MissionPage = () => {
                   your body and the planet.
                 </p>
               </div>
-                <div className="flex flex-col md:flex-row gap-2 items-center justify-center max-w-full overflow-clip">
+                <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
                 {/* Info Box */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="w-full md:w-1/3 bg-background rounded-lg shadow-md p-6 flex flex-col justify-center items-center md:items-start"
+                  className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-md p-6 flex flex-col justify-center items-center md:items-start z-10"
                 >
                   <h3 className="text-xl font-heading font-bold text-primary-darker mb-3">
                   {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
@@ -1013,6 +1013,7 @@ const MissionPage = () => {
                     : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
                   </p>
                 </motion.div>
+
                 {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate

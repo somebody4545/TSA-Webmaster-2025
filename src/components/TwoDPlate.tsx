@@ -86,7 +86,7 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 		<div className="relative w-full h-full flex items-center justify-center plate-3d-container" style={{ isolation: "isolate" }}>
       <svg
         viewBox="-1.125 -1.125 2.25 2.25"
-        className="w-full h-full max-w-[400px] max-h-[400px] plate-3d"
+        className="w-full h-full max-w-[600px] max-h-[600px] plate-3d"
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredIndex(null)}
         shapeRendering="geometricPrecision"
@@ -127,6 +127,7 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 					return (
 						<motion.g
 							key={i}
+							initial={{ scale: 1, z: 0 }}
 							animate={{
 								z: isActive ? 30 : 0,
 								scale: isActive ? 1.05 : 1,
@@ -134,9 +135,14 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 							whileHover={{
 								scale: 1.1,
 								z: 35,
-								transition: { duration: 0.3, type: "spring", stiffness: 300 },
 							}}
-							transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+							transition={{ 
+								duration: 0.3, 
+								type: "spring", 
+								stiffness: 300,
+								// Ensure smooth transition back to original state
+								scale: { type: "spring", stiffness: 400, damping: 20 }
+							}}
 							style={{ cursor: "pointer" }}
 							onClick={() => handleSelect(i)}
 						>
@@ -192,15 +198,6 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 								}}
 							>
 								{/* Adding a background shape to improve text contrast */}
-								<circle
-									cx={Math.cos(midAngle) * 0.5}
-									cy={Math.sin(midAngle) * 0.5}
-									r="0.3"
-									fill="rgba(0,0,0,0.2)"
-									style={{
-										pointerEvents: "none",
-									}}
-								/>
 								<text
 									x={Math.cos(midAngle) * 0.5}
 									y={Math.sin(midAngle) * 0.5}
@@ -209,9 +206,7 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 									fill="white"
 									fontSize="0.1"
 									fontWeight="bold"
-									paintOrder="stroke"
-									strokeWidth="0.02"
-									stroke="rgba(0,0,0,0.5)"
+                  fontFamily="Inter, sans-serif"
 									style={{
 										pointerEvents: "none",
 										textRendering: "geometricPrecision",

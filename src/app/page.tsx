@@ -234,7 +234,7 @@ function AboutSection() {
             transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
           >
             <motion.img
-              src="/img/about.png"
+              src="/img/hero_image.png"
               alt="About Us"
               className="object-cover w-full h-full rounded-full"
               initial={{ opacity: 0 }}

@@ -112,5 +112,44 @@ body {
   overflow-x: hidden;
 }
 body {
-  position: relative
+  position: relative;
+}
+
+/* ======= 3D PIE CHART STYLES ======= */
+.plate-3d-container {
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.plate-3d {
+  transform-style: preserve-3d;
+  transform: rotateX(24deg) rotateZ(0deg);
+  transition: transform var(--transition-default);
+  backface-visibility: hidden;
+}
+
+.plate-3d:hover {
+  transform: rotateX(12deg) rotateZ(5deg);
+}
+
+.pie-slice {
+  transition: transform var(--transition-default);
+  will-change: transform;
+}
+
+.pie-slice-extruded {
+  transform: translateZ(20px);
+}
+
+.pie-slice-side {
+  opacity: 0.7;
+}
+
+.pie-label {
+  transform: translateZ(25px);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -543,9 +543,9 @@ export default function ContactPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-          <div>
+          <div className="flex flex-col h-full">
             <h2 className="text-2xl font-heading font-semibold text-black mb-6">Select Your Dining Area</h2>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md flex-1">
               <LocationMap
                 selectedLocation={selectedLocation}
                 setSelectedLocation={handleLocationSelect}
@@ -553,12 +553,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div>
+          <div className="flex flex-col h-full">
             <h2 className="text-2xl font-heading font-semibold text-black mb-6">Reservation Details</h2>
-            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md flex-1 flex flex-col">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 flex-1">
                 <div className="sm:col-span-2">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
                   </label>
                   <input
@@ -568,12 +568,12 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email
                   </label>
                   <input
@@ -583,12 +583,12 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone
                   </label>
                   <input
@@ -598,12 +598,12 @@ export default function ContactPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="restaurant" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="restaurant" className="block text-sm font-medium text-gray-700 mb-2">
                     Restaurant Location
                   </label>
                   <select
@@ -612,7 +612,7 @@ export default function ContactPage() {
                     required
                     value={formData.restaurant}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     <option value="LA">Los Angeles</option>
                     <option value="NY">New York</option>
@@ -622,7 +622,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
                     Date
                   </label>
                   <input
@@ -633,12 +633,12 @@ export default function ContactPage() {
                     value={formData.date}
                     onChange={handleChange}
                     min={new Date().toISOString().split('T')[0]}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">
                     Time
                   </label>
                   <select
@@ -647,7 +647,7 @@ export default function ContactPage() {
                     required
                     value={formData.time}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     <option value="">Select a time</option>
                     <option value="11:00 AM">11:00 AM</option>
@@ -668,7 +668,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="guests" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
                     Number of Guests
                   </label>
                   <select
@@ -677,7 +677,7 @@ export default function ContactPage() {
                     required
                     value={formData.guests}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                       <option key={num} value={num.toString()}>
@@ -689,17 +689,17 @@ export default function ContactPage() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Special Requests
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={3}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Dietary restrictions, special occasions, etc."
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
               </div>
@@ -711,16 +711,16 @@ export default function ContactPage() {
               />
 
               {error && (
-                <div className="mt-4 text-red-600 text-sm bg-red-50 p-3 rounded-md">
+                <div className="mt-6 text-red-600 text-sm bg-red-50 p-3 rounded-md">
                   {error}
                 </div>
               )}
 
-              <div className="mt-6">
+              <div className="mt-8">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary btn btn-shine inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base"
+                  className="w-full btn-primary btn btn-shine inline-flex items-center justify-center px-6 py-4 border border-transparent rounded-full shadow-sm text-base font-medium"
                 >
                   {isSubmitting ? 'Processing...' : 'Reserve a Table'}
                 </button>

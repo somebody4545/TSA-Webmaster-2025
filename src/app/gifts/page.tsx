@@ -98,20 +98,14 @@ const GiftsPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const user = auth.currentUser;
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      setIsLoggedIn(!!user);
       if (user) {
         const userDoc = await getDoc(doc(db, "rewards", user.uid));
         if (userDoc.exists()) {
           setUserPoints(userDoc.data().points);
         }
       }
-    };
-    checkAuth();
-  }, []);
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user);
     });
     return () => unsubscribe();
   }, []);

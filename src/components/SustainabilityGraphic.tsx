@@ -34,12 +34,12 @@ function SustainabilityGraphic({
       <div className="flex flex-col lg:flex-row lg:justify-between w-full mt-16">
         <h2 className="text-2xl font-heading">Sustainability & Energy Use</h2>
         <motion.div
-          className="bg-white border-[6px] border-primary-darkest shadow-lg rounded-xl px-4 py-1 text-text"
+          className="bg-white border-2 border-primary-darkest shadow-lg rounded-xl px-4 py-1 text-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
-          <h2 className="font-bold">Impact Estimate:</h2>
+          <h2 className="font-heading">Impact Estimate:</h2>
           <span className="text-text">Carbon Footprint:</span>{" "}
           {sustainability.carbonFootprint}
           <br />
@@ -55,7 +55,7 @@ function SustainabilityGraphic({
           <React.Fragment key={link}>
             <div className="relative flex flex-col items-center gap-4 w-full lg:flex-1">
               <motion.div
-                className="bg-white relative overflow-hidden aspect-square border-primary-darkest hover:cursor-pointer border-[6px] rounded-xl shadow-lg p-4"
+                className="bg-white relative overflow-hidden aspect-square border-primary-darkest hover:cursor-pointer border-2 rounded-xl shadow-lg p-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -71,7 +71,7 @@ function SustainabilityGraphic({
                   height={500}
                   src={`/img/menu/sustainability-graphic/${link}.svg`}
                   alt={"Graphic of " + link}
-                  className="w-full h-full"
+                  className={`w-full h-full transition-all duration-300 ${openStates[index] ? "blur-sm" : ""}`}
                   key={link}
                 />
                 <motion.div
@@ -80,7 +80,7 @@ function SustainabilityGraphic({
                   animate={{ y: openStates[index] ? 0 : "100%" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h2 className="text-xl font-bold text-center">
+                  <h2 className="text-xl font-heading text-center">
                     {link.charAt(0).toUpperCase() + link.slice(1)}
                   </h2>
                   <p>

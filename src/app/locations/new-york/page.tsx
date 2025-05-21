@@ -22,25 +22,25 @@ const NewYork = () => {
           title: "Empire State Building",
           description: "Iconic Art Deco skyscraper with observation decks offering stunning city views.",
           distance: "0.1 miles away",
-          image: "/img/attractions/empire-state-building.jpg"
+          image: "/img/attractions/empire-state-building.png"
         },
         {
           title: "Bryant Park",
           description: "Beautiful urban park with seasonal activities and a carousel.",
           distance: "0.3 miles away",
-          image: "/img/attractions/bryant-park.jpg"
+          image: "/img/attractions/bryant-park.png"
         },
         {
           title: "Times Square",
           description: "World-famous intersection known for its bright lights and entertainment.",
           distance: "0.4 miles away",
-          image: "/img/attractions/times-square.jpg"
+          image: "/img/attractions/times-square.png"
         },
         {
           title: "Herald Square",
           description: "Historic shopping district with Macy's flagship store and modern retail.",
           distance: "0.2 miles away",
-          image: "/img/attractions/herald-square.jpg"
+          image: "/img/attractions/herald-square.png"
         }
       ]} />
   )

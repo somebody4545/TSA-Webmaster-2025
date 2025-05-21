@@ -677,7 +677,6 @@ const MissionPage = () => {
             viewport={{ once: true, amount: 0.6 }}
             className="max-w-3xl mx-auto text-center relative"
           >
-            {/* Animated quote marks */}
             <motion.div
               initial={{ opacity: 0, scale: 0.6 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -688,7 +687,6 @@ const MissionPage = () => {
               <QuoteIcon className="w-10 h-10 text-background-dim" />
             </motion.div>
 
-            {/* Quote text with staggered words */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -724,7 +722,6 @@ const MissionPage = () => {
                   </motion.span>
                 ))}
 
-              {/* Attribution with fade-in */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -740,7 +737,6 @@ const MissionPage = () => {
       </div>
       <GlobalCuisineMap />
 
-      {/* Kitchen Section */}
       <div className="py-16 bg-background">
         <div className="container mx-auto px-3">
           <div className="flex justify-center mb-12">
@@ -1001,7 +997,6 @@ const MissionPage = () => {
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
-                {/* Info Box */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -1019,7 +1014,6 @@ const MissionPage = () => {
                   </p>
                 </motion.div>
 
-                {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate
                     onSelect={setSelected}

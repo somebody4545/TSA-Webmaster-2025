@@ -68,7 +68,6 @@ export default function RewardsPage() {
 
     const querySnapshot = await getDocs(q);
     setScansToday(querySnapshot.size);
-    
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -154,7 +153,7 @@ export default function RewardsPage() {
         <div className="min-h-[90vh] w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-8 py-24 gap-8">
           {/* Left: Dashboard Info */}
           <div className="flex-1 flex flex-col justify-center items-start">
-            <motion.h1 
+            <motion.h1
               className="text-4xl font-heading text-primary mb-8 leading-tight"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -162,7 +161,7 @@ export default function RewardsPage() {
             >
               Your Rewards
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl text-white mb-4 max-w-xl"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

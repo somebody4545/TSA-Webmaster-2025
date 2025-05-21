@@ -3,22 +3,22 @@ import { motion } from "framer-motion";
 
 export const PIE_DATA = [
 	{
-		color: "#5f4994", // purple
+		color: "#7A53AC", // purple
 		label: "Fruits",
 		description: "Fruits provide vitamins, minerals, and natural sweetness.",
 	},
 	{
-		color: "#e7731e", // orange
+		color: "#F69F58", // orange
 		label: "Grains",
 		description: "Grains are a source of energy and important nutrients.",
 	},
 	{
-		color: "#74b743", // green
+      color: "#9EC172", // less saturated green
 		label: "Vegetables",
 		description: "Vegetables are rich in fiber, vitamins, and minerals.",
 	},
 	{
-		color: "#d61d23", // red
+		color: "#D7545F", // less saturated red
 		label: "Protein",
 		description: "Protein is essential for muscle and tissue repair.",
 	},

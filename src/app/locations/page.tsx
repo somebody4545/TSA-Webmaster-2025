@@ -72,36 +72,36 @@ const Locations = () => {
 
       </div>
 
-      <div className="py-12 bg-primary-50/50">
+      <div className="py-12 bg-primary-50/50 bg-primary-darker">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-3xl font-heading mb-4 text-primary">
+          <h2 className="text-3xl font-heading mb-4 text-background-dim">
             Our Locations
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-background-dim mb-6">
             Each Maitso location is thoughtfully designed to minimize
             environmental impact while maximizing your dining experience.
             Prioritizing locally-sourced ingredients to result in
             energy-efficient kitchens is a key part of our commitment to
             sustainability.
           </p>
-          <div className="flex justify-center space-x-8">
+          <div className="flex justify-center space-x-8 text-background-dim">
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-background-dim mr-2" />
               <span>100% Plant-Based</span>
             </div>
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-background-dim mr-2" />
               <span>Locally Sourced</span>
             </div>
             <div className="flex items-center">
-              <CircleCheck className="w-5 h-5 text-primary mr-2" />
+              <CircleCheck className="w-5 h-5 text-background-dim mr-2" />
               <span>Zero Waste</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="py-16 px-4 bg-white">
+      <div className="py-16 px-4 ">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-heading mb-12 text-center">
             Find Us In Your City
@@ -135,7 +135,7 @@ const Locations = () => {
         </div>
       </div>
 
-      <div className="py-16 bg-gray-50">
+      <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-heading mb-6 text-center">
             Our Growing Network

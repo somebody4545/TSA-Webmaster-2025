@@ -67,8 +67,6 @@ function ParallaxBackground() {
   );
 }
 
-// Removed the CarouselNavigationButtons function as it's no longer needed
-
 function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] }) {
   return (
     <div className="card w-[350px] mx-auto transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2">
@@ -185,7 +183,7 @@ function Hero() {
       >
         1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
       </motion.p>
-      
+
       {/* Reservation CTA Button */}
       <motion.div
         className="mt-8"
@@ -199,7 +197,7 @@ function Hero() {
           </button>
         </Link>
       </motion.div>
-      
+
       <motion.div
         className="absolute bottom-8 animate-bounce cursor-pointer"
         initial={{ opacity: 0 }}
@@ -325,7 +323,7 @@ function MenuSection() {
             >
               From entrees to desserts, we have a variety of plant-based options for you to enjoy.
               Come and explore our delicious offerings from a variety of cuisines.
-            </motion.p> 
+            </motion.p>
             <Link href="/menu">
               <button className="btn btn-primary btn-shine rounded-full shadow-lg">
                 View Full Menu
@@ -335,7 +333,7 @@ function MenuSection() {
         </div>
 
         {/* Carousel section - full width */}
-        <div className="w-full flex justify-center">
+        <div className="w-full text-center lg:text-left flex justify-center">
           <motion.div
             className="w-full max-w-4xl"
             initial={{ opacity: 0, y: 20 }}
@@ -539,61 +537,6 @@ function GallerySection() {
   );
 }
 
-/*function LocationsSection() {
-  return (
-    <div className="bg-black w-full text-background py-48 z-0 relative overflow-hidden" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
-      <motion.div
-        className="absolute inset-0 z-20 min-w-[125vw] min-h-[125vh]"
-        style={{ filter: "brightness(0.2)" }}
-        animate={{
-          x: ["-1%", "0%", "-1%", "-2%", "-1%"],
-          y: ["-1%", "0%", "-1%", "-2%", "-1%"],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Image
-          src="/img/backgrounds/location.jpeg"
-          alt="Main Background"
-          layout="fill"
-          objectFit="cover"
-        />
-      </motion.div>
-      <div className="flex flex-col h-full w-full text-center items-center justify-center relative z-30">
-        <motion.h2
-          className="text-3xl font-heading"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Locations
-        </motion.h2>
-        <motion.p
-          className="mx-16 text-xl"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          We&apos;re all over the United States! Find a location near you and come visit us today.
-        </motion.p>
-        <Link href="/locations">
-          <motion.button
-            className="btn btn-primary btn-shine text-text mt-4 rounded-full max-w-max"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            Find a Location
-          </motion.button>
-        </Link>
-      </div>
-    </div>
-  );
-}*/
-
 export default function HomePage() {
   return (
     <>
@@ -603,7 +546,6 @@ export default function HomePage() {
       <GiftCardSection />
       <TestimonialsSection />
       <GallerySection />
-      
     </>
   );
 }

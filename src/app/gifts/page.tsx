@@ -41,7 +41,7 @@ interface GiftCardProps {
 }
 
 const GiftCardItem: React.FC<GiftCardProps> = ({ image, title, priceRange, cardType }) => {
-  const [amount, setAmount] = React.useState('10');
+  const [amount, setAmount] = React.useState('50');
   
   return (
     <div className='w-full lg:w-1/3 p-4'>

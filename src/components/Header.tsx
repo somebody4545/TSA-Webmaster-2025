@@ -25,7 +25,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    // Apply the appropriate text color to active links
     const updateTextColors = () => {
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {
@@ -303,7 +302,7 @@ export default function Header() {
                 onClick={handleNavigation}
                 className="relative overflow-hidden group nav-link"
               >
-                <span className={`${pathname === "/rewards" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Sign In / Join</span>
+                <span className={`${pathname === "/rewards" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Sign In</span>
                 <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
               </Link>
             </motion.li>
@@ -499,7 +498,7 @@ export default function Header() {
                 href="/rewards"
                 onClick={handleNavigation}
                 className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/rewards" ? "font-bold" : ""} active:!bg-green-950 nav-link`}
-              >              <span className={`transition-colors duration-700`}>Sign In / Join</span>
+              >              <span className={`transition-colors duration-700`}>Sign In</span>
                 <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
               </Link>
             </motion.li>)}

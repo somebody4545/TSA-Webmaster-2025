@@ -14,7 +14,6 @@ interface MenuItem {
 }
 
 function MenuCarousel({ items }: { items: MenuItem[] }) {
-  // Return simple view if only one item exists
   if (items.length === 1) {
     return (
       <div className="relative w-full mx-auto h-[450px] py-4 sm:py-8">

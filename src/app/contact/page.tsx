@@ -201,8 +201,13 @@ const ModelViewer = ({
   );
 };
 
-const LocationMap = () => {
-  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+const LocationMap = ({ 
+  selectedLocation, 
+  setSelectedLocation 
+}: { 
+  selectedLocation: string | null, 
+  setSelectedLocation: (location: string) => void 
+}) => {
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [view3D, setView3D] = useState(true);
@@ -216,6 +221,7 @@ const LocationMap = () => {
     outdoor: { name: "Outdoor Patio", description: "Garden patio seating surrounded by our herb garden." },
   };
   
+  // Now this will update the parent component's state
   const handleLocationClick = (location: string) => {
     setSelectedLocation(location);
   };
@@ -271,9 +277,9 @@ const LocationMap = () => {
   return (
     <div className="relative">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-medium text-gray-700">Floor Plan</h3>
+        <h3 className="text-lg font-medium text-black">Floor Plan</h3>
         <div className="flex items-center space-x-2">
-          <span className={`text-sm ${!view3D ? 'font-medium text-primary' : 'text-gray-500'}`}>2D</span>
+          <span className={`text-sm ${!view3D ? 'font-medium text-primary-darker' : 'text-gray-500'}`}>2D</span>
           <button 
             onClick={handleViewToggle} 
             className="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
@@ -283,7 +289,7 @@ const LocationMap = () => {
               className={`inline-block w-4 h-4 transform transition-transform bg-white rounded-full ${view3D ? 'translate-x-6' : 'translate-x-1'}`}
             />
           </button>
-          <span className={`text-sm ${view3D ? 'font-medium text-primary' : 'text-gray-500'}`}>3D</span>
+          <span className={`text-sm ${view3D ? 'font-medium text-primary-darker' : 'text-gray-500'}`}>3D</span>
         </div>
       </div>
 
@@ -420,21 +426,26 @@ const LocationMap = () => {
           {view3D ? "Rotate the model to explore and click on a section to select" : "Click on a section to select your preferred dining area"}
         </p>
         
-        {selectedLocation && (
-          <motion.div
-            className="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+        <motion.div
+          className="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/20 flex items-center justify-center"
+          style={{ minHeight: 120 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="text-center w-full">
             <h3 className="text-lg font-medium text-primary-darker">
-              {locations[selectedLocation as keyof typeof locations].name}
+              {selectedLocation
+          ? locations[selectedLocation as keyof typeof locations].name
+          : "Click a section to select"}
             </h3>
             <p className="mt-1 text-gray-600">
-              {locations[selectedLocation as keyof typeof locations].description}
+              {selectedLocation
+          ? locations[selectedLocation as keyof typeof locations].description
+          : "Choose your preferred dining area by clicking on the map above."}
             </p>
-          </motion.div>
-        )}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -518,7 +529,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-heading font-bold text-primary-darker sm:text-4xl">
+        <h1 className="text-3xl font-heading font-bold text-black  sm:text-4xl">
           Reservations
         </h1>
         <p className="mt-4 text-lg text-gray-600">
@@ -527,12 +538,12 @@ export default function ContactPage() {
       </div>
 
       {submitSuccess ? (
-        <div className="bg-green-50 p-8 rounded-lg text-center max-w-md mx-auto">
+        <div className="bg-green-50 p-8 rounded-lg text-center max-w-md mx-auto border">
           <h2 className="text-xl font-medium text-green-800">Thank you for your reservation request!</h2>
           <p className="mt-2 text-green-700">We'll confirm your reservation shortly via email or phone.</p>
           <button
             onClick={() => setSubmitSuccess(false)}
-            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-primary hover:bg-primary-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            className="mt-6 inline-flex items-center px-4 py-2 btn btn-primary btn-shine rounded-full"
           >
             Make another reservation
           </button>
@@ -540,26 +551,17 @@ export default function ContactPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
           <div>
-            <h2 className="text-2xl font-heading font-semibold text-primary-darker mb-6">Select Your Dining Area</h2>
+            <h2 className="text-2xl font-heading font-semibold text-black mb-6">Select Your Dining Area</h2>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <LocationMap />
-              
-              {selectedLocation && (
-                <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-                  <h3 className="text-lg font-medium text-primary-darker">Selected: {locationMap[selectedLocation as keyof typeof locationMap]}</h3>
-                  <p className="mt-1 text-gray-600 text-sm">
-                    {selectedLocation === "indoor" && "Our elegant indoor space offers a cozy atmosphere with soft lighting and beautiful plant decor."}
-                    {selectedLocation === "booth" && "Our private booths provide an intimate dining experience with added privacy."}
-                    {selectedLocation === "openair" && "Our covered open-air section offers natural ventilation while protecting from the elements."}
-                    {selectedLocation === "outdoor" && "Our garden patio is surrounded by our herb garden, creating a fresh and aromatic dining experience."}
-                  </p>
-                </div>
-              )}
+              <LocationMap 
+                selectedLocation={selectedLocation} 
+                setSelectedLocation={handleLocationSelect} 
+              />
             </div>
           </div>
           
           <div>
-            <h2 className="text-2xl font-heading font-semibold text-primary-darker mb-6">Reservation Details</h2>
+            <h2 className="text-2xl font-heading font-semibold text-black mb-6">Reservation Details</h2>
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
                 <div className="sm:col-span-2">
@@ -706,7 +708,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-primary hover:bg-primary-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 transition-colors"
+                  className="w-full btn-primary btn btn-shine inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base"
                 >
                   {isSubmitting ? 'Processing...' : 'Reserve a Table'}
                 </button>
@@ -718,7 +720,7 @@ export default function ContactPage() {
 
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
           <h3 className="text-lg font-medium text-gray-900">Phone</h3>
@@ -726,15 +728,15 @@ export default function ContactPage() {
         </div>
         
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
           <h3 className="text-lg font-medium text-gray-900">Email</h3>
-          <p className="mt-2 text-gray-600">reservations@maitso.com</p>
+          <p className="mt-2 text-gray-600">hello@maitso.com</p>
         </div>
         
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <h3 className="text-lg font-medium text-gray-900">Hours</h3>

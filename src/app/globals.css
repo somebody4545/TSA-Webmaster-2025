@@ -119,6 +119,8 @@ body {
 .plate-3d-container {
   perspective: 1000px;
   will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .plate-3d {

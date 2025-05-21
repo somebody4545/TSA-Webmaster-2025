@@ -81,7 +81,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           </motion.div>
 
           <motion.h1 
-            className="text-5xl lg:text-6xl font-heading mb-4 tracking-tight"
+            className="text-5xl max-md:text-3xl lg:text-6xl font-heading mb-4 tracking-tight"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7 }}

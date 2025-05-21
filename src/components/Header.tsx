@@ -25,7 +25,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    // Apply the appropriate text color to active links
     const updateTextColors = () => {
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {

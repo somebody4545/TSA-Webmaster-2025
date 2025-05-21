@@ -28,7 +28,7 @@ export async function POST(request) {
       'veggie': [10, 25, 50, 100],
       'premium': [50, 100, 150, 200]
     }
-    
+    console.log('Parsed Amount:', parsedAmount)
     // Check if the amount is valid for the selected card type
     if (!validAmounts[cardType] || !validAmounts[cardType].includes(parsedAmount)) {
       return NextResponse.json(

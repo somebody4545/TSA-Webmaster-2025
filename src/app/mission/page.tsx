@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useAnimation,
+  useMotionValue,
+  animate,
+  useMotionValueEvent,
+} from "framer-motion";
 import GlobalCuisineMap from "@/components/GlobalCuisineMap";
 import dynamic from "next/dynamic";
 import { PIE_DATA } from "@/components/TwoDPlate";
@@ -18,7 +25,26 @@ import {
   Sparkles,
   Recycle,
   ChevronDown,
+  ShoppingCart,
+  Send,
+  PackageCheck,
 } from "lucide-react";
+
+// Add styles for 3D flip effect
+const styles = `
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+`;
 
 const TwoDPlate = dynamic(() => import("@/components/TwoDPlate"), {
   ssr: false,
@@ -51,6 +77,8 @@ function CountUp({
 
       if (percentage < 1) {
         animationFrame = requestAnimationFrame(updateCount);
+      } else {
+        setCount(end); // Ensure it reaches the final number
       }
     };
 
@@ -196,9 +224,93 @@ const MissionPage = () => {
   const [energyFlipped, setEnergyFlipped] = useState(false);
   const [packagingFlipped, setPackagingFlipped] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const circleX = useMotionValue(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const controls = useAnimation();
+  const [timelineCardFlipped, setTimelineCardFlipped] = useState<boolean[]>(
+    new Array(3).fill(false)
+  );
+  const [animationComplete, setAnimationComplete] = useState(false);
+
+  // Create refs for each card
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+  const card3Ref = useRef<HTMLDivElement>(null);
+
+  const isContainerInView = useInView(containerRef, {
+    once: true,
+    amount: 0.5,
+  });
+
+  useEffect(() => {
+    if (!isContainerInView || !containerRef.current) return;
+
+    const containerWidth = containerRef.current.offsetWidth;
+
+    controls.start({
+      x: containerWidth - 100,
+      transition: {
+        duration: 5,
+        ease: "linear",
+        onComplete: () => {
+          setAnimationComplete(true);
+        },
+      },
+    });
+  }, [controls, isContainerInView]);
+
+  // Track the drone position and set animation complete when it reaches the end
+  useMotionValueEvent(circleX, "change", (latestX) => {
+    if (!containerRef.current) return;
+
+    const circle = circleRef.current;
+    if (!circle) return;
+
+    const containerWidth = containerRef.current.offsetWidth;
+
+    // If drone is near the end position, set animation as complete
+    if (latestX >= containerWidth - 120) {
+      setAnimationComplete(true);
+    }
+
+    // Check each card's position
+    [card1Ref, card2Ref, card3Ref].forEach((cardRef, index) => {
+      const card = cardRef.current;
+      if (!card) return;
+
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      // Increase offset to 60px for earlier flip
+      const distance = Math.abs(latestX - (cardCenter - 60));
+
+      // Reduce threshold to 20px for even more immediate response
+      if (distance < 20 && !timelineCardFlipped[index]) {
+        setTimelineCardFlipped((prev) => {
+          const newState = [...prev];
+          newState[index] = true;
+          return newState;
+        });
+      }
+    });
+  });
+
+  const circleRef = useRef<HTMLDivElement>(null);
+
+  // Handle manual flipping of timeline cards
+  const handleTimelineCardFlip = (index: number) => {
+    if (!animationComplete) return; // Only allow flipping after animation completes
+
+    setTimelineCardFlipped((prev) => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
 
   return (
     <div className="min-h-screen">
+      <style>{styles}</style>
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -263,86 +375,191 @@ const MissionPage = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="flex flex-col md:flex-row w-full md:w-11/12 max-w-6xl gap-6"
+              className="flex flex-col w-full md:w-11/12 max-w-6xl gap-6"
             >
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="p-6rounded-lg w-full md:w-2/5 md:h-80 flex flex-col justify-center"
-              >
-                <h3 className="text-3xl font-heading font-bold mb-3 text-text">
-                  Local Farms
-                </h3>
-                <div className="space-y-3">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="flex items-start"
-                  >
-                    <Tractor
-                      className="h-12 w-12 text-primary-darker mt-0.5 mr-2 flex-shrink-0"
-                      strokeWidth={1.2}
+              <div className="flex flex-col md:flex-row w-full gap-6">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="p-6 rounded-lg w-full md:w-3/5 flex flex-col justify-center"
+                >
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text leading-tight">
+                    Ingredients from Local Farms
+                  </h3>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="hidden md:flex md:w-2/5 items-center justify-center"
+                >
+                  <div className="w-full h-80">
+                    <img
+                      src="/img/farmer.jpg"
+                      alt="Farm image"
+                      width="480"
+                      height="270"
+                      className="rounded-lg shadow-md object-cover w-full h-full"
                     />
-                    <p className="text-text font-body">
-                      We partner with local farmers to ensure you get to enjoy
-                      the freshest, most flavorful vegetables and fruits.
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className="flex items-start"
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Flash Cards Section */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="relative h-[300px] perspective-1000"
+                >
+                  <div
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      bikeFlipped ? "rotate-y-180" : ""
+                    }`}
                   >
-                    <Citrus
-                      className="h-12 w-12 text-primary-darker mt-0.5 mr-2 flex-shrink-0"
-                      strokeWidth={1.2}
-                    />
-                    <p className="text-text font-body">
-                      We prioritize seasonal produce to ensure peak flavor and
-                      nutrition.
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    viewport={{ once: true }}
-                    className="flex items-start"
+                    {/* Front of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
+                      <div className="flex flex-col items-center justify-center h-full">
+                        <div className="h-16 w-16 md:h-24 md:w-24 mb-4 flex items-center justify-center bg-primary-darker/10 rounded-full p-3">
+                          <Tractor
+                            className="h-24 w-24 text-primary-darker mb-4"
+                            strokeWidth={1.2}
+                          />
+                        </div>
+                        <h4 className="text-2xl font-heading font-bold text-text text-center">
+                          Local Partnerships
+                        </h4>
+                        <div className="mt-3 w-16 h-1 bg-primary-darker rounded-full"></div>
+                      </div>
+                      <button
+                        onClick={() => setBikeFlipped(!bikeFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-primary-darker text-white hover:bg-primary transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6" />
+                      </button>
+                    </div>
+                    {/* Back of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
+                      <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
+                        We partner with local farmers to ensure that our dishes
+                        are made with the most fresh as well as flavorful
+                        vegetables and fruits.
+                      </p>
+                      <button
+                        onClick={() => setBikeFlipped(!bikeFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-white text-primary-darker hover:bg-background transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6 rotate-180" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="relative h-[300px] perspective-1000"
+                >
+                  <div
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      robotFlipped ? "rotate-y-180" : ""
+                    }`}
                   >
-                    <Users
-                      className="h-12 w-12 text-primary-darker mt-0.5 mr-2 flex-shrink-0"
-                      strokeWidth={1.2}
-                    />
-                    <p className="text-text font-body">
-                      We support environmentally friendly farming practices that
-                      strengthen our local food community.
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="hidden md:flex md:w-3/5 items-center justify-center"
-              >
-                <div className="w-full h-80">
-                  <img
-                    src="/img/farmer.jpg"
-                    alt="Farm image"
-                    width="480"
-                    height="270"
-                    className="rounded-lg shadow-md object-cover w-full h-full"
-                  />
-                </div>
-              </motion.div>
+                    {/* Front of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
+                      <div className="flex flex-col items-center justify-center h-full">
+                        <div className="h-16 w-16 md:h-24 md:w-24 mb-4 flex items-center justify-center bg-primary-darker/10 rounded-full p-3">
+                          <Citrus
+                            className="h-24 w-24 text-primary-darker mb-4"
+                            strokeWidth={1.2}
+                          />
+                        </div>
+                        <h4 className="text-2xl font-heading font-bold text-text text-center">
+                          Seasonal Produce
+                        </h4>
+                        <div className="mt-3 w-16 h-1 bg-primary-darker rounded-full"></div>
+                      </div>
+                      <button
+                        onClick={() => setRobotFlipped(!robotFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-primary-darker text-white hover:bg-primary transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6" />
+                      </button>
+                    </div>
+                    {/* Back of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
+                      <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
+                        We select and purchase seasonal produce to ensure peak
+                        flavor and nutrition year round; this enables us to come
+                        up with unique delicacies featuring global cultures.
+                      </p>
+                      <button
+                        onClick={() => setRobotFlipped(!robotFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-white text-primary-darker hover:bg-background transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6 rotate-180" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="relative h-[300px] perspective-1000"
+                >
+                  <div
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      freightFlipped ? "rotate-y-180" : ""
+                    }`}
+                  >
+                    {/* Front of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
+                      <div className="flex flex-col items-center justify-center h-full">
+                        <div className="h-16 w-16 md:h-24 md:w-24 mb-4 flex items-center justify-center bg-primary-darker/10 rounded-full p-3">
+                          <Users
+                            className="h-24 w-24 text-primary-darker mb-4"
+                            strokeWidth={1.2}
+                          />
+                        </div>
+                        <h4 className="text-2xl font-heading font-bold text-text text-center">
+                          Sustainable Practices
+                        </h4>
+                        <div className="mt-3 w-16 h-1 bg-primary-darker rounded-full"></div>
+                      </div>
+                      <button
+                        onClick={() => setFreightFlipped(!freightFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-primary-darker text-white hover:bg-primary transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6" />
+                      </button>
+                    </div>
+                    {/* Back of card */}
+                    <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
+                      <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
+                        We support environmentally friendly farming practices
+                        and sustainable cooking to ensure that we preserve
+                        nature and strengthen our bond with our local community.
+                      </p>
+                      <button
+                        onClick={() => setFreightFlipped(!freightFlipped)}
+                        className="absolute bottom-4 right-4 p-2 rounded-full bg-white text-primary-darker hover:bg-background transition-colors"
+                      >
+                        <ChevronDown className="w-6 h-6 rotate-180" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
           <motion.div
@@ -384,279 +601,154 @@ const MissionPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-10 mt-16 mb-16">
+          <div className="flex flex-col gap-10 mt-16 mb-16 sustainable-transport-section">
             <div className="flex flex-col items-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="text-center mb-10"
+                className="text-center mb-10 sustainable-transport-heading"
               >
                 <h3 className="text-3xl font-heading font-bold text-text">
-                  Sustainable Transportation
+                  Future of Delivery
                 </h3>
-                <p>Hover or tap to see info on each of our strategies!</p>
+                <p>Watch as our drone demonstrates the delivery process</p>
               </motion.div>
 
-              <div className="w-full">
+              <div className="w-full relative" ref={containerRef}>
+                {/* Background Images */}
+                <div className="absolute inset-0">
+                  <img
+                    src="/img/suburbs.png"
+                    alt="Suburbs"
+                    className="w-full h-full object-cover opacity-20"
+                  />
+                </div>
+
+                {/* Moving vehicle */}
                 <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: {
-                      opacity: 1,
-                      transition: {
-                        staggerChildren: 0.2,
-                      },
-                    },
+                  className="absolute top-0 -translate-y-1/2 z-10 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center"
+                  initial={{ x: 0 }}
+                  whileInView={{
+                    x: containerRef.current
+                      ? containerRef.current.offsetWidth - 100
+                      : "90%",
                   }}
-                  className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{
+                    duration: 5,
+                    ease: "linear",
+                    repeat: 0,
+                    delay: 0.5,
+                  }}
+                  style={{ x: circleX }}
+                  ref={circleRef}
                 >
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.6 },
-                      },
-                    }}
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setBikeFlipped(true)}
-                    onMouseLeave={() => setBikeFlipped(false)}
-                  >
-                    {/* Keep the existing card content */}
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/bikedelivery.jpg"
-                        alt="Bike Delivery"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Bike Delivery
-                        </p>
-                      </div>
-                    </div>
-
-                    <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: bikeFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-white text-center font-body">
-                        We use bikes for quick and eco-friendly deliveries in
-                        downtown areas. This keeps our streets less crowded and
-                        the air cleaner.
-                      </p>
-                    </motion.div>
-                  </motion.div>
-
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.6 },
-                      },
-                    }}
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setRobotFlipped(true)}
-                    onMouseLeave={() => setRobotFlipped(false)}
-                  >
-                    {/* Existing content for robot delivery card */}
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/robotdelivery.jpg"
-                        alt="Robot Delivery"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Robot Delivery
-                        </p>
-                      </div>
-                    </div>
-
-                    <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: robotFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-white text-center font-body">
-                        Compact delivery robots bring packages directly to
-                        customers without burning any fuel. They offer a
-                        futuristic, low-impact way to get goods where they need
-                        to go.
-                      </p>
-                    </motion.div>
-                  </motion.div>
-
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.6 },
-                      },
-                    }}
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setFreightFlipped(true)}
-                    onMouseLeave={() => setFreightFlipped(false)}
-                  >
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/greenfreight.jpg"
-                        alt="Electric Trucking"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Electric Trucking
-                        </p>
-                      </div>
-                    </div>
-
-                    <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: freightFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-white text-center font-body">
-                        For larger hauls, we depend on electric trucks built for
-                        heavy-duty transport. These vehicles move goods far and
-                        wide—without the carbon footprint of diesel engines.
-                      </p>
-                    </motion.div>
-                  </motion.div>
+                  <img
+                    src="/img/drone.gif"
+                    alt="Drone"
+                    className="w-full h-full object-contain"
+                  />
                 </motion.div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-full">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  <div
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setWaterFlipped(true)}
-                    onMouseLeave={() => setWaterFlipped(false)}
-                  >
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/electricvehicles.png"
-                        alt="Electric Vehicles"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Electric Vehicles
-                        </p>
-                      </div>
-                    </div>
 
+                {/* Checkpoint cards */}
+                <div className="relative w-full flex flex-col md:flex-row justify-between px-4 mt-32 gap-8 md:gap-4">
+                  {[
+                    {
+                      title: "Order Processing",
+                      icon: (
+                        <ShoppingCart className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
+                      ),
+                      description:
+                        "Our system quickly processes your order finds the optimal delivery route: our algorithms determine the most efficient path for the drone to reach you.",
+                      image: "/img/bikedelivery.jpg",
+                    },
+                    {
+                      title: "Drone Launch",
+                      icon: (
+                        <Send className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
+                      ),
+                      description:
+                        "Your package is carefully loaded onto one of our drones and after final safety checks, the drone takes off and navigates to deliver your food!",
+                      image: "/img/robotdelivery.jpg",
+                    },
+                    {
+                      title: "Delivery Complete",
+                      icon: (
+                        <PackageCheck className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
+                      ),
+                      description:
+                        "The drone arrives at your delivery spot, lowers your package, and confirms successful delivery. You will recieve a notification that your order has arrived.",
+                      image: "/img/greenfreight.jpg",
+                    },
+                  ].map((item, index) => (
                     <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: waterFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
+                      key={index}
+                      id={`card-${index}`}
+                      className="w-full md:w-64 h-64 relative perspective-1000"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.2 }}
+                      ref={
+                        index === 0
+                          ? card1Ref
+                          : index === 1
+                          ? card2Ref
+                          : card3Ref
+                      }
                     >
-                      <p className="text-white text-center font-body">
-                        Our electric cars and vans handle mid-range deliveries
-                        without relying on gas. By switching to EVs, we cut
-                        emissions and reduce noise pollution.
-                      </p>
+                      <motion.div
+                        className="w-full h-full transition-transform duration-500 transform-style-3d"
+                        initial={{ rotateY: 0 }}
+                        animate={{
+                          rotateY: timelineCardFlipped[index] ? 180 : 0,
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {/* Front of card */}
+                        <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
+                          <div className="flex flex-col items-center justify-center h-full">
+                            <div className="h-16 w-16 md:h-24 md:w-24 mb-4 flex items-center justify-center bg-primary-darker/10 rounded-full p-3">
+                              {item.icon}
+                            </div>
+                            <h4 className="text-lg md:text-xl font-heading font-bold text-text text-center">
+                              {item.title}
+                            </h4>
+                            <div className="mt-3 w-16 h-1 bg-primary-darker rounded-full"></div>
+                          </div>
+                          <button
+                            onClick={() => handleTimelineCardFlip(index)}
+                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${
+                              animationComplete
+                                ? "bg-primary-darker text-white hover:bg-primary"
+                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
+                            disabled={!animationComplete}
+                          >
+                            <ChevronDown className="w-5 h-5" />
+                          </button>
+                        </div>
+                        {/* Back of card */}
+                        <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
+                          <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
+                            {item.description}
+                          </p>
+                          <button
+                            onClick={() => handleTimelineCardFlip(index)}
+                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${
+                              animationComplete
+                                ? "bg-white text-primary-darker hover:bg-background"
+                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
+                            disabled={!animationComplete}
+                          >
+                            <ChevronDown className="w-5 h-5 rotate-180" />
+                          </button>
+                        </div>
+                      </motion.div>
                     </motion.div>
-                  </div>
-
-                  <div
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setEnergyFlipped(true)}
-                    onMouseLeave={() => setEnergyFlipped(false)}
-                  >
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/greenshipping.jpeg"
-                        alt="Green Shipping"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Green Shipping
-                        </p>
-                      </div>
-                    </div>
-
-                    <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: energyFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-white text-center font-body">
-                        Global imports and exports are powered by low-emission
-                        ships and planes. This approach reduces the
-                        environmental impact of getting goods from around the
-                        world.
-                      </p>
-                    </motion.div>
-                  </div>
-
-                  <div
-                    className="h-48 md:h-64 relative rounded-lg overflow-hidden cursor-pointer"
-                    onMouseEnter={() => setPackagingFlipped(true)}
-                    onMouseLeave={() => setPackagingFlipped(false)}
-                  >
-                    <div className="absolute w-full h-full">
-                      <img
-                        src="/img/routeoptimization.jpg"
-                        alt="Low-Carbon Logistics"
-                        width="400"
-                        height="300"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <p className="text-lg md:text-2xl font-heading font-bold text-white">
-                          Low-Carbon Logistics
-                        </p>
-                      </div>
-                    </div>
-
-                    <motion.div
-                      className="absolute w-full h-full bg-primary-darker rounded-lg flex items-center justify-center p-6"
-                      initial={{ y: "100%" }}
-                      animate={{ y: packagingFlipped ? 0 : "100%" }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-white text-center font-body">
-                        Through smarter route planning and optimized systems, we
-                        avoid unnecessary emissions. Our goal is to rethink
-                        every step of delivery to make it as green as possible.
-                      </p>
-                    </motion.div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -733,254 +825,8 @@ const MissionPage = () => {
           </motion.div>
         </div>
       </div>
-      <GlobalCuisineMap />
 
       {/* Kitchen Section */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-3">
-          <div className="flex justify-center mb-12">
-            <div className="w-full md:w-11/12 max-w-6xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl font-heading font-bold text-text mb-4">
-                  Our Sustainable Kitchen
-                </h2>
-                <p className="text-text max-w-3xl mx-auto">
-                  We believe that a sustainable restaurant begins in the
-                  kitchen. Our approach combines traditional cooking techniques
-                  with modern eco-conscious practices.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.2,
-                    },
-                  },
-                }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/seasonalingredients.jpg"
-                      alt="Seasonal Ingredients"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <ChefHat className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Seasonal Menu
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      Our menu changes with the seasons to showcase the freshest
-                      local ingredients at their peak. This reduces food miles
-                      and supports local agricultural biodiversity.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/zerowastecooking.jpg"
-                      alt="Zero Waste Cooking"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Recycle className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Zero-Waste Cooking
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      We practice root-to-stem and nose-to-tail cooking
-                      philosophies that utilize every part of our ingredients.
-                      Vegetable scraps become flavorful stocks, and creative
-                      preservation techniques extend the life of seasonal
-                      bounty.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.6 },
-                    },
-                  }}
-                  className="bg-background rounded-lg shadow-md overflow-hidden"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src="/img/energyefficientkitchen.jpg"
-                      alt="Energy Efficient Kitchen"
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Sparkles className="w-6 h-6 text-primary-darker mr-2" />
-                      <h3 className="text-xl font-heading font-bold text-text">
-                        Energy Efficiency
-                      </h3>
-                    </div>
-                    <p className="text-text">
-                      Our kitchen is equipped with energy-efficient appliances
-                      and smart systems that minimize our carbon footprint. We
-                      use induction cooking and optimize our operations to
-                      reduce energy and water usage.
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="mt-16 flex flex-col md:flex-row items-center"
-              >
-                <div className="md:w-1/2 pr-0 md:pr-8">
-                  <h3 className="text-2xl font-heading font-bold text-text mb-4">
-                    The Heart of Our Restaurant
-                  </h3>
-                  <p className="text-text mb-6">
-                    Our kitchen is where global culinary traditions meet
-                    sustainable innovation. Led by our talented chefs, we honor
-                    time-tested techniques while embracing new approaches that
-                    reduce environmental impact without compromising on flavor.
-                  </p>
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: {
-                        opacity: 1,
-                        transition: {
-                          staggerChildren: 0.2,
-                          delayChildren: 0.3,
-                        },
-                      },
-                    }}
-                    className="space-y-4"
-                  >
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <CookingPot className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Slow cooking methods that maximize flavor while
-                        minimizing energy use
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <Utensils className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Handcrafted preparations that preserve culinary heritage
-                        and artisanal quality
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: {
-                          opacity: 1,
-                          x: 0,
-                          transition: { duration: 0.5 },
-                        },
-                      }}
-                      className="flex items-start"
-                    >
-                      <Leaf className="w-6 h-6 text-primary-darker mt-1 mr-3 flex-shrink-0" />
-                      <p className="text-text">
-                        Plant-forward menu that celebrates vegetables as the
-                        star of the plate
-                      </p>
-                    </motion.div>
-                  </motion.div>
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.7, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="md:w-1/2 h-80 md:h-auto mt-6 md:mt-0"
-                >
-                  <img
-                    src="/img/kitchenteam.jpg"
-                    alt="Our Kitchen Team"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="py-16 bg-background mb-32">
         <div className="container mx-auto px-3">
@@ -995,7 +841,7 @@ const MissionPage = () => {
                   your body and the planet.
                 </p>
               </div>
-                <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
+              <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
                 {/* Info Box */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -1005,20 +851,20 @@ const MissionPage = () => {
                   className="w-full md:w-1/3 bg-background-dim rounded-lg shadow-md p-6 flex flex-col justify-center items-center md:items-start z-10"
                 >
                   <h3 className="text-xl font-heading font-bold text-primary-darker mb-3">
-                  {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
+                    {selected !== null ? PIE_DATA[selected].label : "Our Plate"}
                   </h3>
                   <p className="text-text">
-                  {selected !== null
-                    ? PIE_DATA[selected].description
-                    : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
+                    {selected !== null
+                      ? PIE_DATA[selected].description
+                      : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
                   </p>
                 </motion.div>
 
                 {/* Plate Visualization - 2D Plate */}
                 <div className="w-full md:w-2/3 flex items-center justify-center min-h-[100px]">
                   <TwoDPlate
-                  onSelect={setSelected}
-                  selectedIndex={selected ?? undefined}
+                    onSelect={setSelected}
+                    selectedIndex={selected ?? undefined}
                   />
                 </div>
               </div>

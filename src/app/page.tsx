@@ -446,71 +446,68 @@ function GallerySection() {
     {
       src: "/img/gallery/gallery1.png",
       alt: "Plant-based dish 1",
-      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
     },
     {
       src: "/img/gallery/gallery2.png",
       alt: "Plant-based dish 2",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery3.png",
       alt: "Plant-based dish 3",
-      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
     },
     {
       src: "/img/gallery/gallery4.png",
       alt: "Plant-based dish 4",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery7.png",
       alt: "Plant-based dish 5",
-      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
     },
     {
       src: "/img/gallery/gallery6.png",
       alt: "Plant-based dish 6",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery5.png",
       alt: "Plant-based dish 7",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery10.png",
       alt: "Plant-based dish 8",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery9.jpg",
       alt: "Plant-based dish 9",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       src: "/img/gallery/gallery8.png",
       alt: "Plant-based dish 10",
-      className: "col-span-2 row-span-1 lg:col-span-2 lg:row-span-1"
+      className: "col-span-2 row-span-1 md:col-span-2 lg:col-span-2"
     },
     {
       src: "/img/gallery/gallery11.jpg",
       alt: "Plant-based dish 11",
-      className: "col-span-1 row-span-1 lg:col-span-1 lg:row-span-1"
+      className: "col-span-1 row-span-1 md:col-span-1 lg:col-span-1"
     },
   ];
 
   return (
     <section className="w-full bg-black py-16 px-4 md:px-16" style={{ boxShadow: "0 -10px 30px rgba(0,0,0,0.3)" }}>
       <h2 className="text-4xl font-heading text-white mb-8 text-center">Gallery</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto auto-rows-[minmax(60px,auto)] sm:auto-rows-[minmax(90px,1fr)]">
+      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
         {images.map((img, idx) => (
           <div
             key={idx}
-            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center max-h-[200px] sm:max-h-none ${
-              img.className.replace('col-span-2', 'col-span-1 sm:col-span-2')
-            }`}
-            style={{ minHeight: 0 }}
+            className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center h-[150px] sm:h-[180px] md:h-[200px] ${img.className}`}
           >
             <Image
               src={img.src}

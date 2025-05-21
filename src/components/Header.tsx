@@ -4,6 +4,12 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { UserRound } from 'lucide-react';
+import {  signOut } from "firebase/auth";
+
+import { auth, db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+
 
 export default function Header() {
   const pathname = usePathname();
@@ -31,10 +37,26 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const handleLogout = async () => {
+    setIsEarnOpen(false);
+    try {
+      await signOut(auth);
+    } catch (err) {
+      const error = err as Error; 
+    }
+  };
 
   useEffect(() => {
     setIsEarnOpen(false);
   }, [pathname]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const navigationItems = [
     { path: "/#start", label: "Home", match: "/" },
@@ -44,7 +66,7 @@ export default function Header() {
     { path: "/rewards", label: "Rewards", match: "/rewards" },
     { path: "/references", label: "References", match: "/references" },
   ];
-
+  
   const headerBackground = isScrolled
     ? "bg-text bg-opacity-80 text-background"
     : "bg-primary text-text";
@@ -193,12 +215,25 @@ export default function Header() {
               Locations
             </Link>
           </li>
+
+          <li>
+            <Link
+              href="/references"
+              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
+                } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
+                }`}
+            >
+              References
+            </Link>
+          </li>
+          {isLoggedIn ? 
           <li ref={earnDropdownRef} className="relative">
             <button
               onClick={() => setIsEarnOpen(!isEarnOpen)}
               className={`hover:underline active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"} flex items-center`}
             >
-              <span>Earn</span>
+              <UserRound className="self-center size-5"/>
+              Account
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`h-4 w-4 ml-1 transition-transform duration-200 ${isEarnOpen ? 'rotate-180' : ''}`}
@@ -222,19 +257,24 @@ export default function Header() {
                 <li>
                   <Link href="/gifts" className={`hover:underline ${pathname === '/gifts' ? "font-bold" : ""}`}>Gifts</Link>
                 </li>
+                <li>
+                  <button onClick={handleLogout} className="hover:underline">Sign Out</button>
+                </li>
               </ul>
             )}
-          </li>
+          </li> : 
           <li>
             <Link
-              href="/references"
-              className={`hover:underline ${pathname === "/references" ? "font-bold" : ""
+              href="/rewards"
+              className={`hover:underline ${pathname === "/rewards" ? "font-bold" : ""
                 } active:!bg-green-950 ${!isScrolled ? "" : "focus:text-white"
                 }`}
             >
-              References
+              <UserRound className="self-center size-5"/>
+              Sign In / Join
             </Link>
           </li>
+            }
         </ul>
       </nav>
     </header>

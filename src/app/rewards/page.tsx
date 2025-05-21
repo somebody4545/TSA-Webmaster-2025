@@ -68,6 +68,7 @@ export default function RewardsPage() {
 
     const querySnapshot = await getDocs(q);
     setScansToday(querySnapshot.size);
+    
   };
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -107,16 +108,6 @@ export default function RewardsPage() {
       setError(error.message || "An unexpected error occurred");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      setError("");
-      await signOut(auth);
-    } catch (err) {
-      const error = err as Error;
-      setError(error.message || "An unexpected error occurred");
     }
   };
 
@@ -163,17 +154,27 @@ export default function RewardsPage() {
         <div className="min-h-[90vh] w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-8 py-24 gap-8">
           {/* Left: Dashboard Info */}
           <div className="flex-1 flex flex-col justify-center items-start">
-            <h1 className="text-4xl font-heading text-primary mb-8 leading-tight">
+            <motion.h1 
+              className="text-4xl font-heading text-primary mb-8 leading-tight"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               Your Rewards
-            </h1>
-            <p className="text-xl text-white mb-4 max-w-xl">
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-white mb-4 max-w-xl"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               Track your points, scan QR codes, and redeem rewards at our
               restaurants.
-            </p>
+            </motion.p>
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               className="text-xl font-bold text-white mt-6"
             >
               Your Points:{" "}
@@ -293,14 +294,6 @@ export default function RewardsPage() {
                 Use your points to purchase gift cards and exclusive rewards!
               </p>
             </div>
-          </div>
-          <div className="flex justify-center mt-16">
-            <button
-              onClick={handleLogout}
-              className="w-11/12 max-w-md btn btn-primary font-normal text-xl"
-            >
-              Logout
-            </button>
           </div>
         </section>
       </div>

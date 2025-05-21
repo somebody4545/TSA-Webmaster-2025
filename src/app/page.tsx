@@ -120,7 +120,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof TESTIMONIALS[0] 
 
 function Hero() {
   return (
-    <div className="bg-black text-background text-xl relative min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
+    <div className="bg-black text-background text-xl relative min-h-[675px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
       <ParallaxBackground />
       <motion.div
         className="-z-10 opacity-25"
@@ -185,6 +185,21 @@ function Hero() {
       >
         1. Green in Malagasy. <br /><span className="font-bold">2. A plant-based experience from every cuisine.</span>
       </motion.p>
+      
+      {/* Reservation CTA Button */}
+      <motion.div
+        className="mt-8"
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.2 }}
+      >
+        <Link href="/reserve">
+          <button className="btn btn-primary btn-shine rounded-full px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300 transform">
+            Reserve a Table
+          </button>
+        </Link>
+      </motion.div>
+      
       <motion.div
         className="absolute bottom-8 animate-bounce cursor-pointer"
         initial={{ opacity: 0 }}

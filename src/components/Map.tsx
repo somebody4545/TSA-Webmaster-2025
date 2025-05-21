@@ -51,7 +51,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
   return (
     <>
       {/* Hero Section */}
-      <div className="relative h-[50vh] bg-black text-white">
+      <div className="relative h-[50vh] bg-black text-background-dim">
         <div className="absolute inset-0 z-10 bg-black/50" />
         <div className="absolute inset-0 z-0">
           <Image
@@ -73,7 +73,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           >
             <button
               onClick={() => router.back()}
-              className="flex items-center text-white hover:text-primary transition-colors duration-200"
+              className="flex items-center text-background-dim hover:text-primary transition-colors duration-200"
             >
               <ChevronLeft className="mr-1" /> Back
             </button>
@@ -99,7 +99,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
-            <span className="ml-2 text-white text-sm">Sustainable Plant-Based Dining</span>
+            <span className="ml-2 text-background-dim text-sm">Sustainable Plant-Based Dining</span>
           </motion.div>
         </div>
       </div>

@@ -15,7 +15,8 @@ export const PIE_DATA = [
   {
     color: "#9EC172",
     label: "Vegetables",
-    description: "Vegetables are rich in fiber, vitamins, and minerals.",
+    description:
+      "Vegetables are crucial for a healthy diet because they provide vitamins, minerals, fiber, and antioxidants that are vital for overall well-being, protecting against diseases, and fundamental bodily functions.",
   },
   {
     color: "#D7545F",
@@ -70,7 +71,10 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
     if (hoveredIndex !== null) {
       return [...defaultOrder.filter((i) => i !== hoveredIndex), hoveredIndex];
     } else if (actualSelected !== null) {
-      return [...defaultOrder.filter((i) => i !== actualSelected), actualSelected];
+      return [
+        ...defaultOrder.filter((i) => i !== actualSelected),
+        actualSelected,
+      ];
     }
 
     return defaultOrder;
@@ -81,12 +85,17 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
 
   React.useEffect(() => {
     // Check if browser is Safari
-    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(
+      navigator.userAgent
+    );
     setIsSafari(isSafariBrowser);
   }, []);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center plate-3d-container" style={{ isolation: "isolate" }}>
+    <div
+      className="relative w-full h-full flex items-center justify-center plate-3d-container"
+      style={{ isolation: "isolate" }}
+    >
       {isSafari && (
         <div
           className="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none text-white text-xl max-sm:text-md"
@@ -151,12 +160,16 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
                 duration: 0.3,
                 type: "spring",
                 stiffness: 300,
-                scale: { type: "spring", stiffness: 400, damping: 20 }
+                scale: { type: "spring", stiffness: 400, damping: 20 },
               }}
               style={{ cursor: "pointer" }}
               onClick={() => handleSelect(i)}
             >
-              <path d={mainPath} fill={slice.color} className={isActive ? "pie-slice-extruded" : ""} />
+              <path
+                d={mainPath}
+                fill={slice.color}
+                className={isActive ? "pie-slice-extruded" : ""}
+              />
 
               {isActive && (
                 <motion.path

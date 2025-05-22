@@ -14,13 +14,13 @@ import {
   ChefHat,
   Clock,
   Users,
-  Heart,
   Leaf,
   Award,
   X,
   Camera,
   ChevronLeft,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 
 export default function OurStoryPage() {
@@ -133,6 +133,15 @@ export default function OurStoryPage() {
       icon: <Award size={24} />,
       image: "/img/seasonalingredients.jpg",
     },
+    {
+      year: "2025",
+      title: "Future Vision",
+      description:
+        "Looking ahead, we plan to open new locations and launch a culinary institute focused on sustainable plant-based cooking techniques.",
+      icon: <Sparkles size={24} />,
+      image: "/img/farmtofork.jpg",
+      isFuture: true,
+    },
   ];
 
   // Keyboard navigation for photo gallery
@@ -230,62 +239,6 @@ export default function OurStoryPage() {
         </motion.div>
       </div>
 
-      {/* Our Mission */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-12 items-center max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="w-full md:w-1/2"
-            >
-              <h2 className="text-3xl font-heading font-bold text-text mb-6">
-                Our Mission
-              </h2>
-              <p className="text-text mb-4">
-                At our core, we believe in the power of plant-based cuisine to
-                nourish both people and the planet. Our journey began with a
-                simple vision: to create delicious, innovative vegetarian dishes
-                that would inspire people to embrace more plant-forward eating.
-              </p>
-              <p className="text-text mb-4">
-                We source our ingredients directly from local organic farms,
-                ensuring that every dish we serve is not only nutritious and
-                flavorful but also environmentally sustainable. Through our
-                cooking, we celebrate the rich diversity of global culinary
-                traditions while honoring the seasons and our local food
-                ecosystem.
-              </p>
-              <p className="text-text">
-                Every meal we serve is a testament to our commitment to culinary
-                excellence, environmental stewardship, and community well-being.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="w-full md:w-1/2 relative h-[400px] group cursor-pointer"
-              onClick={() => setActivePhotoIndex(1)}
-            >
-              <Image
-                src="/img/farmtofork.jpg"
-                alt="Farm to fork philosophy"
-                fill
-                className="object-cover rounded-lg shadow-md transition-transform group-hover:scale-[1.03] duration-300"
-              />
-              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
-              <div className="absolute bottom-4 right-4 bg-primary text-text p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Camera size={20} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
       {/* Interactive Timeline Section */}
       <div className="py-16 bg-background-dim" ref={timelineRef}>
         <div className="container mx-auto px-4">
@@ -324,14 +277,6 @@ export default function OurStoryPage() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="mb-16 last:mb-0 relative"
               >
-                {/* Timeline dot */}
-                <motion.div
-                  className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary-darker z-10"
-                  initial={{ scale: 0 }}
-                  animate={isTimelineVisible ? { scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: index * 0.2 + 0.3 }}
-                ></motion.div>
-
                 <div
                   className={`flex md:items-center max-md:flex-col ${
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
@@ -348,11 +293,26 @@ export default function OurStoryPage() {
                         index % 2 === 0 ? "md:justify-end" : "md:justify-start"
                       } max-md:justify-start`}
                     >
-                      <div className="bg-primary-darker text-white rounded-full p-3 mr-3">
+                      <div
+                        className={`text-white rounded-full p-3 mr-3 ${
+                          item.isFuture
+                            ? "bg-primary animate-pulse"
+                            : "bg-primary-darker"
+                        }`}
+                      >
                         {item.icon}
                       </div>
-                      <h3 className="text-2xl font-heading font-bold text-primary-darker">
+                      <h3
+                        className={`text-2xl font-heading font-bold ${
+                          item.isFuture ? "text-primary" : "text-primary-darker"
+                        }`}
+                      >
                         {item.year}
+                        {item.isFuture && (
+                          <span className="ml-2 text-sm font-normal italic">
+                            (Coming Soon)
+                          </span>
+                        )}
                       </h3>
                     </div>
                     <h4 className="text-xl font-heading font-bold text-text mb-2">
@@ -366,13 +326,22 @@ export default function OurStoryPage() {
                     className="md:w-1/2 group cursor-pointer"
                     onClick={() => setActivePhotoIndex(index)}
                   >
-                    <div className="h-[250px] relative rounded-lg overflow-hidden shadow-md">
+                    <div
+                      className={`h-[250px] relative rounded-lg overflow-hidden shadow-md ${
+                        item.isFuture ? "border-2 border-primary" : ""
+                      }`}
+                    >
                       <Image
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover transition-transform group-hover:scale-110 duration-500"
+                        className={`object-cover transition-transform group-hover:scale-110 duration-500 ${
+                          item.isFuture ? "opacity-80" : ""
+                        }`}
                       />
+                      {item.isFuture && (
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/20"></div>
+                      )}
                       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
                       <div className="absolute bottom-4 right-4 bg-primary text-text p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Camera size={20} />
@@ -515,91 +484,8 @@ export default function OurStoryPage() {
         </div>
       </div>
 
-      {/* Photo Gallery Grid */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl font-heading font-bold text-text mb-4 text-center"
-          >
-            Our Visual Journey
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-text max-w-2xl mx-auto text-center mb-12"
-          >
-            Explore moments from our culinary journey
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
-                onClick={() => setActivePhotoIndex(index)}
-                whileHover={{ scale: 1.02 }}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.caption}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-primary text-text p-3 rounded-full">
-                    <Camera size={24} />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Global Cuisine Map Section - Keep this untouched as requested */}
       <GlobalCuisineMap />
-
-      {/* Team Quote Section */}
-      <div className="py-16 bg-primary-darker text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="mb-6"
-            >
-              <Heart className="h-12 w-12 text-white mx-auto" />
-            </motion.div>
-            <motion.blockquote
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-xl md:text-2xl font-body italic mb-6"
-            >
-              &ldquo;Our team is united by a shared passion for creating
-              delicious, plant-forward cuisine that nourishes our community and
-              respects our planet. Every dish we serve is a reflection of our
-              commitment to culinary excellence and environmental
-              stewardship.&rdquo;
-            </motion.blockquote>
-            <p className="text-lg">— The Maitso Team</p>
-          </div>
-        </div>
-      </div>
 
       {/* Photo Lightbox Modal */}
       <AnimatePresence>
@@ -732,9 +618,9 @@ export default function OurStoryPage() {
                     Chef {chefs[selectedChef].name.split(" ")[0]} brings
                     creativity and passion to every dish, constantly researching
                     and developing new recipes that showcase the versatility of
-                    plant-based ingredients. When not in the kitchen, you'll
-                    find them at local farmers markets searching for seasonal
-                    inspiration.
+                    plant-based ingredients. When not in the kitchen,
+                    you&apos;ll find them at local farmers markets searching for
+                    seasonal inspiration.
                   </p>
                 </div>
               </div>

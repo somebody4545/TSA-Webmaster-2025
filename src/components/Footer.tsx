@@ -5,10 +5,15 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
 
 const Footer: React.FC = () => {
   const locations = [
-    { city: "New York" },
-    { city: "Los Angeles" },
-    { city: "Chicago" },
-    { city: "Seattle" }
+    { city: "New York",
+        url: "/locations/new-york"
+     },
+    { city: "Los Angeles",
+        url: "/locations/los-angeles" },
+    { city: "Chicago",
+        url: "/locations/chicago" },
+    { city: "Seattle",
+        url: "/locations/seattle" }
   ];
 
   const currentYear = new Date().getFullYear();
@@ -29,9 +34,9 @@ const Footer: React.FC = () => {
             <h4 className="font-bold font-heading mb-2">Find Us</h4>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
               {locations.map((location, index) => (
-                <div key={index} className="flex items-center">
+                <div key={index} className="flex items-center hover:underline">
                   <MapPin size={14} className="mr-1" style={{ color: '#2c513f' }} />
-                  <p>{location.city}</p>
+                  <a href={location.url}>{location.city}</a>
                 </div>
               ))}
             </div>

@@ -25,7 +25,7 @@ const GlobalCuisineMap = () => {
     {
       id: "thailand",
       name: "Thailand",
-      position: { left: "72%", top: "45%" },
+      position: { left: "74%", top: "46%" },
       cuisine: "Thai Cuisine",
       description:
         "Our Thai-inspired dishes focus on fresh herbs, aromatic spices, and the perfect balance of sweet, sour, salty, and spicy flavors. We utilize traditional techniques like mortar and pestle grinding to release the full spectrum of flavors.",
@@ -37,7 +37,7 @@ const GlobalCuisineMap = () => {
     {
       id: "mexico",
       name: "Mexico",
-      position: { left: "15%", top: "42%" },
+      position: { left: "17%", top: "42%" },
       cuisine: "Mexican Cuisine",
       description:
         "We honor Mexican culinary traditions by hand-pressing corn tortillas and incorporating indigenous ingredients like heirloom corn, chiles, beans, and squash. Our dishes celebrate the diverse regional cooking styles from Oaxaca to Yucatán.",
@@ -48,7 +48,7 @@ const GlobalCuisineMap = () => {
     {
       id: "italy",
       name: "Italy",
-      position: { left: "50%", top: "32%" },
+      position: { left: "49%", top: "37%" },
       cuisine: "Italian Cuisine",
       description:
         "Our Italian-inspired kitchen follows the principles of 'cucina povera' - simple food with high-quality ingredients. We make fresh pasta daily and follow traditional slow-cooking methods that have been perfected over generations.",
@@ -60,7 +60,7 @@ const GlobalCuisineMap = () => {
     {
       id: "greece",
       name: "Greece",
-      position: { left: "55%", top: "35%" },
+      position: { left: "52%", top: "37%" },
       cuisine: "Greek Cuisine",
       description:
         "Our Greek-inspired dishes celebrate the Mediterranean diet's emphasis on olive oil, fresh vegetables, and herbs. We honor traditional preparation methods that have been passed down through generations to create authentic flavors.",
@@ -83,7 +83,7 @@ const GlobalCuisineMap = () => {
     {
       id: "india",
       name: "India",
-      position: { left: "65%", top: "42%" },
+      position: { left: "67%", top: "43%" },
       cuisine: "Indian Cuisine",
       description:
         "Our Indian culinary approach celebrates regional diversity, from the robust flavors of Punjab to the coconut-infused dishes of Kerala. We grind our spice blends in-house and use traditional cooking methods like slow clay pot cooking.",

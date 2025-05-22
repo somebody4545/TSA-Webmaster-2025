@@ -123,10 +123,10 @@ function PartnerCarousel() {
             i === index
               ? "translate-x-0 scale-100 z-30 opacity-100"
               : i === (index + 1) % partners.length
-                ? "translate-x-[60%] scale-90 z-20 opacity-30"
-                : i === (index - 1 + partners.length) % partners.length
-                  ? "translate-x-[-60%] scale-90 z-20 opacity-30"
-                  : "translate-x-0 scale-75 z-10 opacity-0";
+              ? "translate-x-[60%] scale-90 z-20 opacity-30"
+              : i === (index - 1 + partners.length) % partners.length
+              ? "translate-x-[-60%] scale-90 z-20 opacity-30"
+              : "translate-x-0 scale-75 z-10 opacity-0";
 
           return (
             <motion.div
@@ -138,8 +138,8 @@ function PartnerCarousel() {
                     ? 1
                     : i === (index + 1) % partners.length ||
                       i === (index - 1 + partners.length) % partners.length
-                      ? 0.3
-                      : 0,
+                    ? 0.3
+                    : 0,
               }}
               transition={{ duration: 0.7 }}
               className={`absolute w-[85%] md:w-[70%] h-[300px] flex flex-col transition-all duration-500 ease-in-out ${position}`}
@@ -208,8 +208,9 @@ function PartnerCarousel() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? "bg-primary" : "bg-gray-300"
-              }`}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${
+              i === index ? "bg-primary" : "bg-gray-300"
+            }`}
           />
         ))}
       </div>
@@ -280,13 +281,27 @@ const MissionPage = () => {
       const card = cardRef.current;
       if (!card) return;
 
+      // Get positions relative to the parent container
+      const containerRect = containerRef.current!.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      // Increase offset to 60px for earlier flip
-      const distance = Math.abs(latestX - (cardCenter - 60));
 
-      // Reduce threshold to 20px for even more immediate response
-      if (distance < 20 && !timelineCardFlipped[index]) {
+      // Calculate the card position relative to the container
+      const cardPosX = cardRect.left - containerRect.left;
+
+      // Normalize positions by using percentage of container width
+      const normalizedDronePos = latestX / containerWidth;
+      const normalizedCardPos = cardPosX / containerWidth;
+
+      // Add a small offset to flip the card slightly before the drone reaches it
+      // This makes the flip feel more responsive across all devices
+      const offsetPercent = 0.05; // 5% earlier flip trigger
+      const adjustedCardPos = normalizedCardPos - offsetPercent;
+
+      // Card should flip when drone passes directly over it (with offset)
+      if (
+        normalizedDronePos >= adjustedCardPos &&
+        !timelineCardFlipped[index]
+      ) {
         setTimelineCardFlipped((prev) => {
           const newState = [...prev];
           newState[index] = true;
@@ -419,8 +434,9 @@ const MissionPage = () => {
                   className="relative h-[300px] perspective-1000"
                 >
                   <div
-                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${bikeFlipped ? "rotate-y-180" : ""
-                      }`}
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      bikeFlipped ? "rotate-y-180" : ""
+                    }`}
                   >
                     {/* Front of card */}
                     <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
@@ -468,8 +484,9 @@ const MissionPage = () => {
                   className="relative h-[300px] perspective-1000"
                 >
                   <div
-                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${robotFlipped ? "rotate-y-180" : ""
-                      }`}
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      robotFlipped ? "rotate-y-180" : ""
+                    }`}
                   >
                     {/* Front of card */}
                     <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
@@ -517,8 +534,9 @@ const MissionPage = () => {
                   className="relative h-[300px] perspective-1000"
                 >
                   <div
-                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${freightFlipped ? "rotate-y-180" : ""
-                      }`}
+                    className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                      freightFlipped ? "rotate-y-180" : ""
+                    }`}
                   >
                     {/* Front of card */}
                     <div className="absolute w-full h-full backface-hidden bg-background rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
@@ -692,8 +710,8 @@ const MissionPage = () => {
                         index === 0
                           ? card1Ref
                           : index === 1
-                            ? card2Ref
-                            : card3Ref
+                          ? card2Ref
+                          : card3Ref
                       }
                     >
                       <motion.div
@@ -717,10 +735,11 @@ const MissionPage = () => {
                           </div>
                           <button
                             onClick={() => handleTimelineCardFlip(index)}
-                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${animationComplete
-                              ? "bg-primary-darker text-white hover:bg-primary"
-                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                              }`}
+                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${
+                              animationComplete
+                                ? "bg-primary-darker text-white hover:bg-primary"
+                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
                             disabled={!animationComplete}
                           >
                             <ChevronDown className="w-5 h-5" />
@@ -733,10 +752,11 @@ const MissionPage = () => {
                           </p>
                           <button
                             onClick={() => handleTimelineCardFlip(index)}
-                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${animationComplete
-                              ? "bg-white text-primary-darker hover:bg-background"
-                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                              }`}
+                            className={`absolute bottom-4 right-4 p-2 rounded-full transition-colors ${
+                              animationComplete
+                                ? "bg-white text-primary-darker hover:bg-background"
+                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
                             disabled={!animationComplete}
                           >
                             <ChevronDown className="w-5 h-5 rotate-180" />

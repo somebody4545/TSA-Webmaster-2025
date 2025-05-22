@@ -89,7 +89,7 @@ const TwoDPlate: React.FC<TwoDPlateProps> = ({ onSelect, selectedIndex }) => {
     <div className="relative w-full h-full flex items-center justify-center plate-3d-container" style={{ isolation: "isolate" }}>
       {isSafari && (
         <div
-          className="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none text-white text-xl sm:text-lg"
+          className="absolute inset-0 grid grid-cols-2 grid-rows-2 pointer-events-none text-white text-xl max-sm:text-md"
           style={{ zIndex: 2, padding: "20% 20%" }}
         >
           <div className="flex items-center justify-center">Vegetables</div>

@@ -575,7 +575,7 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   />
                 </div>
 
@@ -590,7 +590,7 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   />
                 </div>
 
@@ -605,7 +605,7 @@ export default function ContactPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   />
                 </div>
 
@@ -619,7 +619,7 @@ export default function ContactPage() {
                     required
                     value={formData.restaurant}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   >
                     <option value="LA">Los Angeles</option>
                     <option value="NY">New York</option>
@@ -640,7 +640,7 @@ export default function ContactPage() {
                     value={formData.date}
                     onChange={handleChange}
                     min={new Date().toISOString().split('T')[0]}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   />
                 </div>
 
@@ -654,7 +654,7 @@ export default function ContactPage() {
                     required
                     value={formData.time}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   >
                     <option value="">Select a time</option>
                     <option value="11:00 AM">11:00 AM</option>
@@ -684,7 +684,7 @@ export default function ContactPage() {
                     required
                     value={formData.guests}
                     onChange={handleChange}
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                       <option key={num} value={num.toString()}>
@@ -706,7 +706,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Dietary restrictions, special occasions, etc."
-                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-500 bg-white text-gray-900 rounded-md"
                   />
                 </div>
               </div>

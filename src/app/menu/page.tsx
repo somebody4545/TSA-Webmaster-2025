@@ -160,7 +160,7 @@ export default function MenuPage() {
         <div className="container mx-auto px-4 py-8 w-4/5">
           {((selectedSections.length === 0) || selectedSections.includes("Appetizers")) && (
             <>
-              <h2 className="text-2xl font-bold mb-4">Appetizers</h2>
+              <h2 className="text-2xl font-heading mb-4">Appetizers</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 {appetizers.map((item, index) => (
                   <motion.div
@@ -180,7 +180,7 @@ export default function MenuPage() {
           )}
           {((selectedSections.length === 0) || selectedSections.includes("Main Courses")) && (
             <>
-              <h2 className="text-2xl font-bold mb-4">Main Courses</h2>
+              <h2 className="text-2xl font-heading mb-4">Main Courses</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 {mainCourses.map((item, index) => (
                   <motion.div
@@ -200,7 +200,7 @@ export default function MenuPage() {
           )}
           {((selectedSections.length === 0) || selectedSections.includes("Drinks")) && (
             <>
-              <h2 className="text-2xl font-bold mb-4">Drinks</h2>
+              <h2 className="text-2xl font-heading mb-4">Drinks</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 {drinks.map((item, index) => (
                   <motion.div

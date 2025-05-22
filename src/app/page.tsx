@@ -350,7 +350,7 @@ function MenuSection() {
 
 function GiftCardSection() {
   return (
-    <div className="bg-background outline-background-dim outline outline-4 lg:h-[36rem] w-full overflow-clip text-black p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+    <div className="bg-background outline-background-dim outline outline-4 lg:h-[36rem] w-full overflow-clip text-black p-16 z-20 relative">
       <div className="flex flex-col-reverse lg:flex-row-reverse flex-1 h-full max-w-screen-2xl mx-auto gap-16">
         <div className='w-full lg:w-1/2 flex flex-col justify-center h-full text-center lg:text-left'>
           <motion.div
@@ -403,7 +403,9 @@ function GiftCardSection() {
 
 function TestimonialsSection() {
   return (
-    <div className="bg-background outline-background-dim lg:min-h-96 w-full text-text py-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.3)" }}>
+    <div className="bg-background lg:min-h-96 w-full text-text py-16 z-20 relative mt-0">
+      {/* Subtle divider at the top of the section */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50"></div>
       <div className="flex flex-col h-full w-full text-center">
         <motion.h2
           className="text-3xl font-heading"
@@ -584,8 +586,10 @@ export default function HomePage() {
       <Hero />
       <AboutSection />
       <MenuSection />
-      <GiftCardSection />
-      <TestimonialsSection />
+      <div className="relative">
+        <GiftCardSection />
+        <TestimonialsSection />
+      </div>
       <GallerySection />
     </>
   );

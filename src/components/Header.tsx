@@ -169,6 +169,19 @@ export default function Header() {
               <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>
+            <motion.li
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <Link
+              href="/mission"
+              onClick={handleNavigation}
+              className="relative overflow-hidden group "
+            >
+              <span className={`${pathname === "/story" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Our Story</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+            </Link>
+          </motion.li>
           <motion.li
             initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}

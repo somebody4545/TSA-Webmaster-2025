@@ -64,7 +64,7 @@ const DiningAreaModel = ({
         // Set the initial material based on whether it's selected or hovered
         if (selectedLocation === node.name) {
           node.material = new THREE.MeshStandardMaterial({
-            color: new THREE.Color('#40b549'),
+            color: new THREE.Color('#95f24e'),
             transparent: true,
             opacity: 0.6,
             roughness: 0.5,
@@ -77,7 +77,7 @@ const DiningAreaModel = ({
           });
         } else if (hoveredLocation === node.name) {
           node.material = new THREE.MeshStandardMaterial({
-            color: new THREE.Color('#40b549'),
+            color: new THREE.Color('#95f24e'),
             transparent: true,
             opacity: 0.3,
             roughness: 0.5,
@@ -90,7 +90,7 @@ const DiningAreaModel = ({
           });
         } else {
           node.material = new THREE.MeshStandardMaterial({
-            color: new THREE.Color('#40b549'),
+            color: new THREE.Color('#95f24e'),
             transparent: true,
             opacity: 0.1,
             roughness: 0.5,
@@ -273,8 +273,8 @@ const LocationMap = ({
           <span className={`text-sm ${!view3D ? 'font-medium text-primary-darker' : 'text-gray-500'}`}>2D</span>
           <button
             onClick={handleViewToggle}
-            className="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            style={{ backgroundColor: view3D ? '#a1cc80' : '#d1d5db' }}
+            className="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-darker"
+            style={{ backgroundColor: view3D ? '#789960' : '#d1d5db' }}
           >
             <span
               className={`inline-block w-4 h-4 transform transition-transform bg-white rounded-full ${view3D ? 'translate-x-6' : 'translate-x-1'}`}
@@ -322,9 +322,9 @@ const LocationMap = ({
                 .cls-2 { fill: #636466; }
                 .cls-3 { fill: #231f20; }
                 .cls-4 { fill: #d6d6d6; opacity: .0; }
-                .cls-5 { fill: #40b549; opacity: .52; }
-                .location-hover { fill: #40b549; opacity: 0.7; }
-                .location-selected { fill: #40b549; opacity: 0.9; }`}
+                .cls-5 { fill: #a1cc80; opacity: .52; }
+                .location-hover { fill: #a1cc80; opacity: 0.7; }
+                .location-selected { fill: #a1cc80; opacity: 0.9; }`}
                 </style>
               </defs>
               <g id="Layer_2" data-name="Layer 2">

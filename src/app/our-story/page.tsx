@@ -30,15 +30,6 @@ export default function OurStoryPage() {
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
   const [selectedChef, setSelectedChef] = useState<number | null>(null);
 
-  // Parallax effect for hero section
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   // Gallery images
   const galleryImages = [
     {
@@ -166,20 +157,7 @@ export default function OurStoryPage() {
         ref={heroRef}
         className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-hidden"
       >
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/img/kitchenteam.jpg')",
-            filter: "brightness(0.4)",
-            y: heroY,
-            opacity: heroOpacity,
-          }}
-        >
-          <div
-            className="absolute inset-0 bg-black bg-opacity-50"
-            aria-hidden="true"
-          ></div>
-        </motion.div>
+        <ParallaxBackground />
         <div className="relative flex flex-col items-center justify-center h-full text-center px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -743,5 +721,28 @@ export default function OurStoryPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+function ParallaxBackground() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 600]);
+
+  return (
+    <motion.div ref={ref} style={{ y }} className="absolute inset-0 -z-10">
+      <Image
+        src="/img/kitchenteam.jpg"
+        alt="Menu Background"
+        layout="fill"
+        objectFit="cover"
+        style={{ filter: "brightness(0.4)" }}
+        priority
+      />
+    </motion.div>
   );
 }

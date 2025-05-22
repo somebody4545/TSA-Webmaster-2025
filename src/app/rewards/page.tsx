@@ -61,41 +61,6 @@ export default function RewardsPage() {
     return () => unsubscribe();
   }, []);
 
-  // Create test account for judges if it doesn't exist
-  useEffect(() => {
-    const createJudgesAccount = async () => {
-      try {
-        // Try to sign in with judges account to check if it exists
-        try {
-          await signInWithEmailAndPassword(auth, "judges@tsa.com", "judges!");
-          // If successful, sign out immediately
-          await signOut(auth);
-        } catch (error) {
-          // If account doesn't exist, create it
-          const userCredential = await createUserWithEmailAndPassword(
-            auth,
-            "judges@tsa.com",
-            "judges!"
-          );
-
-          // Initialize user with 5000 points (more points for testing purposes)
-          await setDoc(doc(db, "rewards", userCredential.user.uid), {
-            points: 5000,
-            createdAt: serverTimestamp(),
-          });
-
-          // Sign out after creating
-          await signOut(auth);
-        }
-      } catch (err) {
-        // Silently fail - this is just a convenience function
-        console.error("Error setting up judges account:", err);
-      }
-    };
-
-    createJudgesAccount();
-  }, []);
-
   const checkTodayScans = async (userId: string) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);

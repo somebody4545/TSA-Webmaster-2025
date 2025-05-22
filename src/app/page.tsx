@@ -294,7 +294,7 @@ function MenuSection() {
   console.log("Menu data length:", menuData.length);
   console.log("First item in menu data:", menuData[0]?.title);
 
-  const menuItems = menuData
+  const menuItems = menuData.slice(0, 6);
 
   return (
     <div className="bg-black lg:min-h-[44rem] w-full text-background sm:p-8 md:p-12 p-16 z-20" style={{ boxShadow: "0 -10px 30px rgba(0, 0, 0, 0.22)" }}>

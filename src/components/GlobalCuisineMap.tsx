@@ -30,8 +30,8 @@ const GlobalCuisineMap = () => {
       description:
         "Our Thai-inspired dishes focus on fresh herbs, aromatic spices, and the perfect balance of sweet, sour, salty, and spicy flavors. We utilize traditional techniques like mortar and pestle grinding to release the full spectrum of flavors.",
       signatureDish:
-        "Thai Green Curry with seasonal vegetables and coconut milk",
-      menuReference: "Thai Green Curry",
+        "Plant-based Buddha Bowl with sweet potato and kale",
+      menuReference: "Buddha Bowl",
       countryCode: "th",
     },
     {
@@ -41,8 +41,8 @@ const GlobalCuisineMap = () => {
       cuisine: "Mexican Cuisine",
       description:
         "We honor Mexican culinary traditions by hand-pressing corn tortillas and incorporating indigenous ingredients like heirloom corn, chiles, beans, and squash. Our dishes celebrate the diverse regional cooking styles from Oaxaca to Yucatán.",
-      signatureDish: "BBQ pulled jackfruit tacos with slaw and avocado crema",
-      menuReference: "Jackfruit Tacos",
+      signatureDish: "Avocado Toast with poached egg and microgreens",
+      menuReference: "Avocado Toast",
       countryCode: "mx",
     },
     {
@@ -53,7 +53,7 @@ const GlobalCuisineMap = () => {
       description:
         "Our Italian-inspired kitchen follows the principles of 'cucina povera' - simple food with high-quality ingredients. We make fresh pasta daily and follow traditional slow-cooking methods that have been perfected over generations.",
       signatureDish:
-        "Creamy mushroom risotto with seasonal mushrooms and herbs",
+        "Mushroom Risotto with truffle oil and parmesan",
       menuReference: "Mushroom Risotto",
       countryCode: "it",
     },
@@ -64,8 +64,8 @@ const GlobalCuisineMap = () => {
       cuisine: "Greek Cuisine",
       description:
         "Our Greek-inspired dishes celebrate the Mediterranean diet's emphasis on olive oil, fresh vegetables, and herbs. We honor traditional preparation methods that have been passed down through generations to create authentic flavors.",
-      signatureDish: "Mezze platter with hummus, dolmas, and warm pita",
-      menuReference: "Mediterranean Mezze Platter",
+      signatureDish: "Mediterranean Bowl with falafel and hummus",
+      menuReference: "Mediterranean Bowl",
       countryCode: "gr",
     },
     {
@@ -76,8 +76,8 @@ const GlobalCuisineMap = () => {
       description:
         "Our Peruvian-inspired dishes showcase the country's incredible biodiversity and multicultural influences. We incorporate native quinoa, peppers, and root vegetables into vibrant, nutritious meals that highlight Peru's unique culinary heritage.",
       signatureDish:
-        "Protein-packed quinoa with seasonal vegetables and citrus dressing",
-      menuReference: "Quinoa Power Salad",
+        "Poke Bowl with vegetables and mango",
+      menuReference: "Poke Bowl",
       countryCode: "pe",
     },
     {
@@ -88,8 +88,8 @@ const GlobalCuisineMap = () => {
       description:
         "Our Indian culinary approach celebrates regional diversity, from the robust flavors of Punjab to the coconut-infused dishes of Kerala. We grind our spice blends in-house and use traditional cooking methods like slow clay pot cooking.",
       signatureDish:
-        "Plant-based curry with aromatic spices and seasonal vegetables",
-      menuReference: "Plant-Based Buddha Bowl",
+        "Paneer Tikka Masala with basmati rice and naan",
+      menuReference: "Paneer Tikka Masala",
       countryCode: "in",
     },
     {
@@ -100,8 +100,8 @@ const GlobalCuisineMap = () => {
       description:
         "Our approach to Japanese cuisine focuses on seasonality, simplicity, and precision. We practice traditional fermentation techniques for miso and pickles, and our knife skills honor the Japanese dedication to craftsmanship.",
       signatureDish:
-        "Delicate plant-based chocolate mousse with matcha influence",
-      menuReference: "Chocolate Avocado Mousse",
+        "General Tso's Tofu with quinoa and broccoli",
+      menuReference: "General Tso's Tofu",
       countryCode: "jp",
     },
   ];

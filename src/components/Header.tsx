@@ -173,7 +173,7 @@ export default function Header() {
                   pathname === "/mission" ? "font-bold" : ""
                 } text-text focus:outline-none transition-colors duration-700`}
               >
-                Process
+                Mission
               </span>
               <span
                 className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}

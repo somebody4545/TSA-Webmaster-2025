@@ -56,7 +56,7 @@ export default function OurStoryPage() {
     {
       name: "Zuri Brown",
       title: "Executive Chef",
-      bio: "I started cooking at my grandmother's side in New Orleans, where I learned that food is about stories and soul. After a decade in traditional kitchens, I got fed up with how disconnected we'd become from our food sources. Now I get to reinvent classics I grew up with using techniques I picked up traveling through Southeast Asia. The look on people's faces when they can't believe it's plant-based? That's what gets me up in the morning.",
+      bio: "I learned cooking from my grandmother when I lived in New Orleans, where I learned that food is about stories and soul rather than just smell and taste. After a decade of working in traditional kitchens, I grew extremely irritated with how so many companies and resturants grew disconnected with the roots of cultures they steal food from. Now I get to reinvent the classic dishes from cuisines all around the world while harnessing techniques I picked up through my travels.",
       image: "/img/chef-1.png",
       specialty: "Global fusion cuisine",
     },
@@ -226,7 +226,7 @@ export default function OurStoryPage() {
                 id: "sustainability",
                 title: "Sustainability",
                 description:
-                  "We minimize our environmental impact through zero waste practices and sustainable sourcing of materials. Our kitchen uses locally sourced ingredients and industry level energy efficient equipment to reduce our carbon footprint.",
+                  "We prioritize the health of the planet and the health of our community through the use of eco friendly materials, ingredients, and cooking practices. Through our partnership wtih local farms and environmentally friendly organizations, we aim to change the world.",
                 icon: (
                   <Leaf
                     className="h-24 w-24 text-primary-darker"
@@ -240,7 +240,7 @@ export default function OurStoryPage() {
                 id: "community",
                 title: "Community",
                 description:
-                  "We build relationships with local farmers, producers, and customers to create a resilient food system. Through partnerships and events, we foster connections between people and their food.",
+                  "We build strong relationships with our community and farmers through our commitment to sustainability and our deducation to uplifting other members in the community focused on our mission. We hope to provide a platform to help promote green ideas.",
                 icon: (
                   <Users
                     className="h-24 w-24 text-primary-darker"
@@ -254,7 +254,7 @@ export default function OurStoryPage() {
                 id: "innovation",
                 title: "Innovation",
                 description:
-                  "We explore new ingredients and techniques to create memorable plant-based dining experiences. Our chefs develop recipes that push boundaries while honoring traditional cooking methods.",
+                  "We explore innovative technologies and cooking techniques in order to create an immersive green experience for our customers. With our integration of innovative technology like drones, we hope to set an example for other resturants to follow.",
                 icon: (
                   <ChefHat
                     className="h-24 w-24 text-primary-darker"

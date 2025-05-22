@@ -62,15 +62,15 @@ export default function OurStoryPage() {
     },
     {
       name: "Jordan Lee",
-      title: "Pastry Chef",
-      bio: "Baking was my rebellion dash; my parents wanted me to be a doctor. Three culinary schools and countless kitchen burns later, I found my home here. I'm obsessed with fermentation and spend weekends foraging for local fruits. My philosophy? Dessert shouldn't be an afterthought. When I'm not testing recipes, you'll find me at the farmers market arguing with my favorite berry farmer about ripeness.",
+      title: "Advanced Chef",
+      bio: "Baking was my form of rebellions as my parents wanted me to be a doctor. AFter countless years of  culinary schools and hundreds of kitchen burns later, I found my home here. I am extremely passionate about the use of chemistry and the various other sciences that are present in the art of cooking. My philosophy? Don't overthink it. The more and more experimentation you do, the better it turns out! We have to explore to find out more, which is something that I will hold with me forever.",
       image: "/img/chef-2.jpg",
       specialty: "Innovative plant-based desserts",
     },
     {
       name: "Jabari Jefferson",
       title: "Chef de Cuisine",
-      bio: "I've had my hands in the dirt since I was a kid helping on my family's farm. Before cooking professionally, I studied agriculture and worked with indigenous farming communities in Mexico. The connection between what grows together and what goes together drives everything I create. I'm probably too stubborn about seasonality &mdash; I once refused to serve tomatoes for 8 months of the year, but I promise it's worth the wait.",
+      bio: "I've had my hands in the dirt and soil since I was a kid, as I worked in my parents farm. Before cooking professionally, I studied agriculture in Mexico, where I learned about the unique attributes of each individual type of plant. Through this, I learned about the power of patience and the importance of preserving the Earth. I am extremely grateful about the amount of time and opportunities I have had to explore global cuisines and have to implemented in my cooking. This is something that I am passionate about, and could not be any more happy to be a part of.",
       image: "/img/chef-3.jpg",
       specialty: "Farm-to-table cuisine",
     },

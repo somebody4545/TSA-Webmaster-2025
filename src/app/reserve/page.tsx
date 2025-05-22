@@ -6,6 +6,8 @@ import { Canvas, useLoader, useFrame, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Environment, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const GltfCamera = () => {
   const { scene, gl, camera } = useThree();
@@ -487,8 +489,13 @@ export default function ContactPage() {
     }
 
     try {
-      // Simulating API call with timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Add reservation to Firestore
+      const reservationsRef = collection(db, 'reservations');
+      await addDoc(reservationsRef, {
+        ...formData,
+        createdAt: serverTimestamp(),
+        status: 'pending' // Initial status for new reservations
+      });
 
       setSubmitSuccess(true);
       setFormData({

@@ -521,31 +521,38 @@ export default function ContactPage() {
 
   return (
     <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl font-heading font-bold text-black  sm:text-4xl">
-          Reservations
-        </h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Choose your preferred dining area and make a reservation at Maitso.
-        </p>
-      </div>
+      {!submitSuccess && (
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-heading font-bold text-black sm:text-4xl">
+            Reservations
+          </h1>
+          <p className="mt-4 text-lg text-gray-600">
+            Choose your preferred dining area and make a reservation at Maitso.
+          </p>
+        </div>
+      )}
 
       {submitSuccess ? (
-        <div className="bg-green-50 p-8 rounded-lg text-center max-w-md mx-auto border">
-          <h2 className="text-xl font-medium text-green-800">Thank you for your reservation request!</h2>
-          <p className="mt-2 text-green-700">We'll confirm your reservation shortly via email or phone.</p>
+        <div className="bg-white p-8 rounded-lg shadow-md text-center max-w-2xl mx-auto border border-primary/20">
+          <div className="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-heading font-semibold text-black mb-3">Thank you for your reservation request!</h2>
+          <p className="mt-4 text-lg text-gray-600">We&apos;ll confirm your reservation shortly via email or phone.</p>
           <button
             onClick={() => setSubmitSuccess(false)}
-            className="mt-6 inline-flex items-center px-4 py-2 btn btn-primary btn-shine rounded-full"
+            className="mt-8 inline-flex items-center justify-center px-6 py-4 border border-transparent rounded-full shadow-sm text-base font-medium btn-primary btn btn-shine"
           >
             Make another reservation
           </button>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-          <div>
-            <h2 className="text-2xl font-heading font-semibold text-black mb-6">Select Your Dining Area</h2>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="flex flex-col h-full">
+            <h2 className="text-2xl font-heading font-semibold text-black mb-6 text-center">Select Your Dining Area</h2>
+            <div className="bg-white p-6 rounded-lg shadow-md flex-1">
               <LocationMap
                 selectedLocation={selectedLocation}
                 setSelectedLocation={handleLocationSelect}
@@ -553,12 +560,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div>
-            <h2 className="text-2xl font-heading font-semibold text-black mb-6">Reservation Details</h2>
-            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
+          <div className="flex flex-col h-full">
+            <h2 className="text-2xl font-heading font-semibold text-black mb-6 text-center">Reservation Details</h2>
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md flex-1 flex flex-col">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 flex-1">
                 <div className="sm:col-span-2">
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
                   </label>
                   <input
@@ -568,12 +575,12 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email
                   </label>
                   <input
@@ -583,12 +590,12 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone
                   </label>
                   <input
@@ -598,12 +605,12 @@ export default function ContactPage() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="restaurant" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="restaurant" className="block text-sm font-medium text-gray-700 mb-2">
                     Restaurant Location
                   </label>
                   <select
@@ -612,7 +619,7 @@ export default function ContactPage() {
                     required
                     value={formData.restaurant}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     <option value="LA">Los Angeles</option>
                     <option value="NY">New York</option>
@@ -622,7 +629,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
                     Date
                   </label>
                   <input
@@ -633,12 +640,12 @@ export default function ContactPage() {
                     value={formData.date}
                     onChange={handleChange}
                     min={new Date().toISOString().split('T')[0]}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">
                     Time
                   </label>
                   <select
@@ -647,7 +654,7 @@ export default function ContactPage() {
                     required
                     value={formData.time}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     <option value="">Select a time</option>
                     <option value="11:00 AM">11:00 AM</option>
@@ -668,7 +675,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="guests" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-2">
                     Number of Guests
                   </label>
                   <select
@@ -677,7 +684,7 @@ export default function ContactPage() {
                     required
                     value={formData.guests}
                     onChange={handleChange}
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                       <option key={num} value={num.toString()}>
@@ -689,17 +696,17 @@ export default function ContactPage() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Special Requests
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={3}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Dietary restrictions, special occasions, etc."
-                    className="mt-1 py-2 px-3 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
+                    className="mt-1 py-3 px-4 block w-full shadow-sm focus:ring-primary focus:border-primary border-gray-300 rounded-md"
                   />
                 </div>
               </div>
@@ -711,16 +718,16 @@ export default function ContactPage() {
               />
 
               {error && (
-                <div className="mt-4 text-red-600 text-sm bg-red-50 p-3 rounded-md">
+                <div className="mt-6 text-red-600 text-sm bg-red-50 p-3 rounded-md">
                   {error}
                 </div>
               )}
 
-              <div className="mt-6">
+              <div className="mt-8">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary btn btn-shine inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full shadow-sm text-base"
+                  className="w-full btn-primary btn btn-shine inline-flex items-center justify-center px-6 py-4 border border-transparent rounded-full shadow-sm text-base font-medium"
                 >
                   {isSubmitting ? 'Processing...' : 'Reserve a Table'}
                 </button>
@@ -729,32 +736,6 @@ export default function ContactPage() {
           </div>
         </div>
       )}
-
-      {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-          <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-          <p className="mt-2 text-gray-600">(123) 456-7890</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <h3 className="text-lg font-medium text-gray-900">Email</h3>
-          <p className="mt-2 text-gray-600">hello@maitso.com</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto text-primary-darker mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <h3 className="text-lg font-medium text-gray-900">Hours</h3>
-          <p className="mt-2 text-gray-600">Mon-Fri: 11am - 10pm<br />Sat-Sun: 10am - 11pm</p>
-        </div>
-      </div> */}
     </div>
   );
 }

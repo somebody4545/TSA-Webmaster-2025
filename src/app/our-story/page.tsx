@@ -81,7 +81,7 @@ export default function OurStoryPage() {
       year: "2014",
       title: "Our Humble Beginnings",
       description:
-        "We started as a small food truck serving plant-based dishes at local farmers' markets.",
+        "We started as a small food truck serving plant-based dishes at local farmers' markets. This is where our mission first emerged of showcasing global cultures in a sustainable way, through a plant-based lens.",
       icon: <Clock size={24} />,
       image: "/img/foodtruck.png",
     },
@@ -89,7 +89,7 @@ export default function OurStoryPage() {
       year: "2016",
       title: "First Restaurant",
       description:
-        "After growing popularity, we opened our first brick-and-mortar restaurant focusing on seasonal ingredients.",
+        "After growing in popularity at a rate we never expected, we opened our first brick-and-mortar restaurant focusing on seasonal ingredients. This is something we stood by ever since, a core part of our mission: showcasing global cultures.",
       icon: <ChefHat size={24} />,
       image: "/img/kitchenteam.jpg",
     },
@@ -97,7 +97,7 @@ export default function OurStoryPage() {
       year: "2018",
       title: "Community Growth",
       description:
-        "We began hosting cooking classes and community events to share our passion for plant-based cuisine.",
+        "We began hosting cooking classes and community events to share our passion for plant-based cuisine to spread our mission with the rest of the world.",
       icon: <Users size={24} />,
       image: "/img/zerowastecooking.jpg",
     },
@@ -105,7 +105,7 @@ export default function OurStoryPage() {
       year: "2020",
       title: "Sustainable Practices",
       description:
-        "We implemented zero-waste policies and strengthened our partnerships with local organic farms.",
+        "We implemented zero-waste policies and strengthened our partnerships with local organic farms while also developing an innovative delivery that minimizes emmissions from transportation.",
       icon: <Leaf size={24} />,
       image: "/img/sustainable.webp",
     },
@@ -113,7 +113,7 @@ export default function OurStoryPage() {
       year: "2023",
       title: "Global Recognition",
       description:
-        "Our dedication to sustainability and culinary excellence earned us national awards and recognition.",
+        "Our dedication to sustainability and culinary excellence earned us national awards and recognition for our groundworking work focused on changing the narrative around plant-based cuisine.",
       icon: <Award size={24} />,
       image: "/img/globe.webp",
     },
@@ -121,7 +121,7 @@ export default function OurStoryPage() {
       year: "2025",
       title: "Future Vision",
       description:
-        "Looking ahead, we plan to open new locations and launch a culinary institute focused on sustainable plant-based cooking techniques.",
+        "In the near future, we plan on openning new locations and launching a culinary institute focused on  plant-based cooking techniques to spread our mission with the rest of the world.",
       icon: <Sparkles size={24} />,
       image: "/img/farmtofork.jpg",
       isFuture: true,
@@ -473,7 +473,7 @@ export default function OurStoryPage() {
               className="text-text max-w-2xl mx-auto"
             >
               The story of how we grew from a small food truck to a beloved
-              restaurant committed to sustainable dining
+              restaurant committed to sustainable dining.
             </motion.p>
           </div>
 

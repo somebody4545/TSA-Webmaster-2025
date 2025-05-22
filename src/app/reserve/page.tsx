@@ -6,6 +6,8 @@ import { Canvas, useLoader, useFrame, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Environment, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const GltfCamera = () => {
   const { scene, gl, camera } = useThree();
@@ -487,8 +489,13 @@ export default function ContactPage() {
     }
 
     try {
-      // Simulating API call with timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Add reservation to Firestore
+      const reservationsRef = collection(db, 'reservations');
+      await addDoc(reservationsRef, {
+        ...formData,
+        createdAt: serverTimestamp(),
+        status: 'pending' // Initial status for new reservations
+      });
 
       setSubmitSuccess(true);
       setFormData({
@@ -522,8 +529,8 @@ export default function ContactPage() {
   return (
     <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       {!submitSuccess && (
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-heading font-bold text-black sm:text-4xl">
+        <div className="text-center mb-12 p-6 sm:px-24 bg-background-dim shadow-xl text-black rounded-full">
+          <h1 className="text-3xl max-sm:text-2xl font-heading font-bold text-black sm:text-4xl ">
             Reservations
           </h1>
           <p className="mt-4 text-lg text-gray-600">
@@ -551,7 +558,7 @@ export default function ContactPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
           <div className="flex flex-col h-full">
-            <h2 className="text-2xl font-heading font-semibold text-black mb-6 text-center">Select Your Dining Area</h2>
+            <h2 className="text-2xl max-sm:text-xl font-heading font-semibold text-black mb-6 text-center">Select Your Dining Area</h2>
             <div className="bg-white p-6 rounded-lg shadow-md flex-1">
               <LocationMap
                 selectedLocation={selectedLocation}
@@ -561,7 +568,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-col h-full">
-            <h2 className="text-2xl font-heading font-semibold text-black mb-6 text-center">Reservation Details</h2>
+            <h2 className="text-2xl max-sm:text-xl font-heading font-semibold text-black mb-6 text-center">Reservation Details</h2>
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md flex-1 flex flex-col">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 flex-1">
                 <div className="sm:col-span-2">

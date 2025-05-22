@@ -887,7 +887,7 @@
       "iron": "3mg",
       "potassium": "680mg"
     },
-    "imageUrl": "/img/menu/eggplant-parm.jpg",
+    "imageUrl": "/img/menu/eggplant-parmesan.png",
     "link": "/eggplant-parmesan",
     "description": "Our Eggplant Parmesan features thick slices of breaded and baked eggplant layered with house-made marinara sauce, fresh mozzarella, and aged parmesan. Served with a side of spaghetti and garnished with fresh basil, this Italian classic delivers rich, comforting flavors with a perfect balance of crispy and creamy textures.",
     "ingredients": [
@@ -942,7 +942,7 @@
       "iron": "5mg",
       "potassium": "820mg"
     },
-    "imageUrl": "/img/menu/veg-curry.jpg",
+    "imageUrl": "/img/menu/vegetable-curry.png",
     "link": "/vegetable-curry",
     "description": "Our Vegetable Curry combines seasonal vegetables in a rich, aromatic coconut milk-based sauce with traditional Indian spices. Served with fragrant jasmine rice and garnished with fresh cilantro, this dish offers a perfect balance of creamy, spicy, and sweet flavors that warm the soul.",
     "ingredients": [
@@ -999,7 +999,7 @@
       "iron": "4mg",
       "potassium": "680mg"
     },
-    "imageUrl": "/img/menu/stuffed-peppers.jpg",
+    "imageUrl": "/img/menu/stuffed-peppers.png",
     "link": "/stuffed-bell-peppers",
     "description": "Our Stuffed Bell Peppers feature colorful bell peppers filled with a savory mixture of quinoa, black beans, corn, and spices. Topped with melted cheese and fresh herbs, these protein-packed peppers are baked to perfection, creating a satisfying and nutritious meal that's as beautiful as it is delicious.",
     "ingredients": [
@@ -1056,7 +1056,7 @@
       "iron": "4mg",
       "potassium": "580mg"
     },
-    "imageUrl": "/img/menu/mushroom-stroganoff.jpg",
+    "imageUrl": "/img/menu/mushroom-stroganoff.png",
     "link": "/mushroom-stroganoff",
     "description": "Our Mushroom Stroganoff features a medley of wild mushrooms in a rich, creamy sauce with egg noodles and sour cream. Garnished with fresh dill and served with a side of steamed vegetables, this Vegan take on the classic Russian dish delivers deep umami flavors and comforting textures.",
     "ingredients": [
@@ -1111,8 +1111,8 @@
       "iron": "4mg",
       "potassium": "480mg"
     },
-    "imageUrl": "/img/menu/ravioli.jpg",
-    "link": "/spinach-ricotta-ravioli",
+    "imageUrl": "/img/menu/ravioli.png",
+    "link": "/spinach-&-ricotta-ravioli",
     "description": "Our house-made Spinach & Ricotta Ravioli features delicate pasta pillows filled with a creamy blend of fresh spinach and ricotta cheese. Served in a brown butter sage sauce with toasted pine nuts and freshly grated parmesan, this Italian classic delivers rich, comforting flavors with a perfect balance of textures.",
     "ingredients": [
       "Fresh Pasta",
@@ -1166,7 +1166,7 @@
       "iron": "1mg",
       "potassium": "420mg"
     },
-    "imageUrl": "/img/menu/berry-smoothie.jpg",
+    "imageUrl": "/img/menu/berry-smoothie.png",
     "link": "/berry-smoothie",
     "description": "Our Fresh Berry Smoothie combines seasonal berries with creamy Greek yogurt and local honey for a refreshing and protein-rich drink. Blended with almond milk and a touch of vanilla, this smoothie offers a perfect balance of sweetness and tartness while providing essential nutrients.",
     "ingredients": [
@@ -1217,7 +1217,7 @@
       "iron": "2mg",
       "potassium": "580mg"
     },
-    "imageUrl": "/img/menu/green-juice.jpg",
+    "imageUrl": "/img/menu/green-juice.png",
     "link": "/green-detox-juice",
     "description": "Our Green Detox Juice combines fresh kale, cucumber, celery, and green apple with zesty ginger and lemon for a refreshing and nutrient-packed drink. This vibrant green juice is cold-pressed to preserve maximum nutrients and enzymes, offering a perfect balance of sweet and earthy flavors.",
     "ingredients": [
@@ -1268,7 +1268,7 @@
       "iron": "2mg",
       "potassium": "280mg"
     },
-    "imageUrl": "/img/menu/turmeric-latte.jpg",
+    "imageUrl": "/img/menu/turmeric-latte.png",
     "link": "/turmeric-latte",
     "description": "Our Turmeric Latte combines warming turmeric with creamy almond milk, honey, and a blend of warming spices. This golden-hued drink offers anti-inflammatory benefits while providing a comforting and aromatic experience that's perfect for any time of day.",
     "ingredients": [
@@ -1319,7 +1319,7 @@
       "iron": "2mg",
       "potassium": "220mg"
     },
-    "imageUrl": "/img/menu/matcha-latte.jpg",
+    "imageUrl": "/img/menu/matcha-latte.png",
     "link": "/matcha-green-tea",
     "description": "Our Matcha Green Tea combines premium Japanese matcha powder with creamy oat milk and a touch of vanilla. This vibrant green drink offers a perfect balance of earthy matcha flavors with subtle sweetness, providing a gentle energy boost without the jitters.",
     "ingredients": [
@@ -1368,7 +1368,7 @@
       "iron": "1mg",
       "potassium": "280mg"
     },
-    "imageUrl": "/img/menu/watermelon-cooler.jpg",
+    "imageUrl": "/img/menu/watermelon-cooler.png",
     "link": "/watermelon-cooler",
     "description": "Our Watermelon Mint Cooler combines fresh watermelon juice with cooling mint, zesty lime, and sparkling water for a refreshing summer drink. This hydrating beverage offers a perfect balance of sweet and tart flavors with a delightful effervescence.",
     "ingredients": [
@@ -1418,7 +1418,7 @@
       "iron": "1mg",
       "potassium": "180mg"
     },
-    "imageUrl": "/img/menu/coconut-chai.jpg",
+    "imageUrl": "/img/menu/coconut-chai.png",
     "link": "/coconut-chai",
     "description": "Our Coconut Chai combines rich coconut milk with traditional chai spices, including cardamom, cloves, and cinnamon. This warming drink offers a perfect balance of creamy coconut and aromatic spices, creating a comforting and indulgent experience.",
     "ingredients": [

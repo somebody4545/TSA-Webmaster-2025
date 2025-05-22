@@ -17,9 +17,10 @@ const tagIconMap: Record<string, React.ReactNode> = {
 
 const DIETARY_TAGS = ["Vegan", "Gluten Free", "Low Carb", "Spicy", "High Protein"];
 const MEAL_CATEGORIES = ["Breakfast", "Lunch", "Dinner"];
-const CUISINE_TYPES = [
-  "Chinese", "Mediterranean", "American", "Indian",
-  "Italian", "Korean", "Mexican", "Thai", "Japanese",
+const SECTION_CATEGORIES = [
+  { label: "Appetizers", value: "Appetizers" },
+  { label: "Main Courses", value: "Main Courses" },
+  { label: "Drinks", value: "Drinks" },
 ];
 
 const SORT_OPTIONS = [
@@ -33,7 +34,7 @@ const SORT_OPTIONS = [
 export default function MenuPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedCuisine, setSelectedCuisine] = useState<string | null>(null);
+  const [selectedSections, setSelectedSections] = useState<string[]>([]);
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [sortOption, setSortOption] = useState('default');
   const [showSortDropdown, setShowSortDropdown] = useState(false);
@@ -63,10 +64,19 @@ export default function MenuPage() {
         selectedTags.every(tag => item.tags?.includes(tag));
       const matchesCategory = !selectedCategory ||
         item.categories?.includes(selectedCategory);
-      const matchesCuisine = !selectedCuisine ||
-        item.cuisine === selectedCuisine;
-
-      return matchesTags && matchesCategory && matchesCuisine;
+      // Section filtering
+      const isAppetizer = item.categories?.includes("Appetizers");
+      const isDrink = item.categories?.includes("Drinks");
+      const isMainCourse = item.categories?.some(cat => ["Lunch", "Dinner", "Breakfast"].includes(cat));
+      let matchesSection = true;
+      if (selectedSections.length > 0) {
+        matchesSection = (
+          (selectedSections.includes("Appetizers") && isAppetizer) ||
+          (selectedSections.includes("Drinks") && isDrink) ||
+          (selectedSections.includes("Main Courses") && isMainCourse)
+        );
+      }
+      return matchesTags && matchesCategory && matchesSection;
     });
 
     return [...filtered].sort((a, b) => {
@@ -83,7 +93,7 @@ export default function MenuPage() {
           return 0;
       }
     });
-  }, [selectedTags, selectedCategory, selectedCuisine, sortOption]);
+  }, [selectedTags, selectedCategory, selectedSections, sortOption]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags(prevTags => {
@@ -103,11 +113,13 @@ export default function MenuPage() {
     });
   };
 
-  const toggleCuisine = (cuisine: string) => {
-    setSelectedCuisine(prev => {
-      const newCuisine = prev === cuisine ? null : cuisine;
+  const toggleSection = (section: string) => {
+    setSelectedSections(prevSections => {
+      const newSections = prevSections.includes(section)
+        ? prevSections.filter(s => s !== section)
+        : [...prevSections, section];
       scrollToMenu();
-      return newCuisine;
+      return newSections;
     });
   };
 
@@ -121,6 +133,10 @@ export default function MenuPage() {
 
   const currentSortOption = SORT_OPTIONS.find(option => option.id === sortOption) || SORT_OPTIONS[0];
 
+  const appetizers = processedMenuItems.filter(item => item.categories?.includes("Appetizers"));
+  const drinks = processedMenuItems.filter(item => item.categories?.includes("Drinks"));
+  const mainCourses = processedMenuItems.filter(item => item.categories?.some(cat => ["Lunch", "Dinner", "Breakfast"].includes(cat)));
+
   return (
     <div className="min-h-screen bg-background">
       <HeroSection />
@@ -128,11 +144,11 @@ export default function MenuPage() {
         <FilterSidebar
           selectedTags={selectedTags}
           selectedCategory={selectedCategory}
-          selectedCuisine={selectedCuisine}
+          selectedSections={selectedSections}
           isExpanded={isFilterExpanded}
           toggleTag={toggleTag}
           toggleCategory={toggleCategory}
-          toggleCuisine={toggleCuisine}
+          toggleSection={toggleSection}
           toggleVisibility={toggleFilterVisibility}
           sortOption={sortOption}
           showSortDropdown={showSortDropdown}
@@ -142,28 +158,66 @@ export default function MenuPage() {
           sortRef={sortRef}
         />
         <div className="container mx-auto px-4 py-8 w-4/5">
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <span className="text-gray-700">{processedMenuItems.length} items</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processedMenuItems.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
-                  <MenuCard {...item} />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          {processedMenuItems.length === 0 && (
+          {((selectedSections.length === 0) || selectedSections.includes("Appetizers")) && (
+            <>
+              <h2 className="text-2xl font-bold mb-4">Appetizers</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                {appetizers.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                      <MenuCard {...item} />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              <hr className="my-8 border-t-2 border-gray-200" />
+            </>
+          )}
+          {((selectedSections.length === 0) || selectedSections.includes("Main Courses")) && (
+            <>
+              <h2 className="text-2xl font-bold mb-4">Main Courses</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                {mainCourses.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                      <MenuCard {...item} />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              <hr className="my-8 border-t-2 border-gray-200" />
+            </>
+          )}
+          {((selectedSections.length === 0) || selectedSections.includes("Drinks")) && (
+            <>
+              <h2 className="text-2xl font-bold mb-4">Drinks</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                {drinks.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link href={`/${item.title.replace(/\s+/g, "-").toLowerCase()}`}>
+                      <MenuCard {...item} />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </>
+          )}
+          {(appetizers.length + mainCourses.length + drinks.length === 0) && (
             <motion.div
               className="text-center py-16"
               initial={{ opacity: 0 }}
@@ -244,11 +298,11 @@ function HeroSection() {
 interface FilterSidebarProps {
   selectedTags: string[];
   selectedCategory: string | null;
-  selectedCuisine: string | null;
+  selectedSections: string[];
   isExpanded: boolean;
   toggleTag: (tag: string) => void;
   toggleCategory: (category: string | null) => void;
-  toggleCuisine: (cuisine: string) => void;
+  toggleSection: (section: string) => void;
   toggleVisibility: () => void;
   sortOption: string;
   showSortDropdown: boolean;
@@ -261,11 +315,11 @@ interface FilterSidebarProps {
 function FilterSidebar({
   selectedTags,
   selectedCategory,
-  selectedCuisine,
+  selectedSections,
   isExpanded,
   toggleTag,
   toggleCategory,
-  toggleCuisine,
+  toggleSection,
   toggleVisibility,
   sortOption,
   showSortDropdown,
@@ -361,11 +415,12 @@ function FilterSidebar({
           />
         </FilterSection>
 
-        <FilterSection title="Cuisines">
+        <FilterSection title="Sections">
           <FilterButtonGroup
-            items={CUISINE_TYPES}
-            selectedItem={selectedCuisine}
-            onSelect={toggleCuisine}
+            items={SECTION_CATEGORIES.map(s => s.label)}
+            selectedItems={selectedSections}
+            onSelect={toggleSection}
+            multiSelect={true}
           />
         </FilterSection>
 

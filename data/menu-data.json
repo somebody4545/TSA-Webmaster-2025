@@ -294,7 +294,7 @@
   },
   {
     "title": "Avocado Toast",
-    "subtitle": "with Poached Eggs & Microgreens",
+    "subtitle": "with Poached   & Microgreens",
     "price": "$14.99",
     "calories": "420",
     "nutrition": {
@@ -315,11 +315,11 @@
     },
     "imageUrl": "/img/menu/avocado-toast.jpg",
     "link": "/avocado-toast",
-    "description": "Our Avocado Toast elevates the classic breakfast with artisanal sourdough bread topped with creamy mashed avocado, perfectly poached eggs with runny yolks, and a sprinkle of microgreens. Finished with a dusting of red pepper flakes, flaky sea salt, and a drizzle of extra virgin olive oil, this dish combines healthy fats and proteins for a satisfying start to your day.",
+    "description": "Our Avocado Toast elevates the classic breakfast with artisanal sourdough bread topped with creamy mashed avocado, perfectly poached   with runny yolks, and a sprinkle of microgreens. Finished with a dusting of red pepper flakes, flaky sea salt, and a drizzle of extra virgin olive oil, this dish combines healthy fats and proteins for a satisfying start to your day.",
     "ingredients": [
       "Sourdough Bread",
       "Avocado",
-      "Pasture-Raised Eggs",
+      "Pasture-Raised  ",
       "Microgreens",
       "Red Pepper Flakes",
       "Flaky Sea Salt",
@@ -339,10 +339,10 @@
       "carbonFootprint": "1.3 kg CO₂e",
       "waterUsage": "350 liters",
       "energyUsed": "0.22 kWh",
-      "sourcing": "Avocado: Imported from Mexico\nEggs: Local farm\nBread: Local bakery",
+      "sourcing": "Avocado: Imported from Mexico\n : Local farm\nBread: Local bakery",
       "transport": "Local and regional trucking",
       "preparation": "Poached (electric stove)",
-      "ingredients": "Avocado: Moderate impact (imported)\nEggs: Moderate impact (local, animal-based)\nBread: Low impact (local)"
+      "ingredients": "Avocado: Moderate impact (imported)\n : Moderate impact (local, animal-based)\nBread: Low impact (local)"
     }
   },
   {
@@ -634,7 +634,7 @@
   },
   {
     "title": "Breakfast Burrito",
-    "subtitle": "with Eggs & Black Beans",
+    "subtitle": "with   & Black Beans",
     "price": "$13.99",
     "calories": "580",
     "nutrition": {
@@ -655,10 +655,10 @@
     },
     "imageUrl": "/img/menu/breakfast-burrito.jpg",
     "link": "/breakfast-burrito",
-    "description": "Our Breakfast Burrito wraps fluffy scrambled eggs, black beans, roasted potatoes, and melted cheese in a warm whole wheat tortilla. Stuffed with fresh avocado, pico de gallo, and a hint of chipotle sauce, every bite delivers a perfect blend of textures and flavors. Served with a side of house-made salsa and sour cream, this hearty breakfast option provides sustained energy to power your morning.",
+    "description": "Our Breakfast Burrito wraps fluffy scrambled  , black beans, roasted potatoes, and melted cheese in a warm whole wheat tortilla. Stuffed with fresh avocado, pico de gallo, and a hint of chipotle sauce, every bite delivers a perfect blend of textures and flavors. Served with a side of house-made salsa and sour cream, this hearty breakfast option provides sustained energy to power your morning.",
     "ingredients": [
       "Whole Wheat Tortilla",
-      "Free-Range Eggs",
+      "Free-Range  ",
       "Black Beans",
       "Roasted Potatoes",
       "Cheddar Cheese",
@@ -681,10 +681,10 @@
       "carbonFootprint": "1.6 kg CO₂e",
       "waterUsage": "480 liters",
       "energyUsed": "0.33 kWh",
-      "sourcing": "Eggs: Local farm\nBeans: Regional supplier\nTortilla: Local bakery",
+      "sourcing": " : Local farm\nBeans: Regional supplier\nTortilla: Local bakery",
       "transport": "Local and regional trucking",
       "preparation": "Scrambled (electric stove)",
-      "ingredients": "Eggs: Moderate impact (local, animal-based)\nBeans: Low impact (regional)\nTortilla: Low impact (local)"
+      "ingredients": " : Moderate impact (local, animal-based)\nBeans: Low impact (regional)\nTortilla: Low impact (local)"
     }
   },
   {
@@ -860,10 +860,1018 @@
       "carbonFootprint": "1.6 kg CO₂e",
       "waterUsage": "530 liters",
       "energyUsed": "0.36 kWh",
-      "sourcing": "Noodles: Imported from Japan\nEggs: Local farm\nVegetables: Local farm",
+      "sourcing": "Noodles: Imported from Japan\n : Local farm\nVegetables: Local farm",
       "transport": "Mixed trucking and sea freight",
       "preparation": "Simmered (electric stove)",
-      "ingredients": "Noodles: Moderate impact (imported)\nEggs: Moderate impact (local, animal-based)\nVegetables: Low impact (local)"
+      "ingredients": "Noodles: Moderate impact (imported)\n : Moderate impact (local, animal-based)\nVegetables: Low impact (local)"
+    }
+  },
+  {
+    "title": "Eggplant Parmesan",
+    "subtitle": "with Fresh Mozzarella & Basil",
+    "price": "$21.99",
+    "calories": "650",
+    "nutrition": {
+      "calories": "650",
+      "totalFat": "32g",
+      "saturatedFat": "12g",
+      "transFat": "0g",
+      "cholesterol": "45mg",
+      "sodium": "890mg",
+      "totalCarbohydrates": "68g",
+      "dietaryFiber": "8g",
+      "sugars": "12g",
+      "protein": "24g",
+      "vitaminD": "0mcg",
+      "calcium": "420mg",
+      "iron": "3mg",
+      "potassium": "680mg"
+    },
+    "imageUrl": "/img/menu/eggplant-parm.jpg",
+    "link": "/eggplant-parmesan",
+    "description": "Our Eggplant Parmesan features thick slices of breaded and baked eggplant layered with house-made marinara sauce, fresh mozzarella, and aged parmesan. Served with a side of spaghetti and garnished with fresh basil, this Italian classic delivers rich, comforting flavors with a perfect balance of crispy and creamy textures.",
+    "ingredients": [
+      "Eggplant",
+      "Fresh Mozzarella",
+      "Parmesan",
+      "Marinara Sauce",
+      "Basil",
+      "Breadcrumbs",
+      " ",
+      "Garlic",
+      "Olive Oil",
+      "Spaghetti",
+      "Fresh Herbs"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Dinner"
+    ],
+    "cuisine": "Italian",
+    "sustainability": {
+      "carbonFootprint": "1.8 kg CO₂e",
+      "waterUsage": "720 liters",
+      "energyUsed": "0.45 kWh",
+      "sourcing": "Eggplant: Local farm\nCheese: Local dairy\nPasta: Local producer",
+      "transport": "Local trucking",
+      "preparation": "Baked (electric oven)",
+      "ingredients": "Eggplant: Low impact (local)\nCheese: Moderate impact (dairy)\nPasta: Low impact (local)"
+    }
+  },
+  {
+    "title": "Vegetable Curry",
+    "subtitle": "with Coconut Milk & Jasmine Rice",
+    "price": "$19.99",
+    "calories": "580",
+    "nutrition": {
+      "calories": "580",
+      "totalFat": "24g",
+      "saturatedFat": "18g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "720mg",
+      "totalCarbohydrates": "75g",
+      "dietaryFiber": "12g",
+      "sugars": "8g",
+      "protein": "16g",
+      "vitaminD": "0mcg",
+      "calcium": "180mg",
+      "iron": "5mg",
+      "potassium": "820mg"
+    },
+    "imageUrl": "/img/menu/veg-curry.jpg",
+    "link": "/vegetable-curry",
+    "description": "Our Vegetable Curry combines seasonal vegetables in a rich, aromatic coconut milk-based sauce with traditional Indian spices. Served with fragrant jasmine rice and garnished with fresh cilantro, this dish offers a perfect balance of creamy, spicy, and sweet flavors that warm the soul.",
+    "ingredients": [
+      "Mixed Vegetables",
+      "Coconut Milk",
+      "Jasmine Rice",
+      "Curry Paste",
+      "Ginger",
+      "Garlic",
+      "Turmeric",
+      "Cumin",
+      "Coriander",
+      "Cilantro",
+      "Lime",
+      "Chili"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free",
+      "Spicy"
+    ],
+    "categories": [
+      "Dinner"
+    ],
+    "cuisine": "Indian",
+    "sustainability": {
+      "carbonFootprint": "1.4 kg CO₂e",
+      "waterUsage": "580 liters",
+      "energyUsed": "0.35 kWh",
+      "sourcing": "Vegetables: Local farm\nCoconut Milk: Imported\nRice: Regional supplier",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Simmered (electric stove)",
+      "ingredients": "Vegetables: Low impact (local)\nCoconut Milk: Moderate impact (imported)\nRice: Low impact (regional)"
+    }
+  },
+  {
+    "title": "Stuffed Bell Peppers",
+    "subtitle": "with Quinoa & Black Beans",
+    "price": "$18.99",
+    "calories": "420",
+    "nutrition": {
+      "calories": "420",
+      "totalFat": "12g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "480mg",
+      "totalCarbohydrates": "65g",
+      "dietaryFiber": "14g",
+      "sugars": "8g",
+      "protein": "18g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "4mg",
+      "potassium": "680mg"
+    },
+    "imageUrl": "/img/menu/stuffed-peppers.jpg",
+    "link": "/stuffed-bell-peppers",
+    "description": "Our Stuffed Bell Peppers feature colorful bell peppers filled with a savory mixture of quinoa, black beans, corn, and spices. Topped with melted cheese and fresh herbs, these protein-packed peppers are baked to perfection, creating a satisfying and nutritious meal that's as beautiful as it is delicious.",
+    "ingredients": [
+      "Bell Peppers",
+      "Quinoa",
+      "Black Beans",
+      "Corn",
+      "Onion",
+      "Garlic",
+      "Cumin",
+      "Paprika",
+      "Cheese",
+      "Fresh Herbs",
+      "Olive Oil",
+      "Lime"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Dinner"
+    ],
+    "cuisine": "Mexican",
+    "sustainability": {
+      "carbonFootprint": "1.2 kg CO₂e",
+      "waterUsage": "450 liters",
+      "energyUsed": "0.28 kWh",
+      "sourcing": "Peppers: Local farm\nQuinoa: Imported\nBeans: Regional supplier",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Baked (electric oven)",
+      "ingredients": "Peppers: Low impact (local)\nQuinoa: Moderate impact (imported)\nBeans: Low impact (regional)"
+    }
+  },
+  {
+    "title": "Mushroom Stroganoff",
+    "subtitle": "with Noodles & Sour Cream",
+    "price": "$20.99",
+    "calories": "590",
+    "nutrition": {
+      "calories": "590",
+      "totalFat": "28g",
+      "saturatedFat": "12g",
+      "transFat": "0g",
+      "cholesterol": "45mg",
+      "sodium": "680mg",
+      "totalCarbohydrates": "65g",
+      "dietaryFiber": "6g",
+      "sugars": "8g",
+      "protein": "22g",
+      "vitaminD": "0mcg",
+      "calcium": "180mg",
+      "iron": "4mg",
+      "potassium": "580mg"
+    },
+    "imageUrl": "/img/menu/mushroom-stroganoff.jpg",
+    "link": "/mushroom-stroganoff",
+    "description": "Our Mushroom Stroganoff features a medley of wild mushrooms in a rich, creamy sauce with egg noodles and sour cream. Garnished with fresh dill and served with a side of steamed vegetables, this Vegan take on the classic Russian dish delivers deep umami flavors and comforting textures.",
+    "ingredients": [
+      "Mixed Wild Mushrooms",
+      "Noodles",
+      "Sour Cream",
+      "Onion",
+      "Garlic",
+      "Dijon Mustard",
+      "White Wine",
+      "Vegetable Broth",
+      "Fresh Dill",
+      "Butter",
+      "Paprika"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Dinner"
+    ],
+    "cuisine": "Russian",
+    "sustainability": {
+      "carbonFootprint": "1.3 kg CO₂e",
+      "waterUsage": "520 liters",
+      "energyUsed": "0.32 kWh",
+      "sourcing": "Mushrooms: Local farm\nDairy: Local producer\nNoodles: Local bakery",
+      "transport": "Local trucking",
+      "preparation": "Simmered (electric stove)",
+      "ingredients": "Mushrooms: Low impact (local)\nDairy: Moderate impact (local)\nNoodles: Low impact (local)"
+    }
+  },
+  {
+    "title": "Spinach & Ricotta Ravioli",
+    "subtitle": "with Brown Butter Sage Sauce",
+    "price": "$22.99",
+    "calories": "680",
+    "nutrition": {
+      "calories": "680",
+      "totalFat": "32g",
+      "saturatedFat": "18g",
+      "transFat": "0g",
+      "cholesterol": "85mg",
+      "sodium": "720mg",
+      "totalCarbohydrates": "75g",
+      "dietaryFiber": "6g",
+      "sugars": "4g",
+      "protein": "28g",
+      "vitaminD": "0mcg",
+      "calcium": "420mg",
+      "iron": "4mg",
+      "potassium": "480mg"
+    },
+    "imageUrl": "/img/menu/ravioli.jpg",
+    "link": "/spinach-ricotta-ravioli",
+    "description": "Our house-made Spinach & Ricotta Ravioli features delicate pasta pillows filled with a creamy blend of fresh spinach and ricotta cheese. Served in a brown butter sage sauce with toasted pine nuts and freshly grated parmesan, this Italian classic delivers rich, comforting flavors with a perfect balance of textures.",
+    "ingredients": [
+      "Fresh Pasta",
+      "Spinach",
+      "Ricotta Cheese",
+      "Parmesan",
+      "Butter",
+      "Fresh Sage",
+      "Pine Nuts",
+      "Garlic",
+      "Nutmeg",
+      "Black Pepper",
+      "Lemon Zest"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Dinner"
+    ],
+    "cuisine": "Italian",
+    "sustainability": {
+      "carbonFootprint": "1.5 kg CO₂e",
+      "waterUsage": "580 liters",
+      "energyUsed": "0.38 kWh",
+      "sourcing": "Spinach: Local farm\nDairy: Local producer\nPasta: House-made",
+      "transport": "Local trucking",
+      "preparation": "Boiled (electric stove)",
+      "ingredients": "Spinach: Low impact (local)\nDairy: Moderate impact (local)\nPasta: Low impact (house-made)"
+    }
+  },
+  {
+    "title": "Fresh Berry Smoothie",
+    "subtitle": "with Greek Yogurt & Honey",
+    "price": "$8.99",
+    "calories": "280",
+    "nutrition": {
+      "calories": "280",
+      "totalFat": "4g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "15mg",
+      "sodium": "85mg",
+      "totalCarbohydrates": "52g",
+      "dietaryFiber": "6g",
+      "sugars": "42g",
+      "protein": "12g",
+      "vitaminD": "0mcg",
+      "calcium": "180mg",
+      "iron": "1mg",
+      "potassium": "420mg"
+    },
+    "imageUrl": "/img/menu/berry-smoothie.jpg",
+    "link": "/berry-smoothie",
+    "description": "Our Fresh Berry Smoothie combines seasonal berries with creamy Greek yogurt and local honey for a refreshing and protein-rich drink. Blended with almond milk and a touch of vanilla, this smoothie offers a perfect balance of sweetness and tartness while providing essential nutrients.",
+    "ingredients": [
+      "Mixed Berries",
+      "Greek Yogurt",
+      "Local Honey",
+      "Almond Milk",
+      "Vanilla Extract",
+      "Ice"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "0.8 kg CO₂e",
+      "waterUsage": "280 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Berries: Local farm\nYogurt: Local dairy\nHoney: Local apiary",
+      "transport": "Local trucking",
+      "preparation": "Blended (electric blender)",
+      "ingredients": "Berries: Low impact (local)\nYogurt: Moderate impact (dairy)\nHoney: Low impact (local)"
+    }
+  },
+  {
+    "title": "Green Detox Juice",
+    "subtitle": "with Ginger & Lemon",
+    "price": "$7.99",
+    "calories": "120",
+    "nutrition": {
+      "calories": "120",
+      "totalFat": "0g",
+      "saturatedFat": "0g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "45mg",
+      "totalCarbohydrates": "28g",
+      "dietaryFiber": "4g",
+      "sugars": "18g",
+      "protein": "2g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "2mg",
+      "potassium": "580mg"
+    },
+    "imageUrl": "/img/menu/green-juice.jpg",
+    "link": "/green-detox-juice",
+    "description": "Our Green Detox Juice combines fresh kale, cucumber, celery, and green apple with zesty ginger and lemon for a refreshing and nutrient-packed drink. This vibrant green juice is cold-pressed to preserve maximum nutrients and enzymes, offering a perfect balance of sweet and earthy flavors.",
+    "ingredients": [
+      "Kale",
+      "Cucumber",
+      "Celery",
+      "Green Apple",
+      "Ginger",
+      "Lemon",
+      "Mint"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "0.5 kg CO₂e",
+      "waterUsage": "180 liters",
+      "energyUsed": "0.12 kWh",
+      "sourcing": "Vegetables: Local farm\nFruits: Local farm\nGinger: Regional supplier",
+      "transport": "Local trucking",
+      "preparation": "Cold-pressed (electric juicer)",
+      "ingredients": "Vegetables: Low impact (local)\nFruits: Low impact (local)\nGinger: Low impact (regional)"
+    }
+  },
+  {
+    "title": "Turmeric Latte",
+    "subtitle": "with Almond Milk & Cinnamon",
+    "price": "$6.99",
+    "calories": "180",
+    "nutrition": {
+      "calories": "180",
+      "totalFat": "8g",
+      "saturatedFat": "1g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "120mg",
+      "totalCarbohydrates": "22g",
+      "dietaryFiber": "2g",
+      "sugars": "18g",
+      "protein": "4g",
+      "vitaminD": "0mcg",
+      "calcium": "320mg",
+      "iron": "2mg",
+      "potassium": "280mg"
+    },
+    "imageUrl": "/img/menu/turmeric-latte.jpg",
+    "link": "/turmeric-latte",
+    "description": "Our Turmeric Latte combines warming turmeric with creamy almond milk, honey, and a blend of warming spices. This golden-hued drink offers anti-inflammatory benefits while providing a comforting and aromatic experience that's perfect for any time of day.",
+    "ingredients": [
+      "Almond Milk",
+      "Turmeric",
+      "Cinnamon",
+      "Ginger",
+      "Black Pepper",
+      "Honey",
+      "Vanilla Extract"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "Indian",
+    "sustainability": {
+      "carbonFootprint": "0.6 kg CO₂e",
+      "waterUsage": "220 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Almond Milk: Local producer\nSpices: Imported\nHoney: Local apiary",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Steamed (electric steamer)",
+      "ingredients": "Almond Milk: Low impact (local)\nSpices: Low impact (imported)\nHoney: Low impact (local)"
+    }
+  },
+  {
+    "title": "Matcha Green Tea",
+    "subtitle": "with Oat Milk & Vanilla",
+    "price": "$5.99",
+    "calories": "150",
+    "nutrition": {
+      "calories": "150",
+      "totalFat": "6g",
+      "saturatedFat": "1g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "85mg",
+      "totalCarbohydrates": "22g",
+      "dietaryFiber": "2g",
+      "sugars": "18g",
+      "protein": "4g",
+      "vitaminD": "0mcg",
+      "calcium": "280mg",
+      "iron": "2mg",
+      "potassium": "220mg"
+    },
+    "imageUrl": "/img/menu/matcha-latte.jpg",
+    "link": "/matcha-green-tea",
+    "description": "Our Matcha Green Tea combines premium Japanese matcha powder with creamy oat milk and a touch of vanilla. This vibrant green drink offers a perfect balance of earthy matcha flavors with subtle sweetness, providing a gentle energy boost without the jitters.",
+    "ingredients": [
+      "Premium Matcha",
+      "Oat Milk",
+      "Vanilla Extract",
+      "Honey",
+      "Hot Water"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "Japanese",
+    "sustainability": {
+      "carbonFootprint": "0.7 kg CO₂e",
+      "waterUsage": "180 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Matcha: Imported from Japan\nOat Milk: Local producer\nHoney: Local apiary",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Whisked (electric kettle)",
+      "ingredients": "Matcha: Moderate impact (imported)\nOat Milk: Low impact (local)\nHoney: Low impact (local)"
+    }
+  },
+  {
+    "title": "Watermelon Mint Cooler",
+    "subtitle": "with Lime & Sparkling Water",
+    "price": "$6.99",
+    "calories": "90",
+    "nutrition": {
+      "calories": "90",
+      "totalFat": "0g",
+      "saturatedFat": "0g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "15mg",
+      "totalCarbohydrates": "22g",
+      "dietaryFiber": "1g",
+      "sugars": "18g",
+      "protein": "1g",
+      "vitaminD": "0mcg",
+      "calcium": "20mg",
+      "iron": "1mg",
+      "potassium": "280mg"
+    },
+    "imageUrl": "/img/menu/watermelon-cooler.jpg",
+    "link": "/watermelon-cooler",
+    "description": "Our Watermelon Mint Cooler combines fresh watermelon juice with cooling mint, zesty lime, and sparkling water for a refreshing summer drink. This hydrating beverage offers a perfect balance of sweet and tart flavors with a delightful effervescence.",
+    "ingredients": [
+      "Fresh Watermelon",
+      "Mint Leaves",
+      "Lime",
+      "Sparkling Water",
+      "Honey",
+      "Ice"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "American",
+    "sustainability": {
+      "carbonFootprint": "0.4 kg CO₂e",
+      "waterUsage": "150 liters",
+      "energyUsed": "0.10 kWh",
+      "sourcing": "Watermelon: Local farm\nMint: Local farm\nLime: Regional supplier",
+      "transport": "Local trucking",
+      "preparation": "Blended (electric blender)",
+      "ingredients": "Watermelon: Low impact (local)\nMint: Low impact (local)\nLime: Low impact (regional)"
+    }
+  },
+  {
+    "title": "Coconut Chai",
+    "subtitle": "with Cardamom & Cloves",
+    "price": "$5.99",
+    "calories": "160",
+    "nutrition": {
+      "calories": "160",
+      "totalFat": "7g",
+      "saturatedFat": "6g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "45mg",
+      "totalCarbohydrates": "22g",
+      "dietaryFiber": "1g",
+      "sugars": "18g",
+      "protein": "2g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "1mg",
+      "potassium": "180mg"
+    },
+    "imageUrl": "/img/menu/coconut-chai.jpg",
+    "link": "/coconut-chai",
+    "description": "Our Coconut Chai combines rich coconut milk with traditional chai spices, including cardamom, cloves, and cinnamon. This warming drink offers a perfect balance of creamy coconut and aromatic spices, creating a comforting and indulgent experience.",
+    "ingredients": [
+      "Coconut Milk",
+      "Black Tea",
+      "Cardamom",
+      "Cloves",
+      "Cinnamon",
+      "Ginger",
+      "Honey",
+      "Vanilla Extract"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Drinks"
+    ],
+    "cuisine": "Indian",
+    "sustainability": {
+      "carbonFootprint": "0.6 kg CO₂e",
+      "waterUsage": "200 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Coconut Milk: Imported\nSpices: Imported\nTea: Imported",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Steeped (electric kettle)",
+      "ingredients": "Coconut Milk: Moderate impact (imported)\nSpices: Low impact (imported)\nTea: Low impact (imported)"
+    }
+  },
+  {
+    "title": "Bruschetta",
+    "subtitle": "with Fresh Tomatoes & Basil",
+    "price": "$8.99",
+    "calories": "220",
+    "nutrition": {
+      "calories": "220",
+      "totalFat": "12g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "320mg",
+      "totalCarbohydrates": "24g",
+      "dietaryFiber": "2g",
+      "sugars": "3g",
+      "protein": "4g",
+      "vitaminD": "0mcg",
+      "calcium": "40mg",
+      "iron": "2mg",
+      "potassium": "280mg"
+    },
+    "imageUrl": "/img/menu/bruschetta.jpg",
+    "link": "/bruschetta",
+    "description": "Our Bruschetta features toasted artisan bread topped with a fresh mixture of diced tomatoes, garlic, basil, and extra virgin olive oil. This classic Italian appetizer offers a perfect balance of crispy bread and fresh, vibrant toppings.",
+    "ingredients": [
+      "Artisan Bread",
+      "Fresh Tomatoes",
+      "Basil",
+      "Garlic",
+      "Extra Virgin Olive Oil",
+      "Balsamic Vinegar",
+      "Sea Salt",
+      "Black Pepper"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Italian",
+    "sustainability": {
+      "carbonFootprint": "0.8 kg CO₂e",
+      "waterUsage": "280 liters",
+      "energyUsed": "0.18 kWh",
+      "sourcing": "Bread: Local bakery\nTomatoes: Local farm\nBasil: Local farm",
+      "transport": "Local trucking",
+      "preparation": "Toasted (electric oven)",
+      "ingredients": "Bread: Low impact (local)\nTomatoes: Low impact (local)\nBasil: Low impact (local)"
+    }
+  },
+  {
+    "title": "Hummus Plate",
+    "subtitle": "with Warm Pita & Vegetables",
+    "price": "$9.99",
+    "calories": "280",
+    "nutrition": {
+      "calories": "280",
+      "totalFat": "14g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "420mg",
+      "totalCarbohydrates": "32g",
+      "dietaryFiber": "6g",
+      "sugars": "4g",
+      "protein": "8g",
+      "vitaminD": "0mcg",
+      "calcium": "60mg",
+      "iron": "3mg",
+      "potassium": "320mg"
+    },
+    "imageUrl": "/img/menu/hummus-plate.jpg",
+    "link": "/hummus-plate",
+    "description": "Our Hummus Plate features house-made hummus served with warm pita bread and fresh vegetables. The creamy, garlicky hummus is topped with extra virgin olive oil and za'atar, creating a perfect balance of flavors and textures.",
+    "ingredients": [
+      "Chickpeas",
+      "Tahini",
+      "Garlic",
+      "Lemon",
+      "Pita Bread",
+      "Cucumber",
+      "Carrots",
+      "Bell Peppers",
+      "Extra Virgin Olive Oil",
+      "Za'atar",
+      "Paprika"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Mediterranean",
+    "sustainability": {
+      "carbonFootprint": "0.9 kg CO₂e",
+      "waterUsage": "320 liters",
+      "energyUsed": "0.20 kWh",
+      "sourcing": "Chickpeas: Regional supplier\nVegetables: Local farm\nPita: Local bakery",
+      "transport": "Local trucking",
+      "preparation": "Blended (electric food processor)",
+      "ingredients": "Chickpeas: Low impact (regional)\nVegetables: Low impact (local)\nPita: Low impact (local)"
+    }
+  },
+  {
+    "title": "Spring Rolls",
+    "subtitle": "with Peanut Dipping Sauce",
+    "price": "$10.99",
+    "calories": "240",
+    "nutrition": {
+      "calories": "240",
+      "totalFat": "8g",
+      "saturatedFat": "1g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "380mg",
+      "totalCarbohydrates": "36g",
+      "dietaryFiber": "4g",
+      "sugars": "6g",
+      "protein": "6g",
+      "vitaminD": "0mcg",
+      "calcium": "40mg",
+      "iron": "2mg",
+      "potassium": "280mg"
+    },
+    "imageUrl": "/img/menu/spring-rolls.jpg",
+    "link": "/spring-rolls",
+    "description": "Our Spring Rolls feature fresh vegetables and herbs wrapped in delicate rice paper, served with a creamy peanut dipping sauce. These light and refreshing rolls offer a perfect balance of crisp vegetables and aromatic herbs.",
+    "ingredients": [
+      "Rice Paper",
+      "Carrots",
+      "Cucumber",
+      "Bell Peppers",
+      "Fresh Herbs",
+      "Rice Noodles",
+      "Peanut Butter",
+      "Soy Sauce",
+      "Lime",
+      "Chili",
+      "Garlic"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Vietnamese",
+    "sustainability": {
+      "carbonFootprint": "0.7 kg CO₂e",
+      "waterUsage": "250 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Vegetables: Local farm\nRice Paper: Imported\nPeanuts: Regional supplier",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Rolled (hand preparation)",
+      "ingredients": "Vegetables: Low impact (local)\nRice Paper: Low impact (imported)\nPeanuts: Low impact (regional)"
+    }
+  },
+  {
+    "title": "Stuffed Mushrooms",
+    "subtitle": "with Spinach & Feta",
+    "price": "$11.99",
+    "calories": "180",
+    "nutrition": {
+      "calories": "180",
+      "totalFat": "12g",
+      "saturatedFat": "4g",
+      "transFat": "0g",
+      "cholesterol": "20mg",
+      "sodium": "320mg",
+      "totalCarbohydrates": "8g",
+      "dietaryFiber": "2g",
+      "sugars": "2g",
+      "protein": "10g",
+      "vitaminD": "0mcg",
+      "calcium": "120mg",
+      "iron": "2mg",
+      "potassium": "320mg"
+    },
+    "imageUrl": "/img/menu/stuffed-mushrooms.jpg",
+    "link": "/stuffed-mushrooms",
+    "description": "Our Stuffed Mushrooms feature large portobello caps filled with a savory mixture of spinach, feta cheese, and herbs. Baked to perfection, these bite-sized appetizers offer a perfect balance of earthy mushrooms and rich, creamy filling.",
+    "ingredients": [
+      "Portobello Mushrooms",
+      "Spinach",
+      "Feta Cheese",
+      "Garlic",
+      "Breadcrumbs",
+      "Fresh Herbs",
+      "Olive Oil",
+      "Lemon",
+      "Black Pepper"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Mediterranean",
+    "sustainability": {
+      "carbonFootprint": "0.8 kg CO₂e",
+      "waterUsage": "280 liters",
+      "energyUsed": "0.18 kWh",
+      "sourcing": "Mushrooms: Local farm\nSpinach: Local farm\nFeta: Local dairy",
+      "transport": "Local trucking",
+      "preparation": "Baked (electric oven)",
+      "ingredients": "Mushrooms: Low impact (local)\nSpinach: Low impact (local)\nFeta: Moderate impact (dairy)"
+    }
+  },
+  {
+    "title": "Caprese Skewers",
+    "subtitle": "with Balsamic Glaze",
+    "price": "$10.99",
+    "calories": "160",
+    "nutrition": {
+      "calories": "160",
+      "totalFat": "10g",
+      "saturatedFat": "4g",
+      "transFat": "0g",
+      "cholesterol": "20mg",
+      "sodium": "180mg",
+      "totalCarbohydrates": "6g",
+      "dietaryFiber": "1g",
+      "sugars": "4g",
+      "protein": "8g",
+      "vitaminD": "0mcg",
+      "calcium": "180mg",
+      "iron": "1mg",
+      "potassium": "220mg"
+    },
+    "imageUrl": "/img/menu/caprese-skewers.jpg",
+    "link": "/caprese-skewers",
+    "description": "Our Caprese Skewers feature fresh mozzarella, cherry tomatoes, and basil leaves drizzled with balsamic glaze. These elegant appetizers offer a perfect balance of creamy cheese, sweet tomatoes, and aromatic basil.",
+    "ingredients": [
+      "Fresh Mozzarella",
+      "Cherry Tomatoes",
+      "Fresh Basil",
+      "Balsamic Glaze",
+      "Extra Virgin Olive Oil",
+      "Sea Salt",
+      "Black Pepper"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free",
+      "Low Carb"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Italian",
+    "sustainability": {
+      "carbonFootprint": "0.7 kg CO₂e",
+      "waterUsage": "220 liters",
+      "energyUsed": "0.12 kWh",
+      "sourcing": "Mozzarella: Local dairy\nTomatoes: Local farm\nBasil: Local farm",
+      "transport": "Local trucking",
+      "preparation": "Assembled (hand preparation)",
+      "ingredients": "Mozzarella: Moderate impact (dairy)\nTomatoes: Low impact (local)\nBasil: Low impact (local)"
+    }
+  },
+  {
+    "title": "Edamame",
+    "subtitle": "with Sea Salt & Chili",
+    "price": "$7.99",
+    "calories": "120",
+    "nutrition": {
+      "calories": "120",
+      "totalFat": "4g",
+      "saturatedFat": "0.5g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "280mg",
+      "totalCarbohydrates": "8g",
+      "dietaryFiber": "4g",
+      "sugars": "2g",
+      "protein": "10g",
+      "vitaminD": "0mcg",
+      "calcium": "60mg",
+      "iron": "2mg",
+      "potassium": "320mg"
+    },
+    "imageUrl": "/img/menu/edamame.jpg",
+    "link": "/edamame",
+    "description": "Our Edamame features young soybeans steamed to perfection and seasoned with sea salt and chili. This protein-rich appetizer offers a perfect balance of nutty flavors and satisfying texture.",
+    "ingredients": [
+      "Edamame",
+      "Sea Salt",
+      "Chili Flakes",
+      "Sesame Oil",
+      "Garlic",
+      "Lemon Zest"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Japanese",
+    "sustainability": {
+      "carbonFootprint": "0.6 kg CO₂e",
+      "waterUsage": "180 liters",
+      "energyUsed": "0.15 kWh",
+      "sourcing": "Edamame: Regional supplier\nSpices: Imported\nOil: Imported",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Steamed (electric steamer)",
+      "ingredients": "Edamame: Low impact (regional)\nSpices: Low impact (imported)\nOil: Low impact (imported)"
+    }
+  },
+  {
+    "title": "Guacamole",
+    "subtitle": "with Tortilla Chips",
+    "price": "$9.99",
+    "calories": "280",
+    "nutrition": {
+      "calories": "280",
+      "totalFat": "18g",
+      "saturatedFat": "3g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "320mg",
+      "totalCarbohydrates": "28g",
+      "dietaryFiber": "6g",
+      "sugars": "2g",
+      "protein": "4g",
+      "vitaminD": "0mcg",
+      "calcium": "40mg",
+      "iron": "2mg",
+      "potassium": "480mg"
+    },
+    "imageUrl": "/img/menu/guacamole.jpg",
+    "link": "/guacamole",
+    "description": "Our Guacamole features fresh avocados mashed with lime juice, cilantro, and spices, served with crispy tortilla chips. This classic Mexican appetizer offers a perfect balance of creamy avocado and zesty flavors.",
+    "ingredients": [
+      "Avocados",
+      "Lime",
+      "Cilantro",
+      "Red Onion",
+      "Tomatoes",
+      "Jalapeño",
+      "Garlic",
+      "Sea Salt",
+      "Tortilla Chips"
+    ],
+    "tags": [
+      "Vegan",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Mexican",
+    "sustainability": {
+      "carbonFootprint": "0.9 kg CO₂e",
+      "waterUsage": "320 liters",
+      "energyUsed": "0.18 kWh",
+      "sourcing": "Avocados: Imported\nVegetables: Local farm\nChips: Local producer",
+      "transport": "Mixed trucking and air freight",
+      "preparation": "Mashed (hand preparation)",
+      "ingredients": "Avocados: Moderate impact (imported)\nVegetables: Low impact (local)\nChips: Low impact (local)"
+    }
+  },
+  {
+    "title": "Falafel Bites",
+    "subtitle": "with Tahini Sauce",
+    "price": "$10.99",
+    "calories": "240",
+    "nutrition": {
+      "calories": "240",
+      "totalFat": "12g",
+      "saturatedFat": "2g",
+      "transFat": "0g",
+      "cholesterol": "0mg",
+      "sodium": "380mg",
+      "totalCarbohydrates": "28g",
+      "dietaryFiber": "6g",
+      "sugars": "4g",
+      "protein": "10g",
+      "vitaminD": "0mcg",
+      "calcium": "60mg",
+      "iron": "3mg",
+      "potassium": "320mg"
+    },
+    "imageUrl": "/img/menu/falafel-bites.jpg",
+    "link": "/falafel-bites",
+    "description": "Our Falafel Bites feature crispy chickpea fritters seasoned with herbs and spices, served with creamy tahini sauce. These protein-rich appetizers offer a perfect balance of crispy exterior and tender interior.",
+    "ingredients": [
+      "Chickpeas",
+      "Fresh Herbs",
+      "Garlic",
+      "Cumin",
+      "Coriander",
+      "Tahini",
+      "Lemon",
+      "Olive Oil",
+      "Sesame Seeds"
+    ],
+    "tags": [
+      "Vegan",
+      "High Protein",
+      "Gluten Free"
+    ],
+    "categories": [
+      "Appetizers"
+    ],
+    "cuisine": "Mediterranean",
+    "sustainability": {
+      "carbonFootprint": "0.8 kg CO₂e",
+      "waterUsage": "280 liters",
+      "energyUsed": "0.20 kWh",
+      "sourcing": "Chickpeas: Regional supplier\nHerbs: Local farm\nTahini: Imported",
+      "transport": "Mixed trucking and sea freight",
+      "preparation": "Fried (electric fryer)",
+      "ingredients": "Chickpeas: Low impact (regional)\nHerbs: Low impact (local)\nTahini: Moderate impact (imported)"
     }
   }
 ] 

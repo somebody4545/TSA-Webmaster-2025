@@ -365,13 +365,13 @@ export default function OurStoryPage() {
               </p>
               <p className="text-lg text-text mb-6">
                 After completing my military service, I started on a journey
-                that took me across continents. Visiting countries from Thailand to Italy, I immersed myself
-                in local cultures, learning cooking techniques that were handed down
-                through generations.
+                that took me across continents. Visiting countries from Thailand
+                to Italy, I immersed myself in local cultures, learning cooking
+                techniques that were handed down through generations.
               </p>
               <p className="text-lg text-text mb-6">
-                These experiences showed me the universal language of
-                food and of its ability to bring people together across cultural
+                These experiences showed me the universal language of food and
+                of its ability to bring people together across cultural
                 boundaries. I came home with a vision to create a restaurant
                 that honored these traditions while reimagining them in a
                 sustainable, plant-focused setting. That&apos;s how Maitso was

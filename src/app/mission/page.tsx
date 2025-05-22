@@ -606,7 +606,7 @@ const MissionPage = () => {
               <PartnerCarousel />
             </div>
           </div>
-          <div className="w-full h-[75vh] relative overflow-hidden">
+          <div className="w-full h-[50vh] relative overflow-hidden">
             <div className="absolute inset-0"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <motion.h1
@@ -621,7 +621,7 @@ const MissionPage = () => {
                   <CountUp end={28} duration={1.5} />
                 </span>
                 <span className="text-primary-darker">%</span> of greenhouse gas
-                emissions we use...
+                emissions, we're focusing on the...
               </motion.h1>
             </div>
           </div>

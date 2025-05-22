@@ -234,11 +234,13 @@ const MissionPage = () => {
     new Array(3).fill(false)
   );
   const [animationComplete, setAnimationComplete] = useState(false);
+  const [currentFlippingCard, setCurrentFlippingCard] = useState<number>(0);
 
   // Create refs for each card
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
   const card3Ref = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
 
   const isContainerInView = useInView(containerRef, {
     once: true,
@@ -250,6 +252,7 @@ const MissionPage = () => {
 
     const containerWidth = containerRef.current.offsetWidth;
 
+    // Animate the drone using circleX instead of controls
     controls.start({
       x: containerWidth - 100,
       transition: {
@@ -261,7 +264,6 @@ const MissionPage = () => {
       },
     });
   }, [controls, isContainerInView]);
-
   // Track the drone position and set animation complete when it reaches the end
   useMotionValueEvent(circleX, "change", (latestX) => {
     if (!containerRef.current) return;
@@ -276,7 +278,7 @@ const MissionPage = () => {
       setAnimationComplete(true);
     }
 
-    // Check each card's position
+    // Check each card's position during animation
     [card1Ref, card2Ref, card3Ref].forEach((cardRef, index) => {
       const card = cardRef.current;
       if (!card) return;
@@ -293,30 +295,37 @@ const MissionPage = () => {
       const normalizedCardPos = cardPosX / containerWidth;
 
       // Add a small offset to flip the card slightly before the drone reaches it
-      // This makes the flip feel more responsive across all devices
-      const offsetPercent = 0.05; // 5% earlier flip trigger
+      const offsetPercent = 0.05;
       const adjustedCardPos = normalizedCardPos - offsetPercent;
 
       // Card should flip when drone passes directly over it (with offset)
+      // Only flip if the current card is the same as the index (sequential flipping)
       if (
         normalizedDronePos >= adjustedCardPos &&
-        !timelineCardFlipped[index]
+        !timelineCardFlipped[index] &&
+        index === currentFlippingCard
       ) {
         setTimelineCardFlipped((prev) => {
           const newState = [...prev];
           newState[index] = true;
           return newState;
         });
+
+        // Set the next card as the current flipping card
+        if (index < 2) {
+          setTimeout(() => {
+            setCurrentFlippingCard(index + 1);
+          }, 500);
+        }
       }
     });
   });
-
-  const circleRef = useRef<HTMLDivElement>(null);
 
   // Handle manual flipping of timeline cards
   const handleTimelineCardFlip = (index: number) => {
     if (!animationComplete) return; // Only allow flipping after animation completes
 
+    // Once animation is complete, allow flipping any card freely
     setTimelineCardFlipped((prev) => {
       const newState = [...prev];
       newState[index] = !newState[index];

@@ -55,7 +55,7 @@ function SustainabilityGraphic({
           <React.Fragment key={link}>
             <div className="relative flex flex-col items-center gap-4 w-full lg:flex-1">
               <motion.div
-                className="bg-white relative overflow-hidden aspect-square border-primary-darkest hover:cursor-pointer border-2 rounded-xl shadow-lg p-4"
+                className="bg-white relative overflow-hidden aspect-square hover:cursor-pointer rounded-xl shadow-lg p-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -66,14 +66,17 @@ function SustainabilityGraphic({
                   toggleInfo(index);
                 }}
               >
-                <Image
-                  width={500}
-                  height={500}
-                  src={`/img/menu/sustainability-graphic/${link}.svg`}
-                  alt={"Graphic of " + link}
-                  className={`w-full h-full transition-all duration-300 ${openStates[index] ? "blur-sm" : ""}`}
-                  key={link}
-                />
+                <div className="w-full h-full bg-background-dim p-2 rounded-xl">
+                  <Image
+                    width={500}
+                    height={500}
+                    src={`/img/menu/sustainability-graphic/${link}.svg`}
+                    alt={"Graphic of " + link}
+                    className={`w-full h-full transition-all duration-300 ${openStates[index] ? "blur-sm" : ""}`}
+                    key={link}
+                  />
+                </div>
+                
                 <motion.div
                   className="text-lg lg:top-0 top-1/2 absolute w-full h-full bg-opacity-75 bg-white left-0 p-2 "
                   initial={{ y: "100%" }}

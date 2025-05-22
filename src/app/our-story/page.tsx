@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   motion,
   useInView,
@@ -17,8 +17,6 @@ import {
   Leaf,
   Award,
   X,
-  Camera,
-  ChevronLeft,
   ChevronRight,
   Sparkles,
   ChevronDown,
@@ -44,7 +42,6 @@ export default function OurStoryPage() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const isTimelineVisible = useInView(timelineRef, { once: true, amount: 0.2 });
-  const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
   const [selectedChef, setSelectedChef] = useState<number | null>(null);
 
   // Add state for flipping value cards
@@ -53,34 +50,6 @@ export default function OurStoryPage() {
     community: false,
     innovation: false,
   });
-
-  // Gallery images
-  const galleryImages = [
-    {
-      src: "/img/kitchenteam.jpg",
-      caption: "Our passionate kitchen team in action",
-    },
-    {
-      src: "/img/farmtofork.jpg",
-      caption: "Farm visit to select the freshest ingredients",
-    },
-    {
-      src: "/img/seasonalingredients.jpg",
-      caption: "Seasonal preparations with local produce",
-    },
-    {
-      src: "/img/zerowastecooking.jpg",
-      caption: "Our zero-waste cooking practices",
-    },
-    {
-      src: "/img/farmer.jpg",
-      caption: "Building relationships with local farmers",
-    },
-    {
-      src: "/img/foodplatter1.png",
-      caption: "A sample of our culinary creations",
-    },
-  ];
 
   // Chef profiles
   const chefs = [
@@ -114,7 +83,7 @@ export default function OurStoryPage() {
       description:
         "We started as a small food truck serving plant-based dishes at local farmers' markets.",
       icon: <Clock size={24} />,
-      image: "/img/foodplatter1.png",
+      image: "/img/foodtruck.png",
     },
     {
       year: "2016",
@@ -130,7 +99,7 @@ export default function OurStoryPage() {
       description:
         "We began hosting cooking classes and community events to share our passion for plant-based cuisine.",
       icon: <Users size={24} />,
-      image: "/img/farmer.jpg",
+      image: "/img/zerowastecooking.jpg",
     },
     {
       year: "2020",
@@ -138,7 +107,7 @@ export default function OurStoryPage() {
       description:
         "We implemented zero-waste policies and strengthened our partnerships with local organic farms.",
       icon: <Leaf size={24} />,
-      image: "/img/zerowastecooking.jpg",
+      image: "/img/sustainable.webp",
     },
     {
       year: "2023",
@@ -146,7 +115,7 @@ export default function OurStoryPage() {
       description:
         "Our dedication to sustainability and culinary excellence earned us national awards and recognition.",
       icon: <Award size={24} />,
-      image: "/img/seasonalingredients.jpg",
+      image: "/img/globe.webp",
     },
     {
       year: "2025",
@@ -158,30 +127,6 @@ export default function OurStoryPage() {
       isFuture: true,
     },
   ];
-
-  // Keyboard navigation for photo gallery
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (activePhotoIndex === null) return;
-
-      if (e.key === "Escape") {
-        setActivePhotoIndex(null);
-      } else if (e.key === "ArrowRight") {
-        setActivePhotoIndex((prev) =>
-          prev !== null ? (prev + 1) % galleryImages.length : null
-        );
-      } else if (e.key === "ArrowLeft") {
-        setActivePhotoIndex((prev) =>
-          prev !== null
-            ? (prev - 1 + galleryImages.length) % galleryImages.length
-            : null
-        );
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activePhotoIndex, galleryImages.length]);
 
   // Function to toggle card flip state
   const toggleValueCard = (
@@ -380,7 +325,7 @@ export default function OurStoryPage() {
             viewport={{ once: true }}
             className="text-3xl font-heading font-bold text-text mb-12 text-center"
           >
-            Our Founder&apos;s Story
+            Our Founders Story
           </motion.h2>
 
           <div className="flex flex-col lg:flex-row items-center max-w-6xl mx-auto">
@@ -393,7 +338,7 @@ export default function OurStoryPage() {
             >
               <div className="relative h-[400px] w-full lg:w-[90%] rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/img/founder.jpg"
+                  src="/img/founder.png"
                   alt="Founder of Green Plate"
                   fill
                   className="object-cover"
@@ -412,31 +357,35 @@ export default function OurStoryPage() {
                 Alex Rivera
               </h3>
               <p className="text-lg text-text mb-6">
-                Green Plate began as a dream long before it became a restaurant.
-                Growing up in a family where food was the centerpiece of every
-                gathering, I developed a deep appreciation for how meals bring
-                people together.
+                Maitso began with a passion for exploration and a respect for
+                global traditions. Growing up with a curiosity about different
+                cultures, I found my discipline and purpose when I joined the
+                army, where I learned the value of teamwork, resilience, and
+                attention to detail.
               </p>
               <p className="text-lg text-text mb-6">
-                After years in the traditional restaurant industry, I became
-                increasingly concerned about sustainability and the
-                environmental impact of our food systems. This led me to take a
-                leap of faith in 2014, selling my belongings to fund a small
-                food truck focused entirely on plant-based cuisine.
+                After completing my military service, I embarked on a journey
+                that took me across continents, from the street markets of
+                Thailand to the countryside of France, the coastal villages of
+                Peru to the bustling food stalls of Morocco. I immersed myself
+                in local cultures, learning cooking techniques handed down
+                through generations.
               </p>
               <p className="text-lg text-text mb-6">
-                What started as an experiment quickly grew into a passion
-                project with a dedicated following. Our commitment to flavor,
-                sustainability, and community resonated with people, allowing us
-                to expand from a simple food truck to the restaurant you see
-                today.
+                These experiences opened my eyes to the universal language of
+                food and how it brings people together across cultural
+                boundaries. I returned home with a vision to create a restaurant
+                that honored these traditions while reimagining them through a
+                sustainable, plant-focused lens. That&apos;s how Maitso was
+                born.
               </p>
               <div className="bg-primary-darker/10 p-6 rounded-lg">
                 <p className="text-primary-darker italic font-medium">
-                  &ldquo;My vision has always been to create food that&apos;s
-                  good for people, good for the planet, and absolutely
-                  delicious. I believe we don&apos;t have to compromise on any
-                  of these values to create memorable dining experiences.&rdquo;
+                  &ldquo;The recipes we create are more than just
+                  food&mdash;they&apos;re stories from around the world,
+                  reimagined with respect for both tradition and our planet.
+                  Each dish represents a memory from my travels and a commitment
+                  to sharing those experiences with our community.&rdquo;
                 </p>
               </div>
             </motion.div>
@@ -584,12 +533,8 @@ export default function OurStoryPage() {
                     </h4>
                     <p className="text-text">{item.description}</p>
                   </div>
-
                   {/* Image */}
-                  <div
-                    className="md:w-1/2 group cursor-pointer"
-                    onClick={() => setActivePhotoIndex(index)}
-                  >
+                  <div className="md:w-1/2">
                     <div
                       className={`h-[250px] relative rounded-lg overflow-hidden shadow-md ${
                         item.isFuture ? "border-2 border-primary" : ""
@@ -599,17 +544,13 @@ export default function OurStoryPage() {
                         src={item.image}
                         alt={item.title}
                         fill
-                        className={`object-cover transition-transform group-hover:scale-110 duration-500 ${
+                        className={`object-cover ${
                           item.isFuture ? "opacity-80" : ""
                         }`}
                       />
                       {item.isFuture && (
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/20"></div>
                       )}
-                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
-                      <div className="absolute bottom-4 right-4 bg-primary text-text p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Camera size={20} />
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -618,85 +559,6 @@ export default function OurStoryPage() {
           </div>
         </div>
       </div>
-      {/* Photo Lightbox Modal */}
-      <AnimatePresence>
-        {activePhotoIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90"
-            onClick={() => setActivePhotoIndex(null)}
-          >
-            <motion.button
-              className="absolute top-6 right-6 text-white bg-black/50 p-2 rounded-full hover:bg-black/80 z-50 transition-colors duration-200"
-              onClick={(e) => {
-                e.stopPropagation();
-                setActivePhotoIndex(null);
-              }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <X size={24} />
-            </motion.button>
-
-            <motion.button
-              className="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-black/50 p-2 rounded-full hover:bg-black/80 z-50 transition-colors duration-200"
-              onClick={(e) => {
-                e.stopPropagation();
-                setActivePhotoIndex((prev) =>
-                  prev !== null
-                    ? (prev - 1 + galleryImages.length) % galleryImages.length
-                    : null
-                );
-              }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronLeft size={24} />
-            </motion.button>
-
-            <motion.button
-              className="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-black/50 p-2 rounded-full hover:bg-black/80 z-50 transition-colors duration-200"
-              onClick={(e) => {
-                e.stopPropagation();
-                setActivePhotoIndex((prev) =>
-                  prev !== null ? (prev + 1) % galleryImages.length : null
-                );
-              }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <ChevronRight size={24} />
-            </motion.button>
-
-            <div
-              className="relative w-full max-w-5xl max-h-[80vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-full h-full"
-              >
-                <div className="relative w-full aspect-[16/9] md:aspect-[3/2]">
-                  <Image
-                    src={galleryImages[activePhotoIndex].src}
-                    alt={galleryImages[activePhotoIndex].caption}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="bg-black/60 p-4 absolute bottom-0 left-0 right-0 text-white text-center">
-                  <p>{galleryImages[activePhotoIndex].caption}</p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       {/* Chef Detail Modal */}
       <AnimatePresence>
         {selectedChef !== null && (

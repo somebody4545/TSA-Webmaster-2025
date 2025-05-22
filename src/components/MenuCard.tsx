@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Vegan, WheatOff, Croissant, Flame, Bean } from "lucide-react";
+import { Vegan, WheatOff, Croissant, Flame, Bean, Salad } from "lucide-react";
 type MenuCardProps = {
   title: string;
   subtitle: string;
@@ -17,6 +17,7 @@ const tagIconMap: Record<string, React.ReactNode> = {
   "Low Carb": <Croissant size={16} />,
   Spicy: <Flame size={16} />,
   "High Protein": <Bean size={16} />,
+  Vegetarian: <Salad size={16} />,
 };
 const combineClassNames = (...classes: (string | undefined)[]) =>
   classes.filter(Boolean).join(" ");

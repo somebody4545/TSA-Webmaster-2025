@@ -22,25 +22,25 @@ const LosAngeles = () => {
           title: "The Broad Museum",
           description: "Contemporary art museum featuring works by Warhol, Koons, and more.",
           distance: "0.4 miles away",
-          image: "/img/attractions/broad-museum.jpg"
+          image: "/img/attractions/broad-museum.png"
         },
         {
           title: "Walt Disney Concert Hall",
           description: "Stunning architectural masterpiece and home to the LA Philharmonic.",
           distance: "0.3 miles away",
-          image: "/img/attractions/disney-concert-hall.jpg"
+          image: "/img/attractions/disney-concert-hall.png"
         },
         {
           title: "Grand Central Market",
           description: "Historic food hall featuring diverse local vendors and restaurants.",
           distance: "0.2 miles away",
-          image: "/img/attractions/grand-central-market.jpg"
+          image: "/img/attractions/grand-central-market.png"
         },
         {
           title: "The Last Bookstore",
           description: "Iconic independent bookstore with unique architecture and rare books.",
           distance: "0.5 miles away",
-          image: "/img/attractions/last-bookstore.jpg"
+          image: "/img/attractions/last-bookstore.png"
         }
       ]} />
   )

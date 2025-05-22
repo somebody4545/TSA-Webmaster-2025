@@ -42,6 +42,75 @@ export default function ReferencesPage() {
     'https://commons.wikimedia.org/wiki/File:Edamame_on_a_bamboo_bowl_by_yomi955.jpg',
     'https://unsplash.com/photos/green-soup-in-white-ceramic-bowl-9ND-qkGs1_8',
     'https://unsplash.com/photos/fried-food-on-white-ceramic-bowl-pQnsKWk5ljQ',
+    'https://unsplash.com/photos/empty-table-and-chairs-inside-building-ZgREXhl8ER0',
+    'https://unsplash.com/photos/a-hand-holding-a-wrap-filled-with-lettuce-and-sauce-wqo9gl7UiOc',
+    'https://unsplash.com/photos/sliced-lemon-and-green-leaves-on-brown-wooden-chopping-board-xpd-3kwh6ww',
+    'https://unsplash.com/photos/sliced-tomato-and-green-vegetable-salad-OgbVYramPh8',
+    'https://unsplash.com/photos/a-bowl-of-cereal-with-berries-bananas-and-other-fruits-AqlcqCzF3aQ',
+    'https://unsplash.com/photos/a-couple-of-people-sitting-at-a-table-in-a-restaurant-YduJNHSnJUU',
+    'https://unsplash.com/photos/long-stem-wine-glass-on-brown-wooden-table-with-chairs-rOqhhJUf7Ew',
+    'https://unsplash.com/photos/a-room-filled-with-lots-of-wooden-tables-and-chairs-7CV0-H5qHRk',
+    'https://www.freepik.com/free-photo/arrangement-different-foods-ingredients_12690806.htm#fromView=keyword&page=1&position=33&uuid=9fd44e4d-4e7a-4017-aa02-408d08c14d02&query=Mediterranean+Bowl',
+    'https://www.pexels.com/search/mediterranean%20bowl/',
+    'https://unsplash.com/photos/photo-of-white-building-j5K6ambkGNk',
+    'https://unsplash.com/s/photos/walt-disney-concert-hall',
+    'https://unsplash.com/photos/group-of-person-on-store-UDNsmriCntM',
+    'https://unsplash.com/photos/woman-taking-picture-of-neon-signage-rIfanjzQfeU',
+    'https://unsplash.com/photos/worms-view-of-glass-building-6Mhb55ddt9I',
+    'https://unsplash.com/photos/a-statue-of-a-lion-qya3dQM0HP0',
+    'https://unsplash.com/photos/city-skyline-during-night-time-6MxW0gR6VMo',
+    'https://unsplash.com/photos/two-boats-are-docked-in-a-river-in-a-city-2J6a-2ZO_HA',
+    'https://unsplash.com/photos/aerial-view-of-city-buildings-during-daytime-FD-gzGKS5sY',
+    'https://unsplash.com/photos/a-group-of-people-in-a-park-h9lmvT1D7lc',
+    'https://unsplash.com/photos/people-on-street-near-building-EGzyJk2juPo',
+    'https://unsplash.com/photos/a-city-square-with-a-fountain-surrounded-by-tall-buildings-Y8RNCrzIeoI',
+    'https://unsplash.com/photos/public-market-center-signage-xsqF178XAhk',
+    'https://unsplash.com/photos/space-needle-tower-at-night-QfhbK2pY0Ao',
+    'https://unsplash.com/photos/a-large-wooden-sculpture-hanging-from-the-ceiling-of-a-building-3zyo0eJF1-A',
+    'https://unsplash.com/photos/a-ferris-wheel-sitting-on-top-of-a-pier-next-to-a-body-of-water-Zxzjayu7ON8',
+    'https://unsplash.com/photos/cooked-food-in-black-cooking-pot-eEWlcfydzQ4',
+    'https://unsplash.com/photos/cooked-food-in-black-cooking-pot-eEWlcfydzQ4',
+    'https://unsplash.com/s/photos/stuffed-bell-pepper?license=free',
+    'https://unsplash.com/s/photos/mushroom-stroganoff?license=free',
+    'https://unsplash.com/photos/pesto-pasta-garnished-with-basil-and-cheese-1aidrXyeuLs',
+    'https://unsplash.com/photos/red-liquid-in-clear-drinking-glass-rJJuQjPsSLk',
+    'https://unsplash.com/photos/green-liquid-in-clear-drinking-glass-Rd_cmQWnCaM',
+    'https://unsplash.com/s/photos/Turmeric-latte',
+    'https://unsplash.com/s/photos/matcha-green-tea',
+    'https://unsplash.com/photos/strawberry-juice-in-clear-drinking-glass-05PIGVqLvY4'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ];
 
   const researchReferences = [

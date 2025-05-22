@@ -73,7 +73,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           >
             <button
               onClick={() => router.back()}
-              className="flex items-center text-background-dim hover:text-primary transition-colors duration-200"
+              className="flex items-center text-background-dim hover:text-primary-darker transition-colors duration-200"
             >
               <ChevronLeft className="mr-1" /> Back
             </button>
@@ -94,7 +94,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <Star className="w-5 h-5 fill-primary text-primary" />
+            <Star className="w-5 h-5 fill-primary-darker text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
@@ -140,7 +140,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <CalendarDays className="w-8 h-8 text-primary mb-3" />
+                  <CalendarDays className="w-8 h-8 text-primary-darker mb-3" />
                   <h3 className="font-heading text-lg font-bold mb-2">Open Daily</h3>
                   <p className="text-gray-600">Experience our sustainable menu every day of the week</p>
                 </motion.div>
@@ -151,7 +151,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Utensils className="w-8 h-8 text-primary mb-3" />
+                  <Utensils className="w-8 h-8 text-primary-darker mb-3" />
                   <h3 className="font-heading text-lg font-bold mb-2">Full Menu</h3>
                   <p className="text-gray-600">Enjoy our complete plant-based menu with global influences</p>
                 </motion.div>
@@ -162,7 +162,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <MapPin className="w-8 h-8 text-primary mb-3" />
+                  <MapPin className="w-8 h-8 text-primary-darker mb-3" />
                   <h3 className="font-heading text-lg font-bold mb-2">Central Location</h3>
                   <p className="text-gray-600">Conveniently located in the heart of {city.split(',')[0]}</p>
                 </motion.div>
@@ -179,13 +179,13 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                 className="bg-white rounded-xl overflow-hidden shadow-lg mb-8"
                 variants={itemVariants}
               >
-                <div className="bg-primary p-6 text-white">
+                <div className="bg-primary-darker p-6 text-white">
                   <h2 className="font-heading text-2xl font-bold">Location Details</h2>
                 </div>
 
                 <div className="p-6 space-y-8">
                   <motion.div variants={itemVariants} className="space-y-3">
-                    <div className="flex items-center text-primary">
+                    <div className="flex items-center text-primary-darker">
                       <Clock className="w-5 h-5 mr-3" />
                       <h3 className="text-xl font-bold font-heading">Hours</h3>
                     </div>
@@ -202,14 +202,14 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="space-y-3">
-                    <div className="flex items-center text-primary">
+                    <div className="flex items-center text-primary-darker">
                       <MapPin className="w-5 h-5 mr-3" />
                       <h3 className="text-xl font-bold font-heading">Address</h3>
                     </div>
                     <div className="pl-8">
                       <p className="text-gray-700 mb-2">{addressNew}</p>
                       <Link
-                        className="inline-flex items-center text-primary hover:text-primary-darker font-medium transition-colors"
+                        className="inline-flex items-center text-primary-darker hover:text-primary-darker font-medium transition-colors"
                         target="_blank"
                         href={`https://www.google.com/maps/place/${addressNew}`}
                       >
@@ -220,7 +220,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                   </motion.div>
 
                   <motion.div variants={itemVariants} className="space-y-3">
-                    <div className="flex items-center text-primary">
+                    <div className="flex items-center text-primary-darker">
                       <Phone className="w-5 h-5 mr-3" />
                       <h3 className="text-xl font-bold font-heading">Contact</h3>
                     </div>
@@ -233,13 +233,13 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
 
                   <motion.div variants={itemVariants}>
                     <div className="flex justify-center space-x-5 pt-4">
-                      <a href="#" className="bg-background rounded-full p-2 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+                      <a href="#" className="bg-background rounded-full p-2 text-primary-darker hover:bg-primary-darker hover:text-white transition-colors duration-200">
                         <Facebook className="w-5 h-5" />
                       </a>
-                      <a href="#" className="bg-background rounded-full p-2 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+                      <a href="#" className="bg-background rounded-full p-2 text-primary-darker hover:bg-primary-darker hover:text-white transition-colors duration-200">
                         <Instagram className="w-5 h-5" />
                       </a>
-                      <a href="#" className="bg-background rounded-full p-2 text-primary hover:bg-primary hover:text-white transition-colors duration-200">
+                      <a href="#" className="bg-background rounded-full p-2 text-primary-darker hover:bg-primary-darker hover:text-white transition-colors duration-200">
                         <Twitter className="w-5 h-5" />
                       </a>
                     </div>
@@ -252,7 +252,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
           {/* Things to Do Nearby - Full Width Section */}
           {cityThingsToDo.length > 0 && (
             <div className="mt-16">
-              <div className="w-full bg-primary rounded-t-xl px-8 py-6">
+              <div className="w-full bg-primary-darker rounded-t-xl px-8 py-6">
                 <h2 className="font-heading text-3xl font-bold text-white">Things to Do Nearby</h2>
               </div>
               <div className="w-full bg-white rounded-b-xl shadow-lg px-4 py-8">
@@ -262,7 +262,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       key={index}
                       variants={itemVariants}
                       whileHover={{ y: -5, boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
-                      className="border-l-4 border-primary pl-4 pr-4 py-4 bg-background rounded-lg shadow-md hover:shadow-xl transition-all duration-200 flex flex-col h-full"
+                      className="border-l-4 border-primary-darker pl-4 pr-4 py-4 bg-background rounded-lg shadow-md hover:shadow-xl transition-all duration-200 flex flex-col h-full"
                     >
                       <div className="w-full h-40 relative mb-4 rounded-md overflow-hidden">
                         <Image
@@ -276,7 +276,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
                       </div>
                       <h3 className="font-heading text-lg font-bold text-gray-800 mb-2">{item.title}</h3>
                       <p className="text-gray-600 flex-1">{item.description}</p>
-                      <p className="text-primary text-sm mt-4 font-semibold">{item.distance}</p>
+                      <p className="text-primary-darker text-sm mt-4 font-semibold">{item.distance}</p>
                     </motion.div>
                   ))}
                 </div>

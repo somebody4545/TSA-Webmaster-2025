@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { UserRound } from 'lucide-react';
+import { UserRound } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 
@@ -59,7 +59,10 @@ export default function Header() {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (earnDropdownRef.current && !earnDropdownRef.current.contains(event.target as Node)) {
+      if (
+        earnDropdownRef.current &&
+        !earnDropdownRef.current.contains(event.target as Node)
+      ) {
         setIsEarnOpen(false);
       }
     }
@@ -76,7 +79,6 @@ export default function Header() {
   useEffect(() => {
     setIsEarnOpen(false);
   }, [pathname]);
-
 
   const handleNavigation = () => {
     setIsEarnOpen(false);
@@ -96,10 +98,10 @@ export default function Header() {
       }
     };
 
-    document.addEventListener('click', handleDocumentClick, true);
+    document.addEventListener("click", handleDocumentClick, true);
 
     return () => {
-      document.removeEventListener('click', handleDocumentClick, true);
+      document.removeEventListener("click", handleDocumentClick, true);
     };
   }, [isEarnOpen]);
 
@@ -126,7 +128,8 @@ export default function Header() {
         >
           Maitso
         </motion.h1>
-      </Link>        <motion.div
+      </Link>{" "}
+      <motion.div
         className="dropdown dropdown-end lg:hidden"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
@@ -165,21 +168,37 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/mission" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Process</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/mission" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                Process
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
-            <motion.li
+          <motion.li
             initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
           >
             <Link
-              href="/mission"
+              href="/our-story"
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/story" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Our Story</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/our-story" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                Our Story
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -191,8 +210,16 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/menu" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Menu</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/menu" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                Menu
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -204,8 +231,16 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/locations" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Locations</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/locations" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                Locations
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -217,95 +252,147 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/gifts" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Gifts</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/gifts" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                Gifts
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </a>
           </motion.li>
-          {isLoggedIn ? <motion.li
-            ref={earnDropdownRef}
-            initial={{ opacity: 1, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
-            className={`${isEarnOpen ? 'z-50' : ''}`}
-          >
-            <div className="relative">
-              <button
-                onClick={() => {
-                  lastToggleRef.current = Date.now();
-                  setIsEarnOpen(!isEarnOpen);
-                }}
-                onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
-                className="flex items-center w-full justify-between group relative overflow-hidden"
-              >
-
-                <span className="text-text transition-colors duration-700">Account</span>
-                <motion.svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1 text-text transition-colors duration-700"
-                  animate={{ rotate: isEarnOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+          {isLoggedIn ? (
+            <motion.li
+              ref={earnDropdownRef}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              className={`${isEarnOpen ? "z-50" : ""}`}
+            >
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    lastToggleRef.current = Date.now();
+                    setIsEarnOpen(!isEarnOpen);
+                  }}
+                  onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
+                  className="flex items-center w-full justify-between group relative overflow-hidden"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </motion.svg>
-                <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
-              </button>
-              <AnimatePresence>
-                {isEarnOpen && (
-                  <motion.ul className="text-black p-3 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg w-48 border border-gray-100"
-                    initial={{ opacity: 0, y: -5, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -5, scale: 0.95 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  <span className="text-text transition-colors duration-700">
+                    Account
+                  </span>
+                  <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 ml-1 text-text transition-colors duration-700"
+                    animate={{ rotate: isEarnOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <motion.li
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: 0.05 }}
-                      onClick={() => {
-                        setTimeout(() => setIsEarnOpen(false), 100);
-                      }}
-
-                    >                      <Link href="/rewards" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">                      <span className={`${pathname === '/rewards' ? "font-bold" : ""} transition-colors duration-700`}>Rewards</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
-                      </Link>
-
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: 0.1 }}
-                      onClick={() => {
-                        setTimeout(() => setIsEarnOpen(false), 100);
-                      }}
-
-                    >                      <Link href="/reserve" onClick={handleNavigation} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">                        <span className={`${pathname === '/reserve' ? "font-bold" : ""} transition-colors duration-700`}>Reserve</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
-                      </Link>
-                    </motion.li>
-                    <motion.li
-                      initial={{ opacity: 0, x: -5 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.2, delay: 0.1 }}
-                      onClick={() => {
-                        setTimeout(() => setIsEarnOpen(false), 100);
-                      }}
-                    >                      <button onClick={handleLogout} className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block">
-                        <span className={`transition-colors duration-700`}>Log Out</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
-                      </button>
-                    </motion.li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.li> : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </motion.svg>
+                  <span
+                    className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                  ></span>
+                </button>
+                <AnimatePresence>
+                  {isEarnOpen && (
+                    <motion.ul
+                      className="text-black p-3 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg w-48 border border-gray-100"
+                      initial={{ opacity: 0, y: -5, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -5, scale: 0.95 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <motion.li
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2, delay: 0.05 }}
+                        onClick={() => {
+                          setTimeout(() => setIsEarnOpen(false), 100);
+                        }}
+                      >
+                        {" "}
+                        <Link
+                          href="/rewards"
+                          onClick={handleNavigation}
+                          className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block"
+                        >
+                          {" "}
+                          <span
+                            className={`${
+                              pathname === "/rewards" ? "font-bold" : ""
+                            } transition-colors duration-700`}
+                          >
+                            Rewards
+                          </span>
+                          <span
+                            className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                          ></span>
+                        </Link>
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2, delay: 0.1 }}
+                        onClick={() => {
+                          setTimeout(() => setIsEarnOpen(false), 100);
+                        }}
+                      >
+                        {" "}
+                        <Link
+                          href="/reserve"
+                          onClick={handleNavigation}
+                          className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block"
+                        >
+                          {" "}
+                          <span
+                            className={`${
+                              pathname === "/reserve" ? "font-bold" : ""
+                            } transition-colors duration-700`}
+                          >
+                            Reserve
+                          </span>
+                          <span
+                            className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                          ></span>
+                        </Link>
+                      </motion.li>
+                      <motion.li
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2, delay: 0.1 }}
+                        onClick={() => {
+                          setTimeout(() => setIsEarnOpen(false), 100);
+                        }}
+                      >
+                        {" "}
+                        <button
+                          onClick={handleLogout}
+                          className="relative overflow-hidden group hover:bg-green-50 rounded-md transition-colors duration-200 p-2 block"
+                        >
+                          <span className={`transition-colors duration-700`}>
+                            Log Out
+                          </span>
+                          <span
+                            className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                          ></span>
+                        </button>
+                      </motion.li>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.li>
+          ) : (
             <motion.li
               initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 1, x: 0 }}
@@ -315,8 +402,16 @@ export default function Header() {
                 onClick={handleNavigation}
                 className="relative overflow-hidden group "
               >
-                <span className={`${pathname === "/rewards" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>Sign In</span>
-                <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+                <span
+                  className={`${
+                    pathname === "/rewards" ? "font-bold" : ""
+                  } text-text focus:outline-none transition-colors duration-700`}
+                >
+                  Sign In
+                </span>
+                <span
+                  className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                ></span>
               </Link>
             </motion.li>
           )}
@@ -329,13 +424,20 @@ export default function Header() {
               onClick={handleNavigation}
               className="relative overflow-hidden group "
             >
-              <span className={`${pathname === "/references" ? "font-bold" : ""} text-text focus:outline-none transition-colors duration-700`}>References</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span
+                className={`${
+                  pathname === "/references" ? "font-bold" : ""
+                } text-text focus:outline-none transition-colors duration-700`}
+              >
+                References
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
         </ul>
       </motion.div>
-
       <motion.nav
         className="hidden lg:flex"
         initial={{ opacity: 1 }}
@@ -350,10 +452,18 @@ export default function Header() {
             <Link
               href="/mission"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/mission" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Mission</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                Mission
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -362,12 +472,20 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
           >
             <Link
-              href="/story"
+              href="/our-story"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/story" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/our-story" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Our Story</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                Our Story
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -378,10 +496,18 @@ export default function Header() {
             <Link
               href="/menu"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/menu" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/menu" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Menu</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                Menu
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -392,10 +518,18 @@ export default function Header() {
             <Link
               href="/locations"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/locations" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/locations" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Locations</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                Locations
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           <motion.li
@@ -406,10 +540,18 @@ export default function Header() {
             <a
               href="/gifts"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/gifts" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/gifts" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Gifts</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                Gifts
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </a>
           </motion.li>
           <motion.li
@@ -420,16 +562,24 @@ export default function Header() {
             <Link
               href="/references"
               onClick={handleNavigation}
-              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/references" ? "font-bold" : ""} active:!bg-green-950 `}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                pathname === "/references" ? "font-bold" : ""
+              } active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>References</span>
-              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+              <span className={`!${textColor} transition-colors duration-700`}>
+                References
+              </span>
+              <span
+                className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                  isScrolled ? "bg-background" : "bg-black"
+                } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+              ></span>
             </Link>
           </motion.li>
           {isLoggedIn ? (
             <motion.li
               ref={earnDropdownRef}
-              className={`relative ${isEarnOpen ? 'z-50' : ''}`}
+              className={`relative ${isEarnOpen ? "z-50" : ""}`}
               whileHover={{ scale: 1.05 }}
               initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
@@ -443,10 +593,8 @@ export default function Header() {
                 onBlur={() => setTimeout(() => setIsEarnOpen(false), 100)}
                 className={`relative overflow-hidden !${textColor} transition-colors !duration-700 group px-3 py-2 rounded-md flex items-center active:!bg-green-950 `}
               >
-
                 <UserRound className="size-5" />
                 Account
-
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={`h-4 w-4 ml-1 transition-colors duration-700`}
@@ -463,10 +611,16 @@ export default function Header() {
                     d="M19 9l-7 7-7-7"
                   />
                 </motion.svg>
-                <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
-              </button>            <AnimatePresence>
+                <span
+                  className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                    isScrolled ? "bg-background" : "bg-black"
+                  } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                ></span>
+              </button>{" "}
+              <AnimatePresence>
                 {isEarnOpen && (
-                  <motion.ul className="text-black p-4 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg min-w-40 border border-gray-100"
+                  <motion.ul
+                    className="text-black p-4 bg-white bg-opacity-95 backdrop-blur-sm shadow-lg absolute top-full left-0 rounded-lg min-w-40 border border-gray-100"
                     initial={{ opacity: 0, y: -5, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -5, scale: 0.95 }}
@@ -477,14 +631,33 @@ export default function Header() {
                       initial={{ opacity: 0, x: -5 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.2, delay: 0.05 }}
-
                       onClick={() => {
                         setTimeout(() => setIsEarnOpen(false), 100);
-                      }}                  >                    <a href="/rewards" onClick={(e) => { e.preventDefault(); handleNavigation(); window.location.href = '/rewards'; }} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
-                        <span className={`${pathname === '/rewards' ? "font-bold" : ""} transition-colors duration-700`}>Rewards</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+                      }}
+                    >
+                      {" "}
+                      <a
+                        href="/rewards"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavigation();
+                          window.location.href = "/rewards";
+                        }}
+                        className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200"
+                      >
+                        <span
+                          className={`${
+                            pathname === "/rewards" ? "font-bold" : ""
+                          } transition-colors duration-700`}
+                        >
+                          Rewards
+                        </span>
+                        <span
+                          className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                        ></span>
                       </a>
-                    </motion.li>                  <motion.li
+                    </motion.li>{" "}
+                    <motion.li
                       whileHover={{ scale: 1.05, x: 3 }}
                       initial={{ opacity: 0, x: -5 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -492,9 +665,23 @@ export default function Header() {
                       onClick={() => {
                         setTimeout(() => setIsEarnOpen(false), 100);
                       }}
-                    >                    <Link href="/reserve" onClick={handleNavigation} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
-                        <span className={`${pathname === '/reserve' ? "font-bold" : ""} transition-colors duration-700`}>Reserve</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+                    >
+                      {" "}
+                      <Link
+                        href="/reserve"
+                        onClick={handleNavigation}
+                        className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200"
+                      >
+                        <span
+                          className={`${
+                            pathname === "/reserve" ? "font-bold" : ""
+                          } transition-colors duration-700`}
+                        >
+                          Reserve
+                        </span>
+                        <span
+                          className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                        ></span>
                       </Link>
                     </motion.li>
                     <motion.li
@@ -504,17 +691,26 @@ export default function Header() {
                       transition={{ duration: 0.2, delay: 0.05 }}
                       onClick={() => {
                         setTimeout(() => setIsEarnOpen(false), 100);
-                      }}                  >
-                      <button onClick={handleLogout} className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200">
-                        <span className={`transition-colors duration-700`}>Log Out</span>
-                        <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+                      }}
+                    >
+                      <button
+                        onClick={handleLogout}
+                        className="relative overflow-hidden group px-3 py-2 block hover:bg-green-50 rounded-md transition-colors duration-200"
+                      >
+                        <span className={`transition-colors duration-700`}>
+                          Log Out
+                        </span>
+                        <span
+                          className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-black group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                        ></span>
                       </button>
-
                     </motion.li>
                   </motion.ul>
                 )}
               </AnimatePresence>
-            </motion.li>) : (<motion.li
+            </motion.li>
+          ) : (
+            <motion.li
               whileHover={{ scale: 1.05 }}
               initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
@@ -522,11 +718,22 @@ export default function Header() {
               <Link
                 href="/rewards"
                 onClick={handleNavigation}
-                className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/rewards" ? "font-bold" : ""} active:!bg-green-950 `}
-              >              <span className={`transition-colors duration-700`}>Sign In</span>
-                <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+                className={`relative overflow-hidden group px-3 py-2 rounded-md ${
+                  pathname === "/rewards" ? "font-bold" : ""
+                } active:!bg-green-950 `}
+              >
+                {" "}
+                <span className={`transition-colors duration-700`}>
+                  Sign In
+                </span>
+                <span
+                  className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${
+                    isScrolled ? "bg-background" : "bg-black"
+                  } group-hover:w-full group-hover:left-0 transition-all duration-300`}
+                ></span>
               </Link>
-            </motion.li>)}
+            </motion.li>
+          )}
         </ul>
       </motion.nav>
     </motion.header>

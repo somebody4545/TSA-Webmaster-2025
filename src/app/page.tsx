@@ -513,14 +513,55 @@ function GallerySection() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12
+      }
+    }
+  };
+
   return (
     <section className="w-full bg-black py-16 px-4 md:px-16" style={{ boxShadow: "0 -10px 30px rgba(0,0,0,0.3)" }}>
-      <h2 className="text-4xl font-heading text-white mb-8 text-center">Gallery</h2>
-      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+      <motion.h2
+        className="text-4xl font-heading text-white mb-8 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
+        Gallery
+      </motion.h2>
+      <motion.div
+        className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {images.map((img, idx) => (
-          <div
+          <motion.div
             key={idx}
             className={`overflow-hidden rounded-2xl shadow-lg bg-[#181818] flex items-center justify-center h-[150px] sm:h-[180px] md:h-[200px] ${img.className}`}
+            variants={itemVariants}
+            custom={idx}
           >
             <Image
               src={img.src}
@@ -530,9 +571,9 @@ function GallerySection() {
               className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
               style={{ fontFamily: 'Inter, sans-serif' }}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

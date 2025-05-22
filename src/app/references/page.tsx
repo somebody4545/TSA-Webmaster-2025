@@ -81,39 +81,7 @@ export default function ReferencesPage() {
     'https://unsplash.com/photos/man-in-red-shirt-holding-white-textile-hcET0JIGXoI',
     'https://unsplash.com/photos/man-in-black-nike-jacket-wearing-white-cap-SiQgni-cqFg',
     'https://unsplash.com/photos/a-man-cooking-food-in-a-kitchen-wNQoaYCFcsI',
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    'https://canva.com'
   ];
 
   const researchReferences = [

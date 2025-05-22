@@ -14,10 +14,12 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
   const { title } = await params;
   const formattedTitle = title.replace(/-/g, " ");
   const item = menuData.find(
-    (menuItem) => menuItem.title.toLocaleLowerCase() === formattedTitle
+    (menuItem) => menuItem.title.toLowerCase() === formattedTitle.replace(/%26/g, "&")
   );
   if (!item) {
-    return <NotFound />;
+    return <><p>{formattedTitle}</p>
+    <NotFound />
+    </>;
   }
 
   const allowedKeys = ["calories", "totalFat", "totalCarbohydrates", "protein"];

@@ -339,9 +339,7 @@ const MissionPage = () => {
     <div className="min-h-screen">
       <style>{styles}</style>
       <div className="relative w-full min-h-[600px] max-h-[90vh] h-[90vh] flex flex-col justify-center items-center px-16 z-10 overflow-clip">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        >
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
           <div
             className="absolute inset-0 bg-black bg-opacity-50"
             aria-hidden="true"
@@ -470,9 +468,10 @@ const MissionPage = () => {
                     {/* Back of card */}
                     <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
                       <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
-                        We partner with local farmers to ensure that our dishes
-                        are made with the most fresh as well as flavorful
-                        vegetables and fruits.
+                        We collaborate with local farms and businesses in order
+                        to give back to the community, who supply us with the
+                        most fresh as well as flavorful fruits and vegetables
+                        for our dishes.
                       </p>
                       <button
                         onClick={() => setBikeFlipped(!bikeFlipped)}
@@ -520,9 +519,11 @@ const MissionPage = () => {
                     {/* Back of card */}
                     <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
                       <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
-                        We select and purchase seasonal produce to ensure peak
-                        flavor and nutrition year round; this enables us to come
-                        up with unique delicacies featuring global cultures.
+                        We scour the global market place for unique seasonal
+                        produce to include in our dishes to ensure we can serve
+                        flavorful and nutricious dishes all year long; this also
+                        enables us to come up with unique delicacies featuring
+                        global cultures.
                       </p>
                       <button
                         onClick={() => setRobotFlipped(!robotFlipped)}
@@ -571,8 +572,9 @@ const MissionPage = () => {
                     <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
                       <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium">
                         We support environmentally friendly farming practices
-                        and sustainable cooking to ensure that we preserve
-                        nature and strengthen our bond with our local community.
+                        and eco-conscious cooking to ensure that we preserve
+                        nature while also strengthening our bond with the
+                        community.
                       </p>
                       <button
                         onClick={() => setFreightFlipped(!freightFlipped)}
@@ -637,7 +639,10 @@ const MissionPage = () => {
                 <h3 className="text-3xl font-heading font-bold text-text">
                   Future of Delivery
                 </h3>
-                <p>Watch as our drone demonstrates the delivery process</p>
+                <p>
+                  Watch as our drone demonstrates our innovative delivery
+                  process, that minimizes emmissions from transportation.
+                </p>
               </motion.div>
 
               <div className="w-full relative" ref={containerRef}>
@@ -685,7 +690,7 @@ const MissionPage = () => {
                         <ShoppingCart className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
                       ),
                       description:
-                        "Our system quickly processes your order finds the optimal delivery route: our algorithms determine the most efficient path for the drone to reach you.",
+                        "Our system swiftly processes your order and determines optimal delivery route for our drones using industry leading mapping technology.",
                       image: "/img/bikedelivery.jpg",
                     },
                     {
@@ -694,7 +699,7 @@ const MissionPage = () => {
                         <Send className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
                       ),
                       description:
-                        "Your package is carefully loaded onto one of our drones and after final safety checks, the drone takes off and navigates to deliver your food!",
+                        "Your package is loaded onto one of our drones, then processed through safety checks, and lastly the drone takes off to deliver!",
                       image: "/img/robotdelivery.jpg",
                     },
                     {
@@ -703,7 +708,7 @@ const MissionPage = () => {
                         <PackageCheck className="h-8 w-8 md:h-12 md:w-12 text-primary-darker" />
                       ),
                       description:
-                        "The drone arrives at your delivery spot, lowers your package, and confirms successful delivery. You will recieve a notification that your order has arrived.",
+                        "The drone arrives at your delivery spot, lowers your package, and confirms delivery via a notification on your phone.",
                       image: "/img/greenfreight.jpg",
                     },
                   ].map((item, index) => (
@@ -861,8 +866,8 @@ const MissionPage = () => {
                   The Plant-Based Plate
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
-                  Our approach to balanced, nutritious meals that nourish both
-                  your body and the planet.
+                  Our approach to nutritious meals that nourish both your body
+                  and the planet.
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">
@@ -880,7 +885,7 @@ const MissionPage = () => {
                   <p className="text-text">
                     {selected !== null
                       ? PIE_DATA[selected].description
-                      : "Our plate represents a balanced approach to plant-based nutrition. Each section plays a vital role in providing essential nutrients for optimal health. Click on any section to learn more about its importance."}
+                      : "Our plate represents a balanced and informed approach to plant based nutrition. Each section represents the nutrients, which we ensure are present abundantly throughout our dishes. Click on any section to learn more about its importance, and how we incorporate it into our dishes!."}
                   </p>
                 </motion.div>
 

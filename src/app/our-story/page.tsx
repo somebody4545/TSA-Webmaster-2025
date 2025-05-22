@@ -21,7 +21,24 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  ChevronDown,
 } from "lucide-react";
+
+// Add styles for 3D flip effect
+const styles = `
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+`;
 
 export default function OurStoryPage() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -29,6 +46,13 @@ export default function OurStoryPage() {
   const isTimelineVisible = useInView(timelineRef, { once: true, amount: 0.2 });
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
   const [selectedChef, setSelectedChef] = useState<number | null>(null);
+
+  // Add state for flipping value cards
+  const [valueCardsFlipped, setValueCardsFlipped] = useState({
+    sustainability: false,
+    community: false,
+    innovation: false,
+  });
 
   // Gallery images
   const galleryImages = [
@@ -61,9 +85,9 @@ export default function OurStoryPage() {
   // Chef profiles
   const chefs = [
     {
-      name: "Alex Rivera",
+      name: "Zuri Brown",
       title: "Executive Chef",
-      bio: "With over 15 years of culinary experience, Chef Alex specializes in transforming traditional dishes into plant-based masterpieces without sacrificing flavor or texture.",
+      bio: "With over 15 years of culinary experience, Chef Zuri specializes in transforming traditional dishes into plant-based masterpieces without sacrificing flavor or texture.",
       image: "/img/chef-1.png",
       specialty: "Global fusion cuisine",
     },
@@ -75,9 +99,9 @@ export default function OurStoryPage() {
       specialty: "Innovative plant-based desserts",
     },
     {
-      name: "Taylor Morgan",
+      name: "Jabari Jefferson",
       title: "Chef de Cuisine",
-      bio: "Chef Taylor's background in sustainable agriculture informs their approach to menu development, ensuring that we honor seasonal rhythms and local ecosystems.",
+      bio: "Chef Jabari's background in sustainable agriculture informs their approach to menu development, ensuring that we honor seasonal rhythms and local ecosystems.",
       image: "/img/chef-3.jpg",
       specialty: "Farm-to-table cuisine",
     },
@@ -159,8 +183,19 @@ export default function OurStoryPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activePhotoIndex, galleryImages.length]);
 
+  // Function to toggle card flip state
+  const toggleValueCard = (
+    card: "sustainability" | "community" | "innovation"
+  ) => {
+    setValueCardsFlipped((prev) => ({
+      ...prev,
+      [card]: !prev[card],
+    }));
+  };
+
   return (
     <div className="min-h-screen">
+      <style>{styles}</style>
       {/* Hero Section with Parallax */}
       <div
         ref={heroRef}
@@ -216,8 +251,259 @@ export default function OurStoryPage() {
           </div>
         </motion.div>
       </div>
+      {/* Values Section with flip cards */}
+      <div className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl font-heading font-bold text-text mb-4"
+            >
+              Our Values
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-text max-w-2xl mx-auto"
+            >
+              The principles that guide everything we do
+            </motion.p>
+          </div>
 
-      {/* Interactive Timeline Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                id: "sustainability",
+                title: "Sustainability",
+                description:
+                  "We minimize our environmental impact through zero-waste practices and sustainable sourcing. Our kitchen uses locally sourced ingredients and energy-efficient equipment to reduce our carbon footprint.",
+                icon: (
+                  <Leaf
+                    className="h-24 w-24 text-primary-darker"
+                    strokeWidth={1.2}
+                  />
+                ),
+                isFlipped: valueCardsFlipped.sustainability,
+                toggle: () => toggleValueCard("sustainability"),
+              },
+              {
+                id: "community",
+                title: "Community",
+                description:
+                  "We build relationships with local farmers, producers, and customers to create a resilient food system. Through partnerships and events, we foster connections between people and their food.",
+                icon: (
+                  <Users
+                    className="h-24 w-24 text-primary-darker"
+                    strokeWidth={1.2}
+                  />
+                ),
+                isFlipped: valueCardsFlipped.community,
+                toggle: () => toggleValueCard("community"),
+              },
+              {
+                id: "innovation",
+                title: "Innovation",
+                description:
+                  "We explore new ingredients and techniques to create memorable plant-based dining experiences. Our chefs develop recipes that push boundaries while honoring traditional cooking methods.",
+                icon: (
+                  <ChefHat
+                    className="h-24 w-24 text-primary-darker"
+                    strokeWidth={1.2}
+                  />
+                ),
+                isFlipped: valueCardsFlipped.innovation,
+                toggle: () => toggleValueCard("innovation"),
+              },
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="relative h-[300px] perspective-1000"
+              >
+                <div
+                  className={`w-full h-full transition-transform duration-500 transform-style-3d ${
+                    value.isFlipped ? "rotate-y-180" : ""
+                  }`}
+                >
+                  {/* Front of card */}
+                  <div className="absolute w-full h-full backface-hidden bg-background-dim rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
+                    <div className="flex flex-col items-center justify-center h-full">
+                      <div className="h-16 w-16 md:h-24 md:w-24 mb-4 flex items-center justify-center bg-primary/10 rounded-full p-3">
+                        {value.icon}
+                      </div>
+                      <h3 className="text-xl font-heading font-bold text-text mb-3 text-center">
+                        {value.title}
+                      </h3>
+                      <div className="mt-3 w-16 h-1 bg-primary-darker rounded-full"></div>
+                    </div>
+                    <button
+                      onClick={value.toggle}
+                      className="absolute bottom-4 right-4 p-2 rounded-full bg-primary-darker text-white hover:bg-primary transition-colors"
+                    >
+                      <ChevronDown className="w-6 h-6" />
+                    </button>
+                  </div>
+
+                  {/* Back of card */}
+                  <div className="absolute w-full h-full backface-hidden bg-primary-darker rounded-lg shadow-lg p-4 md:p-6 flex flex-col items-center justify-center rotate-y-180">
+                    <p className="text-white text-center font-body text-base md:text-lg leading-tight md:leading-normal mx-1 font-medium mb-10">
+                      {value.description}
+                    </p>
+                    <button
+                      onClick={value.toggle}
+                      className="absolute bottom-4 right-4 p-2 rounded-full bg-white text-primary-darker hover:bg-background transition-colors"
+                    >
+                      <ChevronDown className="w-6 h-6 rotate-180" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Founder Story Section */}
+      <div className="py-16 bg-background-light">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl font-heading font-bold text-text mb-12 text-center"
+          >
+            Our Founder&apos;s Story
+          </motion.h2>
+
+          <div className="flex flex-col lg:flex-row items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="lg:w-2/5 mb-8 lg:mb-0"
+            >
+              <div className="relative h-[400px] w-full lg:w-[90%] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/img/founder.jpg"
+                  alt="Founder of Green Plate"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="lg:w-3/5"
+            >
+              <h3 className="text-2xl font-heading font-bold text-primary-darker mb-4">
+                Alex Rivera
+              </h3>
+              <p className="text-lg text-text mb-6">
+                Green Plate began as a dream long before it became a restaurant.
+                Growing up in a family where food was the centerpiece of every
+                gathering, I developed a deep appreciation for how meals bring
+                people together.
+              </p>
+              <p className="text-lg text-text mb-6">
+                After years in the traditional restaurant industry, I became
+                increasingly concerned about sustainability and the
+                environmental impact of our food systems. This led me to take a
+                leap of faith in 2014, selling my belongings to fund a small
+                food truck focused entirely on plant-based cuisine.
+              </p>
+              <p className="text-lg text-text mb-6">
+                What started as an experiment quickly grew into a passion
+                project with a dedicated following. Our commitment to flavor,
+                sustainability, and community resonated with people, allowing us
+                to expand from a simple food truck to the restaurant you see
+                today.
+              </p>
+              <div className="bg-primary-darker/10 p-6 rounded-lg">
+                <p className="text-primary-darker italic font-medium">
+                  &ldquo;My vision has always been to create food that&apos;s
+                  good for people, good for the planet, and absolutely
+                  delicious. I believe we don&apos;t have to compromise on any
+                  of these values to create memorable dining experiences.&rdquo;
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+      {/* Meet Our Chefs Section */}
+      <div className="py-16 bg-background-dim">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl font-heading font-bold text-text mb-12 text-center"
+          >
+            Meet Our Culinary Team
+          </motion.h2>
+
+          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+            {chefs.map((chef, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                className="w-full md:w-[calc(33.333%-2rem)] rounded-xl overflow-hidden shadow-lg bg-background cursor-pointer"
+                onClick={() => setSelectedChef(index)}
+                whileHover={{
+                  y: -5,
+                  boxShadow:
+                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                }}
+              >
+                <div className="relative h-64">
+                  <Image
+                    src={chef.image}
+                    alt={chef.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-6 text-white">
+                    <h3 className="text-xl font-heading font-bold">
+                      {chef.name}
+                    </h3>
+                    <p className="text-primary text-sm">{chef.title}</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-primary-darker font-medium mb-2">
+                    Specialty: {chef.specialty}
+                  </p>
+                  <p className="text-text line-clamp-3">{chef.bio}</p>
+                  <button className="mt-4 text-primary-darker hover:underline flex items-center">
+                    Read more <ChevronRight size={16} className="ml-1" />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Global Cuisine Map Section - Keep this untouched as requested */}
+      <GlobalCuisineMap />
+      {/* Interactive Timeline Section - Moved to bottom */}
       <div className="py-16 bg-background-dim" ref={timelineRef}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -332,139 +618,6 @@ export default function OurStoryPage() {
           </div>
         </div>
       </div>
-
-      {/* Values Section */}
-      <div className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl font-heading font-bold text-text mb-4"
-            >
-              Our Values
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-text max-w-2xl mx-auto"
-            >
-              The principles that guide everything we do
-            </motion.p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                title: "Sustainability",
-                description:
-                  "We're committed to minimizing our environmental impact through zero-waste practices, energy efficiency, and sustainable sourcing.",
-                icon: <Leaf className="h-10 w-10 text-primary-darker" />,
-              },
-              {
-                title: "Community",
-                description:
-                  "We believe in building relationships with local farmers, producers, and customers to create a resilient local food system.",
-                icon: <Users className="h-10 w-10 text-primary-darker" />,
-              },
-              {
-                title: "Innovation",
-                description:
-                  "We continuously explore new ingredients, techniques, and ideas to create memorable plant-based dining experiences.",
-                icon: <ChefHat className="h-10 w-10 text-primary-darker" />,
-              },
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="bg-background-dim p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-                whileHover={{
-                  y: -10,
-                  transition: { duration: 0.3 },
-                }}
-              >
-                <div className="bg-primary bg-opacity-20 rounded-full p-4 inline-block mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-heading font-bold text-text mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-text">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Meet Our Chefs Section */}
-      <div className="py-16 bg-background-dim">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl font-heading font-bold text-text mb-12 text-center"
-          >
-            Meet Our Culinary Team
-          </motion.h2>
-
-          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-            {chefs.map((chef, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="w-full md:w-[calc(33.333%-2rem)] rounded-xl overflow-hidden shadow-lg bg-background cursor-pointer"
-                onClick={() => setSelectedChef(index)}
-                whileHover={{
-                  y: -5,
-                  boxShadow:
-                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                }}
-              >
-                <div className="relative h-64">
-                  <Image
-                    src={chef.image}
-                    alt={chef.name}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 p-6 text-white">
-                    <h3 className="text-xl font-heading font-bold">
-                      {chef.name}
-                    </h3>
-                    <p className="text-primary text-sm">{chef.title}</p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-primary-darker font-medium mb-2">
-                    Specialty: {chef.specialty}
-                  </p>
-                  <p className="text-text line-clamp-3">{chef.bio}</p>
-                  <button className="mt-4 text-primary-darker hover:underline flex items-center">
-                    Read more <ChevronRight size={16} className="ml-1" />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Global Cuisine Map Section - Keep this untouched as requested */}
-      <GlobalCuisineMap />
-
       {/* Photo Lightbox Modal */}
       <AnimatePresence>
         {activePhotoIndex !== null && (
@@ -544,7 +697,6 @@ export default function OurStoryPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
       {/* Chef Detail Modal */}
       <AnimatePresence>
         {selectedChef !== null && (

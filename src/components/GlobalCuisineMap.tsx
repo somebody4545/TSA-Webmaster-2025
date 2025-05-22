@@ -29,8 +29,7 @@ const GlobalCuisineMap = () => {
       cuisine: "Thai Cuisine",
       description:
         "Our Thai-inspired dishes focus on fresh herbs, aromatic spices, and the perfect balance of sweet, sour, salty, and spicy flavors. We utilize traditional techniques like mortar and pestle grinding to release the full spectrum of flavors.",
-      signatureDish:
-        "Plant-based Buddha Bowl with sweet potato and kale",
+      signatureDish: "Plant-based Buddha Bowl with sweet potato and kale",
       menuReference: "Buddha Bowl",
       countryCode: "th",
     },
@@ -52,8 +51,7 @@ const GlobalCuisineMap = () => {
       cuisine: "Italian Cuisine",
       description:
         "Our Italian-inspired kitchen follows the principles of 'cucina povera' - simple food with high-quality ingredients. We make fresh pasta daily and follow traditional slow-cooking methods that have been perfected over generations.",
-      signatureDish:
-        "Mushroom Risotto with truffle oil and parmesan",
+      signatureDish: "Mushroom Risotto with truffle oil and parmesan",
       menuReference: "Mushroom Risotto",
       countryCode: "it",
     },
@@ -75,8 +73,7 @@ const GlobalCuisineMap = () => {
       cuisine: "Peruvian Cuisine",
       description:
         "Our Peruvian-inspired dishes showcase the country's incredible biodiversity and multicultural influences. We incorporate native quinoa, peppers, and root vegetables into vibrant, nutritious meals that highlight Peru's unique culinary heritage.",
-      signatureDish:
-        "Poke Bowl with vegetables and mango",
+      signatureDish: "Poke Bowl with vegetables and mango",
       menuReference: "Poke Bowl",
       countryCode: "pe",
     },
@@ -87,8 +84,7 @@ const GlobalCuisineMap = () => {
       cuisine: "Indian Cuisine",
       description:
         "Our Indian culinary approach celebrates regional diversity, from the robust flavors of Punjab to the coconut-infused dishes of Kerala. We grind our spice blends in-house and use traditional cooking methods like slow clay pot cooking.",
-      signatureDish:
-        "Paneer Tikka Masala with basmati rice and naan",
+      signatureDish: "Paneer Tikka Masala with basmati rice and naan",
       menuReference: "Paneer Tikka Masala",
       countryCode: "in",
     },
@@ -99,8 +95,7 @@ const GlobalCuisineMap = () => {
       cuisine: "Japanese Cuisine",
       description:
         "Our approach to Japanese cuisine focuses on seasonality, simplicity, and precision. We practice traditional fermentation techniques for miso and pickles, and our knife skills honor the Japanese dedication to craftsmanship.",
-      signatureDish:
-        "General Tso's Tofu with quinoa and broccoli",
+      signatureDish: "General Tso's Tofu with quinoa and broccoli",
       menuReference: "General Tso's Tofu",
       countryCode: "jp",
     },
@@ -113,14 +108,14 @@ const GlobalCuisineMap = () => {
   return (
     <div className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-heading font-bold text-text text-center mb-12">
+        <h2 className="text-3xl font-heading font-bold text-text text-center mb-8">
           Global Culinary Influences
         </h2>
-        <div className="mt-8 text-center text-black max-w-2xl mx-auto">
+        <div className="mt-4 mb-8 text-center text-black max-w-2xl mx-auto">
           <p>
-            Click on a country flag to discover how we've incorporated authentic
-            cooking techniques and flavors from culinary traditions around the
-            world.
+            Click on a country flag to discover how we&apos;ve incorporated
+            authentic cooking techniques and flavors from culinary traditions
+            around the world.
           </p>
         </div>
         <div className="relative w-full max-w-4xl mx-auto">

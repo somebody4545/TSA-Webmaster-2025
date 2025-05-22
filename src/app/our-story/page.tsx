@@ -105,7 +105,7 @@ export default function OurStoryPage() {
       year: "2020",
       title: "Sustainable Practices",
       description:
-        "We implemented zero-waste policies and strengthened our partnerships with local organic farms while also developing an innovative delivery that minimizes emmissions from transportation.",
+        "We implemented zero-waste policies and strengthened our partnerships with local organic farms while also developing an innovative delivery that minimizes emission from transportation.",
       icon: <Leaf size={24} />,
       image: "/img/sustainable.webp",
     },
@@ -113,7 +113,7 @@ export default function OurStoryPage() {
       year: "2023",
       title: "Global Recognition",
       description:
-        "Our dedication to sustainability and culinary excellence earned us national awards and recognition for our groundworking work focused on changing the narrative around plant-based cuisine.",
+        "Our dedication to sustainability and culinary excellence earned us national awards and recognition for our hard work focused on changing the narrative around plant-based cuisine.",
       icon: <Award size={24} />,
       image: "/img/globe.webp",
     },
@@ -121,7 +121,7 @@ export default function OurStoryPage() {
       year: "2025",
       title: "Future Vision",
       description:
-        "In the near future, we plan on openning new locations and launching a culinary institute focused on  plant-based cooking techniques to spread our mission with the rest of the world.",
+        "In the near future, we plan on opening new locations and launching a culinary institute focused on  plant-based cooking techniques to spread our mission with the rest of the world.",
       icon: <Sparkles size={24} />,
       image: "/img/farmtofork.jpg",
       isFuture: true,
@@ -226,7 +226,7 @@ export default function OurStoryPage() {
                 id: "sustainability",
                 title: "Sustainability",
                 description:
-                  "We prioritize the health of the planet and the health of our community through the use of eco friendly materials, ingredients, and cooking practices. Through our partnership wtih local farms and environmentally friendly organizations, we aim to change the world.",
+                  "We prioritize the health of the planet and the health of our community through the use of eco friendly materials, ingredients, and cooking practices. Through our partnership with local farms and environmentally friendly organizations, we aim to change the world.",
                 icon: (
                   <Leaf
                     className="h-24 w-24 text-primary-darker"
@@ -240,7 +240,7 @@ export default function OurStoryPage() {
                 id: "community",
                 title: "Community",
                 description:
-                  "We build strong relationships with our community and farmers through our commitment to sustainability and our deducation to uplifting other members in the community focused on our mission. We hope to provide a platform to help promote green ideas.",
+                  "We build strong relationships with our community and farmers through our commitment to sustainability and our dedication to uplifting other members in the community focused on our mission. We hope to provide a platform to help promote green ideas.",
                 icon: (
                   <Users
                     className="h-24 w-24 text-primary-darker"
@@ -334,14 +334,16 @@ export default function OurStoryPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="lg:w-2/5 mb-8 lg:mb-0"
+              className="lg:w-2/5 w-full mb-8 lg:mb-0"
             >
-              <div className="relative h-[400px] w-full lg:w-[90%] rounded-lg overflow-hidden shadow-xl">
+              <div className="relative h-[300px] sm:h-[350px] md:h-[400px] w-full lg:w-[90%] rounded-lg overflow-hidden shadow-xl">
                 <Image
                   src="/img/founder.png"
                   alt="Founder of Green Plate"
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority
+                  className="object-cover object-center"
                 />
               </div>
             </motion.div>
@@ -373,19 +375,10 @@ export default function OurStoryPage() {
                 These experiences showed me the universal language of food and
                 of its ability to bring people together across cultural
                 boundaries. I came home with a vision to create a restaurant
-                that honored these traditions while reimagining them in a
+                that honored these traditions while re-imagining them in a
                 sustainable, plant-focused setting. That&apos;s how Maitso was
                 born.
               </p>
-              <div className="bg-primary-darker/10 p-6 rounded-lg">
-                <p className="text-primary-darker italic font-medium">
-                  &ldquo;The recipes we create are more than just
-                  food&mdash;they&apos;re stories from around the world,
-                  reimagined with respect for both tradition and our planet.
-                  Each dish represents a memory from my travels and a commitment
-                  to sharing those experiences with our community.&rdquo;
-                </p>
-              </div>
             </motion.div>
           </div>
         </div>

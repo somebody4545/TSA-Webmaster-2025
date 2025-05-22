@@ -867,7 +867,8 @@ const MissionPage = () => {
                 </h2>
                 <p className="text-text max-w-3xl mx-auto">
                   Our approach to nutritious meals that nourish both your body
-                  and the planet.
+                  and the planet. Click on each one of the slices on the diagram 
+                  below to learn more!
                 </p>
               </div>
               <div className="flex flex-col md:flex-row items-center justify-center max-w-full overflow-clip relative">

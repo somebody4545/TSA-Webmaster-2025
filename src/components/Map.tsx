@@ -94,7 +94,7 @@ const Map: React.FC<MapProps> = ({ city, address, map, hours, contacts, thingsTo
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <Star className="w-5 h-5 fill-primary-darker text-primary" />
+            <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />
             <Star className="w-5 h-5 fill-primary text-primary" />

@@ -272,8 +272,16 @@ function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        <p className="text-sm text-center">Scroll Down</p>
-        <div className="flex justify-center items-center">
+        <button 
+          onClick={() => {
+            const menuSection = document.getElementById("menu");
+            if (menuSection) {
+              menuSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="flex flex-col items-center justify-center  text-text px-4 py-2 rounded-full transition-colors"
+        >
+          <span className="text-sm">Scroll Down</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -288,7 +296,7 @@ function HeroSection() {
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
-        </div>
+        </button>
       </motion.div>
       <div className="absolute bottom-20" id="menu"></div>
     </div>

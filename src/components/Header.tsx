@@ -339,7 +339,21 @@ export default function Header() {
               onClick={handleNavigation}
               className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/mission" ? "font-bold" : ""} active:!bg-green-950 `}
             >
-              <span className={`!${textColor} transition-colors duration-700`}>Process</span>
+              <span className={`!${textColor} transition-colors duration-700`}>Mission</span>
+              <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
+            </Link>
+          </motion.li>
+          <motion.li
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Link
+              href="/story"
+              onClick={handleNavigation}
+              className={`relative overflow-hidden group px-3 py-2 rounded-md ${pathname === "/story" ? "font-bold" : ""} active:!bg-green-950 `}
+            >
+              <span className={`!${textColor} transition-colors duration-700`}>Our Story</span>
               <span className={`absolute bottom-0 left-1/2 w-0 h-0.5 ${isScrolled ? 'bg-background' : 'bg-black'} group-hover:w-full group-hover:left-0 transition-all duration-300`}></span>
             </Link>
           </motion.li>

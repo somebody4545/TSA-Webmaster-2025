@@ -81,7 +81,10 @@ export default function ReferencesPage() {
     'https://unsplash.com/photos/man-in-red-shirt-holding-white-textile-hcET0JIGXoI',
     'https://unsplash.com/photos/man-in-black-nike-jacket-wearing-white-cap-SiQgni-cqFg',
     'https://unsplash.com/photos/a-man-cooking-food-in-a-kitchen-wNQoaYCFcsI',
-    'https://canva.com'
+    'https://canva.com',
+    'https://unsplash.com/photos/a-white-trailer-parked-next-to-a-table-and-chairs-RE7R7Aj1aew',
+    'https://unsplash.com/photos/grayscale-photo-of-desk-globe-TH7TW20de9s',
+    'https://unsplash.com/photos/green-plant-x8ZStukS2PM',
   ];
 
   const researchReferences = [

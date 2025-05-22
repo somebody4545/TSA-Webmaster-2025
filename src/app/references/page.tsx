@@ -77,7 +77,10 @@ export default function ReferencesPage() {
     'https://unsplash.com/photos/green-liquid-in-clear-drinking-glass-Rd_cmQWnCaM',
     'https://unsplash.com/s/photos/Turmeric-latte',
     'https://unsplash.com/s/photos/matcha-green-tea',
-    'https://unsplash.com/photos/strawberry-juice-in-clear-drinking-glass-05PIGVqLvY4'
+    'https://unsplash.com/photos/strawberry-juice-in-clear-drinking-glass-05PIGVqLvY4',
+    'https://unsplash.com/photos/man-in-red-shirt-holding-white-textile-hcET0JIGXoI',
+    'https://unsplash.com/photos/man-in-black-nike-jacket-wearing-white-cap-SiQgni-cqFg',
+    'https://unsplash.com/photos/a-man-cooking-food-in-a-kitchen-wNQoaYCFcsI',
 
 
 

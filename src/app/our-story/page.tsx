@@ -56,21 +56,21 @@ export default function OurStoryPage() {
     {
       name: "Zuri Brown",
       title: "Executive Chef",
-      bio: "With over 15 years of culinary experience, Chef Zuri specializes in transforming traditional dishes into plant-based masterpieces without sacrificing flavor or texture.",
+      bio: "I started cooking at my grandmother's side in New Orleans, where I learned that food is about stories and soul. After a decade in traditional kitchens, I got fed up with how disconnected we'd become from our food sources. Now I get to reinvent classics I grew up with using techniques I picked up traveling through Southeast Asia. The look on people's faces when they can't believe it's plant-based? That's what gets me up in the morning.",
       image: "/img/chef-1.png",
       specialty: "Global fusion cuisine",
     },
     {
       name: "Jordan Lee",
       title: "Pastry Chef",
-      bio: "Chef Jordan brings creativity and precision to our pastry kitchen, creating memorable desserts that showcase the natural sweetness of plant-based ingredients.",
+      bio: "Baking was my rebellion dash; my parents wanted me to be a doctor. Three culinary schools and countless kitchen burns later, I found my home here. I'm obsessed with fermentation and spend weekends foraging for local fruits. My philosophy? Dessert shouldn't be an afterthought. When I'm not testing recipes, you'll find me at the farmers market arguing with my favorite berry farmer about ripeness.",
       image: "/img/chef-2.jpg",
       specialty: "Innovative plant-based desserts",
     },
     {
       name: "Jabari Jefferson",
       title: "Chef de Cuisine",
-      bio: "Chef Jabari's background in sustainable agriculture informs their approach to menu development, ensuring that we honor seasonal rhythms and local ecosystems.",
+      bio: "I've had my hands in the dirt since I was a kid helping on my family's farm. Before cooking professionally, I studied agriculture and worked with indigenous farming communities in Mexico. The connection between what grows together and what goes together drives everything I create. I'm probably too stubborn about seasonality &mdash; I once refused to serve tomatoes for 8 months of the year, but I promise it's worth the wait.",
       image: "/img/chef-3.jpg",
       specialty: "Farm-to-table cuisine",
     },
@@ -226,7 +226,7 @@ export default function OurStoryPage() {
                 id: "sustainability",
                 title: "Sustainability",
                 description:
-                  "We minimize our environmental impact through zero-waste practices and sustainable sourcing. Our kitchen uses locally sourced ingredients and energy-efficient equipment to reduce our carbon footprint.",
+                  "We minimize our environmental impact through zero waste practices and sustainable sourcing of materials. Our kitchen uses locally sourced ingredients and industry level energy efficient equipment to reduce our carbon footprint.",
                 icon: (
                   <Leaf
                     className="h-24 w-24 text-primary-darker"
@@ -606,14 +606,7 @@ export default function OurStoryPage() {
                     </p>
                   </div>
                   <p className="text-text mb-4">{chefs[selectedChef].bio}</p>
-                  <p className="text-text">
-                    Chef {chefs[selectedChef].name.split(" ")[0]} brings
-                    creativity and passion to every dish, constantly researching
-                    and developing new recipes that showcase the versatility of
-                    plant-based ingredients. When not in the kitchen,
-                    you&apos;ll find them at local farmers markets searching for
-                    seasonal inspiration.
-                  </p>
+                  <p className="text-text"></p>
                 </div>
               </div>
             </motion.div>

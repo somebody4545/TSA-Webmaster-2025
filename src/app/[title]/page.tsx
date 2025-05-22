@@ -72,8 +72,7 @@ const menuItemPage = async ({ params }: MenuItemPageProps) => {
                 {item.ingredients.map((ingredient, index) => (
                   <div key={index} className="p-2">
                     <span className="flex items-center gap-1">
-                      <span className="text-primary"><ChevronRight /></span>
-                      {ingredient}
+                      – {ingredient}
                     </span>
                   </div>
                 ))}

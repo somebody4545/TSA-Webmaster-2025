@@ -561,7 +561,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-col h-full">
-            <h2 className="text-2xl font-heading font-semibold text-black mb-6 text-center">Reservation Details</h2>
+            <h2 className="text-2xl max-sm:text-xl font-heading font-semibold text-black mb-6 text-center">Reservation Details</h2>
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md flex-1 flex flex-col">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 flex-1">
                 <div className="sm:col-span-2">

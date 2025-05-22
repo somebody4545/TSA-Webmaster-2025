@@ -409,7 +409,7 @@ const MissionPage = () => {
                   viewport={{ once: true }}
                   className="p-6 rounded-lg w-full md:w-3/5 flex flex-col justify-center"
                 >
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text leading-tight">
+                  <h3 className="text-4xl md:text-4xl lg:text-5xl max-sm:text-3xl max-sm:text-center font-heading font-bold text-text leading-tight">
                     Ingredients from Local Farms
                   </h3>
                 </motion.div>

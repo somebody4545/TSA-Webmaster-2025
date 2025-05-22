@@ -5,23 +5,23 @@ export const PIE_DATA = [
   {
     color: "#7A53AC",
     label: "Fruits",
-    description: "Fruits provide vitamins, minerals, and natural sweetness.",
+    description: "Fruits provide vitamins, minerals, and natural sweetness. They help immune function, digestion, and hydration. Rich in antioxidants, they protect against chronic diseases and support overall health.",  
   },
   {
     color: "#F69F58",
     label: "Grains",
-    description: "Grains are a source of energy and important nutrients.",
+    description: "Grains are a major source of energy, supplying essential nutrients such as carbohydrates, dietary fiber, vitamin B, iron, magnesium, and selenium. These nutrients are vital in maintaining energy levels, metabolism, and overall health",
   },
   {
     color: "#9EC172",
     label: "Vegetables",
     description:
-      "Vegetables are crucial for a healthy diet because they provide vitamins, minerals, fiber, and antioxidants that are vital for overall well-being, protecting against diseases, and fundamental bodily functions.",
+      "Vegetables are important for a healthy diet as they provide vitamins, minerals, fiber, and antioxidants that are vital for overall well-being, protecting against diseases, and fundamental bodily functions.",
   },
   {
     color: "#D7545F",
     label: "Protein",
-    description: "Protein is essential for muscle and tissue repair.",
+    description: "Protein is essential for muscle growth, tissue repair, and the production of enzymes, hormones, and other body chemicals. It also supports immune function and helps maintain healthy skin, hair, and nails.",
   },
 ];
 

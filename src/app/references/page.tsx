@@ -109,7 +109,7 @@ export default function ReferencesPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-center">References</h1>
+        <h1 className="text-3xl md:text-4xl font-heading font-bold mb-10 text-center bg-background-dim shadow-xl text-black rounded-full">References</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">

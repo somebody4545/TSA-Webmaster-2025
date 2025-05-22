@@ -56,14 +56,14 @@ export default function OurStoryPage() {
     {
       name: "Zuri Brown",
       title: "Executive Chef",
-      bio: "I learned cooking from my grandmother when I lived in New Orleans, where I learned that food is about stories and soul rather than just smell and taste. After a decade of working in traditional kitchens, I grew extremely irritated with how so many companies and resturants grew disconnected with the roots of cultures they steal food from. Now I get to reinvent the classic dishes from cuisines all around the world while harnessing techniques I picked up through my travels.",
+      bio: "I learned cooking from my grandmother when I lived in New Orleans, where I learned that food is about stories and soul rather than just smell and taste. After a decade of working in traditional kitchens, I grew extremely irritated with how so many companies and restaurants grew disconnected with the roots of cultures they steal food from. Now I get to reinvent the classic dishes from cuisines all around the world while harnessing techniques I picked up through my travels.",
       image: "/img/chef-1.png",
       specialty: "Global fusion cuisine",
     },
     {
       name: "Jordan Lee",
       title: "Advanced Chef",
-      bio: "Baking was my form of rebellions as my parents wanted me to be a doctor. AFter countless years of  culinary schools and hundreds of kitchen burns later, I found my home here. I am extremely passionate about the use of chemistry and the various other sciences that are present in the art of cooking. My philosophy? Don't overthink it. The more and more experimentation you do, the better it turns out! We have to explore to find out more, which is something that I will hold with me forever.",
+      bio: "Baking was my form of rebellions as my parents wanted me to be a doctor. After countless years of  culinary schools and hundreds of kitchen burns later, I found my home here. I am extremely passionate about the use of chemistry and the various other sciences that are present in the art of cooking. My philosophy? Don't overthink it. The more and more experimentation you do, the better it turns out! We have to explore to find out more, which is something that I will hold with me forever.",
       image: "/img/chef-2.jpg",
       specialty: "Innovative plant-based desserts",
     },

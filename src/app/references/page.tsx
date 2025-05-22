@@ -34,6 +34,14 @@ export default function ReferencesPage() {
     'https://www.partstown.com/cm/resource-center/guides/gd2/tips-for-an-energy-efficient-kitchen',
     'https://unsplash.com/photos/man-in-white-crew-neck-t-shirt-standing-in-front-of-kitchen-sink-qm6yxe7SjWg',
     'https://unsplash.com/photos/a-plate-of-colorful-vegetables-on-a-black-background-SFL6xzPTlx8',
+    'https://unsplash.com/photos/baked-bread-sandwich-UcL0oYHsygk',
+    'https://unsplash.com/photos/a-plate-of-food-that-includes-pita-bread-tomatoes-and-cucumbers-I593oW2OKjI',
+    'https://unsplash.com/photos/white-green-and-red-flower-bouquet-zW8wA4QwS2M',
+    'https://unsplash.com/photos/cooked-food-on-black-ceramic-bowl-Grf4cNRwtkU',
+    'https://commons.wikimedia.org/wiki/File:Caprese_salad_skewer_appetizers.jpg',
+    'https://commons.wikimedia.org/wiki/File:Edamame_on_a_bamboo_bowl_by_yomi955.jpg',
+    'https://unsplash.com/photos/green-soup-in-white-ceramic-bowl-9ND-qkGs1_8',
+    'https://unsplash.com/photos/fried-food-on-white-ceramic-bowl-pQnsKWk5ljQ',
   ];
 
   const researchReferences = [

@@ -116,7 +116,13 @@ const GlobalCuisineMap = () => {
         <h2 className="text-3xl font-heading font-bold text-text text-center mb-12">
           Global Culinary Influences
         </h2>
-
+        <div className="mt-8 text-center text-black max-w-2xl mx-auto">
+          <p>
+            Click on a country flag to discover how we've incorporated authentic
+            cooking techniques and flavors from culinary traditions around the
+            world.
+          </p>
+        </div>
         <div className="relative w-full max-w-4xl mx-auto">
           <div className="relative" style={{ zIndex: 1 }}>
             <img
@@ -216,14 +222,6 @@ const GlobalCuisineMap = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-
-        <div className="mt-8 text-center text-black max-w-2xl mx-auto">
-          <p>
-            Click on a country flag to discover how we've incorporated authentic
-            cooking techniques and flavors from culinary traditions around the
-            world.
-          </p>
         </div>
       </div>
     </div>

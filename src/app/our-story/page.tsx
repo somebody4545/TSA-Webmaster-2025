@@ -357,26 +357,24 @@ export default function OurStoryPage() {
                 Alex Rivera
               </h3>
               <p className="text-lg text-text mb-6">
-                Maitso began with a passion for exploration and a respect for
-                global traditions. Growing up with a curiosity about different
-                cultures, I found my discipline and purpose when I joined the
+                Maitso began with a passion for exploring and a respect for
+                global traditions. I grew up with a curiosity about different
+                cultures, finding my discipline and purpose when I joined the
                 army, where I learned the value of teamwork, resilience, and
                 attention to detail.
               </p>
               <p className="text-lg text-text mb-6">
-                After completing my military service, I embarked on a journey
-                that took me across continents, from the street markets of
-                Thailand to the countryside of France, the coastal villages of
-                Peru to the bustling food stalls of Morocco. I immersed myself
-                in local cultures, learning cooking techniques handed down
+                After completing my military service, I started on a journey
+                that took me across continents. Visiting countries from Thailand to Italy, I immersed myself
+                in local cultures, learning cooking techniques that were handed down
                 through generations.
               </p>
               <p className="text-lg text-text mb-6">
-                These experiences opened my eyes to the universal language of
-                food and how it brings people together across cultural
-                boundaries. I returned home with a vision to create a restaurant
-                that honored these traditions while reimagining them through a
-                sustainable, plant-focused lens. That&apos;s how Maitso was
+                These experiences showed me the universal language of
+                food and of its ability to bring people together across cultural
+                boundaries. I came home with a vision to create a restaurant
+                that honored these traditions while reimagining them in a
+                sustainable, plant-focused setting. That&apos;s how Maitso was
                 born.
               </p>
               <div className="bg-primary-darker/10 p-6 rounded-lg">

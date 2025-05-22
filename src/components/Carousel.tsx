@@ -130,11 +130,6 @@ function MenuCarousel({ items }: { items: MenuItem[] }) {
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
-                    {item.cuisine && (
-                      <div className="absolute top-2 right-2 bg-primary text-black text-xs px-2 py-1 rounded-full">
-                        {item.cuisine}
-                      </div>
-                    )}
                   </div>
                   <div className="flex flex-col flex-grow">
                     <h3 className="text-xl font-bold font-heading text-black">

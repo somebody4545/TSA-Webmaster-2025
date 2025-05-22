@@ -85,6 +85,10 @@ export default function ReferencesPage() {
     'https://unsplash.com/photos/a-white-trailer-parked-next-to-a-table-and-chairs-RE7R7Aj1aew',
     'https://unsplash.com/photos/grayscale-photo-of-desk-globe-TH7TW20de9s',
     'https://unsplash.com/photos/green-plant-x8ZStukS2PM',
+    'https://unsplash.com/photos/grass-field-IQVFVH0ajag',
+    'https://unsplash.com/photos/barn-on-green-field-YvvHEQNgMcU',
+    'https://unsplash.com/photos/house-and-trees-J82dSkOxvY8',
+    'https://unsplash.com/photos/farm-with-cornfield-near-road-during-daytime-HGJqVcbQLgk'
   ];
 
   const researchReferences = [
@@ -135,7 +139,7 @@ export default function ReferencesPage() {
           <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
             <h2 className="text-2xl font-heading font-semibold mb-4">Code Stack</h2>
             <p className="text-base md:text-lg leading-relaxed">
-              This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop.
+              This website utilizes NextJS, a modern framework built on top of ReactJS optimized for efficiency and fast render times. On top of this, this website utilizes TailwindCSS, a framework allowing for shorthand CSS to be written directly in components, as well as DaisyUI, a TailwindCSS addition with accessible and responsive class names for standard components. Non-standard components and the theming of the site are done by the work of our team. This site follows current WCAG accessibility guidelines for color contrast, with small text at a AAA contrast ratio rating, and large text with at least a AA contrast ratio rating. Card renders are made with Twinmotion, Adobe Illustrator, and Blender. Menu page hero is a combination of two other photos, edited in Photoshop. News and partner logos are created by our team, with partner logos overlayed on photos. Reservations 3d model and svg are made by us. The 3d food pie chart is made by CSS effects, without external libraries. We use Firebase to deal with authentication for rewards, and Stripe to handle gift card orders.
             </p>
           </div>
         </div>
@@ -168,6 +172,15 @@ export default function ReferencesPage() {
                 <li className="mb-3">
                   <code className="bg-gray-100 px-2 py-1 rounded">Google Maps API</code>: Used for generating maps for the locations page.
                 </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">stripe</code>: Used for handling secure payments and checkout flows. We use their industry standard page for checkout, which is PCI compliant.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">firebase</code>: Used for authentication and database storage.
+                </li>
+                <li className="mb-3">
+                  <code className="bg-gray-100 px-2 py-1 rounded">vercel</code>: Used for hosting and deploying the website with seamless integration for Next.js applications.
+                </li>
               </ul>
             </div>
           </div>
@@ -177,7 +190,7 @@ export default function ReferencesPage() {
         <div className="mb-8">
           <div className="bg-white rounded-lg p-4 md:p-6 shadow-md">
             <h2 className="text-2xl font-heading font-semibold mb-4">Image Links</h2>
-            <p className="text-base md:text-lg pb-4">All images rely on either the <span className="font-bold">Unsplash</span> or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span>, or are otherwise public domain</p>
+            <p className="text-base md:text-lg pb-4">All images rely on either the <span className="font-bold">Unsplash</span>, <span className="font-bold">Canva License</span>, or <span className="font-bold">Creative Commons Sharealike (+ Attribution)</span> license, or are otherwise public domain.</p>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               {devReferences.map((link, index) => (
                 <a

@@ -10,7 +10,7 @@ export const PIE_DATA = [
   {
     color: "#F69F58",
     label: "Grains",
-    description: "Grains are a major source of energy, supplying essential nutrients such as carbohydrates, dietary fiber, vitamin B, iron, magnesium, and selenium. These nutrients are vital in maintaining energy levels, metabolism, and overall health",
+    description: "Grains are a major source of energy, supplying essential nutrients such as carbohydrates, dietary fiber, vitamin B, iron, magnesium, and selenium. These nutrients are vital in maintaining energy levels, metabolism, and overall health.",
   },
   {
     color: "#9EC172",

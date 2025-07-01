@@ -886,7 +886,7 @@ const MissionPage = () => {
                   <p className="text-text">
                     {selected !== null
                       ? PIE_DATA[selected].description
-                      : "Our plate represents a balanced and informed approach to plant based nutrition. Each section represents the nutrients, which we ensure are present abundantly throughout our dishes. Click on any section to learn more about its importance, and how we incorporate it into our dishes!."}
+                      : "Our plate represents a balanced and informed approach to plant based nutrition. Each section represents the nutrients, which we ensure are present abundantly throughout our dishes. Click on any section to learn more about its importance, and how we incorporate it into our dishes!"}
                   </p>
                 </motion.div>
 

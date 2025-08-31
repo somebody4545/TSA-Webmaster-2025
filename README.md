@@ -1,4 +1,4 @@
-### Won 1st @ TSA Nationals for Webmaster in 2025.
+### Won 1st @ TSA Nationals and Washington TSA for Webmaster in 2025.
 # Maitso - Plant Powered
 
 A website by Inesh Dey, Ishaan Kothari, Anirudh Narasimhan, Sathkrith Segu, Yohaan Ardeni, and Rishabh Menasinakayi

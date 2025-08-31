@@ -1,10 +1,10 @@
 ### Won 1st @ TSA Nationals and Washington TSA for Webmaster in 2025.
 # Maitso - Plant Powered
 
-A website by Inesh Dey, Ishaan Kothari, Anirudh Narasimhan, Sathkrith Segu, Yohaan Ardeni, and Rishabh Menasinakayi
+Made by Inesh Dey, Ishaan Kothari, Anirudh Narasimhan, Sathkrith Segu, Yohaan Ardeni, and Rishabh Menasinakayi
 
 ## How to run
-(optional) populate a .env file at root (necessary for stripe and login)
+(optional) populate a .env file at root (necessary for Stripe and login)
 ```
 STRIPE_SECRET_KEY=
 NEXT_PUBLIC_FIREBASE_API_KEY=
@@ -15,7 +15,7 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
 ```
 
-to run, ensure you have node and npm on their latest versions, and run the following:
+To run, ensure you have Node and npm on their latest versions, and run the following:
 ```
 npm i
 npm run dev
